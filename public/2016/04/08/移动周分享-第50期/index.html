@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第50期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="先看命令帮助的讲解 - 王胜12345678910111213Victors-MPB:hello wangsheng$ git reset -husage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [&amp;lt;commit&amp;gt;]   or: git reset [-q] &amp;lt;tree-ish&amp;gt; [--]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第50期">
+<meta property="og:url" content="http://yoursite.com/2016/04/08/移动周分享-第50期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="先看命令帮助的讲解 - 王胜12345678910111213Victors-MPB:hello wangsheng$ git reset -husage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [&amp;lt;commit&amp;gt;]   or: git reset [-q] &amp;lt;tree-ish&amp;gt; [--]">
+<meta property="og:image" content="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-mixed-partial.png">
+<meta property="og:image" content="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-hard-all.png">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第50期">
+<meta name="twitter:description" content="先看命令帮助的讲解 - 王胜12345678910111213Victors-MPB:hello wangsheng$ git reset -husage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [&amp;lt;commit&amp;gt;]   or: git reset [-q] &amp;lt;tree-ish&amp;gt; [--]">
+<meta name="twitter:image" content="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-mixed-partial.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第50期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/08/移动周分享-第50期/" class="article-date">
+  <time datetime="2016-04-08T10:30:00.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第50期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="先看命令帮助的讲解-王胜"><a href="#先看命令帮助的讲解-王胜" class="headerlink" title="先看命令帮助的讲解 - 王胜"></a>先看命令帮助的讲解 - 王胜</h2><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git reset -h</div><div class="line">usage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] <span class="meta">[&lt;commit&gt;]</span></div><div class="line">   <span class="keyword">or</span>: git reset [-q] &lt;tree-ish&gt; [--] &lt;paths&gt;...</div><div class="line">   <span class="keyword">or</span>: git reset --patch <span class="meta">[&lt;tree-ish&gt;]</span> [--] <span class="meta">[&lt;paths&gt;...]</span></div><div class="line"></div><div class="line">    -q, --quiet           be quiet, only report errors</div><div class="line">    --mixed               reset HEAD and index</div><div class="line">    --soft                reset only HEAD</div><div class="line">    --hard                reset HEAD, index and working tree</div><div class="line">    --merge               reset HEAD, index and working tree</div><div class="line">    --keep                reset HEAD but keep local changes</div><div class="line">    -p, --patch           select hunks interactively</div><div class="line">    -N, --intent-to-add   record only the fact that removed paths will be added later</div></pre></td></tr></table></figure>
+<h3 id="各种模式对比"><a href="#各种模式对比" class="headerlink" title="各种模式对比"></a>各种模式对比</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th style="text-align:center">HEAD是否重置</th>
+<th style="text-align:center">Index是否重置</th>
+<th style="text-align:center">working区是否重置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–mixed『缺省模式』</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td>–soft</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td>–hard</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td>–merge</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td>–keep</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SourceTree-重置分析"><a href="#SourceTree-重置分析" class="headerlink" title="SourceTree 重置分析"></a>SourceTree 重置分析</h3><h4 id="重置-gt-丢弃文件变更"><a href="#重置-gt-丢弃文件变更" class="headerlink" title="重置 -&gt; 丢弃文件变更"></a>重置 -&gt; 丢弃文件变更</h4><ul>
+<li><p>操作截图</p>
+<p><img src="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-mixed-partial.png" alt="git-reset-mixed-partial"></p>
+</li>
+<li><p>实际执行的命令</p>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree reset -<span class="selector-tag">q</span> HEAD -- <span class="selector-tag">a</span><span class="selector-class">.txt</span> c<span class="selector-class">.txt</span> 	</div><div class="line">git -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree checkout HEAD -- <span class="selector-tag">a</span><span class="selector-class">.txt</span> </div><div class="line">Completed successfully</div></pre></td></tr></table></figure>
+<ul>
+<li>结果</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git st</div><div class="line">On branch feature2</div><div class="line">All conflicts fixed but you are still merging.</div><div class="line">    (<span class="keyword">use</span> <span class="string">"git commit"</span> <span class="keyword">to</span> conclude <span class="keyword">merge</span>)</div><div class="line"></div><div class="line">Untracked files:</div><div class="line">    (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">include</span> <span class="keyword">in</span> what will be committed)</div><div class="line"></div><div class="line">	  c.txt</div><div class="line"></div><div class="line"><span class="keyword">nothing</span> added <span class="keyword">to</span> <span class="keyword">commit</span> but untracked files <span class="keyword">present</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">to</span> track)</div></pre></td></tr></table></figure>
+<p>可以看出这样操作，git的上下文环境还在merge状态，这种情况一不小心就容易当做重置干净了，继续干自己的事情了，殊不知把别人的改动丢弃了。</p>
+<h4 id="重置-gt-重置所有"><a href="#重置-gt-重置所有" class="headerlink" title="重置 -&gt; 重置所有"></a>重置 -&gt; 重置所有</h4><ul>
+<li><p>操作截图</p>
+<p><img src="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-hard-all.png" alt="git-reset-hard-all"></p>
+</li>
+<li><p>实际执行的命令</p>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git -<span class="built_in">c</span> diff.mnemonicprefix=<span class="literal">false</span> -<span class="built_in">c</span> core.quotepath=<span class="literal">false</span> -<span class="built_in">c</span> credential.helper=sourcetree reset -q --hard <span class="type">HEAD</span> -- </div><div class="line"></div><div class="line">git -<span class="built_in">c</span> diff.mnemonicprefix=<span class="literal">false</span> -<span class="built_in">c</span> core.quotepath=<span class="literal">false</span> -<span class="built_in">c</span> credential.helper=sourcetree submodule update --<span class="keyword">init</span> --recursive </div><div class="line"><span class="type">Completed</span> successfully</div></pre></td></tr></table></figure>
+<ul>
+<li>结果</li>
+</ul>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git st</div><div class="line"><span class="keyword">On</span> branch feature2</div><div class="line"><span class="literal">nothing</span> <span class="keyword">to</span> commit, working directory clean</div></pre></td></tr></table></figure>
+<h2 id="快速集成TouchID-杨志平"><a href="#快速集成TouchID-杨志平" class="headerlink" title="快速集成TouchID - 杨志平"></a>快速集成TouchID - 杨志平</h2><blockquote>
+<p>iPhone 5s，iOS 8，iOS7时未开放</p>
+<p>依赖 LocalAuthentication.framework</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断设备支持状态</span></div><div class="line">LAContext *context = [[LAContext alloc] init];</div><div class="line">[context <span class="string">canEvaluatePolicy:</span>LAPolicyDeviceOwnerAuthenticationWithBiometrics <span class="string">error:</span>nil];</div><div class="line"></div><div class="line"><span class="comment">// 如果可以</span></div><div class="line">[context <span class="string">evaluatePolicy:</span>LAPolicyDeviceOwnerAuthenticationWithBiometrics <span class="string">localizedReason:</span>@<span class="string">"reason"</span> <span class="string">reply:</span>^(BOOL success, NSError *error) &#123;</div><div class="line">            <span class="keyword">if</span> (success) &#123;</div><div class="line">                <span class="comment">//验证成功，主线程处理UI</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">	            <span class="comment">// 重点：错误处理，分为多种错误</span></div><div class="line">	            <span class="comment">// 有验证失败、取消、手动输入密码等等相对应的逻辑处理</span></div><div class="line">	            <span class="comment">// 详见demo</span></div><div class="line">	        &#125;</div><div class="line">        &#125;];</div></pre></td></tr></table></figure>
+<p><strong>错误类型</strong></p>
+<ul>
+<li>LAErrorAuthenticationFailed</li>
+<li>LAErrorUserCancel</li>
+<li>LAErrorUserFallback</li>
+<li>LAErrorSystemCancel</li>
+<li>LAErrorPasscodeNotSet  </li>
+<li>LAErrorTouchIDNotAvailable</li>
+<li>LAErrorTouchIDNotEnrolled </li>
+<li>LAErrorTouchIDLockout   NS_ENUM_AVAILABLE(10_11, 9_0)</li>
+<li>LAErrorAppCancel        NS_ENUM_AVAILABLE(10_11, 9_0) </li>
+<li>LAErrorInvalidContext   NS_ENUM_AVAILABLE(10_11, 9_0)</li>
+</ul>
+<h2 id="dispatch-sync的坑-潘君"><a href="#dispatch-sync的坑-潘君" class="headerlink" title="dispatch_sync的坑 - 潘君"></a>dispatch_sync的坑 - 潘君</h2><h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>dispatch_sync自己创建的队列 仍旧有可能在main thread上执行block</p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><ul>
+<li><p>GCD只是管理一个线程池 不保证一定在某一个thread或不在某一个thread执行</p>
+</li>
+<li><p>非main程队列也有可能调用主线程</p>
+</li>
+<li><p>为了优化 有可能在当前线程中执行block</p>
+</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如何不让dispatch_sync卡主线程呢</p>
+<p>答: 别在主线程调用此函数 哈哈哈</p>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><ul>
+<li><p>锁的功能</p>
+</li>
+<li><p>确保在主线程执行block</p>
+</li>
+</ul>
+<p>AFNetworking在调用前判断是否是主线程</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span> (![[<span class="built_in">NSThread</span> currentThread] isMainThread]) &#123;</div><div class="line"></div><div class="line">    <span class="built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line"></div><div class="line">        [<span class="keyword">self</span> transitionToNextPhase];</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p><a href="http://stackoverflow.com/questions/9471420/whats-the-benefit-of-using-dispatch-sync-if-it-has-to-wait-until-the-main-threa" target="_blank" rel="external">http://stackoverflow.com/questions/9471420/whats-the-benefit-of-using-dispatch-sync-if-it-has-to-wait-until-the-main-threa</a></p>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/4607125/using-dispatch-sync-in-grand-central-dispatch" target="_blank" rel="external">http://stackoverflow.com/questions/4607125/using-dispatch-sync-in-grand-central-dispatch</a></p>
+</li>
+<li><p><a href="http://honglu.me/2016/01/11/AFNetworking%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" target="_blank" rel="external">http://honglu.me/2016/01/11/AFNetworking%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/08/移动周分享-第50期/" data-id="cj2xi6dzx002y2zx17ess4j3q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/22/移动周分享-第52期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第52期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/01/移动周分享-第49期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第49期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

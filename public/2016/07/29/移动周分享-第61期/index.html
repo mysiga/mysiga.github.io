@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第61期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##CloudKit初探 - 刘康 ###什么是CloudKit  iCloud Documents iCloud Drive CloudKit  ###CloudKit 基础对象类型  CKContainer: Containers 就像应用运行的沙盒一样，一个应用只能访问自己沙盒中的内容而不能访问其他应用的。Containers 就是最外层容器，每个应用有且仅有一个属于自己的 containe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第61期">
+<meta property="og:url" content="http://yoursite.com/2016/07/29/移动周分享-第61期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="##CloudKit初探 - 刘康 ###什么是CloudKit  iCloud Documents iCloud Drive CloudKit  ###CloudKit 基础对象类型  CKContainer: Containers 就像应用运行的沙盒一样，一个应用只能访问自己沙盒中的内容而不能访问其他应用的。Containers 就是最外层容器，每个应用有且仅有一个属于自己的 containe">
+<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/hoko-blog/universal_links.png">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第61期">
+<meta name="twitter:description" content="##CloudKit初探 - 刘康 ###什么是CloudKit  iCloud Documents iCloud Drive CloudKit  ###CloudKit 基础对象类型  CKContainer: Containers 就像应用运行的沙盒一样，一个应用只能访问自己沙盒中的内容而不能访问其他应用的。Containers 就是最外层容器，每个应用有且仅有一个属于自己的 containe">
+<meta name="twitter:image" content="https://s3-eu-west-1.amazonaws.com/hoko-blog/universal_links.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第61期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/29/移动周分享-第61期/" class="article-date">
+  <time datetime="2016-07-29T14:30:00.000Z" itemprop="datePublished">2016-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第61期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##CloudKit初探 - 刘康</p>
+<p>###什么是CloudKit</p>
+<ul>
+<li>iCloud</li>
+<li>Documents</li>
+<li>iCloud Drive</li>
+<li>CloudKit</li>
+</ul>
+<p>###CloudKit 基础对象类型</p>
+<ul>
+<li><p><code>CKContainer</code>: Containers 就像应用运行的沙盒一样，一个应用只能访问自己沙盒中的内容而不能访问其他应用的。Containers 就是最外层容器，每个应用有且仅有一个属于自己的 container。</p>
+</li>
+<li><p><code>CKDatabase</code>: Database 即数据库，私有数据库用来存储敏感信息，比如说用户的性别年龄等，用户只能访问自己的私有数据库。应用也有一个公开的数据库来存储公共信息，例如你在构建一个基于地理位置的应用，那么地理位置信息就应该存储在公共数据库里以便所有用户都能访问到。</p>
+</li>
+<li><p><code>CKRecord</code>: 即数据库中的一条数据记录。CloudKit 使用 record 通过 key-value 结构来存储结构化数据。关于键值存储，目前值的架构支持 NSString、NSNumber、NSData、NSDate、CLLocation，和 CKReference、CKAsset（这两个下面我们会说明），以及存储以上数据类型的数组。</p>
+</li>
+<li><p><code>CKRecordZone</code>: Record 不是以零散的方式存在于 database 之中的，它们位于 record zones 里。每个应用都有一个 default record zone，你也可以有自定义的 record zone。</p>
+</li>
+<li><p><code>CKRecordIdentifier</code>: 是一条 record 的唯一标识，用于确定该 record 在数据库中的唯一位置。</p>
+</li>
+<li><p><code>CKReference</code>: Reference 一种引用关系。以地理位置签到应用为例，每个地理位置可以包含很多用户在该位置的签到，那么位置与签到之间就形成了这样一种包含式的从属关系。</p>
+</li>
+<li><p><code>CKAsset</code>: 即资源文件，例如二进制文件。还是以签到应用为例，用户签到时可能还包含一张照片，那么这张照片就会以 asset 形式存储起来。</p>
+</li>
+</ul>
+<p>###有哪些Api（Diary Demo）</p>
+<p>####增</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">func updateRecord(diary: Diary, <span class="built_in">record</span>: CKRecord) &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">record</span>.setObject(diary.content, forKey: <span class="string">"Content"</span>)</div><div class="line">    </div><div class="line">    <span class="built_in">record</span>.setObject(diary.created_at, forKey: <span class="string">"Created_at"</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> location = diary.location &#123;</div><div class="line">        <span class="built_in">record</span>.setObject(location, forKey: <span class="string">"Location"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> title = diary.title &#123;</div><div class="line">        <span class="built_in">record</span>.setObject(title, forKey: <span class="string">"Title"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="built_in">record</span>.setObject(diary.id, forKey: <span class="string">"id"</span>)</div><div class="line">    </div><div class="line">    privateDB.saveRecord(<span class="built_in">record</span>, completionHandler: &#123; (newDiary, error) -&gt; Void <span class="built_in">in</span></div><div class="line">        </div><div class="line">        debugPrint(<span class="string">"Diary Updated"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> error = error &#123;</div><div class="line">            debugPrint(<span class="string">"error \(error.description)"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####删</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteCloudRecord</span><span class="params">(record: CKRecord)</span></span> &#123;</div><div class="line">    privateDB.deleteRecordWithID(record.recordID) &#123; (recordID, error) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"Delete <span class="subst">\(recordID?.recordName)</span> <span class="subst">\(error?.description)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####改<br>查询 -&gt; 修改 -&gt; 更新</p>
+<p>####查</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetchCloudRecordWithTitle</span><span class="params">(title: String , complete: <span class="params">([CKRecord]?)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> predicate = <span class="type">NSPredicate</span>(format: <span class="string">"Title == %@"</span>, title)</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="string">"Diary"</span>,</div><div class="line">                        predicate: predicate )</div><div class="line">    </div><div class="line">    privateDB.performQuery(query, inZoneWithID: <span class="literal">nil</span>) &#123;</div><div class="line">        results, error <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> results = results &#123;</div><div class="line">            complete(results)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            complete(<span class="literal">nil</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###碰到的问题(踩到的坑)</p>
+<ol>
+<li><code>Saving CloudKit Record “Not Authenticated” (9/1002)“ ”This request requires an authenticated account</code><br>原因：使用模拟器或者设备没有启用iCloud</li>
+<li><code>Couldn&#39;t get container configuration from the server for container</code><br>原因：container’s identifier错误，可能是使用默认值，也可能是与代码里初始化container时的identifier不一致；<br>另外，需要与开发者中心<code>Certificates, Identifiers &amp; Profiles</code>的iCloud Containers保持一致。<strong>需要5分钟左右才可以使用</strong></li>
+<li><code>Invalid Arguments(12/2015); server message = Field &#39;___recordID&#39; is not marked queryable</code><br>原因：未设置<code>Metadata Indexes</code>.需要前往CloudKit Dashboard -&gt; Record Types -&gt; Metedata Indexes设置</li>
+</ol>
+<p>###收费<br>等不及要试试 CloudKit 了？它能让你从编写服务端代码、监控服务器压力、长期维护大量的 CDN、租用服务器等等等等的事情中解脱出来。等等！CloudKit 怎么收费呢，会很贵吗？答案是：免费。目前苹果允许你使用 CloudKit 存储 10 GB 资源，100 M 数据库存储，每天 2 GB 流量；当你的用户数量增加的时候，这些免费额度也相应地增加到 1 PB 存储、10 TB 数据库存储，以及每天 200 TB 流量。</p>
+<p>###参考<br><a href="https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/CloudKitQuickStart/EnablingiCloudandConfiguringCloudKit/EnablingiCloudandConfiguringCloudKit.html#//apple_ref/doc/uid/TP40014987-CH2-SW1" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/CloudKitQuickStart/EnablingiCloudandConfiguringCloudKit/EnablingiCloudandConfiguringCloudKit.html#//apple_ref/doc/uid/TP40014987-CH2-SW1</a></p>
+<p><a href="https://icloud.developer.apple.com/dashboard" target="_blank" rel="external">https://icloud.developer.apple.com/dashboard</a></p>
+<p><a href="http://nshipster.cn/cloudkit/" target="_blank" rel="external">http://nshipster.cn/cloudkit/</a></p>
+<h3 id="通用链接（-Universal-Links-）-杨志平"><a href="#通用链接（-Universal-Links-）-杨志平" class="headerlink" title="通用链接（ Universal Links ）- 杨志平"></a>通用链接（ Universal Links ）- 杨志平</h3><p>@(iOS)[universal links, 通用链接]</p>
+<blockquote>
+<ul>
+<li>通过唯一的网址, 就可以链接一个特定的视图到你的 APP 里面, 不需要特别的 schema</li>
+<li>不再需要JavaScript检查平台，跳转也不需要js去做特定处理</li>
+<li>比scheme更灵活更安全的匹配URL跳转</li>
+</ul>
+<p>注意：不能使用模拟器调试</p>
+</blockquote>
+<p><img src="https://s3-eu-west-1.amazonaws.com/hoko-blog/universal_links.png" alt="image"></p>
+<blockquote>
+<p>工作原理：When the app is installed, the system downloads and verifies the site association file for each of its associated domains. If the verification is successful, the app is associated with the domain.</p>
+</blockquote>
+<p>####Configure your file server</p>
+<ul>
+<li><a href="https://api-pre.51offer.com/apple-app-site-association" target="_blank" rel="external">我们的根路径配置文件</a></li>
+<li><a href="https://branch.io/resources/universal-links/" target="_blank" rel="external">根路径配置有效性验证</a><h5 id="要求如下："><a href="#要求如下：" class="headerlink" title="要求如下："></a>要求如下：</h5><blockquote>
+<p>Alright! So you have your signed apple-app-site-association file. Now you just need to configure your file server to host this for you. There are a few caveats:</p>
+</blockquote>
+</li>
+<li>It must be sent with the header ‘application/pkcs7-mime’</li>
+<li>It must be sent from the endpoint youdomain.com/apple-app-site-association</li>
+<li>It must return a 200 http code.</li>
+</ul>
+<blockquote>
+<p>We set up the one for all Branch integrated apps using our Node+Express link servers. Here’s the code we used in case that’s helpful:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aasa = fs.readFileSync(__dirname + <span class="string">'/static/apple-app-site-association'</span>);</div><div class="line">app.get(<span class="string">'/apple-app-site-association'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">     res.set(<span class="string">'Content-Type'</span>, <span class="string">'application/pkcs7-mime'</span>);</div><div class="line">     res.status(<span class="number">200</span>).send(aasa);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>可以从原有的scheme过渡过来<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application openURL:(<span class="built_in">NSURL</span> *)url sourceApplication:(<span class="built_in">NSString</span> *)sourceApplication annotation:(<span class="keyword">id</span>)annotation &#123;</div><div class="line">    [<span class="keyword">self</span> handleRouting:url];</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application continueUserActivity:(<span class="built_in">NSUserActivity</span> *)userActivity restorationHandler:(<span class="keyword">void</span> (^)(<span class="built_in">NSArray</span> *))restorationHandler &#123;</div><div class="line">    <span class="keyword">if</span> ([userActivity.activityType isEqualToString:<span class="built_in">NSUserActivityTypeBrowsingWeb</span>]) &#123;</div><div class="line">        [<span class="keyword">self</span> handleRouting:userActivity.webpageURL];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)handleRouting:(<span class="built_in">NSURL</span> *)url &#123;</div><div class="line">....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>视频</strong>优先推荐<br><a href="https://developer.apple.com/videos/play/wwdc2015/509/" target="_blank" rel="external">https://developer.apple.com/videos/play/wwdc2015/509/</a></p>
+<p><strong>优秀博客</strong><br><a href="https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9" target="_blank" rel="external">https://blog.branch.io/how-to-setup-universal-links-to-deep-link-on-apple-ios-9</a></p>
+<p><a href="https://blog.branch.io/ios-9.2-deep-linking-guide-transitioning-to-universal-links" target="_blank" rel="external">https://blog.branch.io/ios-9.2-deep-linking-guide-transitioning-to-universal-links</a></p>
+<p><a href="http://blog.hokolinks.com/how-to-implement-apple-universal-links-on-ios-9/" target="_blank" rel="external">http://blog.hokolinks.com/how-to-implement-apple-universal-links-on-ios-9/</a></p>
+<p><strong>可能出现的bug</strong>（巨坑，也可能是配置问题）<br><a href="http://stackoverflow.com/questions/32751225/ios9-universal-links-does-not-work" target="_blank" rel="external">http://stackoverflow.com/questions/32751225/ios9-universal-links-does-not-work</a></p>
+<h2 id="结合实例介绍-nginx-配置-曾铭"><a href="#结合实例介绍-nginx-配置-曾铭" class="headerlink" title="结合实例介绍 nginx 配置 - 曾铭"></a>结合实例介绍 nginx 配置 - 曾铭</h2><h3 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h3><p>DNS, nginx, tomcat, application</p>
+<p><a href="https://api-pre.51offer.com/mobile/user/login" target="_blank" rel="external">https://api-pre.51offer.com/mobile/user/login</a></p>
+<p>DNS: api-pre.51offer.com(host) -&gt; IP(nginx)</p>
+<p>nginx: IP(nginx):80 -&gt; IP(tomcat):8080</p>
+<p>tomcat: /mobile</p>
+<p>application: /user/login (controller, function)</p>
+<p>看 nginx 配置</p>
+<h3 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h3><h4 id="调试-Universal-Link"><a href="#调试-Universal-Link" class="headerlink" title="调试 Universal Link"></a>调试 Universal Link</h4><p><a href="https://api-pre.51offer.com/xyz.html" target="_blank" rel="external">https://api-pre.51offer.com/xyz.html</a><br><a href="https://api-pre.51offer.com/apple-site-app-config" target="_blank" rel="external">https://api-pre.51offer.com/apple-site-app-config</a></p>
+<ul>
+<li>调整 tomcat content_path <a href="http://gitlab.51offer.inner/tool/tool-tms/commit/24b8c6f69ea0029b8cea8b7cbc46f3c2f355271d" target="_blank" rel="external">http://gitlab.51offer.inner/tool/tool-tms/commit/24b8c6f69ea0029b8cea8b7cbc46f3c2f355271d</a></li>
+<li>调整 application 静态文件路径</li>
+<li>改 header: nginx</li>
+</ul>
+<h3 id="线上-fixbug"><a href="#线上-fixbug" class="headerlink" title="线上 fixbug"></a>线上 fixbug</h3><p><a href="http://www.51offer.com/aboutus/server.html?in_app=1" target="_blank" rel="external">http://www.51offer.com/aboutus/server.html?in_app=1</a></p>
+<p>api.51offer.com</p>
+<p><a href="https://api.51offer.com/aboutus/server.html?in_app=1" target="_blank" rel="external">https://api.51offer.com/aboutus/server.html?in_app=1</a><br><a href="https://api.51offer.com/aboutus/protocol.html?in_app=1" target="_blank" rel="external">https://api.51offer.com/aboutus/protocol.html?in_app=1</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/29/移动周分享-第61期/" data-id="cj2xi6e0c003t2zx1b9d93bds" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/22/移动周分享-第60期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第60期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

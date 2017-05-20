@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第59期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="闲聊前后端分离 - 曾铭 现状与问题 看看历史 看看方案 一些启示  ##如何优雅的自定义Xib - 刘康 ####先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下：  size: Freeform Status Bar: None  ####使用-init(frame: CGRect)而不是-awakeFromNib()：为了能在Storyboard中使用自定义view，需要实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第59期">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/移动周分享-第59期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="闲聊前后端分离 - 曾铭 现状与问题 看看历史 看看方案 一些启示  ##如何优雅的自定义Xib - 刘康 ####先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下：  size: Freeform Status Bar: None  ####使用-init(frame: CGRect)而不是-awakeFromNib()：为了能在Storyboard中使用自定义view，需要实">
+<meta property="og:image" content="http://oaclergq7.bkt.clouddn.com/filesowner.jpg">
+<meta property="og:image" content="http://7xod3k.com1.z0.glb.clouddn.com/qtijqabixtlihxsuujkwnlzelrqnwqnz">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-784a1cb7911ccafa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-6287758ce0be0d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-82ee776821842f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-d33f48cff28cc3a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-a0b2da8b0c4418b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-6e66d663c451a176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第59期">
+<meta name="twitter:description" content="闲聊前后端分离 - 曾铭 现状与问题 看看历史 看看方案 一些启示  ##如何优雅的自定义Xib - 刘康 ####先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下：  size: Freeform Status Bar: None  ####使用-init(frame: CGRect)而不是-awakeFromNib()：为了能在Storyboard中使用自定义view，需要实">
+<meta name="twitter:image" content="http://oaclergq7.bkt.clouddn.com/filesowner.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第59期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/15/移动周分享-第59期/" class="article-date">
+  <time datetime="2016-07-15T15:30:00.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第59期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="闲聊前后端分离-曾铭"><a href="#闲聊前后端分离-曾铭" class="headerlink" title="闲聊前后端分离 - 曾铭"></a>闲聊前后端分离 - 曾铭</h2><ul>
+<li>现状与问题</li>
+<li>看看历史</li>
+<li>看看方案</li>
+<li>一些启示</li>
+</ul>
+<p>##如何优雅的自定义Xib - 刘康</p>
+<p>####先创建一个UIView文件和一个Xib文件，在Xib文件里设置如下：</p>
+<ul>
+<li>size: Freeform</li>
+<li>Status Bar: None</li>
+</ul>
+<p>####使用<strong><code>-init(frame: CGRect)</code></strong>而不是<strong><code>-awakeFromNib()</code></strong>：<br>为了能在Storyboard中使用自定义view，需要实现<code>initWithCoder</code></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">override</span> <span class="selector-tag">init</span>(<span class="attribute">frame</span>: CGRect) &#123;</div><div class="line">    <span class="selector-tag">super</span><span class="selector-class">.init</span>(<span class="attribute">frame</span>: frame)</div><div class="line">    <span class="selector-tag">setupXib</span>()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">required</span> <span class="selector-tag">init</span>?(coder <span class="attribute">aDecoder</span>: NSCoder) &#123;</div><div class="line">    <span class="selector-tag">super</span><span class="selector-class">.init</span>(<span class="attribute">coder</span>: aDecoder)</div><div class="line">    <span class="selector-tag">setupXib</span>()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####加载Xib关键代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">loadViewFromNib</span><span class="params">()</span></span> -&gt; <span class="type">UIView</span> &#123;</div><div class="line">    <span class="keyword">let</span> bundle = <span class="type">NSBundle</span>(forClass: <span class="keyword">self</span>.<span class="keyword">dynamicType</span>)</div><div class="line">    <span class="keyword">let</span> nib = <span class="type">UINib</span>(nibName: <span class="string">"WeiboHeader"</span>, bundle: bundle)</div><div class="line">    <span class="keyword">let</span> view = nib.instantiateWithOwner(<span class="keyword">self</span>, options: <span class="literal">nil</span>)[<span class="number">0</span>] <span class="keyword">as</span>! <span class="type">UIView</span></div><div class="line">    <span class="keyword">return</span> view</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####设置<code>Xib</code>文件的<strong><code>Files Owner</code></strong>，而不是设置View的<code>Custom Class</code><br>如果需要UIView和Xib文件建立控件属性关联，是设置Xib文件的File`s Owner，而不是设置View的Custom Class</p>
+<p><img src="http://oaclergq7.bkt.clouddn.com/filesowner.jpg" alt="Image show"><br>设置了File`s Owner就可以像往常一样拖线了!</p>
+<p>####在Storyboard中使用Xib<br>1.在SB中加入一个UIView，将其Class设置成<code>WeiboHeader</code><br>2.使用<strong><code>@IBInspectable</code></strong></p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@IBInspectable <span class="keyword">var</span> background: <span class="type">UIImage</span>? &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="keyword">return</span> backgroundImageView.image</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span> &#123;</div><div class="line">        backgroundImageView.image = <span class="keyword">new</span><span class="type">Value</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBInspectable <span class="keyword">var</span> avatar: <span class="type">UIImage</span>? &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="keyword">return</span> avatarImageView.image</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span> &#123;</div><div class="line">        avatarImageView.image = <span class="keyword">new</span><span class="type">Value</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBInspectable <span class="keyword">var</span> name: <span class="type">String</span>? &#123;</div><div class="line">    <span class="keyword">get</span> &#123;</div><div class="line">        <span class="keyword">return</span> nameLabel.text</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">set</span> &#123;</div><div class="line">        nameLabel.text = <span class="keyword">new</span><span class="type">Value</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>添加了<code>@IBInspectable</code>之后，就可以像系统自带的控件一样设置属性了~</p>
+<h2 id="单元测试-吴明"><a href="#单元测试-吴明" class="headerlink" title="单元测试 - 吴明"></a>单元测试 - 吴明</h2><ul>
+<li>注：基于<a href="http://chriszou.com/" target="_blank" rel="external">小创</a>分享的总结</li>
+</ul>
+<h4 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h4><ul>
+<li>单元测试 or 集成测试：</li>
+<li>单元测试在<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95" target="_blank" rel="external">维基百科</a>是这样定义的</li>
+</ul>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">单元测试（英语：<span class="keyword">Unit</span> Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。</div></pre></td></tr></table></figure>
+<p>集成测试在<a href="https://zh.wikipedia.org/wiki/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95" target="_blank" rel="external">维基百科</a>的定义<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">集成测试,整合测试又称组装测试，即对程序模块采用一次性或增殖方式组装起来，对系统的接口进行正确性检验的测试工作。整合测试一般在单元测试之后、系统测试之前进行。实践表明，有时模块虽然可以单独工作，但是并不能保证组装起来也可以同时工作</div></pre></td></tr></table></figure></p>
+<p>有没有理解?那我们在借鉴下《单元测试的艺术》对单元测试和集成测试的定义：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个单元测试时一段自动化的代码，这段代码调用被测试的工作单元，之后对这个单元的单个最终结果的某些假设进行检验。单元测试几乎都是用单元测试框架编写。单元测试容易编写，能快速运行。单元测试可靠，可读，并且可维护。只要产品代码不发生变化，单元测试的结果是稳定的。</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">集成测试是对一个工作单元进行的测试，这个测试对被测试的工作单元没有完全控制，并使用该单元的一个或者多个真实依赖物，例如时间，网络，数据库，线程或随机数产生器等。</div></pre></td></tr></table></figure>
+<p>现在应该了解吧，没有了解不要紧，我们再通过他们关系比对<br> 那单元测试和集成测试的关系是怎么样了？<br> <img src="http://7xod3k.com1.z0.glb.clouddn.com/qtijqabixtlihxsuujkwnlzelrqnwqnz" alt="单元测试和集成测试"><br> <a href="http://chriszou.com/2016/04/13/android-unit-testing-start-from-what.html" target="_blank" rel="external">链接</a></p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>保证代码质量，防止bug或尽早发现bug的作用</li>
+<li>改善代码的设计，节约开发调试时间</li>
+<li>大大减少重构中手动验证正确性的时间。</li>
+<li><p>在写单元测试的时候也能发现方法乃至系统结构设计的不合理</p>
+</li>
+<li><p>前面都是官方文字，现在讲点实在的。单元测试就是测试方法，方法我们又分为两种</p>
+<ul>
+<li>有返回值方法</li>
+<li>无返回值方法</li>
+</ul>
+</li>
+<li><p>有返回值方法，我们测试这个方法直接通过测试这个方法返回的值是否跟你预期一样。我们就以一个登陆的demo来解析吧</p>
+<ul>
+<li><p>环境</p>
+<ul>
+<li>IDE:Android Studio</li>
+<li><p>Java测试库:junit，在build.gradle配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>Compile <span class="string">'junit:junit:4.12'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-784a1cb7911ccafa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleUnitTest</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addition_isCorrect</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        assertEquals(<span class="number">4</span>, <span class="number">2</span> + <span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个是新近一个Android新建的项目，生成的单元测试，直接通过点击方法的运行就能看的结果了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6287758ce0be0d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-82ee776821842f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行结果"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-d33f48cff28cc3a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-a0b2da8b0c4418b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误运行结果"><br>实际开发中我们也是通过get()获取指定值比较这个应该比较容易理解。重点就是第二个了</p>
+<ul>
+<li>无返回值方法，我们只能通过方法内某个对象的方法是否被调用并且调用参数一样。这里就要用到mock，mock其实就是虚拟一个对象，然后根据这个对象方法判断是否被调用，mock目前比较成熟的框架是Mockito，所有我们这里要引用Mockito框架</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;    </div><div class="line"><span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])    </div><div class="line">androidTestCompile(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, </div><div class="line">&#123;        </div><div class="line">  <span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.android.support'</span>, module: <span class="string">'support-annotations'</span>    &#125;)</div><div class="line">   </div><div class="line"> <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:23.4.0'</span>    </div><div class="line"><span class="keyword">compile</span> <span class="string">'com.android.support.constraint:constraint-layout:1.0.0-alpha4'</span>    </div><div class="line"><span class="comment">//以下测试框架    </span></div><div class="line">testCompile <span class="string">"junit:junit:4.12"</span>    </div><div class="line"><span class="comment">//mockito    </span></div><div class="line">testCompile <span class="string">"org.mockito:mockito-core:1.+"</span>&#125;</div></pre></td></tr></table></figure>
+<p>先看代码这个是一个简单的login代码<br>Activity</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span>, <span class="title">ILoginView</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> EditText mUserNameView;</div><div class="line">    <span class="keyword">private</span> EditText mPassWordView;</div><div class="line">    <span class="keyword">private</span> LoginPresenter mPresenter;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        findViewById(R.id.login).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        mUserNameView = (EditText) findViewById(R.id.username);</div><div class="line">        mPassWordView = (EditText) findViewById(R.id.password);</div><div class="line">        mPresenter = <span class="keyword">new</span> LoginPresenter(<span class="keyword">this</span>, HttpClient.getInstance());</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.login:</div><div class="line">                String username = mUserNameView.getText().toString();</div><div class="line">                String password = mPassWordView.getText().toString();</div><div class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(username)) &#123;</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"用户名不能为空"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (TextUtils.isEmpty(password)) &#123;</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"密码不能为空"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                mPresenter.login(username, password);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startHomeView</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"跳转主页"</span>, Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"密码错误"</span>, Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ILoginView接口</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ILoginView</span> &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 跳转主页</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">startHomeView</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 错误</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onError</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HttpClient</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpClient</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HttpClient mClient;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpClient <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mClient == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (HttpClient.class) &#123;</div><div class="line">                <span class="keyword">if</span> (mClient == <span class="keyword">null</span>) &#123;</div><div class="line">                    mClient = <span class="keyword">new</span> HttpClient();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mClient;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(String phone)</span></span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(String error)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password, Callback callback)</span> </span>&#123;</div><div class="line">        <span class="comment">//为了简单,没有实际操作网络请求只是简单判断返回结果</span></div><div class="line">        <span class="keyword">if</span> (username.length() &lt; <span class="number">5</span>) &#123;</div><div class="line">            callback.onError(<span class="string">"用户名太短"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            callback.onSuccess(<span class="string">"110110"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>LoginPresenter</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> LoginPresenter &#123;</div><div class="line">    <span class="keyword">private</span> ILoginView mLoginView;</div><div class="line">    <span class="keyword">private</span> HttpClient mClient;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> LoginPresenter(<span class="meta">@NonNull</span> ILoginView mLoginView,<span class="meta">@NonNull</span> HttpClient client) &#123;</div><div class="line">        <span class="keyword">this</span>.mLoginView = mLoginView;</div><div class="line">        <span class="keyword">this</span>.mClient = client;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="built_in">void</span> login(<span class="built_in">String</span> username, <span class="built_in">String</span> password) &#123;</div><div class="line">        mClient.login(username, password, <span class="keyword">new</span> HttpClient.Callback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="built_in">void</span> onSuccess(<span class="built_in">String</span> phone) &#123;</div><div class="line">                mLoginView.startHomeView();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="built_in">void</span> onError(<span class="built_in">String</span> error) &#123;</div><div class="line">                mLoginView.onError();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> getDevice() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"nexus6p"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>单元测试，mock出来的对象一定要set到这个LoginPresenter对象中，要不然报错org.mockito.exceptions.misusing.NotAMockException</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginPresenterTest</span> </span>&#123;    </div><div class="line"><span class="keyword">private</span> LoginPresenter mPresenter;    </div><div class="line"><span class="keyword">private</span> ILoginView mLoginView;    </div><div class="line"><span class="keyword">private</span> HttpClient mClient;    </div><div class="line"><span class="comment">//初始化,每测试一个方法都会掉这个    </span></div><div class="line"><span class="meta">@Before</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line">mLoginView = Mockito.mock(ILoginView.class);        </div><div class="line">mClient = Mockito.mock(HttpClient.class);        </div><div class="line">mPresenter = <span class="keyword">new</span> LoginPresenter(mLoginView, mClient);   </div><div class="line"> &#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//无返回值方法        </span></div><div class="line">mPresenter.login(<span class="string">"123456"</span>, <span class="string">"123456"</span>);   </div><div class="line">     Mockito.verify(mClient).login(<span class="string">"123456"</span>, <span class="string">"123456"</span>, <span class="keyword">null</span>);    </div><div class="line">&#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loginTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//无返回值方法        </span></div><div class="line">mPresenter.loginTest(<span class="string">"123456"</span>, <span class="string">"123456"</span>);        </div><div class="line">Mockito.verify(mClient).login(<span class="string">"123456"</span>, <span class="string">"123456"</span>, <span class="keyword">null</span>);    </div><div class="line">&#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getDevice</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//有返回值方法"        </span></div><div class="line">Assert.assertEquals(mPresenter.getDevice(), <span class="string">"nexus6p"</span>);    </div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行看结果</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6e66d663c451a176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"><br>可以看出login方法有问题，这个错误是正常的，就是我要的结果，可是loginTest方法运行正常，最主要的是他们callback为null，login方法执行的callback不是null，所有login方法执行的时候验证出来就是不一致的。</p>
+<ul>
+<li>资料<ul>
+<li><a href="">Demo地址</a></li>
+<li><a href="http://chriszou.com/" target="_blank" rel="external">小创</a></li>
+<li><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a></li>
+<li><a href="http://www.ituring.com.cn/book/1336" target="_blank" rel="external">单元测试的艺术</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/15/移动周分享-第59期/" data-id="cj2xi6e09003n2zx11me31v53" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/22/移动周分享-第60期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第60期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/17/移动周分享-第58期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第58期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

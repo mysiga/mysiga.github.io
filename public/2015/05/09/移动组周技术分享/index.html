@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《无主题》 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2015.05.08构建基于Jenkins+github的持续集成环境 - 张超耀 什么是持续集成  持续集成的流程  CI服务器控制持续集成的整个过程，轮询代码库更新，根据预定义的脚本进行项目的构建，服务器将任务分配到Slave端   为什么采用Jenkins+github的持续集成环境  Jenins是现在非常流行的持续集成CI服务器，Jenkins易于安装，不需要数据库的支持，直接通过Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《无主题》">
+<meta property="og:url" content="http://yoursite.com/2015/05/09/移动组周技术分享/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="2015.05.08构建基于Jenkins+github的持续集成环境 - 张超耀 什么是持续集成  持续集成的流程  CI服务器控制持续集成的整个过程，轮询代码库更新，根据预定义的脚本进行项目的构建，服务器将任务分配到Slave端   为什么采用Jenkins+github的持续集成环境  Jenins是现在非常流行的持续集成CI服务器，Jenkins易于安装，不需要数据库的支持，直接通过Web">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《无主题》">
+<meta name="twitter:description" content="2015.05.08构建基于Jenkins+github的持续集成环境 - 张超耀 什么是持续集成  持续集成的流程  CI服务器控制持续集成的整个过程，轮询代码库更新，根据预定义的脚本进行项目的构建，服务器将任务分配到Slave端   为什么采用Jenkins+github的持续集成环境  Jenins是现在非常流行的持续集成CI服务器，Jenkins易于安装，不需要数据库的支持，直接通过Web">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动组周技术分享" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/09/移动组周技术分享/" class="article-date">
+  <time datetime="2015-05-08T23:04:29.000Z" itemprop="datePublished">2015-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《无主题》
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2015-05-08"><a href="#2015-05-08" class="headerlink" title="2015.05.08"></a>2015.05.08</h2><h4 id="构建基于Jenkins-github的持续集成环境-张超耀"><a href="#构建基于Jenkins-github的持续集成环境-张超耀" class="headerlink" title="构建基于Jenkins+github的持续集成环境 - 张超耀"></a>构建基于Jenkins+github的持续集成环境 - 张超耀</h4><ul>
+<li><p><a href="http://baike.baidu.com/link?url=a4772W-jg95m7RgEE3NL6wkELXlGUgCmJesUg2anLEmzzgbKHhwpodx2fvSDEOG2eFWB3NYfzeymvjn7Q4Ayxa#4" target="_blank" rel="external">什么是持续集成</a></p>
+</li>
+<li><p>持续集成的流程</p>
+<ul>
+<li>CI服务器控制持续集成的整个过程，轮询代码库更新，根据预定义的脚本进行项目的构建，服务器将任务分配到Slave端</li>
+</ul>
+</li>
+<li><p>为什么采用Jenkins+github的持续集成环境</p>
+<ul>
+<li>Jenins是现在非常流行的持续集成CI服务器，Jenkins易于安装，不需要数据库的支持，直接通过Web界面进行配置，而且集成了Email的通知机制，具有丰富的插件。</li>
+<li>对于版本控制，SVN &amp; Git，Jenkins都有提供插件支持</li>
+</ul>
+</li>
+<li><p><a href="http://jenkins-ci.org" target="_blank" rel="external">Jenkins安装</a></p>
+<ul>
+<li>安装成功，键入<a href="http://localhost:8080进入" target="_blank" rel="external">http://localhost:8080进入</a></li>
+</ul>
+</li>
+<li>丰富插件安装</li>
+<li>环境配置</li>
+<li>构建项目</li>
+<li>配置构建方法</li>
+</ul>
+<h4 id="Axure工具分享-吴明"><a href="#Axure工具分享-吴明" class="headerlink" title="Axure工具分享 - 吴明"></a><a href="http://www.webppd.com/thread-8161-1-1.html" target="_blank" rel="external">Axure工具分享</a> - 吴明</h4><ul>
+<li>Axure是什么？<ul>
+<li>Axure界面原型设计工具，无须懂得控制人机交互的事件处理，设计好后可以导出html格式跨平台开发使用。</li>
+</ul>
+</li>
+<li><p>原型工具对比：</p>
+<ul>
+<li>使用网页制作软件创建：可以直接操作HTML文件，更接近真实。缺点，你需要掌握HTML语法，掌握复杂的网页制作工具。操作复杂性高。</li>
+<li>visio，可以快速的创建单个页面，也可以用创建，缺点：最多只能做到页面直接的关联，按钮，链接上无法创建事件，死板。无法作出接近真实的效果，无法生成HTML文件。</li>
+<li>Axure，Axure可以以所见即所得的方式创建界面原型，优点：操作者无须懂的HTML语法，无须懂得控制人机交互的事件处理，例如页面跳转时、命令按钮按下时系统响应 程序脚本（JAVA Script）。因此很适合业务需求分析人员使用。生成的页面，串接在一起，可以进行操作，模拟场景，让系统“动”起来。</li>
+</ul>
+</li>
+<li><p>怎么下载安装Axure</p>
+<ul>
+<li>网上下载axure RP7.0安装(如果有需要的的话下中文包)</li>
+</ul>
+</li>
+<li>Axure的使用：<ul>
+<li><a href="http://www.luexiao.com/group/blog/111495" target="_blank" rel="external">axure工具界面介绍</a></li>
+<li>组件</li>
+<li><a href="http://jingyan.baidu.com/article/bea41d437015bcb4c51be615.html" target="_blank" rel="external">导入第三方组件</a>,下载IOS8的组件，android的组件</li>
+<li>常用组件使用:<ul>
+<li><a href="http://blog.163.com/summer_wang/blog/static/21470903220132675433741/" target="_blank" rel="external">Dynamic Pane(动态面板)</a>:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ARC-Welder-王胜"><a href="#ARC-Welder-王胜" class="headerlink" title="ARC Welder -王胜"></a><a href="https://chrome.google.com/webstore/detail/arc-welder/emfinbmielocnlhgmfkkmkngdoccbadn" target="_blank" rel="external">ARC Welder</a> -王胜</h4><ul>
+<li>ARC Welder是一个Chrome插件，可以直接运行原生的安卓APP应用程序</li>
+<li>该插件需要Chrome的版本在40.x以上</li>
+<li>目前还处于不断完善阶段，所以一些特大游戏类型的App可能跑不起来</li>
+</ul>
+<h4 id="前端开发上手工具介绍-曾铭"><a href="#前端开发上手工具介绍-曾铭" class="headerlink" title="前端开发上手工具介绍 - 曾铭"></a>前端开发上手工具介绍 - 曾铭</h4><ul>
+<li>静态网页开发</li>
+<li>SublimeText<ul>
+<li>Editor vs IDE : 丢掉 Dreamweaver, 根据情况选择 SublimeText &amp; WebStorm</li>
+<li><a href="http://lucida.me/blog/sublime-text-complete-guide/" target="_blank" rel="external">Sublime Text 全程指南</a></li>
+<li><a href="http://www.zhihu.com/question/19976788" target="_blank" rel="external">实用技巧</a></li>
+<li><a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html" target="_blank" rel="external">快捷键</a></li>
+<li><a href="http://stackoverflow.com/questions/21190392/how-to-change-default-code-snippets-in-sublime-text-3" target="_blank" rel="external">查看默认支持语言配置文件</a></li>
+<li>插件<ul>
+<li>emmet: <a href="http://docs.emmet.io/cheat-sheet/" target="_blank" rel="external">cheat-sheet</a></li>
+<li>BracketHighlighter: 块高亮</li>
+<li>HTML5: snippet</li>
+<li>SublimeLinter: 校验</li>
+<li>livestyle: live edit css</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>powder<ul>
+<li><a href="http://pow.cx/" target="_blank" rel="external">pow</a> 37signals 出品，质量保证！</li>
+<li>零配置构建网站服务器，管理极轻量，支持局域网访问</li>
+<li><code>powder link web-name</code> 一条命令搞定</li>
+<li>适合静态网页开发，（或 ruby 动态网页开发）</li>
+</ul>
+</li>
+<li>Demo</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/09/移动组周技术分享/" data-id="cj2xi6dyo000e2zx1rrbxyiq3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/16/移动组周技术分享/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《无主题》
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/25/移动组周技术分享/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《无主题》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第47期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##Swift 高阶函数及参数的省略 - 杨志平 常见定义函数123456let normalFunc = &amp;#123;    () -&amp;gt; Int in    return 10086&amp;#125;let normalResult = normalFunc()// normalResult = 10086 ###函数参数的『省略』12345678910111213141516171819202">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第47期">
+<meta property="og:url" content="http://yoursite.com/2016/03/11/移动周分享-第47期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="##Swift 高阶函数及参数的省略 - 杨志平 常见定义函数123456let normalFunc = &amp;#123;    () -&amp;gt; Int in    return 10086&amp;#125;let normalResult = normalFunc()// normalResult = 10086 ###函数参数的『省略』12345678910111213141516171819202">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第47期">
+<meta name="twitter:description" content="##Swift 高阶函数及参数的省略 - 杨志平 常见定义函数123456let normalFunc = &amp;#123;    () -&amp;gt; Int in    return 10086&amp;#125;let normalResult = normalFunc()// normalResult = 10086 ###函数参数的『省略』12345678910111213141516171819202">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第47期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/11/移动周分享-第47期/" class="article-date">
+  <time datetime="2016-03-11T10:30:00.000Z" itemprop="datePublished">2016-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第47期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Swift 高阶函数及参数的省略 - 杨志平</p>
+<h4 id="常见定义函数"><a href="#常见定义函数" class="headerlink" title="常见定义函数"></a>常见定义函数</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> normalFunc = &#123;</div><div class="line">    <span class="function"><span class="params">()</span> -&gt;</span> Int <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10086</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> normalResult = normalFunc()</div><div class="line"><span class="regexp">// normalResult = 10086</span></div></pre></td></tr></table></figure>
+<p>###函数参数的『省略』<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 以数组排序函数为例：</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> numberArr = [<span class="number">1</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> res1 = numberArr.<span class="built_in">sort</span>()</div><div class="line"></div><div class="line"><span class="keyword">let</span> res2 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1: <span class="type">Int</span>, num2: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res3 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1: <span class="type">Int</span>, num2: <span class="type">Int</span>) <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res4 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1, num2) <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res5 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    <span class="keyword">return</span> $<span class="number">0</span> &gt; $<span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res6 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    $<span class="number">0</span> &gt; $<span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res7 = numberArr.<span class="built_in">sort</span>(&gt;)</div></pre></td></tr></table></figure></p>
+<h4 id="变化过程"><a href="#变化过程" class="headerlink" title="变化过程"></a><code>变化过程</code></h4><blockquote>
+<p>{ (num1: Int, num2: Int) -&gt; Bool in return num1&gt;num2 }<br>{ (num1: Int, num2: Int) in return num1&gt;num2 }<br>{ (num1, num2) in return num1&gt;num2 }<br>{ return $0 &gt; $1 }<br>{ $0 &gt; $1 }</p>
+</blockquote>
+<p>###函数式编程</p>
+<h4 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">square</span><span class="params">(a:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * a</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cube</span><span class="params">(a:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * a * a</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageSumOfSquares</span><span class="params">(a:Float,b:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (square(a) + square(b)) / <span class="number">2.0</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageSumOfCubes</span><span class="params">(a:Float,b:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (cube(a) + cube(b)) / <span class="number">2.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 像潘君以前分享Swift的Currying（柯里化），可以灵活调配使用</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageOfFunction</span><span class="params">(a a:Float,b:Float,f:<span class="params">(Float -&gt; Float)</span></span></span>) -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (f(a) + f(b)) / <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult1 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: square)</div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult2 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: &#123;</div><div class="line">                                                        (a: <span class="type">Float</span>) -&gt; <span class="type">Float</span> <span class="keyword">in</span></div><div class="line">                                                            <span class="keyword">return</span> a * a</div><div class="line">                                                     &#125;)</div><div class="line">squareResult2</div><div class="line"></div><div class="line"><span class="comment">//&#123;(x: Float) -&gt; Float in return x * x&#125;</span></div><div class="line"><span class="comment">//&#123;x in return x * x&#125;</span></div><div class="line"><span class="comment">//&#123;x in x * x&#125;</span></div><div class="line"><span class="comment">//&#123;$0 * $0&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult3 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: &#123;$<span class="number">0</span> * $<span class="number">0</span>&#125;)</div><div class="line">squareResult3</div></pre></td></tr></table></figure>
+<h4 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正统高阶函数样式</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum1</span><span class="params">(value: Int)</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">adder</span><span class="params">(otherValue: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> otherValue + value</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> adder</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 省略后</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum2</span><span class="params">(value: Int)</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="keyword">return</span> &#123; $<span class="number">0</span> + value &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = sum1(<span class="number">2</span>)(<span class="number">3</span>)</div><div class="line"><span class="keyword">let</span> result2 = sum2(<span class="number">5</span>)(<span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="comment">// 改造函数完毕</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcMathMethod1</span><span class="params">(first: Int -&gt; Int, <span class="number">_</span><span class="comment">/*起到变量匿名作用*/</span> second: Int -&gt; Int)</span></span> -&gt; <span class="type">Int</span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123; second(first($<span class="number">0</span>)) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> f1 = funcMathMethod1(&#123;$<span class="number">0</span> + <span class="number">2</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">3</span>&#125;)</div><div class="line">f1(<span class="number">7</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> f2 = funcMathMethod1(&#123;$<span class="number">0</span> * $<span class="number">0</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">4</span>&#125;)</div><div class="line">f2(<span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="comment">// Tip: 使用函数式编程，要是用得不好容易造成可读性很差，那优化如下</span></div><div class="line"><span class="keyword">typealias</span> <span class="type">MathFunc</span> = <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcMathMethod2</span><span class="params">(f: MathFunc, <span class="number">_</span> s: MathFunc)</span></span> -&gt; <span class="type">MathFunc</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123; s(f($<span class="number">0</span>)) &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> readability = funcMathMethod1(&#123;$<span class="number">0</span> + <span class="number">2</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">3</span>&#125;)</div><div class="line">readability(<span class="number">7</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// map</span></div><div class="line"><span class="keyword">var</span> numberArr = [<span class="number">1</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> mapArray = numberArr.<span class="built_in">map</span> &#123; (num: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">     <span class="keyword">return</span> <span class="string">"第<span class="subst">\(num)</span>名"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> mapArray2 = numberArr.<span class="built_in">map</span>(&#123;<span class="string">"第<span class="subst">\($<span class="number">0</span>)</span>名"</span>&#125;)</div><div class="line">mapArray2</div><div class="line"></div><div class="line"><span class="comment">// 可选型随意解包 str 可以为 nil</span></div><div class="line"><span class="keyword">let</span> str: <span class="type">String</span>? = <span class="string">"1234567890"</span></div><div class="line"><span class="keyword">let</span> mapStr = str.<span class="built_in">map</span>(&#123;<span class="string">"第<span class="subst">\($<span class="number">0</span>)</span>名"</span>&#125;)</div><div class="line">mapStr</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// filter</span></div><div class="line"><span class="keyword">let</span> filArr = numberArr.<span class="built_in">filter</span> &#123; (num: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num &gt; <span class="number">4</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> filArr2 = numberArr.<span class="built_in">filter</span>(&#123; $<span class="number">0</span> &gt; <span class="number">4</span> &#125;)</div><div class="line">filArr2</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// reduce</span></div><div class="line"><span class="keyword">let</span> sum = numberArr.<span class="built_in">reduce</span>(<span class="number">0</span>) &#123; (presum:<span class="type">Int</span>, num:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> presum + num</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> sum2 = numberArr.<span class="built_in">reduce</span>(<span class="number">10</span>, combine: &#123;$<span class="number">0</span> + $<span class="number">1</span>&#125;)</div><div class="line">sum2</div><div class="line"><span class="keyword">let</span> sumToStr = numberArr.<span class="built_in">reduce</span>(<span class="string">""</span>) &#123; (str: <span class="type">String</span>, num: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    str + <span class="type">String</span>(num)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 求一个数组中偶数的平方和（一口气使用swift提供的三个高阶函数）</span></div><div class="line"><span class="comment">//[1,2,3,4,5,6,7] -&gt; [2,4,6] -&gt; 4+16+36 = 56</span></div><div class="line"><span class="keyword">let</span> result = numberArr.<span class="built_in">filter</span>(&#123;$<span class="number">0</span>%<span class="number">2</span>==<span class="number">0</span>&#125;).<span class="built_in">map</span>(&#123;$<span class="number">0</span>*$<span class="number">0</span>&#125;).<span class="built_in">reduce</span>(<span class="number">0</span>, combine: &#123;$<span class="number">0</span>+$<span class="number">1</span>&#125;)</div><div class="line">result <span class="comment">// result = 56</span></div></pre></td></tr></table></figure>
+<h3 id="Swift高阶函数面试题"><a href="#Swift高阶函数面试题" class="headerlink" title="Swift高阶函数面试题"></a>Swift高阶函数面试题</h3><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 面试题：用数组的 reduce 方法实现 map 的功能。</div><div class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>]</div><div class="line">// map简易实现</div><div class="line"><span class="keyword">let</span> res = arr.map(&#123;$<span class="number">0</span>*<span class="number">2</span>&#125;)</div><div class="line"></div><div class="line">// <span class="built_in">Array</span>.reduce(&lt;<span class="comment">#T##initial: T##T#&gt;, combine: &lt;#T##(T, Int) throws -&gt; T#&gt;)</span></div><div class="line">// 输出数据类型与初始化占位数据类型（initial）一致</div><div class="line"><span class="keyword">let</span> res2 = arr.reduce([]) &#123;</div><div class="line">    (a: [<span class="built_in">Int</span>], element: <span class="built_in">Int</span>) -&gt; [<span class="built_in">Int</span>] <span class="keyword">in</span></div><div class="line">    var t = <span class="built_in">Array</span>(a)</div><div class="line">    t.append(element * <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> t</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// 面试题：用 reduce 方法一次求出数组中奇数的和、以及偶数乘积</div><div class="line">// 使用元组，注意占位数据(<span class="number">0</span>, <span class="number">1</span>)，第一联合数据a :(<span class="built_in">Int</span>, <span class="built_in">Int</span>)，函数输出数据(<span class="built_in">Int</span>, <span class="built_in">Int</span>) 三者类型一致</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> res3: (<span class="built_in">Int</span>, <span class="built_in">Int</span>) = arr2.reduce((<span class="number">0</span>, <span class="number">1</span>)) &#123;</div><div class="line">    (a :(<span class="built_in">Int</span>, <span class="built_in">Int</span>), element: <span class="built_in">Int</span>) -&gt; (<span class="built_in">Int</span>, <span class="built_in">Int</span>) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> element % <span class="number">2</span> == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> (a<span class="number">.0</span>, a<span class="number">.1</span> * element)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> (a<span class="number">.0</span> + element, a<span class="number">.1</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/11/移动周分享-第47期/" data-id="cj2xi6dzv002u2zx1h7mnz6tc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/18/移动周分享-第48期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第48期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/04/移动周分享-第46期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第46期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

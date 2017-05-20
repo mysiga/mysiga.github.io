@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第54期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自动化 ssh 授权笔记 - 曾铭每次 ssh user@host 登录目标机器都要输密码是件很烦的事，特别是经常访问多台主机的情况。 最近写自动化脚本时碰到要自动做机器间 ssh 验证，碰到一些问题记录下来备忘。 分析 通过 ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 命令生成本地机器的私钥和公钥: ~/.ssh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第54期">
+<meta property="og:url" content="http://yoursite.com/2016/05/06/移动周分享-第54期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="自动化 ssh 授权笔记 - 曾铭每次 ssh user@host 登录目标机器都要输密码是件很烦的事，特别是经常访问多台主机的情况。 最近写自动化脚本时碰到要自动做机器间 ssh 验证，碰到一些问题记录下来备忘。 分析 通过 ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 命令生成本地机器的私钥和公钥: ~/.ssh">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第54期">
+<meta name="twitter:description" content="自动化 ssh 授权笔记 - 曾铭每次 ssh user@host 登录目标机器都要输密码是件很烦的事，特别是经常访问多台主机的情况。 最近写自动化脚本时碰到要自动做机器间 ssh 验证，碰到一些问题记录下来备忘。 分析 通过 ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 命令生成本地机器的私钥和公钥: ~/.ssh">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第54期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/06/移动周分享-第54期/" class="article-date">
+  <time datetime="2016-05-06T10:30:00.000Z" itemprop="datePublished">2016-05-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第54期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="自动化-ssh-授权笔记-曾铭"><a href="#自动化-ssh-授权笔记-曾铭" class="headerlink" title="自动化 ssh 授权笔记 - 曾铭"></a>自动化 ssh 授权笔记 - 曾铭</h2><p>每次 <code>ssh user@host</code> 登录目标机器都要输密码是件很烦的事，特别是经常访问多台主机的情况。 最近写自动化脚本时碰到要自动做机器间 ssh 验证，碰到一些问题记录下来备忘。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>通过 <code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code> 命令生成本地机器的私钥和公钥: <code>~/.ssh/id_rsa</code> and <code>~/.ssh/id_rsa.pub</code></li>
+<li>授权就是将将本地机器的公钥加入到目标机器的 <code>~/.ssh/authorized_keys</code> 中供验证用</li>
+<li>本地 <code>~/.ssh/known_hosts</code> 中信任目标机器的公钥指纹</li>
+</ul>
+<h3 id="自动做-ssh-key-授权"><a href="#自动做-ssh-key-授权" class="headerlink" title="自动做 ssh-key 授权"></a>自动做 ssh-key 授权</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># copy local ssh-key to remote 对应分析中的第二步</span></div><div class="line">cat ~<span class="regexp">/.ssh/id</span>_rsa.pub | ssh root<span class="variable">@192</span>.<span class="number">168.37</span>.<span class="number">110</span> <span class="string">"cat &gt;&gt; ~/.ssh/authorized_keys"</span></div><div class="line"><span class="comment"># add host to known_hosts 对应分析中的第三步</span></div><div class="line">ssh-keyscan -t rsa <span class="string">"192.168.37.110"</span> &gt;&gt; ~<span class="regexp">/.ssh/known</span>_hosts</div></pre></td></tr></table></figure>
+<p>或者这两条命令可以精简为如下一条</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew install ssh-<span class="keyword">copy</span><span class="bash">-id <span class="comment"># just for mac</span></span></div><div class="line">ssh-<span class="keyword">copy</span><span class="bash">-id -i ~/.ssh/id_rsa.pub root@192.168.37.110</span></div></pre></td></tr></table></figure>
+<p>还有剩下的一个难题是还需要手动输入密码，这个怎么自动化呢？</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># just for mac</span></div><div class="line">brew install https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/kadwanev/</span>bigboybrew<span class="regexp">/master/</span>Library<span class="regexp">/Formula/</span>sshpass.rb </div><div class="line">sshpass -p <span class="string">"PASSWORD"</span> ssh-copy-id -i ~<span class="regexp">/.ssh/i</span>d_rsa.pub -o StrictHostKeyChecking=no root@<span class="number">192.168</span>.<span class="number">37.110</span></div></pre></td></tr></table></figure>
+<p>或者使用 Fabric 等远程执行 run(“cmd”)</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># tips 执行 sudo 不需要手动输入密码</span></div><div class="line">echo <span class="string">"PASSWORD"</span> | sudo -S <span class="keyword">CMD</span><span class="bash"></span></div></pre></td></tr></table></figure>
+<p>用 iterm2 做 terminal 管理<br>略</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">SSH原理与运用（一）：远程登录 - 阮一峰的网络日志</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/aix/library/au-sshsecurity/" target="_blank" rel="external">SSH 安全性和配置入门</a></li>
+</ul>
+<h2 id="枚举的特殊用法-杨志平"><a href="#枚举的特殊用法-杨志平" class="headerlink" title="枚举的特殊用法 - 杨志平"></a>枚举的特殊用法 - 杨志平</h2><blockquote>
+<p>源于项目中的应用太广了，但是对swift的很多简单特性不熟。之前那个动画的<code>阶段</code>使用到enum有遇到困难暂时绕开它了</p>
+</blockquote>
+<p><code>当时的目标就是外部直接赋值操作</code></p>
+<h3 id="如下动画的enum示例："><a href="#如下动画的enum示例：" class="headerlink" title="如下动画的enum示例："></a>如下动画的enum示例：</h3><blockquote>
+<p>为了省事，目前直接使用死的文案放在这里</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AnimationPeriod</span>: <span class="title">UInt</span> </span>&#123;</div><div class="line">    <span class="comment">// 动画执行的五个阶段</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Start</span>,<span class="type">First</span>,<span class="type">Second</span>,<span class="type">Third</span>,<span class="type">End</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">description</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Start</span>, .<span class="type">First</span>:    <span class="keyword">return</span> <span class="string">"正在提取学校最新\n录取条件"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Second</span>:           <span class="keyword">return</span> <span class="string">"正在与学校进行匹配"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Third</span>, .<span class="type">End</span>:      <span class="keyword">return</span> <span class="string">"正在根据匹配结果\n生成选校方案"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">duration</span><span class="params">()</span></span> -&gt; <span class="type">NSTimeInterval</span> &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Start</span>:    <span class="keyword">return</span> <span class="number">0.8</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">First</span>:    <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Second</span>:   <span class="keyword">return</span> <span class="number">2</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Third</span>:    <span class="keyword">return</span> <span class="number">0.5</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">End</span>:      <span class="keyword">return</span> <span class="number">0.25</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AnimationPeriod</span> </span>&#123;</div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">next</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Start</span>:    <span class="keyword">self</span> = .<span class="type">First</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">First</span>:    <span class="keyword">self</span> = .<span class="type">Second</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Second</span>:   <span class="keyword">self</span> = .<span class="type">Third</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Third</span>:    <span class="keyword">self</span> = .<span class="type">End</span></div><div class="line">        <span class="keyword">default</span>:        <span class="keyword">self</span> = .<span class="type">End</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="下面我们看看一些枚举的使用"><a href="#下面我们看看一些枚举的使用" class="headerlink" title="下面我们看看一些枚举的使用"></a>下面我们看看一些枚举的使用</h3><p>携带<code>参数</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">FamilyType</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">case</span> <span class="type">Father</span>(age: <span class="type">Int</span>)</div><div class="line">    <span class="keyword">case</span> <span class="type">Mother</span>(age: <span class="type">Int</span>)</div><div class="line">    <span class="keyword">case</span> <span class="type">Sister</span>(age: <span class="type">Int</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">gift</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">switch</span>(<span class="keyword">self</span>) &#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Sister</span>(<span class="keyword">let</span> age):</div><div class="line">            <span class="keyword">if</span> age &gt; <span class="number">15</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="string">"iphone"</span></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="string">"toy"</span></div><div class="line">            &#125;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Mother</span>(<span class="keyword">let</span> age) <span class="keyword">where</span> age &lt; <span class="number">40</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"cloth"</span></div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"book"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> someone = <span class="type">FamilyType</span>.<span class="type">Sister</span>(age: <span class="number">11</span>)</div><div class="line"><span class="keyword">let</span> somebody = <span class="type">FamilyType</span>.<span class="type">Mother</span>(age: <span class="number">40</span>)</div><div class="line"><span class="comment">// swift的枚举技巧</span></div><div class="line"><span class="keyword">let</span> someoneGift = someone.gift()     <span class="comment">// print toy</span></div><div class="line"><span class="keyword">let</span> somebodyGift = somebody.gift()	 <span class="comment">// book</span></div></pre></td></tr></table></figure>
+<p>####那我们要取值的有</p>
+<ul>
+<li>方法一</li>
+</ul>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> someone &#123;</div><div class="line"><span class="keyword">case</span> .Father(<span class="keyword">let</span> age):</div><div class="line">    age</div><div class="line"><span class="keyword">case</span> .Sister(<span class="keyword">let</span> age):</div><div class="line">    age</div><div class="line"><span class="keyword">default</span>:()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>方法二</li>
+</ul>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">case</span> .Sister(<span class="keyword">let</span> age) = someone &#123;</div><div class="line">    age</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="枚举的嵌套"><a href="#枚举的嵌套" class="headerlink" title="枚举的嵌套"></a>枚举的嵌套</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Colleague</span> &#123;</span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Weight</span>: <span class="title">Int</span> &#123;</span></div><div class="line">        <span class="keyword">case</span> Light</div><div class="line">        <span class="keyword">case</span> Mid</div><div class="line">        <span class="keyword">case</span> Heavy</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">case</span> iOS(<span class="symbol">weight:</span> Weight)</div><div class="line">    <span class="keyword">case</span> Android(<span class="symbol">weight:</span> Weight)</div><div class="line">    <span class="keyword">case</span> HTML(<span class="symbol">weight:</span> Weight)</div><div class="line">&#125;</div><div class="line">let woodenHelmet = Colleague.iOS(<span class="symbol">weight:</span> .Mid)</div></pre></td></tr></table></figure>
+<h3 id="枚举的成员变量"><a href="#枚举的成员变量" class="headerlink" title="枚举的成员变量"></a>枚举的成员变量</h3><p>之前就一直想要使用枚举做到外部动态对枚举赋值储存操作，<br>那成员变量用法如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 根据自身赋值</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Device</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> iPad, iPhone</div><div class="line">    <span class="keyword">var</span> year: <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">        <span class="keyword">case</span> iPhone: <span class="keyword">return</span> <span class="number">2007</span></div><div class="line">        <span class="keyword">case</span> iPad: <span class="keyword">return</span> <span class="number">2010</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// set get 方法对于枚举的成员变量是无效的，允许get调用但set不可执行</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Book</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Story</span>, <span class="type">News</span></div><div class="line">    <span class="keyword">var</span> year: <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            year = newValue</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">self</span>.year</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIpad = <span class="type">Device</span>.iPad</div><div class="line">myIpad.year</div><div class="line"></div><div class="line"><span class="keyword">var</span> storyBook = <span class="type">Book</span>.<span class="type">Story</span></div><div class="line"><span class="comment">//storyBook.year = 2010	 // set 方法此处报错</span></div><div class="line"><span class="comment">//storyBook.year			 // get 无效</span></div></pre></td></tr></table></figure>
+<h3 id="初始化，感觉然并软"><a href="#初始化，感觉然并软" class="headerlink" title="初始化，感觉然并软"></a>初始化，感觉然并软</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AppleDevice</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> iMac(<span class="symbol">price:</span>Int)</div><div class="line">    <span class="keyword">case</span> iPod(<span class="symbol">price:</span>Int)</div><div class="line">    <span class="keyword">case</span> iPhone(<span class="symbol">price:</span>Int)</div><div class="line">    init (<span class="symbol">costMoney:</span> Int) &#123;</div><div class="line">        <span class="keyword">if</span> costMoney &gt; <span class="number">10000</span> &#123;</div><div class="line">            <span class="keyword">self</span> = .iMac(<span class="symbol">price:</span> costMoney)</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> costMoney &gt; <span class="number">2500</span> &#123;</div><div class="line">            <span class="keyword">self</span> = .iPhone(<span class="symbol">price:</span> costMoney)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">self</span> = .iPod(<span class="symbol">price:</span> costMoney)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let myDevice = AppleDevice(<span class="symbol">costMoney:</span> <span class="number">6000</span>)</div></pre></td></tr></table></figure>
+<h3 id="元组的使用"><a href="#元组的使用" class="headerlink" title="元组的使用"></a>元组的使用</h3><p>多个参数的介入时，可以使用元组,此处常规使用报错暂时无法解决，<br>使用func函数赋值倒是没有出错。why？？</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">HumanHabit</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> Reading</div><div class="line">    <span class="keyword">case</span> PlayGame</div><div class="line">    <span class="keyword">case</span> Traveling</div><div class="line">&#125;</div><div class="line">typealias HumanInfo = (<span class="symbol">age:</span> Int, <span class="symbol">name:</span> String, <span class="symbol">habit:</span> HumanHabit)</div><div class="line"></div><div class="line">func selectRAM(<span class="symbol">humanInfo:</span> HumanInfo) -&gt; HumanInfo &#123;<span class="keyword">return</span> (<span class="symbol">age:</span> <span class="number">32</span>, <span class="symbol">name:</span> humanInfo.name, <span class="symbol">habit:</span> humanInfo.habit)&#125;</div><div class="line">func selectCPU(<span class="symbol">humanInfo:</span> HumanInfo) -&gt; HumanInfo &#123;<span class="keyword">return</span> (<span class="symbol">age:</span> humanInfo.age, <span class="symbol">name:</span> <span class="string">"3.2GHZ"</span>, <span class="symbol">habit:</span> humanInfo.habit)&#125;</div><div class="line">func selectGPU(<span class="symbol">humanInfo:</span> HumanInfo) -&gt; HumanInfo &#123;<span class="keyword">return</span> (<span class="symbol">age:</span> humanInfo.age, <span class="symbol">name:</span> <span class="string">"3.2GHZ"</span>, <span class="symbol">habit:</span> .Reading)&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Desktop</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> Cube(HumanInfo)</div><div class="line">    <span class="keyword">case</span> Tower(HumanInfo)</div><div class="line">    <span class="keyword">case</span> Rack(HumanInfo)</div><div class="line">&#125;</div><div class="line"></div><div class="line">let aTower = Desktop.Tower(selectGPU(selectCPU(selectRAM((<span class="number">0</span>, <span class="string">""</span>, .Traveling) <span class="keyword">as</span> HumanInfo))))</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/06/移动周分享-第54期/" data-id="cj2xi6e0300332zx17766bnk6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/13/移动周分享-第55期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第55期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/29/移动周分享-第53期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第53期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

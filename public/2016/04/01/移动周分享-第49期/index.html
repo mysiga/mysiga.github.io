@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第49期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##Android-mvp 吴明  mvc与mvp对比 mvp  model:依然是业务逻辑和实体模型 view:对应于Activity，负责View的绘制以及与用户交互 presenter:负责完成View于Model间的交互 关系图   View定义定义包括：Activity,xml,Fragment，adapter  Google定义MVP    Google-MVP-demo 开源工具SW">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第49期">
+<meta property="og:url" content="http://yoursite.com/2016/04/01/移动周分享-第49期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="##Android-mvp 吴明  mvc与mvp对比 mvp  model:依然是业务逻辑和实体模型 view:对应于Activity，负责View的绘制以及与用户交互 presenter:负责完成View于Model间的交互 关系图   View定义定义包括：Activity,xml,Fragment，adapter  Google定义MVP    Google-MVP-demo 开源工具SW">
+<meta property="og:image" content="http://www.jcodecraeer.com/uploads/20150227/1424969040503730.png">
+<meta property="og:image" content="https://github.com/googlesamples/android-architecture/wiki/images/mvp.png">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第49期">
+<meta name="twitter:description" content="##Android-mvp 吴明  mvc与mvp对比 mvp  model:依然是业务逻辑和实体模型 view:对应于Activity，负责View的绘制以及与用户交互 presenter:负责完成View于Model间的交互 关系图   View定义定义包括：Activity,xml,Fragment，adapter  Google定义MVP    Google-MVP-demo 开源工具SW">
+<meta name="twitter:image" content="http://www.jcodecraeer.com/uploads/20150227/1424969040503730.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第49期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/移动周分享-第49期/" class="article-date">
+  <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第49期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Android-mvp 吴明</p>
+<ul>
+<li><a href="http://www.cnblogs.com/end/archive/2011/06/02/2068512.html" target="_blank" rel="external">mvc与mvp对比</a></li>
+<li><p>mvp</p>
+<ul>
+<li>model:依然是业务逻辑和实体模型</li>
+<li>view:对应于Activity，负责View的绘制以及与用户交互</li>
+<li>presenter:负责完成View于Model间的交互</li>
+<li>关系图<br><img src="http://www.jcodecraeer.com/uploads/20150227/1424969040503730.png" alt="mvp关系图"></li>
+</ul>
+</li>
+<li><p>View定义定义包括：Activity,xml,Fragment，adapter</p>
+</li>
+<li>Google定义MVP</li>
+</ul>
+<p><img src="https://github.com/googlesamples/android-architecture/wiki/images/mvp.png" alt="Google-mvp"></p>
+<p> <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp/todoapp" target="_blank" rel="external">Google-MVP-demo</a></p>
+<h2 id="开源工具SWIG-杨俊构"><a href="#开源工具SWIG-杨俊构" class="headerlink" title="开源工具SWIG - 杨俊构"></a>开源工具SWIG - 杨俊构</h2><h3 id="什么是SWIG"><a href="#什么是SWIG" class="headerlink" title="什么是SWIG"></a>什么是SWIG</h3><ul>
+<li>官方网站 <a href="http://www.swig.org/" target="_blank" rel="external">http://www.swig.org/</a>  </li>
+<li><p>GitHub开源 <a href="https://github.com/swig/swig" target="_blank" rel="external">https://github.com/swig/swig</a> </p>
+</li>
+<li><p>SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中 也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。</p>
+</li>
+<li><p>SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工具。SWIG还能够导出 XML或Lisp s-expressions格式的解析树。SWIG可以被自由使用，发布，修改用于商业或非商业中。</p>
+</li>
+</ul>
+<h3 id="快速开发"><a href="#快速开发" class="headerlink" title="快速开发"></a>快速开发</h3><blockquote>
+<p>参考 <a href="http://www.swig.org/tutorial.html" target="_blank" rel="external">http://www.swig.org/tutorial.html</a></p>
+</blockquote>
+<ul>
+<li><p>eg： 将 C语言转化成java （Windows下）</p>
+<ol>
+<li><p><a href="http://www.swig.org/download.html" target="_blank" rel="external">下载</a>Swig工具包  </p>
+<blockquote>
+<p>SWIG在三大主力平台都可以安装,下载到的是一个zip压缩包，解压然后配置好环境变量（SWIG_HOME，Path）即可使用了。【真的一直在<a href="http://www.swig.org/news.php" target="_blank" rel="external">更新</a>】</p>
+</blockquote>
+</li>
+<li><p>新建example.c文件 </p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/* File : example.c */</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="keyword">double</span> My_variable = <span class="number">3.0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n*fact(n<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (x%y);</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">time_t</span> ltime;</div><div class="line">    time(&amp;ltime);</div><div class="line">    <span class="keyword">return</span> ctime(&amp;ltime);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>编写接口文件example.i</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">        <span class="comment">/* example.i */</span></div><div class="line">        %<span class="keyword">module</span> example</div><div class="line">        %&#123;</div><div class="line">        <span class="comment">/* Put header files here or function declarations like below */</span></div><div class="line">        <span class="keyword">extern</span> <span class="keyword">double</span> My_variable;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span>;</div><div class="line">        %&#125;</div><div class="line">        </div><div class="line">        <span class="keyword">extern</span> <span class="keyword">double</span> My_variable;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span>; </div><div class="line">```  </div><div class="line">  <span class="number">4.</span> 建立Java模块 </div><div class="line">   &gt; SWIG也会产生JNI代码以便Jave代码进入C/CC++。以下是建立一个Jave模块的事例（cygwin）:</div></pre></td></tr></table></figure>
+<pre><code>$ swig -java example.i
+
+$ gcc -c example.c example_wrap.c -I/c/jdk1.3.1/include -I/c/jdk1.3.1/include/win32
+
+$ gcc -shared example.o  example_wrap.o -mno-cygwin -Wl,--add-stdcall-alias  -o example.dll
+
+$ cat main.java
+public class main {
+public static void main(String argv[]) {
+    System.loadLibrary(&quot;example&quot;);
+    System.out.println(example.getMy_variable());
+    System.out.println(example.fact(5));
+    System.out.println(example.get_time());
+}
+}
+$ javac main.java
+$ java main
+3.0
+120
+Mon Mar  4 18:20:31  2002
+$
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">      </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (1)swig -java example.i 执行后会生成   </span></div><div class="line">   </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> &gt;符合JNI语法的C文件： example_wrap.c   </span></div><div class="line"><span class="meta">   &gt;</span><span class="bash"> &gt;生成Java类文件：exampleJNI.java，example.java   </span></div><div class="line">   </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (2)SWIG创建的wrapper文件可直接用来编译连接产生共享库，不需要再对生成文件进行编辑。  </span></div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (3)对Java程序员来说，SWIG是把C/C++代码嵌入到Java脚本的理想工具。SWIG理解C/C++申明，因此它可以解析C/C++头文件并产生Java模型并对其进行编码，编译之后，你就可以在Java中使用。</span></div><div class="line"></div><div class="line">- SWIG 懒人方法 </div><div class="line"><span class="meta"> &gt;</span><span class="bash"> 并非总是需要写一个专门的接口文件。如果你有一个头文件，你可以直接在其中包含SWIG接口，如例：</span></div></pre></td></tr></table></figure>
+<p> %module example<br> %{<br> /<em> Includes the header in the wrapper code </em>/</p>
+<p> #include “header.h”<br> %}</p>
+<p> /<em> Parse the header file to generate wrappers </em>/<br> %include “header.h”<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">&gt;<span class="bash"> 另外，有些人可能只包括SWIG条件指令在头文件中。例如：</span></div></pre></td></tr></table></figure></p>
+<p>  #ifdef SWIG<br>  %module example<br>  %{</p>
+<p>  #include “header.h”<br>  %}</p>
+<p>  #endif</p>
+<p>  extern int fact(int n);<br>  …<br>```</p>
+<blockquote>
+<p>编写JNI封装器的代码，还有处理数据类型的转换耗时且费力，所以要用到 SWIG是java程序的福利。</p>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>SWIG是一个运用于编译环节的软件开发工具，它能生成出代码来使得用 C/C++ 编写的代码可以同其它编程语言连接在一起。</li>
+<li>SWIG 不只是能被用在 Android 和 Java 开发领域，它是一个扩展性方面很强大的工具，也可以用来自动生成其它编程语言的代码。</li>
+<li>总之，安装和使用swig都是非常简单的事情。使用swig能够大大减轻程序员的痛苦程度，帮助你更快的完成你想要的功能。</li>
+</ul>
+<blockquote>
+<p>参考  <a href="http://my.oschina.net/xuleo/blog/596165" target="_blank" rel="external">NDK学习笔记（三）SWIG：自动生成JNI代码</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/01/移动周分享-第49期/" data-id="cj2xi6dzw002w2zx131gm597t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/08/移动周分享-第50期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第50期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/18/移动周分享-第48期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第48期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
