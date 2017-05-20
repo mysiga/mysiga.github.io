@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>周精益分享 - 前端入门篇2期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###博客地址 ##Swift柯里化 Curring 学习 ###什么是Curring  维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。  概念看上去还是有点抽象，直接看代码 例子注：所有swift代码都可以放到playgroun中运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="周精益分享 - 前端入门篇2期">
+<meta property="og:url" content="http://yoursite.com/2015/12/11/周精益分享- 前端入门篇2期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="###博客地址 ##Swift柯里化 Curring 学习 ###什么是Curring  维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。  概念看上去还是有点抽象，直接看代码 例子注：所有swift代码都可以放到playgroun中运行">
+<meta property="og:image" content="http://yoursite.com/2015/12/11/周精益分享-%20前端入门篇2期/1449756974449.png">
+<meta property="og:image" content="http://yoursite.com/2015/12/11/周精益分享-%20前端入门篇2期/1449768288128.png">
+<meta property="og:updated_time" content="2017-05-20T03:47:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="周精益分享 - 前端入门篇2期">
+<meta name="twitter:description" content="###博客地址 ##Swift柯里化 Curring 学习 ###什么是Curring  维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。  概念看上去还是有点抽象，直接看代码 例子注：所有swift代码都可以放到playgroun中运行">
+<meta name="twitter:image" content="http://yoursite.com/2015/12/11/周精益分享-%20前端入门篇2期/1449756974449.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-周精益分享- 前端入门篇2期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/11/周精益分享- 前端入门篇2期/" class="article-date">
+  <time datetime="2015-12-11T10:30:00.000Z" itemprop="datePublished">2015-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      周精益分享 - 前端入门篇2期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###<a href="">博客地址</a></p>
+<p>##Swift柯里化 Curring 学习</p>
+<p>###什么是Curring</p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96" target="_blank" rel="external">维基百科解释</a><br>在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+</blockquote>
+<p>概念看上去还是有点抽象，直接看代码</p>
+<p><strong>例子</strong><br>注：所有swift代码都可以放到playgroun中运行查看输出<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="comment">// 一个普通求sum函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(a: Int, b: Int, <span class="built_in">c</span>: Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(a)</span> + <span class="subst">\(b)</span> + <span class="subst">\(<span class="built_in">c</span>)</span> = <span class="subst">\(a + b + <span class="built_in">c</span>)</span>"</span>)</div><div class="line">    <span class="keyword">return</span> a + b + <span class="built_in">c</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">add(<span class="number">1</span>, b: <span class="number">2</span>,<span class="built_in">c</span>: <span class="number">3</span>) <span class="comment">// 打印1 + 2 + 3 = 6</span></div><div class="line"></div><div class="line"><span class="comment">// 柯里化版本的求sum函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addCur</span><span class="params">(a: Int)</span></span>(b: <span class="type">Int</span>)(<span class="built_in">c</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(a)</span> + <span class="subst">\(b)</span> + <span class="subst">\(<span class="built_in">c</span>)</span> = <span class="subst">\(a + b + <span class="built_in">c</span>)</span>"</span>)</div><div class="line">    <span class="keyword">return</span> a + b + <span class="built_in">c</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">addCur(<span class="number">1</span>)(b: <span class="number">2</span>)(<span class="built_in">c</span>: <span class="number">3</span>) <span class="comment">// 打印1 + 2 + 3 = 6</span></div></pre></td></tr></table></figure></p>
+<p>你也许觉得Curring只是用一个特殊的写法<br>其他与普通函数无异<br>那么换一种curring的调用方式</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// curring 另类调用方式</span></div><div class="line"><span class="keyword">let</span> funcWithA = addCur(<span class="number">1</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"funcWithA type : <span class="subst">\(funcWithA.<span class="keyword">dynamicType</span>)</span>"</span>)</div><div class="line"><span class="keyword">let</span> funcWithAB = funcWithA(b: <span class="number">2</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"funcWithAB type : <span class="subst">\(funcWithAB.<span class="keyword">dynamicType</span>)</span>"</span>)</div><div class="line"><span class="keyword">let</span> resultCurring = funcWithAB(<span class="built_in">c</span>: <span class="number">3</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"resultCurring type : <span class="subst">\(resultCurring.<span class="keyword">dynamicType</span>)</span>"</span>)</div><div class="line">``` </div><div class="line"></div><div class="line">此时你还是会觉得这只是把一个函数拆开来调用了 那么我们打印一下 每个调用步骤中变量的类型</div></pre></td></tr></table></figure>
+<p>let funcWithA = addCur(1)<br>print(“funcWithA type : (funcWithA.dynamicType)”) //<br>let funcWithAB = funcWithA(b: 2)<br>print(“funcWithAB type : (funcWithAB.dynamicType)”)<br>let resultCurring = funcWithAB(c: 3)<br>print(“resultCurring type : (resultCurring.dynamicType)”)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">打印结果为</div></pre></td></tr></table></figure></p>
+<p>1 + 2 + 3 = 6<br>funcWithA type : Int -&gt; Int -&gt; Int<br>funcWithAB type : Int -&gt; Int<br>1 + 2 + 3 = 6<br>resultCurring type : Int<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">可以看到 变量funcWithA 为 Int -&gt; Int -&gt; Int 类型</div><div class="line">funcWithAB 为Int -&gt; Int</div><div class="line"></div><div class="line">这说明 curring函数在绑定最后一个参数之前 每个步骤返回的值都是一个函数</div><div class="line"></div><div class="line"><span class="section">###Curring实现原理</span></div><div class="line"></div><div class="line">Swift实现Curring的基础有两个</div><div class="line"><span class="bullet">- </span>函数是一级公民</div><div class="line"><span class="bullet">- </span>闭包</div><div class="line"></div><div class="line">[<span class="string">啊崢的Swift Curring文章</span>](<span class="link">http://www.jianshu.com/p/6eaacadafa1a</span>)代码例子解释的已经很清楚了</div></pre></td></tr></table></figure></p>
+<p>class Currying<br>{<br>    /<strong><em> uncurried:普通函数 </em></strong>/<br>    // 接收多个参数的函数<br>    func add(a: Int, b: Int, c: Int) -&gt; Int{<br>        println(“(a) + (b) + (c)”)<br>        return a + b + c<br>    }</p>
+<pre><code>/*** 手动实现柯里化函数 ***/
+// 把上面的函数转换为柯里化函数，首先转成接收第一个参数a，并且返回接收余下第一个参数b的新函数（采用闭包）
+// 为了让大家都能看懂,我帮你们拆解来看下
+// (a: Int) : 参数
+// (b:Int) -&gt; (c: Int) -&gt; Int : 函数返回值（一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数)
+
+// 定义一个接收参数a,并且返回一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数
+func add(a: Int) -&gt; (b:Int) -&gt; (c: Int) -&gt; Int{
+
+    // 一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数
+    return { (b:Int) -&gt; (c: Int) -&gt; Int in
+
+        // 返回一个接收余下第一个参数c，并且有返回结果为Int类型的函数
+        return { (c: Int) -&gt; Int in
+
+            return a + b + c;
+
+ 注解： 这里为什么能使用参数a,b,c?
+       利用闭包的值捕获特性，即使这些值作用域不在了，也可以捕获到他们的值。
+       闭包会自动判断捕获的值是值拷贝还是值引用，如果修改了，就是值引用，否则值拷贝。
+
+       注意只有在闭包中才可以，a,b,c都在闭包中。
+
+        }
+
+    }
+
+}
+
+
+/*** curried: 系统自带的柯里化函数 ***/
+func addCur(a: Int)(b: Int)(c: Int) -&gt; Int{
+    println(&quot;\(a) + \(b) + \(c)&quot;)
+    return a + b + c
+}
+</code></pre><p>}<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">###OC版的Curring</span></div><div class="line"></div><div class="line">大部分的iOS程序员都还是习惯写OC 找了一个[<span class="string">OC版本的Curring</span>](<span class="link">https://gist.github.com/lukhnos/1771842</span>)实现 我们可以理解的更深刻</div></pre></td></tr></table></figure></p>
+<p>#include <stdio.h><br>int f(int x, int y)<br>{<br>    return x + y;<br>}</stdio.h></p>
+<p>int main()<br>{<br>    // 闭包1 绑定第一个参数<br>    typedef int (^int_to_int_t)(int);<br>    // 闭包2 绑定第二个参数<br>    typedef int_to_int_t (^int_to_int_to_int_t)(int);</p>
+<pre><code>int_to_int_to_int_t h = ^(int x) {
+    int_to_int_t g = ^(int y) {
+        // 将两个闭包持有的参数做处理 返回结果
+        return f(x, y);  
+    };
+
+    return g;        
+};
+
+// 第一个闭包持有 5
+int_to_int_t g = h(5);
+
+int z;
+// 第二个闭包持有10 并返回结果
+z = g(10);
+printf(&quot;%d\n&quot;, z);
+</code></pre><p>}<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">###什么？你觉得然并卵！</span></div><div class="line"></div><div class="line">你一定觉得这是一个然并卵的东西</div><div class="line"></div><div class="line">好吧 我第一个看到的时候 只是觉得有趣 其实也没有想到较好的应用场景 </div><div class="line"></div><div class="line">[<span class="string">为什么要柯里化</span>](<span class="link">https://gist.github.com/jcouyang/b56a830cd55bd230049f</span>)这篇文章提供的例子给了很多启发</div><div class="line"></div><div class="line">用Swift重新实现了一遍 又加了一点打印 豁然开朗</div><div class="line"></div><div class="line">上代码</div></pre></td></tr></table></figure></p>
+<p>// 拼接字符<br>func concat(chars: Array<string>) {<br>    var resultString = “”<br>    for char in chars {<br>        resultString += char<br>    }<br>    print(resultString)<br>}</string></p>
+<p>concat([“1”,”2”,”3”])<br>print(“<strong><strong><strong>**</strong></strong></strong>“)</p>
+<p>// 每个字符代表的数字 + 1 后再拼接<br>func concatAdd(chars: Array<string>, addNum: Int) {<br>    var resultString = “”<br>    for char in chars {<br>        var num = Int(char)!<br>        num = num + addNum<br>        let newChar = String(num)<br>        resultString += newChar<br>    }<br>    print(resultString)<br>}</string></p>
+<p>concatAdd([“1”,”2”,”3”], addNum: 1)<br>concatAdd([“1”,”2”,”3”], addNum: 2)<br>concatAdd([“1”,”2”,”3”], addNum: 3)</p>
+<p>print(“<strong><strong><strong>**</strong></strong></strong>“)<br>// 每个字符代表的数字 <em>10 后再拼接<br>func concatMultiply(chars: Array<string>, multiplyNum: Int) {<br>    var resultString = “”<br>    for char in chars {<br>        var num = Int(char)!<br>        num = num </string></em> multiplyNum<br>        let newChar = String(num)<br>        resultString += newChar<br>    }<br>    print(resultString)<br>}</p>
+<p>concatMultiply([“1”,”2”,”3”], multiplyNum: 1)<br>concatMultiply([“1”,”2”,”3”], multiplyNum: 2)<br>concatMultiply([“1”,”2”,”3”], multiplyNum: 3)</p>
+<p>print(“<strong><strong><strong>**</strong></strong></strong>“)<br>/<strong><strong><br>让我们使用柯里化吧<br>*</strong></strong>/<br>func add(a: Int)(b: Int) -&gt; Int{<br>    return a + b<br>}</p>
+<p>func multiply(a: Int)(b: Int) -&gt; Int{<br>    return a * b<br>}</p>
+<p>func concatByCurring(chars: Array<string>)(caculateFunc: (Int)-&gt;Int) {<br>    var resultString = “”<br>    for char in chars {<br>        var num = Int(char)!<br>        var newNum = caculateFunc(num)<br>        let newChar = String(newNum)<br>        resultString += newChar<br>    }<br>    print(resultString)<br>}</string></p>
+<p>concatByCurring([“1”,”2”,”3”])(caculateFunc: add(1))<br>concatByCurring([“1”,”2”,”3”])(caculateFunc: add(2))<br>concatByCurring([“1”,”2”,”3”])(caculateFunc: add(3))</p>
+<p>print(“<strong><strong><strong>**</strong></strong></strong>“)<br>concatByCurring([“1”,”2”,”3”])(caculateFunc: multiply(1))<br>concatByCurring([“1”,”2”,”3”])(caculateFunc: multiply(2))<br>concatByCurring([“1”,”2”,”3”])(caculateFunc: multiply(3))</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">以上的代码用普通的函数 和 Curring函数 处理了同一个功能</div><div class="line"></div><div class="line">Curring优势明显</div><div class="line"><span class="bullet">- </span>重用了拼接代码</div><div class="line"><span class="bullet">- </span>支持更为灵活的算法替换</div><div class="line"><span class="bullet">- </span>写功能扩展的人不用怎么关心老代码的实现</div><div class="line"></div><div class="line"><span class="section">###iOS开发中可以应用的场景</span></div><div class="line"></div><div class="line"><span class="strong">**使用Curring处理selector**</span></div><div class="line">这个例子是我在看[<span class="string">王巍的Swifter</span>](<span class="link">https://selfstore.io/~onevcat</span>)时候看到的一个例子</div><div class="line"></div><div class="line">不废话 直接上代码</div></pre></td></tr></table></figure>
+<p>// 打印func类型<br>class People: NSObject {<br>    func speak(){<br>        print(“hello”)<br>    }</p>
+<pre><code>func printSpeak() {
+    print(&quot;People func speak  : \(People.speak.dynamicType)&quot;)
+}
+</code></pre><p>}</p>
+<p>People().printSpeak()<br>// 打印结果为 People func speak  : People -&gt; () -&gt; ()<br>// 可见实例的方法就是一个Curring结构<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下面是[<span class="string">Instance Methods are Curried Functions in Swift</span>](<span class="link">http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/?utm_campaign=iOS_Dev_Weekly_Issue_157&amp;utm_medium=email&amp;utm_source=iOS%2BDev%2BWeekly</span>)中的例子 很开脑洞</div></pre></td></tr></table></figure></p>
+<p>//Selector demo<br>protocol TargetAction {<br>    func performAction()<br>}</p>
+<p>struct TargetActionWrapper<t: anyobject=""> : TargetAction {<br>    weak var target: T?</t:></p>
+<pre><code>// 此处的action类型是不是和我上面代码中打印的结构一致
+let action: (T) -&gt; () -&gt; ()
+
+func performAction() -&gt; () {
+    if let t = target {
+        // Curring调用
+        action(t)()
+    }
+}
+</code></pre><p>}</p>
+<p>enum ControlEvent {<br>    case TouchUpInside<br>    case ValueChanged<br>}</p>
+<p>class Control {<br>    var actions = <a href="">ControlEvent: TargetAction</a></p>
+<pre><code>func setTarget&lt;T: AnyObject&gt;(target: T, action: (T) -&gt; () -&gt; (), controlEvent: ControlEvent) {
+    actions[controlEvent] = TargetActionWrapper(target: target, action: action)
+}
+
+func removeTargetForControlEvent(controlEvent: ControlEvent) {
+    actions[controlEvent] = nil
+}
+
+func performActionForControlEvent(controlEvent: ControlEvent) {
+    actions[controlEvent]?.performAction()
+}
+</code></pre><p>}</p>
+<p>class MyViewController {<br>    let button = Control()</p>
+<pre><code>func viewDidLoad() {
+    button.setTarget(self, action: MyViewController.onButtonTap, controlEvent: .TouchUpInside)
+}
+
+func onButtonTap() {
+    print(&quot;Button was tapped&quot;)
+}
+</code></pre><p>}</p>
+<p>// 调用<br>MyViewController().onButtonTap()<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">###小结</span></div><div class="line"><span class="bullet">- </span>Curring让计算过程更清晰 函数式编程的有点初见端倪</div><div class="line"><span class="bullet">- </span>Curring让计算过程更独立 可重用</div><div class="line"><span class="bullet">- </span>Curring让计算功能扩展更方便</div><div class="line"><span class="bullet">- </span>Curring让Swift中Selector的重构可以实现</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">## Umeng分享遇到的小坑 -- 张超耀</span></div><div class="line"><span class="section">### 写在前面的话</span></div><div class="line"><span class="bullet">- </span>在iOS9下，系统默认会拦截对http协议接口的访问，因此无法获取http协议接口的数据。对Umeng来说，具体表现可能是，无法授权、分享、获取用户信息等。</div><div class="line"><span class="bullet">- </span>iOS9新建项目默认需要支持bitcode，而不支持bitcode的SDK会导致无法编译运行。[<span class="string">App Thining</span>](<span class="link">https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html#//apple_ref/doc/uid/TP40012582-CH35</span>)）</div><div class="line"></div><div class="line">[<span class="string">Umeng适配iOS9</span>](<span class="link">http://dev.umeng.com/social/ios/ios9</span>)</div><div class="line"></div><div class="line"><span class="section">### 针对iOS9的Https特性，解决方案</span></div><div class="line"><span class="bullet">- </span>Plan A: 暂时退回到http协议:</div><div class="line"></div><div class="line">&gt;<span class="strong">**1**</span>、在项目的info.plist中添加一个Key：NSAppTransportSecurity，类型为字典类型。</div><div class="line">&gt;<span class="strong">**2**</span>、然后给它添加一个Key：NSAllowsArbitraryLoads，类型为Boolean类型，值为YES；</div><div class="line"></div><div class="line"><span class="bullet">- </span>Plan B：设置域。可以简单理解成，把不支持https协议的接口设置成http的接口</div><div class="line"></div><div class="line"></div><div class="line">&gt;<span class="strong">**1**</span>、在项目的info.plist中添加一个Key：NSAppTransportSecurity，类型为字典类型。</div><div class="line"></div><div class="line">&gt;<span class="strong">**2**</span>、然后给它添加一个NSExceptionDomains，类型为字典类型；</div><div class="line"></div><div class="line">&gt;<span class="strong">**3**</span>、把需要的支持的域添加給NSExceptionDomains。其中域作为Key，类型为字典类型。</div><div class="line"></div><div class="line">&gt;<span class="strong">**4**</span>、每个域下面需要设置3个属性：NSIncludesSubdomains、		NSExceptionRequiresForwardSecrecy、		NSExceptionAllowsInsecureHTTPLoads。</div><div class="line"><span class="code">	均为Boolean类型，值分别为YES、NO、YES。</span></div><div class="line"><span class="code">	</span></div><div class="line"><span class="section">### 针对App Thinning</span></div><div class="line"></div><div class="line"><span class="section">### 添加Scheme白名单实现应用跳转（SSO等）</span></div><div class="line"><span class="bullet">- </span>问题描述：在iOS 9下涉及到平台客户端跳转，系统会自动到项目info.plist下检测是否设置平台Scheme。对于需要配置的平台，如果没有配置，就无法正常跳转平台客户端。因此要支持客户端的分享和授权等，需要配置Scheme名单。</div><div class="line"><span class="bullet">- </span>解决方案：</div><div class="line"></div><div class="line">具体方法：</div><div class="line">&gt;1、在项目的info.plist中添加一LSApplicationQueriesSchemes，类型为Array。</div><div class="line"></div><div class="line">&gt;2、然后给它添加一个需要支持的项目，类型为字符串类型</div><div class="line"></div><div class="line"></div><div class="line"><span class="section">### 注意</span></div><div class="line"><span class="bullet">- </span>由于苹果审核政策需求，需要对未安装客户端平台进行隐藏，在设置QQ、微信AppID之后调用下面的方法，</div></pre></td></tr></table></figure></p>
+<p>[UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"> - but  这个接口只对默认分享面板平台有隐藏功能，自定义分享面板或登录按钮需要自己处理</div><div class="line"> </div><div class="line">- 对于自定义分享面板处理：</div><div class="line">	- UmengSDK已经嵌入相关API，直接用就好</div><div class="line"></div><div class="line">### 只要按照官方文档来，基本上就能马到成功（）</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">##MarkDown 的 CSS 实现配置 - 杨志平</div><div class="line"></div><div class="line">####题目灵感来源</div><div class="line">&gt; 起源于我们现有的博客引擎主题交互很不错，但是排版烂的要死 ，我水平有限这里只是浅显介绍实现修改我们的markdown编译器的一些排版样式</div><div class="line"></div><div class="line">#### 研究方向</div><div class="line">&gt; 自定义一个非标准化，有其他多元素的MarkDown解析器 如下几点:</div><div class="line"></div><div class="line">-  可选框</div><div class="line"> `- [ ] `</div><div class="line">- 本地图片索引，可控制对齐及大小 </div><div class="line">`![Alt text](http:<span class="comment">//path/to/img.jpg "optional title" 100x200)`</span></div><div class="line">`![Alt text](./<span class="number">1449756974449.</span>png)`</div><div class="line">- 标签功能</div><div class="line">`@(Share)[css, Markdown]`</div><div class="line">- 代码高亮（不同语言）</div><div class="line"></div><div class="line">`swift`</div><div class="line"></div><div class="line">``` swift</div><div class="line">    private var majorModel = PickMajorModel()</div><div class="line">    private var subjectModel = OFFKeyNameModel()</div><div class="line">    required init?(coder aDecoder: NSCoder) &#123;</div><div class="line">        super.init(coder: aDecoder)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>objectivec</code></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIScrollView</span> *scrollView = [[<span class="built_in">UIScrollView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kScreenW, kScreenH)];</div><div class="line">scrollView.showsVerticalScrollIndicator = <span class="literal">NO</span>;</div><div class="line">[scrollView addSubview:<span class="keyword">self</span>.downMainView];</div></pre></td></tr></table></figure>
+<p><strong>有一种惨不忍睹的即视感</strong><br><img src="./1449756974449.png" alt="Alt text"></p>
+<h3 id="MarkDown来源及实现"><a href="#MarkDown来源及实现" class="headerlink" title="MarkDown来源及实现"></a>MarkDown来源及实现</h3><blockquote>
+<p>Markdown is a plain text format for writing structured documents, based on conventions used for indicating formatting in email and usenet posts. It was developed in 2004 by John Gruber, who wrote the first markdown-to-html converter in Perl, and it soon became widely used in websites. By 2014 there were dozens of implementations in many languages.</p>
+</blockquote>
+<p><code>见知乎上回答</code><br><a href="http://www.zhihu.com/question/28756456" target="_blank" rel="external">实现一个markdown解析器需要具备那些知识</a></p>
+<p>###如何简单的改善文字编排的效果</p>
+<h5 id="更换博客主题（简单粗暴）"><a href="#更换博客主题（简单粗暴）" class="headerlink" title="更换博客主题（简单粗暴）"></a>更换博客主题（简单粗暴）</h5><blockquote>
+<p>我们使用的博客引擎Hexo来举例，列举下面三个主题</p>
+<ul>
+<li>landscape</li>
+<li>hexo-theme-vno-master</li>
+<li>hexo-theme-yilia-master</li>
+</ul>
+</blockquote>
+<h5 id="更换MarkDown编译器的主题"><a href="#更换MarkDown编译器的主题" class="headerlink" title="更换MarkDown编译器的主题"></a>更换MarkDown编译器的主题</h5><blockquote>
+<p>以 <strong><em>Mou</em></strong> 举例子，它提供了多套markdown语法下的排版样式<br>手动新创建一个CSS文本布局配置 <strong><em>Blog</em></strong><br><img src="./1449768288128.png" alt="Alt text"></p>
+</blockquote>
+<h4 id="CSS配置文件修改"><a href="#CSS配置文件修改" class="headerlink" title="CSS配置文件修改"></a>CSS配置文件修改</h4><p>详细配置参数如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123; <span class="attribute">font-size</span>: <span class="number">62.5%</span>; &#125;</div><div class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123; <span class="attribute">height</span>: <span class="number">100%</span>; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: Helvetica, Arial, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">150%</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.3</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#f6e6cc</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">700px</span>;</div><div class="line">  <span class="attribute">margin</span>: auto;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#27221a</span>;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">30px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>多级标题配置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">28px</span>;</div><div class="line">  <span class="attribute">color</span>: black; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h2</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">24px</span>;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">  <span class="attribute">color</span>: black; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h4</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h5</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>; &#125;</div><div class="line"></div><div class="line"><span class="selector-tag">h6</span> &#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#777777</span>;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>; &#125;</div></pre></td></tr></table></figure>
+<p>表格</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">table</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;<span class="attribute">border-collapse</span>: collapse; &#125;</div><div class="line">  <span class="selector-tag">table</span> <span class="selector-tag">tr</span> &#123;</div><div class="line">    <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">    <span class="attribute">background-color</span>: white;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span>:nth-child(<span class="number">2</span>n) &#123;</div><div class="line">      <span class="attribute">background-color</span>: <span class="number">#f8f8f8</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> &#123;</div><div class="line">      <span class="attribute">font-weight</span>: bold;</div><div class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">      <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">      <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">13px</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> &#123;</div><div class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">      <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">      <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">13px</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> :first-child, <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> :first-child &#123;</div><div class="line">      <span class="attribute">margin-top</span>: <span class="number">0</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> :last-child, <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> :last-child &#123;</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">0</span>; &#125;</div></pre></td></tr></table></figure>
+<p>代码高亮</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">code</span>, <span class="selector-tag">tt</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">2px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span>;</div><div class="line">  <span class="attribute">white-space</span>: nowrap;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eaeaea</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#f8f8f8</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>; &#125;</div><div class="line"></div><div class="line"> <span class="selector-tag">code</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="attribute">border</span>: none;</div><div class="line">  <span class="attribute">background</span>: transparent; &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/11/周精益分享- 前端入门篇2期/" data-id="cj2xi6dzo002a2zx104t3pwfe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/18/移动周分享-第40期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第40期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/02/周精益分享- 前端入门篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">周精益分享 - 前端入门篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

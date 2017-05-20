@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动周分享-第48期 | Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android单元测试框架 - 吴明 Android单元测试 在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。     框架比较 JUnit 原生单元测试 不能让Activity执行到resume的状态 @王进已讲   AndroidTest 运行在And">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动周分享-第48期">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/移动周分享-第48期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="Android单元测试框架 - 吴明 Android单元测试 在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。     框架比较 JUnit 原生单元测试 不能让Activity执行到resume的状态 @王进已讲   AndroidTest 运行在And">
+<meta property="og:image" content="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png">
+<meta property="og:updated_time" content="2016-08-23T00:59:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动周分享-第48期">
+<meta name="twitter:description" content="Android单元测试框架 - 吴明 Android单元测试 在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。     框架比较 JUnit 原生单元测试 不能让Activity执行到resume的状态 @王进已讲   AndroidTest 运行在And">
+<meta name="twitter:image" content="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动周分享-第48期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/移动周分享-第48期/" class="article-date">
+  <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动周分享-第48期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android单元测试框架-吴明"><a href="#Android单元测试框架-吴明" class="headerlink" title="Android单元测试框架 - 吴明"></a>Android单元测试框架 - 吴明</h2><ul>
+<li>Android单元测试<ul>
+<li>在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。  </li>
+</ul>
+</li>
+<li>框架比较<ul>
+<li>JUnit<ul>
+<li>原生单元测试</li>
+<li>不能让Activity执行到resume的状态</li>
+<li>@王进已讲</li>
+</ul>
+</li>
+<li>AndroidTest<ul>
+<li>运行在Android环境</li>
+</ul>
+</li>
+<li>Instrumentation<ul>
+<li>运行在模拟器上</li>
+</ul>
+</li>
+<li>Robotium<ul>
+<li>类似于Selenium的测试框架</li>
+<li>运行在模拟器上</li>
+<li>通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+</ul>
+</li>
+<li>Robolectric+Mock(Mockito)<ul>
+<li>运行在JVM上速度快</li>
+<li>Jenkins周期性执行</li>
+<li>无需准备Android环境</li>
+<li>实现了Android中对XML的解析，模拟了View，Layout，以及资源的加载</li>
+<li>一些测试对象依赖度较高而需要解除依赖的场景(如网络)使用Mock框架</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://robolectric.org/getting-started/" target="_blank" rel="external">Robolectric</a></p>
+<ul>
+<li><p>Android Studio配置</p>
+<ul>
+<li><p>build.gradle添加库</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">testCompile</span> "<span class="selector-tag">org</span><span class="selector-class">.robolectric</span><span class="selector-pseudo">:robolectric</span><span class="selector-pseudo">:3.0"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Build Variants设置<br><img src="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png" alt="Unit Tests"></p>
+</li>
+<li>Linux和Mac平台的需要配置下才能运行:在Android Studio中run边上有一个app选择，这里选择”Edit Configurations” 出现编辑界面<br><img src="" alt="Run/Debug Configurations"><br>在左边中新建JUnit，Default-&gt;JUnit</li>
+<li>测试代码</li>
+<li>中间出现问题<ul>
+<li>Android SDK目前只支持到22，5.1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>单元测试的目标函数主要有三种：</p>
+<ol>
+<li>有明确的返回值，如上图的dosomething(Boolean param)，做单元测试时，只需调用这个函数，然后验证函数的返回值是否符合预期结果。</li>
+<li>这个函数只改变其对象内部的一些属性或者状态，函数本身没有返回值，就验证它所改变的属性和状态。</li>
+<li>一些函数没有返回值，也没有直接改变哪个值的状态，这就需要验证其行为，比如点击事件。 </li>
+</ol>
+<ul>
+<li>既没有返回值，也没有改变状态，又没有触发行为的函数是不可测试的，在项目中不应该存在。当存在同时具备上述多种特性时，本文建议采用多个case来真对每一种特性逐一验证，或者采用一个case，逐一执行目标函数并验证其影响。</li>
+<li>构造用例的原则是测试用例与函数一对一，实现条件覆盖与路径覆盖。Java单元测试中，良好的单元测试是需要保证所有函数执行正确的，即所有边界条件都验证过，一个用例只测一个函数，便于维护。在Android单元测试中，并不要求对所有函数都覆盖到，像Android SDK中的函数回调则不用测试。</li>
+</ul>
+</li>
+<li><p>测试用例</p>
+<ul>
+<li><p>组件</p>
+<ul>
+<li><p>Activity测试</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">		@Test</div><div class="line">    public void testLifecycle() &#123;</div><div class="line">        ActivityController&lt;MainActivity&gt; activityController = Robolectric.buildActivity(MainActivity.class).create().start();</div><div class="line">        Activity activity = activityController.get();</div><div class="line">        Button action_next = (Button) activity.findViewById(R.id.next);</div><div class="line">        Assert.assertEquals("next", action_next.getText().toString());</div><div class="line"><span class="comment">//        error</span></div><div class="line"><span class="comment">//        Assert.assertEquals("testLifecycle", action_next.getText().toString());</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">		````  </div><div class="line">		-<span class="ruby"> Service</span></div><div class="line">		-<span class="ruby"> BroadcastReceiver</span></div><div class="line">		-<span class="ruby"> Fragment </span></div><div class="line">	-<span class="ruby"> 控件行为</span></div><div class="line">		-<span class="ruby"> 跳转</span></div><div class="line">	-<span class="ruby"> 界面元素</span></div><div class="line">		-<span class="ruby"> Toast</span></div></pre></td></tr></table></figure>
+<p>@Test<br>public void testToast() {<br>Button action_toast = (Button) mActivity.findViewById(R.id.action_toast);<br>action_toast.performClick();<br>Assert.assertEquals(“hello”, ShadowToast.getTextOfLatestToast());<br>}</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> Dialog</span></div><div class="line">-<span class="ruby"> UI控件</span></div></pre></td></tr></table></figure>
+<p>@Test<br>public void testStartEndActivity() {<br>Button action_next = (Button) mActivity.findViewById(R.id.next);<br>action_next.performClick();</p>
+<p>Intent intent = new Intent(mActivity, EndActivity.class);</p>
+<p>Intent actionIntent = ShadowApplication.getInstance().getNextStartedActivity();<br>Assert.assertEquals(intent, actionIntent);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">	- 自定义函数</div><div class="line">	- 网络请求</div><div class="line">- assertJ-android断言库</div><div class="line">- 资料</div><div class="line">	- [参考1](https://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/0-introduction.html)</div><div class="line">	- [美团Android单元测试](http://tech.meituan.com/Android_unit_test.html)</div><div class="line">	- [测试用例](http://www.jianshu.com/p/9d988a2f8ff7)</div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">## 无主题 - 陈奎</div><div class="line">###NodeJS 安装</div><div class="line">-	到 [nodejs 下载](https://nodejs.org/download/release/) 下载 `node-v5.9.0-linux-x64.tar.gz`，上传到 linux 服务器 `/usr/local/nodejs` 目录；</div><div class="line">-	在 nodejs 目录执行</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>tar zxvf node-v5.9.0-linux-x64.tar.gz<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">解压，进入解压后的bin目录下，执行ls会看到两个文件<span class="keyword">node</span><span class="title">,npm</span>. 然后执行</div></pre></td></tr></table></figure></p>
+<p>./node –v<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果显示出版本号说明我们下载的程序包是没有问题的。 </div><div class="line"><span class="bullet">-	</span>配置环境变量，</div></pre></td></tr></table></figure></p>
+<p>sudo vi /etc/profile<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH的上一行添加如下内容</div></pre></td></tr></table></figure></p>
+<p>PATH=$PATH:/usr/local/nodejs/node-v5.9.0-linux-x64/bin<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">编辑完成后按Esc键 然后输入 :<span class="keyword">wq</span> 按回车保存，退出<span class="keyword">vi</span> ，执行</div></pre></td></tr></table></figure></p>
+<p>source /etc/profile<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">可以使变量立即生效，然后执行</div></pre></td></tr></table></figure></p>
+<p>echo $PATH<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">看输出内容是否包含自己添加的内容，然后到任意目录下去执行一次执行</div></pre></td></tr></table></figure></p>
+<p>node -v<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">npm -v</div></pre></td></tr></table></figure></p>
+<p>ok 搞定了，需要注意的是，通过  <code>source /etc/profile</code>，只是让变量临时生效了，如果此时重新开一个终端运行node会提示找不到命令，这个问题重启或者注销之后可以解决，如果不想重启的话，再次执行 <code>source /etc/profile</code> 即可。</p>
+<p>###newman 安装# </p>
+<ul>
+<li>官网在这里<a href="https://github.com/postmanlabs/newman" target="_blank" rel="external">newman</a>； </li>
+<li>执行  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g <span class="keyword">new</span><span class="type">man</span>@<span class="number">2</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>即可，安装成功后执行<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span><span class="type">man</span> –h</div></pre></td></tr></table></figure></p>
+<p>可以显示帮助信息。 </p>
+<p>###mail 安装#</p>
+<ul>
+<li>使用<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">yum search mail</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>发现有 <code>mailx.x86_64 : Enhanced implementation of the mailx command</code> 说明可以安装，执行<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> mailx -y</div></pre></td></tr></table></figure></p>
+<p>搞定，执行如下命令即可发送邮件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this is send content"</span> | mail <span class="_">-s</span> <span class="string">"send from linux"</span> <span class="built_in">test</span>@test.com</div></pre></td></tr></table></figure></p>
+<ul>
+<li>默认情况下发送的邮件会被放到垃圾邮件里面，可以执行<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi <span class="regexp">/etc/m</span>ail.rc</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在其中添加如下配置<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span> <span class="keyword">from</span>=<span class="keyword">test</span>@<span class="number">163.</span>com</div><div class="line"><span class="keyword">set</span> smtp=smtp<span class="number">.163</span>.com</div><div class="line"><span class="keyword">set</span> smtp-auth-<span class="keyword">user</span>=<span class="keyword">test</span></div><div class="line"><span class="keyword">set</span> smtp-auth-<span class="keyword">password</span>=<span class="number">123456</span></div><div class="line"><span class="keyword">set</span> smtp-auth=login</div></pre></td></tr></table></figure></p>
+<p>这样发送的邮件就不会被放到垃圾邮件里面，也可以从文件中获取发送内容，如下<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mail -s <span class="string">"mail title"</span> <span class="number">123456</span>@<span class="number">163.</span>com &lt; outfile<span class="number">-1458185763.</span>txt</div></pre></td></tr></table></figure></p>
+<p> 参考：<a href="http://www.cnblogs.com/xiaoshi1991/archive/2012/09/19/2694465.html" target="_blank" rel="external">LINUX下通过外部SMTP发邮件 （直接抛弃sendmail和postfix）</a></p>
+<h2 id="插件推荐-王进"><a href="#插件推荐-王进" class="headerlink" title="插件推荐 - 王进"></a>插件推荐 - 王进</h2><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/mcharmas/android-parcelable-intellij-plugin" target="_blank" rel="external">ParcelableGenerator</a></td>
+<td>Android中的序列化有两种方式, 分别是实现Serializable接口和Parcelable接口, 但在Android中是推荐使用Parcelable, 只不过我们这种方式要比Serializable方式要繁琐，那么有了这个插件一切就ok了</td>
+</tr>
+<tr>
+<td><a href="https://github.com/zzz40500/GsonFormat" target="_blank" rel="external">GsonFormat</a></td>
+<td>现在大多数服务端api都以json数据格式返回, 而客户端需要根据api接口生成相应的实体类, 这个插件把这个过程自动化了, 赶紧使用起来吧</td>
+</tr>
+<tr>
+<td><a href="https://github.com/layerlre/ADBWIFI" target="_blank" rel="external">ADB WIFI</a></td>
+<td>每天只需用USB线连接一次，就可以将USB连接切换成WIFI连接，去掉讨厌的数据线连接</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/18/移动周分享-第48期/" data-id="cj2xi6dzu002r2zx1frsx5c8q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/01/移动周分享-第49期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动周分享-第49期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/11/移动周分享-第47期/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动周分享-第47期</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Wilson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="每周分享博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wilson">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="每周分享博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wilson">
+<meta name="twitter:description" content="每周分享博客">
+  
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Wilson</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱折腾的技术男</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-移动周分享-第50期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/08/移动周分享-第50期/" class="article-date">
+  <time datetime="2016-04-08T10:30:00.000Z" itemprop="datePublished">2016-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/08/移动周分享-第50期/">移动周分享-第50期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="先看命令帮助的讲解-王胜"><a href="#先看命令帮助的讲解-王胜" class="headerlink" title="先看命令帮助的讲解 - 王胜"></a>先看命令帮助的讲解 - 王胜</h2><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git reset -h</div><div class="line">usage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] <span class="meta">[&lt;commit&gt;]</span></div><div class="line">   <span class="keyword">or</span>: git reset [-q] &lt;tree-ish&gt; [--] &lt;paths&gt;...</div><div class="line">   <span class="keyword">or</span>: git reset --patch <span class="meta">[&lt;tree-ish&gt;]</span> [--] <span class="meta">[&lt;paths&gt;...]</span></div><div class="line"></div><div class="line">    -q, --quiet           be quiet, only report errors</div><div class="line">    --mixed               reset HEAD and index</div><div class="line">    --soft                reset only HEAD</div><div class="line">    --hard                reset HEAD, index and working tree</div><div class="line">    --merge               reset HEAD, index and working tree</div><div class="line">    --keep                reset HEAD but keep local changes</div><div class="line">    -p, --patch           select hunks interactively</div><div class="line">    -N, --intent-to-add   record only the fact that removed paths will be added later</div></pre></td></tr></table></figure>
+<h3 id="各种模式对比"><a href="#各种模式对比" class="headerlink" title="各种模式对比"></a>各种模式对比</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th style="text-align:center">HEAD是否重置</th>
+<th style="text-align:center">Index是否重置</th>
+<th style="text-align:center">working区是否重置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–mixed『缺省模式』</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td>–soft</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">否</td>
+</tr>
+<tr>
+<td>–hard</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td>–merge</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td>–keep</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SourceTree-重置分析"><a href="#SourceTree-重置分析" class="headerlink" title="SourceTree 重置分析"></a>SourceTree 重置分析</h3><h4 id="重置-gt-丢弃文件变更"><a href="#重置-gt-丢弃文件变更" class="headerlink" title="重置 -&gt; 丢弃文件变更"></a>重置 -&gt; 丢弃文件变更</h4><ul>
+<li><p>操作截图</p>
+<p><img src="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-mixed-partial.png" alt="git-reset-mixed-partial"></p>
+</li>
+<li><p>实际执行的命令</p>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree reset -<span class="selector-tag">q</span> HEAD -- <span class="selector-tag">a</span><span class="selector-class">.txt</span> c<span class="selector-class">.txt</span> 	</div><div class="line">git -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree checkout HEAD -- <span class="selector-tag">a</span><span class="selector-class">.txt</span> </div><div class="line">Completed successfully</div></pre></td></tr></table></figure>
+<ul>
+<li>结果</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git st</div><div class="line">On branch feature2</div><div class="line">All conflicts fixed but you are still merging.</div><div class="line">    (<span class="keyword">use</span> <span class="string">"git commit"</span> <span class="keyword">to</span> conclude <span class="keyword">merge</span>)</div><div class="line"></div><div class="line">Untracked files:</div><div class="line">    (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">include</span> <span class="keyword">in</span> what will be committed)</div><div class="line"></div><div class="line">	  c.txt</div><div class="line"></div><div class="line"><span class="keyword">nothing</span> added <span class="keyword">to</span> <span class="keyword">commit</span> but untracked files <span class="keyword">present</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">to</span> track)</div></pre></td></tr></table></figure>
+<p>可以看出这样操作，git的上下文环境还在merge状态，这种情况一不小心就容易当做重置干净了，继续干自己的事情了，殊不知把别人的改动丢弃了。</p>
+<h4 id="重置-gt-重置所有"><a href="#重置-gt-重置所有" class="headerlink" title="重置 -&gt; 重置所有"></a>重置 -&gt; 重置所有</h4><ul>
+<li><p>操作截图</p>
+<p><img src="http://7xsk2b.com2.z0.glb.clouddn.com/image/git-reset-hard-all.png" alt="git-reset-hard-all"></p>
+</li>
+<li><p>实际执行的命令</p>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git -<span class="built_in">c</span> diff.mnemonicprefix=<span class="literal">false</span> -<span class="built_in">c</span> core.quotepath=<span class="literal">false</span> -<span class="built_in">c</span> credential.helper=sourcetree reset -q --hard <span class="type">HEAD</span> -- </div><div class="line"></div><div class="line">git -<span class="built_in">c</span> diff.mnemonicprefix=<span class="literal">false</span> -<span class="built_in">c</span> core.quotepath=<span class="literal">false</span> -<span class="built_in">c</span> credential.helper=sourcetree submodule update --<span class="keyword">init</span> --recursive </div><div class="line"><span class="type">Completed</span> successfully</div></pre></td></tr></table></figure>
+<ul>
+<li>结果</li>
+</ul>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Victors-MPB:hello wangsheng$ git st</div><div class="line"><span class="keyword">On</span> branch feature2</div><div class="line"><span class="literal">nothing</span> <span class="keyword">to</span> commit, working directory clean</div></pre></td></tr></table></figure>
+<h2 id="快速集成TouchID-杨志平"><a href="#快速集成TouchID-杨志平" class="headerlink" title="快速集成TouchID - 杨志平"></a>快速集成TouchID - 杨志平</h2><blockquote>
+<p>iPhone 5s，iOS 8，iOS7时未开放</p>
+<p>依赖 LocalAuthentication.framework</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断设备支持状态</span></div><div class="line">LAContext *context = [[LAContext alloc] init];</div><div class="line">[context <span class="string">canEvaluatePolicy:</span>LAPolicyDeviceOwnerAuthenticationWithBiometrics <span class="string">error:</span>nil];</div><div class="line"></div><div class="line"><span class="comment">// 如果可以</span></div><div class="line">[context <span class="string">evaluatePolicy:</span>LAPolicyDeviceOwnerAuthenticationWithBiometrics <span class="string">localizedReason:</span>@<span class="string">"reason"</span> <span class="string">reply:</span>^(BOOL success, NSError *error) &#123;</div><div class="line">            <span class="keyword">if</span> (success) &#123;</div><div class="line">                <span class="comment">//验证成功，主线程处理UI</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">	            <span class="comment">// 重点：错误处理，分为多种错误</span></div><div class="line">	            <span class="comment">// 有验证失败、取消、手动输入密码等等相对应的逻辑处理</span></div><div class="line">	            <span class="comment">// 详见demo</span></div><div class="line">	        &#125;</div><div class="line">        &#125;];</div></pre></td></tr></table></figure>
+<p><strong>错误类型</strong></p>
+<ul>
+<li>LAErrorAuthenticationFailed</li>
+<li>LAErrorUserCancel</li>
+<li>LAErrorUserFallback</li>
+<li>LAErrorSystemCancel</li>
+<li>LAErrorPasscodeNotSet  </li>
+<li>LAErrorTouchIDNotAvailable</li>
+<li>LAErrorTouchIDNotEnrolled </li>
+<li>LAErrorTouchIDLockout   NS_ENUM_AVAILABLE(10_11, 9_0)</li>
+<li>LAErrorAppCancel        NS_ENUM_AVAILABLE(10_11, 9_0) </li>
+<li>LAErrorInvalidContext   NS_ENUM_AVAILABLE(10_11, 9_0)</li>
+</ul>
+<h2 id="dispatch-sync的坑-潘君"><a href="#dispatch-sync的坑-潘君" class="headerlink" title="dispatch_sync的坑 - 潘君"></a>dispatch_sync的坑 - 潘君</h2><h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>dispatch_sync自己创建的队列 仍旧有可能在main thread上执行block</p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><ul>
+<li><p>GCD只是管理一个线程池 不保证一定在某一个thread或不在某一个thread执行</p>
+</li>
+<li><p>非main程队列也有可能调用主线程</p>
+</li>
+<li><p>为了优化 有可能在当前线程中执行block</p>
+</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如何不让dispatch_sync卡主线程呢</p>
+<p>答: 别在主线程调用此函数 哈哈哈</p>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><ul>
+<li><p>锁的功能</p>
+</li>
+<li><p>确保在主线程执行block</p>
+</li>
+</ul>
+<p>AFNetworking在调用前判断是否是主线程</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span> (![[<span class="built_in">NSThread</span> currentThread] isMainThread]) &#123;</div><div class="line"></div><div class="line">    <span class="built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line"></div><div class="line">        [<span class="keyword">self</span> transitionToNextPhase];</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p><a href="http://stackoverflow.com/questions/9471420/whats-the-benefit-of-using-dispatch-sync-if-it-has-to-wait-until-the-main-threa" target="_blank" rel="external">http://stackoverflow.com/questions/9471420/whats-the-benefit-of-using-dispatch-sync-if-it-has-to-wait-until-the-main-threa</a></p>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/4607125/using-dispatch-sync-in-grand-central-dispatch" target="_blank" rel="external">http://stackoverflow.com/questions/4607125/using-dispatch-sync-in-grand-central-dispatch</a></p>
+</li>
+<li><p><a href="http://honglu.me/2016/01/11/AFNetworking%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" target="_blank" rel="external">http://honglu.me/2016/01/11/AFNetworking%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/08/移动周分享-第50期/" data-id="cj2xi6dzx002y2zx17ess4j3q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第49期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/移动周分享-第49期/" class="article-date">
+  <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/01/移动周分享-第49期/">移动周分享-第49期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Android-mvp 吴明</p>
+<ul>
+<li><a href="http://www.cnblogs.com/end/archive/2011/06/02/2068512.html" target="_blank" rel="external">mvc与mvp对比</a></li>
+<li><p>mvp</p>
+<ul>
+<li>model:依然是业务逻辑和实体模型</li>
+<li>view:对应于Activity，负责View的绘制以及与用户交互</li>
+<li>presenter:负责完成View于Model间的交互</li>
+<li>关系图<br><img src="http://www.jcodecraeer.com/uploads/20150227/1424969040503730.png" alt="mvp关系图"></li>
+</ul>
+</li>
+<li><p>View定义定义包括：Activity,xml,Fragment，adapter</p>
+</li>
+<li>Google定义MVP</li>
+</ul>
+<p><img src="https://github.com/googlesamples/android-architecture/wiki/images/mvp.png" alt="Google-mvp"></p>
+<p> <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp/todoapp" target="_blank" rel="external">Google-MVP-demo</a></p>
+<h2 id="开源工具SWIG-杨俊构"><a href="#开源工具SWIG-杨俊构" class="headerlink" title="开源工具SWIG - 杨俊构"></a>开源工具SWIG - 杨俊构</h2><h3 id="什么是SWIG"><a href="#什么是SWIG" class="headerlink" title="什么是SWIG"></a>什么是SWIG</h3><ul>
+<li>官方网站 <a href="http://www.swig.org/" target="_blank" rel="external">http://www.swig.org/</a>  </li>
+<li><p>GitHub开源 <a href="https://github.com/swig/swig" target="_blank" rel="external">https://github.com/swig/swig</a> </p>
+</li>
+<li><p>SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中 也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。</p>
+</li>
+<li><p>SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工具。SWIG还能够导出 XML或Lisp s-expressions格式的解析树。SWIG可以被自由使用，发布，修改用于商业或非商业中。</p>
+</li>
+</ul>
+<h3 id="快速开发"><a href="#快速开发" class="headerlink" title="快速开发"></a>快速开发</h3><blockquote>
+<p>参考 <a href="http://www.swig.org/tutorial.html" target="_blank" rel="external">http://www.swig.org/tutorial.html</a></p>
+</blockquote>
+<ul>
+<li><p>eg： 将 C语言转化成java （Windows下）</p>
+<ol>
+<li><p><a href="http://www.swig.org/download.html" target="_blank" rel="external">下载</a>Swig工具包  </p>
+<blockquote>
+<p>SWIG在三大主力平台都可以安装,下载到的是一个zip压缩包，解压然后配置好环境变量（SWIG_HOME，Path）即可使用了。【真的一直在<a href="http://www.swig.org/news.php" target="_blank" rel="external">更新</a>】</p>
+</blockquote>
+</li>
+<li><p>新建example.c文件 </p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/* File : example.c */</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="keyword">double</span> My_variable = <span class="number">3.0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n*fact(n<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (x%y);</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">time_t</span> ltime;</div><div class="line">    time(&amp;ltime);</div><div class="line">    <span class="keyword">return</span> ctime(&amp;ltime);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>编写接口文件example.i</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">        <span class="comment">/* example.i */</span></div><div class="line">        %<span class="keyword">module</span> example</div><div class="line">        %&#123;</div><div class="line">        <span class="comment">/* Put header files here or function declarations like below */</span></div><div class="line">        <span class="keyword">extern</span> <span class="keyword">double</span> My_variable;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span>;</div><div class="line">        %&#125;</div><div class="line">        </div><div class="line">        <span class="keyword">extern</span> <span class="keyword">double</span> My_variable;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">my_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</div><div class="line">        <span class="function"><span class="keyword">extern</span> <span class="keyword">char</span> *<span class="title">get_time</span><span class="params">()</span></span>; </div><div class="line">```  </div><div class="line">  <span class="number">4.</span> 建立Java模块 </div><div class="line">   &gt; SWIG也会产生JNI代码以便Jave代码进入C/CC++。以下是建立一个Jave模块的事例（cygwin）:</div></pre></td></tr></table></figure>
+<pre><code>$ swig -java example.i
+
+$ gcc -c example.c example_wrap.c -I/c/jdk1.3.1/include -I/c/jdk1.3.1/include/win32
+
+$ gcc -shared example.o  example_wrap.o -mno-cygwin -Wl,--add-stdcall-alias  -o example.dll
+
+$ cat main.java
+public class main {
+public static void main(String argv[]) {
+    System.loadLibrary(&quot;example&quot;);
+    System.out.println(example.getMy_variable());
+    System.out.println(example.fact(5));
+    System.out.println(example.get_time());
+}
+}
+$ javac main.java
+$ java main
+3.0
+120
+Mon Mar  4 18:20:31  2002
+$
+</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">      </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (1)swig -java example.i 执行后会生成   </span></div><div class="line">   </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> &gt;符合JNI语法的C文件： example_wrap.c   </span></div><div class="line"><span class="meta">   &gt;</span><span class="bash"> &gt;生成Java类文件：exampleJNI.java，example.java   </span></div><div class="line">   </div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (2)SWIG创建的wrapper文件可直接用来编译连接产生共享库，不需要再对生成文件进行编辑。  </span></div><div class="line"><span class="meta">   &gt;</span><span class="bash"> (3)对Java程序员来说，SWIG是把C/C++代码嵌入到Java脚本的理想工具。SWIG理解C/C++申明，因此它可以解析C/C++头文件并产生Java模型并对其进行编码，编译之后，你就可以在Java中使用。</span></div><div class="line"></div><div class="line">- SWIG 懒人方法 </div><div class="line"><span class="meta"> &gt;</span><span class="bash"> 并非总是需要写一个专门的接口文件。如果你有一个头文件，你可以直接在其中包含SWIG接口，如例：</span></div></pre></td></tr></table></figure>
+<p> %module example<br> %{<br> /<em> Includes the header in the wrapper code </em>/</p>
+<p> #include “header.h”<br> %}</p>
+<p> /<em> Parse the header file to generate wrappers </em>/<br> %include “header.h”<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">&gt;<span class="bash"> 另外，有些人可能只包括SWIG条件指令在头文件中。例如：</span></div></pre></td></tr></table></figure></p>
+<p>  #ifdef SWIG<br>  %module example<br>  %{</p>
+<p>  #include “header.h”<br>  %}</p>
+<p>  #endif</p>
+<p>  extern int fact(int n);<br>  …<br>```</p>
+<blockquote>
+<p>编写JNI封装器的代码，还有处理数据类型的转换耗时且费力，所以要用到 SWIG是java程序的福利。</p>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>SWIG是一个运用于编译环节的软件开发工具，它能生成出代码来使得用 C/C++ 编写的代码可以同其它编程语言连接在一起。</li>
+<li>SWIG 不只是能被用在 Android 和 Java 开发领域，它是一个扩展性方面很强大的工具，也可以用来自动生成其它编程语言的代码。</li>
+<li>总之，安装和使用swig都是非常简单的事情。使用swig能够大大减轻程序员的痛苦程度，帮助你更快的完成你想要的功能。</li>
+</ul>
+<blockquote>
+<p>参考  <a href="http://my.oschina.net/xuleo/blog/596165" target="_blank" rel="external">NDK学习笔记（三）SWIG：自动生成JNI代码</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/01/移动周分享-第49期/" data-id="cj2xi6dzw002w2zx131gm597t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第48期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/移动周分享-第48期/" class="article-date">
+  <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/移动周分享-第48期/">移动周分享-第48期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Android单元测试框架-吴明"><a href="#Android单元测试框架-吴明" class="headerlink" title="Android单元测试框架 - 吴明"></a>Android单元测试框架 - 吴明</h2><ul>
+<li>Android单元测试<ul>
+<li>在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。  </li>
+</ul>
+</li>
+<li>框架比较<ul>
+<li>JUnit<ul>
+<li>原生单元测试</li>
+<li>不能让Activity执行到resume的状态</li>
+<li>@王进已讲</li>
+</ul>
+</li>
+<li>AndroidTest<ul>
+<li>运行在Android环境</li>
+</ul>
+</li>
+<li>Instrumentation<ul>
+<li>运行在模拟器上</li>
+</ul>
+</li>
+<li>Robotium<ul>
+<li>类似于Selenium的测试框架</li>
+<li>运行在模拟器上</li>
+<li>通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+</ul>
+</li>
+<li>Robolectric+Mock(Mockito)<ul>
+<li>运行在JVM上速度快</li>
+<li>Jenkins周期性执行</li>
+<li>无需准备Android环境</li>
+<li>实现了Android中对XML的解析，模拟了View，Layout，以及资源的加载</li>
+<li>一些测试对象依赖度较高而需要解除依赖的场景(如网络)使用Mock框架</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://robolectric.org/getting-started/" target="_blank" rel="external">Robolectric</a></p>
+<ul>
+<li><p>Android Studio配置</p>
+<ul>
+<li><p>build.gradle添加库</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">testCompile</span> "<span class="selector-tag">org</span><span class="selector-class">.robolectric</span><span class="selector-pseudo">:robolectric</span><span class="selector-pseudo">:3.0"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Build Variants设置<br><img src="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png" alt="Unit Tests"></p>
+</li>
+<li>Linux和Mac平台的需要配置下才能运行:在Android Studio中run边上有一个app选择，这里选择”Edit Configurations” 出现编辑界面<br><img src="" alt="Run/Debug Configurations"><br>在左边中新建JUnit，Default-&gt;JUnit</li>
+<li>测试代码</li>
+<li>中间出现问题<ul>
+<li>Android SDK目前只支持到22，5.1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>单元测试的目标函数主要有三种：</p>
+<ol>
+<li>有明确的返回值，如上图的dosomething(Boolean param)，做单元测试时，只需调用这个函数，然后验证函数的返回值是否符合预期结果。</li>
+<li>这个函数只改变其对象内部的一些属性或者状态，函数本身没有返回值，就验证它所改变的属性和状态。</li>
+<li>一些函数没有返回值，也没有直接改变哪个值的状态，这就需要验证其行为，比如点击事件。 </li>
+</ol>
+<ul>
+<li>既没有返回值，也没有改变状态，又没有触发行为的函数是不可测试的，在项目中不应该存在。当存在同时具备上述多种特性时，本文建议采用多个case来真对每一种特性逐一验证，或者采用一个case，逐一执行目标函数并验证其影响。</li>
+<li>构造用例的原则是测试用例与函数一对一，实现条件覆盖与路径覆盖。Java单元测试中，良好的单元测试是需要保证所有函数执行正确的，即所有边界条件都验证过，一个用例只测一个函数，便于维护。在Android单元测试中，并不要求对所有函数都覆盖到，像Android SDK中的函数回调则不用测试。</li>
+</ul>
+</li>
+<li><p>测试用例</p>
+<ul>
+<li><p>组件</p>
+<ul>
+<li><p>Activity测试</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">		@Test</div><div class="line">    public void testLifecycle() &#123;</div><div class="line">        ActivityController&lt;MainActivity&gt; activityController = Robolectric.buildActivity(MainActivity.class).create().start();</div><div class="line">        Activity activity = activityController.get();</div><div class="line">        Button action_next = (Button) activity.findViewById(R.id.next);</div><div class="line">        Assert.assertEquals("next", action_next.getText().toString());</div><div class="line"><span class="comment">//        error</span></div><div class="line"><span class="comment">//        Assert.assertEquals("testLifecycle", action_next.getText().toString());</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">		````  </div><div class="line">		-<span class="ruby"> Service</span></div><div class="line">		-<span class="ruby"> BroadcastReceiver</span></div><div class="line">		-<span class="ruby"> Fragment </span></div><div class="line">	-<span class="ruby"> 控件行为</span></div><div class="line">		-<span class="ruby"> 跳转</span></div><div class="line">	-<span class="ruby"> 界面元素</span></div><div class="line">		-<span class="ruby"> Toast</span></div></pre></td></tr></table></figure>
+<p>@Test<br>public void testToast() {<br>Button action_toast = (Button) mActivity.findViewById(R.id.action_toast);<br>action_toast.performClick();<br>Assert.assertEquals(“hello”, ShadowToast.getTextOfLatestToast());<br>}</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> Dialog</span></div><div class="line">-<span class="ruby"> UI控件</span></div></pre></td></tr></table></figure>
+<p>@Test<br>public void testStartEndActivity() {<br>Button action_next = (Button) mActivity.findViewById(R.id.next);<br>action_next.performClick();</p>
+<p>Intent intent = new Intent(mActivity, EndActivity.class);</p>
+<p>Intent actionIntent = ShadowApplication.getInstance().getNextStartedActivity();<br>Assert.assertEquals(intent, actionIntent);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">	- 自定义函数</div><div class="line">	- 网络请求</div><div class="line">- assertJ-android断言库</div><div class="line">- 资料</div><div class="line">	- [参考1](https://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/0-introduction.html)</div><div class="line">	- [美团Android单元测试](http://tech.meituan.com/Android_unit_test.html)</div><div class="line">	- [测试用例](http://www.jianshu.com/p/9d988a2f8ff7)</div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">## 无主题 - 陈奎</div><div class="line">###NodeJS 安装</div><div class="line">-	到 [nodejs 下载](https://nodejs.org/download/release/) 下载 `node-v5.9.0-linux-x64.tar.gz`，上传到 linux 服务器 `/usr/local/nodejs` 目录；</div><div class="line">-	在 nodejs 目录执行</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>tar zxvf node-v5.9.0-linux-x64.tar.gz<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">解压，进入解压后的bin目录下，执行ls会看到两个文件<span class="keyword">node</span><span class="title">,npm</span>. 然后执行</div></pre></td></tr></table></figure></p>
+<p>./node –v<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果显示出版本号说明我们下载的程序包是没有问题的。 </div><div class="line"><span class="bullet">-	</span>配置环境变量，</div></pre></td></tr></table></figure></p>
+<p>sudo vi /etc/profile<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH的上一行添加如下内容</div></pre></td></tr></table></figure></p>
+<p>PATH=$PATH:/usr/local/nodejs/node-v5.9.0-linux-x64/bin<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">编辑完成后按Esc键 然后输入 :<span class="keyword">wq</span> 按回车保存，退出<span class="keyword">vi</span> ，执行</div></pre></td></tr></table></figure></p>
+<p>source /etc/profile<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">可以使变量立即生效，然后执行</div></pre></td></tr></table></figure></p>
+<p>echo $PATH<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">看输出内容是否包含自己添加的内容，然后到任意目录下去执行一次执行</div></pre></td></tr></table></figure></p>
+<p>node -v<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">npm -v</div></pre></td></tr></table></figure></p>
+<p>ok 搞定了，需要注意的是，通过  <code>source /etc/profile</code>，只是让变量临时生效了，如果此时重新开一个终端运行node会提示找不到命令，这个问题重启或者注销之后可以解决，如果不想重启的话，再次执行 <code>source /etc/profile</code> 即可。</p>
+<p>###newman 安装# </p>
+<ul>
+<li>官网在这里<a href="https://github.com/postmanlabs/newman" target="_blank" rel="external">newman</a>； </li>
+<li>执行  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g <span class="keyword">new</span><span class="type">man</span>@<span class="number">2</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>即可，安装成功后执行<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span><span class="type">man</span> –h</div></pre></td></tr></table></figure></p>
+<p>可以显示帮助信息。 </p>
+<p>###mail 安装#</p>
+<ul>
+<li>使用<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">yum search mail</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>发现有 <code>mailx.x86_64 : Enhanced implementation of the mailx command</code> 说明可以安装，执行<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> mailx -y</div></pre></td></tr></table></figure></p>
+<p>搞定，执行如下命令即可发送邮件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"this is send content"</span> | mail <span class="_">-s</span> <span class="string">"send from linux"</span> <span class="built_in">test</span>@test.com</div></pre></td></tr></table></figure></p>
+<ul>
+<li>默认情况下发送的邮件会被放到垃圾邮件里面，可以执行<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi <span class="regexp">/etc/m</span>ail.rc</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在其中添加如下配置<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span> <span class="keyword">from</span>=<span class="keyword">test</span>@<span class="number">163.</span>com</div><div class="line"><span class="keyword">set</span> smtp=smtp<span class="number">.163</span>.com</div><div class="line"><span class="keyword">set</span> smtp-auth-<span class="keyword">user</span>=<span class="keyword">test</span></div><div class="line"><span class="keyword">set</span> smtp-auth-<span class="keyword">password</span>=<span class="number">123456</span></div><div class="line"><span class="keyword">set</span> smtp-auth=login</div></pre></td></tr></table></figure></p>
+<p>这样发送的邮件就不会被放到垃圾邮件里面，也可以从文件中获取发送内容，如下<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mail -s <span class="string">"mail title"</span> <span class="number">123456</span>@<span class="number">163.</span>com &lt; outfile<span class="number">-1458185763.</span>txt</div></pre></td></tr></table></figure></p>
+<p> 参考：<a href="http://www.cnblogs.com/xiaoshi1991/archive/2012/09/19/2694465.html" target="_blank" rel="external">LINUX下通过外部SMTP发邮件 （直接抛弃sendmail和postfix）</a></p>
+<h2 id="插件推荐-王进"><a href="#插件推荐-王进" class="headerlink" title="插件推荐 - 王进"></a>插件推荐 - 王进</h2><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/mcharmas/android-parcelable-intellij-plugin" target="_blank" rel="external">ParcelableGenerator</a></td>
+<td>Android中的序列化有两种方式, 分别是实现Serializable接口和Parcelable接口, 但在Android中是推荐使用Parcelable, 只不过我们这种方式要比Serializable方式要繁琐，那么有了这个插件一切就ok了</td>
+</tr>
+<tr>
+<td><a href="https://github.com/zzz40500/GsonFormat" target="_blank" rel="external">GsonFormat</a></td>
+<td>现在大多数服务端api都以json数据格式返回, 而客户端需要根据api接口生成相应的实体类, 这个插件把这个过程自动化了, 赶紧使用起来吧</td>
+</tr>
+<tr>
+<td><a href="https://github.com/layerlre/ADBWIFI" target="_blank" rel="external">ADB WIFI</a></td>
+<td>每天只需用USB线连接一次，就可以将USB连接切换成WIFI连接，去掉讨厌的数据线连接</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/18/移动周分享-第48期/" data-id="cj2xi6dzu002r2zx1frsx5c8q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第47期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/11/移动周分享-第47期/" class="article-date">
+  <time datetime="2016-03-11T10:30:00.000Z" itemprop="datePublished">2016-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/11/移动周分享-第47期/">移动周分享-第47期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Swift 高阶函数及参数的省略 - 杨志平</p>
+<h4 id="常见定义函数"><a href="#常见定义函数" class="headerlink" title="常见定义函数"></a>常见定义函数</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> normalFunc = &#123;</div><div class="line">    <span class="function"><span class="params">()</span> -&gt;</span> Int <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="number">10086</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> normalResult = normalFunc()</div><div class="line"><span class="regexp">// normalResult = 10086</span></div></pre></td></tr></table></figure>
+<p>###函数参数的『省略』<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 以数组排序函数为例：</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> numberArr = [<span class="number">1</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> res1 = numberArr.<span class="built_in">sort</span>()</div><div class="line"></div><div class="line"><span class="keyword">let</span> res2 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1: <span class="type">Int</span>, num2: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res3 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1: <span class="type">Int</span>, num2: <span class="type">Int</span>) <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res4 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    (num1, num2) <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num1&gt;num2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res5 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    <span class="keyword">return</span> $<span class="number">0</span> &gt; $<span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res6 = numberArr.<span class="built_in">sort</span> &#123;</div><div class="line">    $<span class="number">0</span> &gt; $<span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> res7 = numberArr.<span class="built_in">sort</span>(&gt;)</div></pre></td></tr></table></figure></p>
+<h4 id="变化过程"><a href="#变化过程" class="headerlink" title="变化过程"></a><code>变化过程</code></h4><blockquote>
+<p>{ (num1: Int, num2: Int) -&gt; Bool in return num1&gt;num2 }<br>{ (num1: Int, num2: Int) in return num1&gt;num2 }<br>{ (num1, num2) in return num1&gt;num2 }<br>{ return $0 &gt; $1 }<br>{ $0 &gt; $1 }</p>
+</blockquote>
+<p>###函数式编程</p>
+<h4 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">square</span><span class="params">(a:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * a</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cube</span><span class="params">(a:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * a * a</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageSumOfSquares</span><span class="params">(a:Float,b:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (square(a) + square(b)) / <span class="number">2.0</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageSumOfCubes</span><span class="params">(a:Float,b:Float)</span></span> -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (cube(a) + cube(b)) / <span class="number">2.0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 像潘君以前分享Swift的Currying（柯里化），可以灵活调配使用</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageOfFunction</span><span class="params">(a a:Float,b:Float,f:<span class="params">(Float -&gt; Float)</span></span></span>) -&gt; <span class="type">Float</span> &#123;</div><div class="line">    <span class="keyword">return</span> (f(a) + f(b)) / <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult1 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: square)</div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult2 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: &#123;</div><div class="line">                                                        (a: <span class="type">Float</span>) -&gt; <span class="type">Float</span> <span class="keyword">in</span></div><div class="line">                                                            <span class="keyword">return</span> a * a</div><div class="line">                                                     &#125;)</div><div class="line">squareResult2</div><div class="line"></div><div class="line"><span class="comment">//&#123;(x: Float) -&gt; Float in return x * x&#125;</span></div><div class="line"><span class="comment">//&#123;x in return x * x&#125;</span></div><div class="line"><span class="comment">//&#123;x in x * x&#125;</span></div><div class="line"><span class="comment">//&#123;$0 * $0&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> squareResult3 = averageOfFunction(a: <span class="number">2</span>, b: <span class="number">4</span>, f: &#123;$<span class="number">0</span> * $<span class="number">0</span>&#125;)</div><div class="line">squareResult3</div></pre></td></tr></table></figure>
+<h4 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正统高阶函数样式</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum1</span><span class="params">(value: Int)</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">adder</span><span class="params">(otherValue: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> otherValue + value</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> adder</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 省略后</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum2</span><span class="params">(value: Int)</span></span> -&gt; (<span class="type">Int</span> -&gt; <span class="type">Int</span>) &#123;</div><div class="line">    <span class="keyword">return</span> &#123; $<span class="number">0</span> + value &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = sum1(<span class="number">2</span>)(<span class="number">3</span>)</div><div class="line"><span class="keyword">let</span> result2 = sum2(<span class="number">5</span>)(<span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="comment">// 改造函数完毕</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcMathMethod1</span><span class="params">(first: Int -&gt; Int, <span class="number">_</span><span class="comment">/*起到变量匿名作用*/</span> second: Int -&gt; Int)</span></span> -&gt; <span class="type">Int</span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123; second(first($<span class="number">0</span>)) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> f1 = funcMathMethod1(&#123;$<span class="number">0</span> + <span class="number">2</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">3</span>&#125;)</div><div class="line">f1(<span class="number">7</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> f2 = funcMathMethod1(&#123;$<span class="number">0</span> * $<span class="number">0</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">4</span>&#125;)</div><div class="line">f2(<span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="comment">// Tip: 使用函数式编程，要是用得不好容易造成可读性很差，那优化如下</span></div><div class="line"><span class="keyword">typealias</span> <span class="type">MathFunc</span> = <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcMathMethod2</span><span class="params">(f: MathFunc, <span class="number">_</span> s: MathFunc)</span></span> -&gt; <span class="type">MathFunc</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123; s(f($<span class="number">0</span>)) &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> readability = funcMathMethod1(&#123;$<span class="number">0</span> + <span class="number">2</span>&#125;, &#123;$<span class="number">0</span> / <span class="number">3</span>&#125;)</div><div class="line">readability(<span class="number">7</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// map</span></div><div class="line"><span class="keyword">var</span> numberArr = [<span class="number">1</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> mapArray = numberArr.<span class="built_in">map</span> &#123; (num: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">     <span class="keyword">return</span> <span class="string">"第<span class="subst">\(num)</span>名"</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> mapArray2 = numberArr.<span class="built_in">map</span>(&#123;<span class="string">"第<span class="subst">\($<span class="number">0</span>)</span>名"</span>&#125;)</div><div class="line">mapArray2</div><div class="line"></div><div class="line"><span class="comment">// 可选型随意解包 str 可以为 nil</span></div><div class="line"><span class="keyword">let</span> str: <span class="type">String</span>? = <span class="string">"1234567890"</span></div><div class="line"><span class="keyword">let</span> mapStr = str.<span class="built_in">map</span>(&#123;<span class="string">"第<span class="subst">\($<span class="number">0</span>)</span>名"</span>&#125;)</div><div class="line">mapStr</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// filter</span></div><div class="line"><span class="keyword">let</span> filArr = numberArr.<span class="built_in">filter</span> &#123; (num: <span class="type">Int</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> num &gt; <span class="number">4</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> filArr2 = numberArr.<span class="built_in">filter</span>(&#123; $<span class="number">0</span> &gt; <span class="number">4</span> &#125;)</div><div class="line">filArr2</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// reduce</span></div><div class="line"><span class="keyword">let</span> sum = numberArr.<span class="built_in">reduce</span>(<span class="number">0</span>) &#123; (presum:<span class="type">Int</span>, num:<span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> presum + num</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> sum2 = numberArr.<span class="built_in">reduce</span>(<span class="number">10</span>, combine: &#123;$<span class="number">0</span> + $<span class="number">1</span>&#125;)</div><div class="line">sum2</div><div class="line"><span class="keyword">let</span> sumToStr = numberArr.<span class="built_in">reduce</span>(<span class="string">""</span>) &#123; (str: <span class="type">String</span>, num: <span class="type">Int</span>) -&gt; <span class="type">String</span> <span class="keyword">in</span></div><div class="line">    str + <span class="type">String</span>(num)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 求一个数组中偶数的平方和（一口气使用swift提供的三个高阶函数）</span></div><div class="line"><span class="comment">//[1,2,3,4,5,6,7] -&gt; [2,4,6] -&gt; 4+16+36 = 56</span></div><div class="line"><span class="keyword">let</span> result = numberArr.<span class="built_in">filter</span>(&#123;$<span class="number">0</span>%<span class="number">2</span>==<span class="number">0</span>&#125;).<span class="built_in">map</span>(&#123;$<span class="number">0</span>*$<span class="number">0</span>&#125;).<span class="built_in">reduce</span>(<span class="number">0</span>, combine: &#123;$<span class="number">0</span>+$<span class="number">1</span>&#125;)</div><div class="line">result <span class="comment">// result = 56</span></div></pre></td></tr></table></figure>
+<h3 id="Swift高阶函数面试题"><a href="#Swift高阶函数面试题" class="headerlink" title="Swift高阶函数面试题"></a>Swift高阶函数面试题</h3><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 面试题：用数组的 reduce 方法实现 map 的功能。</div><div class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>]</div><div class="line">// map简易实现</div><div class="line"><span class="keyword">let</span> res = arr.map(&#123;$<span class="number">0</span>*<span class="number">2</span>&#125;)</div><div class="line"></div><div class="line">// <span class="built_in">Array</span>.reduce(&lt;<span class="comment">#T##initial: T##T#&gt;, combine: &lt;#T##(T, Int) throws -&gt; T#&gt;)</span></div><div class="line">// 输出数据类型与初始化占位数据类型（initial）一致</div><div class="line"><span class="keyword">let</span> res2 = arr.reduce([]) &#123;</div><div class="line">    (a: [<span class="built_in">Int</span>], element: <span class="built_in">Int</span>) -&gt; [<span class="built_in">Int</span>] <span class="keyword">in</span></div><div class="line">    var t = <span class="built_in">Array</span>(a)</div><div class="line">    t.append(element * <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> t</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// 面试题：用 reduce 方法一次求出数组中奇数的和、以及偶数乘积</div><div class="line">// 使用元组，注意占位数据(<span class="number">0</span>, <span class="number">1</span>)，第一联合数据a :(<span class="built_in">Int</span>, <span class="built_in">Int</span>)，函数输出数据(<span class="built_in">Int</span>, <span class="built_in">Int</span>) 三者类型一致</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr2 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> res3: (<span class="built_in">Int</span>, <span class="built_in">Int</span>) = arr2.reduce((<span class="number">0</span>, <span class="number">1</span>)) &#123;</div><div class="line">    (a :(<span class="built_in">Int</span>, <span class="built_in">Int</span>), element: <span class="built_in">Int</span>) -&gt; (<span class="built_in">Int</span>, <span class="built_in">Int</span>) <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> element % <span class="number">2</span> == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> (a<span class="number">.0</span>, a<span class="number">.1</span> * element)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> (a<span class="number">.0</span> + element, a<span class="number">.1</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/11/移动周分享-第47期/" data-id="cj2xi6dzv002u2zx1h7mnz6tc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第46期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/04/移动周分享-第46期/" class="article-date">
+  <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">2016-03-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/04/移动周分享-第46期/">移动周分享-第46期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Moto-360-Sport初体验-吴明"><a href="#Moto-360-Sport初体验-吴明" class="headerlink" title="Moto 360 Sport初体验 - 吴明"></a>Moto 360 Sport初体验 - 吴明</h2><ul>
+<li>前奏<ul>
+<li>美版</li>
+<li>第一连接需要连接Android手机</li>
+<li>需要翻墙</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>Android  Wear</li>
+<li>WearADay</li>
+</ul>
+</li>
+<li>iPhone支持<ul>
+<li>无需越狱，连接应用WearADay<ul>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055266573.jpg" alt="如图1"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055336913.jpg" alt="如图2"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055318883.jpg" alt="如图3"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055318092.jpg" alt="如图4"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055331041.jpg" alt="如图5"></li>
+</ul>
+</li>
+<li>包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示<ul>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055428219.jpg" alt="如图1"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055481895.jpg" alt="如图2"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055447453.jpg" alt="如图3"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055512184.jpg" alt="如图4"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055547831.jpg" alt="如图5"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055580691.jpg" alt="如图6"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Android支持<ul>
+<li>微信:表情回复，语音回复，文字回复</li>
+<li>QQ:未测</li>
+</ul>
+</li>
+<li>缺陷<ul>
+<li>分辨率不高</li>
+<li>目前测试没有好的输入法每次提示都是在连接手机输入但每次都是提示手机不在附近</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>开发者模式安装应用</p>
+<ol>
+<li>打开手机以及手表的开发者选项<ul>
+<li>手机端：设置-关于手机，找到“版本号”，对着它连续点击7下即可开启，开机后进入“设置”-“开发者选项”，勾选“USB调试</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863912.png" alt="手机开启develp"></li>
+<li>手表端：长按右侧按钮唤出设置界面-“About”，找到“Build number”，对着它连续点击7下即可开启，开启后进入设置-“Developer options”，按图所示开启“ADB debugging”和“Debug over Bluetooth”</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863360.png" alt="Moto开启develp"></li>
+</ul>
+</li>
+<li>打开Android Wear软件，勾选设置菜单里的“Debugging over Bluetooth”。<ul>
+<li>你可以发现“Host”是disconnected未连接状态，这是代表手表端;“Target”是手机端，connected已连接状态;怎么让手表端的显示已连接呢?请继续往下看</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863594.png" alt="Android Wear打开蓝牙调试"> </li>
+</ul>
+</li>
+<li><p>把手机连接上电脑，在adb工具的文件夹里调出命令行，依次输入以下命令</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb forward <span class="string">tcp:</span><span class="number">4444</span> <span class="string">localabstract:</span>/adb-hub</div><div class="line">　　adb connect <span class="string">localhost:</span><span class="number">4444</span></div></pre></td></tr></table></figure>
+<p>分两次输入(电脑需支持adb命令，如果不支持请百度<a href="http://blog.sina.com.cn/s/blog_6268f10201016s64.html" target="_blank" rel="external">Mac配置adb</a>，<a href="http://blog.csdn.net/huangbiao86/article/details/6664779" target="_blank" rel="external">Window配置adb</a>两个链接是未测试)</p>
+</li>
+</ol>
+<ul>
+<li>输完以上两条命令后，留意手机，会弹出允许USB调试的窗口，勾选总是允许，点击OK即可，这时你就发现代表手表端的“Host”就变成connected已连接状态了，嗯，这就代表可以再电脑执行adb命令来控制手表了</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863363.png" alt="提示是否调试"></li>
+</ul>
+<ol>
+<li><p>相关命令</p>
+<ul>
+<li>adb devices (显示已连接的设备，如图所示，会显示出2个设备名，分别对应手机和手表)</li>
+<li><p><img src="http://image.anruan.com/imglist/20141021/20141021863452.png" alt="如图"></p>
+</li>
+<li><p>adb -s 手机ID号 install xxx.apk(给手机安装软件，要注意加上手机ID号，比如我的就是 adb -s TA26901ZLK install xxx.apk )</p>
+</li>
+<li>adb -s localhost:4444 install xxx.apk(给手表安装软件，MOTO 360的软件apk可以通过Android Wear软件专题下载，这里是通过手机的蓝牙给手表安装的，所以传输速度稍慢，要耐心等待，安装成功后会有提示)</li>
+<li>adb -s localhost:4444 unistall xxx(卸载手表端的某个软件，比如adb -s localhost:4444unistall com.whirlscape.minuum)</li>
+<li><p>查看Moto 360所有app的packages</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s localhos<span class="variable">t:4444</span> <span class="keyword">shell</span> pm <span class="keyword">list</span> packages</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载指定包名的app</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s localhost:4444 <span class="keyword">uninstall</span> [-k] &lt;<span class="keyword">insert</span> <span class="keyword">package</span> <span class="keyword">name</span> here&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>参考文章<ul>
+<li><a href="http://m.anruan.com/view_5488.html" target="_blank" rel="external">链接1</a></li>
+<li><a href="https://www.reddit.com/r/moto360/comments/3bkd5r/remove_wear_apps_without_uninstalling_app_from/" target="_blank" rel="external">链接2</a> </li>
+<li><a href="http://www.5577.com/wear/58563.html" target="_blank" rel="external">链接3</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Android-NFC-杨俊构"><a href="#Android-NFC-杨俊构" class="headerlink" title="Android  NFC - 杨俊构"></a>Android  NFC - 杨俊构</h2><h3 id="NFC-定义"><a href="#NFC-定义" class="headerlink" title="NFC 定义"></a>NFC 定义</h3><ul>
+<li>From  <a href="http://developer.android.com/guide/topics/connectivity/nfc/index.html" target="_blank" rel="external">Android dev</a><blockquote>
+<p> Near Field Communication (NFC) is a set of short-range wireless technologies, typically requiring a distance of 4cm or less to initiate a connection. NFC allows you to share small payloads of data between an NFC tag and an Android-powered device, or between two Android-powered devices.   </p>
+<p>Tags can range in complexity. Simple tags offer just read and write semantics, sometimes with one-time-programmable areas to make the card read-only. More complex tags offer math operations, and have cryptographic hardware to authenticate access to a sector. The most sophisticated tags contain operating environments, allowing complex interactions with code executing on the tag. The data stored in the tag can also be written in a variety of formats, but many of the Android framework APIs are based around a NFC Forum standard called NDEF (NFC Data Exchange Format).    </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="NFC应用"><a href="#NFC应用" class="headerlink" title="NFC应用"></a>NFC应用</h3><p><img src="http://7xohph.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160307092332.png" alt=""></p>
+<h3 id="NFC通信技术原理"><a href="#NFC通信技术原理" class="headerlink" title="NFC通信技术原理"></a>NFC通信技术原理</h3><ul>
+<li>支持NFC的设备可以在主动或被动模式下交换数据</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160307092946.png" alt=""></p>
+<h3 id="NFC-Android开发"><a href="#NFC-Android开发" class="headerlink" title="NFC    Android开发"></a>NFC    Android开发</h3><ul>
+<li>NFC 感应事件分发</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160307093207.png" alt=""></p>
+<ul>
+<li>NFC 感应数据处理流程</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160307093221.png" alt=""></p>
+<ul>
+<li>NFC Card Readder  <a href="http://developer.android.com/samples/CardReader/index.html" target="_blank" rel="external">Demo</a></li>
+</ul>
+<blockquote>
+<p>参考 Android 开发 <a href="http://developer.android.com/guide/topics/connectivity/nfc/nfc.html" target="_blank" rel="external">http://developer.android.com/guide/topics/connectivity/nfc/nfc.html</a> </p>
+</blockquote>
+<h3 id="NFC标签种类"><a href="#NFC标签种类" class="headerlink" title="NFC标签种类"></a>NFC标签种类</h3><ul>
+<li>NFC 官方分类<blockquote>
+<p>参考 <a href="http://nfc-forum.org/our-work/specifications-and-application-documents/specifications/tag-type-technical-specifications/" target="_blank" rel="external">nfc-forum.org</a>    </p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160307094734.png" alt=""></p>
+<ul>
+<li>Android API 支持的标签种类    <blockquote>
+<p>参考<a href="http://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc.html" target="_blank" rel="external">http://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="NFC-开发的建议"><a href="#NFC-开发的建议" class="headerlink" title="NFC 开发的建议"></a>NFC 开发的建议</h3><p>1.多了解芯片的功能和卡片的类型,</p>
+<p>2.获得更多芯片厂商的资料，更多的接口信息</p>
+<p>3.了解数据的解析方法</p>
+<p>4.多打log,写更详细的log给自己，更简明的log给使用者</p>
+<h3 id="NFC展望"><a href="#NFC展望" class="headerlink" title="NFC展望"></a>NFC展望</h3><p>1.数据安全的问题日益严重</p>
+<p>2.手机SIM卡的NFC功能会逐渐发展</p>
+<p>3.卡片会更智能,点到点的应用会更多</p>
+<p>4.应用更广，价格更便宜</p>
+<p>Android Support Library 23.2 推出之后，增加了几个功能，例如支持Vector Drawables 和Animated Vector Drawables；增加AppCompat DayNight 主题；Design 库中增加Bottom Sheets，RecyclerView 支持 auto-measurement，之前的wrap_content ,match_parent 都将可以发挥作用等等</p>
+<p>公司的App 之前使用过第三方的[BottomSheet] （<a href="https://github.com/soarcn/BottomSheet" target="_blank" rel="external">https://github.com/soarcn/BottomSheet</a> ），现在Android 有自己的BottomSheet 那还不赶紧换成原生的。然而好事多磨，Android 原生BottomSheet 资料太少，深研下去发现BottomSheet 就是个大坑！</p>
+<p>##BottomSheet 的使用  - 王进</p>
+<p>BottomSheet 使用需要CoordinatorLayout作为父布局，BottomSheet 的布局作为CoordinatorLayout 的子布局，并且BottomSheetBehavior（比如加上app:layout_behavior=”android.support.design.widget.BottomSheetBehavior”）</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.design</span><span class="selector-class">.widget</span><span class="selector-class">.CoordinatorLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line"></div><div class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line"></div><div class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line"></div><div class="line">    android:layout_width=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    android:layout_height=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    android:fitsSystemWindows=<span class="string">"true"</span></div><div class="line"></div><div class="line">    tools:context=<span class="string">"android.com.bottomsheets.MainActivity"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &lt;android<span class="selector-class">.support</span><span class="selector-class">.design</span><span class="selector-class">.widget</span><span class="selector-class">.AppBarLayout</span></div><div class="line"></div><div class="line">        android:layout_width=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">        android:layout_height=<span class="string">"wrap_content"</span></div><div class="line"></div><div class="line">        android:theme=<span class="string">"@style/AppTheme.AppBarOverlay"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &lt;android<span class="selector-class">.support</span><span class="selector-class">.v7</span><span class="selector-class">.widget</span><span class="selector-class">.Toolbar</span></div><div class="line"></div><div class="line">            android:id=<span class="string">"@+id/toolbar"</span></div><div class="line"></div><div class="line">            android:layout_width=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">            android:layout_height=<span class="string">"?attr/actionBarSize"</span></div><div class="line"></div><div class="line">            android:<span class="attribute">background</span>=<span class="string">"?attr/colorPrimary"</span></div><div class="line"></div><div class="line">            app:popupTheme=<span class="string">"@style/AppTheme.PopupOverlay"</span> /&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &lt;/android<span class="selector-class">.support</span><span class="selector-class">.design</span><span class="selector-class">.widget</span><span class="selector-class">.AppBarLayout</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &lt;include layout=<span class="string">"@layout/content_main"</span> /&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    &lt;include layout=<span class="string">"@layout/bottom_sheet_main"</span> /&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.design</span><span class="selector-class">.widget</span><span class="selector-class">.CoordinatorLayout</span>&gt;</div></pre></td></tr></table></figure>
+<p>实际使用过程中主要依靠BottomSheetBehavior来控制BottomSheet的展示及回调。</p>
+<p>BottomSheetBehavior 具有五种状态：</p>
+<blockquote>
+<ul>
+<li><p>STATE_COLLAPSED： 默认的折叠状态， bottom sheets只在底部显示一部分布局。显示高度可以通过 app:behavior_peekHeight 设置（默认是0）</p>
+</li>
+<li><p>STATE_DRAGGING ： 过渡状态，此时用户正在向上或者向下拖动bottom sheet</p>
+</li>
+<li><p>STATE_SETTLING: 视图从脱离手指自由滑动到最终停下的这一小段时间</p>
+</li>
+<li><p>STATE_EXPANDED： bottom sheet 处于完全展开的状态：当bottom sheet的高度低于CoordinatorLayout容器时，整个bottom sheet都可见；或者CoordinatorLayout容器已经被bottom sheet填满。 </p>
+</li>
+<li><p>STATE_HIDDEN ： 默认无此状态（可通过app:behavior_hideable 启用此状态），启用后用户将能通过向下滑动完全隐藏 bottom sheet</p>
+</li>
+</ul>
+</blockquote>
+<p>设置状态：</p>
+<p>bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);</p>
+<p>回调：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// The View with the BottomSheetBehavio </span></div><div class="line"></div><div class="line">View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);</div><div class="line"></div><div class="line">BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottomSheet));</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">bottomSheetBehavior.setBottomSheetCallback(<span class="keyword">new</span> BottomSheetBehavior.BottomSheetCallback() &#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onStateChanged</span><span class="params">(@NonNull View bottomSheet, <span class="keyword">int</span> newState)</span> </span>&#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (newState == BottomSheetBehavior.STATE_EXPANDED) &#123;</div><div class="line"></div><div class="line">                text1.setText(<span class="string">"Collapse Me!"</span>);</div><div class="line"></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">                text1.setText(<span class="string">"Expand Me!"</span>);</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSlide</span><span class="params">(@NonNull View bottomSheet, <span class="keyword">float</span> slideOffset)</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>强调：</p>
+<blockquote>
+<ul>
+<li>BottomSheet 点击展示的默认是折叠状态，不是完全展开状况，所有如果需要完全展开，请设置展开状况</li>
+</ul>
+</blockquote>
+<p>###BottomSheetDialog</p>
+<p>BottomSheetBehavior将能帮你实现 <a href="https://www.google.com/design/spec/components/bottom-sheets.html?utm_campaign=android_launch_supportlibrary23.2_022216&amp;utm_source=anddev&amp;utm_medium=blog#bottom-sheets-persistent-bottom-sheets" target="_blank" rel="external">常驻bottom sheet（ persistent bottom sheet）</a>的场景, 但这个版本还提供了BottomSheetDialog 和 BottomSheetDialogFragment 来实现 <a href="https://www.google.com/design/spec/components/bottom-sheets.html?utm_campaign=android_launch_supportlibrary23.2_022216&amp;utm_source=anddev&amp;utm_medium=blog#bottom-sheets-modal-bottom-sheets" target="_blank" rel="external">modal bottom sheets</a>的场景。只需要将AppCompatDialog 或者AppCompatDialogFragment分别替换成上述的两个控件，你就拥有了 bottom sheet 风格的对话框</p>
+<p>###坑1：</p>
+<p>然而我们实际我们需要BottomSheetDialog 是展开的，而BottomSheetDialog只展示一部分</p>
+<p>原因：BottomSheetDialog默认是STATE_COLLAPSED，所有BottomSheetDialog 依靠peekHight来设置高度，系统BottomSheetDialog 默认高度为256dp（查源码得知）,那按理来说我们的BottomSheetDialog 高度该是256dp，但是我们实际发现BottomSheetDialog高度也不等于256dp。我们研究下BottomSheetBehavior的中控制BottomSheetDialog高度源码:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Override</div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="built_in">boolean</span> onLayoutChild(CoordinatorLayout <span class="keyword">parent</span>, V child, int layoutDirection) &#123;</div><div class="line"></div><div class="line">       <span class="comment">// First let the parent lay it out</span></div><div class="line"></div><div class="line">       <span class="keyword">if</span> (mState != STATE_DRAGGING &amp;&amp; mState != STATE_SETTLING) &#123;</div><div class="line"></div><div class="line">           <span class="keyword">parent</span>.onLayoutChild(child, layoutDirection);</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">// Offset the bottom sheet</span></div><div class="line"></div><div class="line">       mParentHeight = <span class="keyword">parent</span>.getHeight();</div><div class="line"></div><div class="line">       mMinOffset = Math.<span class="keyword">max</span>(<span class="number">0</span>, mParentHeight - child.getHeight());</div><div class="line"></div><div class="line">       mMaxOffset = mParentHeight - mPeekHeight;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (mState == STATE_EXPANDED) &#123;</div><div class="line"></div><div class="line">           ViewCompat.offsetTopAndBottom(child, mMinOffset);</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mHideable &amp;&amp; mState == STATE_HIDDEN) &#123;</div><div class="line"></div><div class="line">           ViewCompat.offsetTopAndBottom(child, mParentHeight);</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mState == STATE_COLLAPSED) &#123;</div><div class="line"></div><div class="line">           ViewCompat.offsetTopAndBottom(child, mMaxOffset);</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (mViewDragHelper == <span class="built_in">null</span>) &#123;</div><div class="line"></div><div class="line">           mViewDragHelper = ViewDragHelper.create(<span class="keyword">parent</span>, mDragCallback);</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       mViewRef = <span class="literal">new</span> WeakReference&lt;&gt;(child);</div><div class="line"></div><div class="line">       mNestedScrollingChildRef = <span class="literal">new</span> WeakReference&lt;&gt;(findScrollingChild(child));</div><div class="line"></div><div class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>通过源码我们可以得知BottomSheetBehavior通过改变child的偏移量而控制BottomSheetDialog的高度，默认状态为STATE_COLLAPSED,child向下移动mMaxOffset高度，从而控制child显示高度为mPeekHeight,这就需要child与parent 顶部对齐，child的getTop 为0；</p>
+<p>然而我们再去查看Android的BottomSheetDialog 内中布局R.layout.design_bottom_sheet_dialog,发现我们自定义的的BottomSheetDialog 的contentView 是放置在FrameLayout 中的，然而FrameLayout出于某些原因为垂直居中的，而不是顶部对齐，从而导致BottomSheetDialog在256dp的基础上向下偏移,只展示一部分。</p>
+<p>所以我们可以通过下面方法解决BottomSheetDialog 的显示问题</p>
+<p>解决方法如下：</p>
+<ol>
+<li><p>通过bottomSheetDialog中contentView得到parentView，通过parentView 得到BottomSheetBehavior</p>
+</li>
+<li><p>测量bottomSheetDialog布局中content的高度，设置peekHight</p>
+</li>
+<li><p>设置bottomSheetDialog 的contentView 对应的父布局CoordinatorLayout的Grivity 为Gravity.TOP |  Gravity.CENTER_HORIZONTAL;</p>
+</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">final BottomSheetDialog bottomSheetDialog = <span class="keyword">new</span> BottomSheetDialog(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">       View contentView = View.inflate(<span class="keyword">this</span>, R.layout.bottom_sheet_avatar, <span class="literal">null</span>);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       View.OnClickListener clickListener = <span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">           @<span class="function">Override</span></div><div class="line"></div><div class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span>(<span class="params">View v</span>) &#123;</div><div class="line"></div><div class="line">               <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line"></div><div class="line">                   <span class="keyword">case</span> R.id.avatar_open_photo:</div><div class="line"></div><div class="line">                       openCamera();</div><div class="line"></div><div class="line">                       <span class="keyword">break</span>;</div><div class="line"></div><div class="line">                   <span class="keyword">case</span> R.id.avatar_open_picture:</div><div class="line"></div><div class="line">                       openPicture();</div><div class="line"></div><div class="line">                       <span class="keyword">break</span>;</div><div class="line"></div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="keyword">if</span> (bottomSheetDialog != <span class="literal">null</span> &amp;&amp; bottomSheetDialog.isShowing()) &#123;</div><div class="line"></div><div class="line">                   bottomSheetDialog.dismiss();</div><div class="line"></div><div class="line">               &#125;</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line">       &#125;;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       contentView.findViewById(R.id.avatar_open_photo).setOnClickListener(clickListener);</div><div class="line"></div><div class="line">       contentView.findViewById(R.id.avatar_open_picture).setOnClickListener(clickListener);</div><div class="line"></div><div class="line">       contentView.findViewById(R.id.avatar_cancel).setOnClickListener(clickListener);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       bottomSheetDialog.setContentView(contentView);</div><div class="line"></div><div class="line">       View parent = (View) contentView.getParent();</div><div class="line"></div><div class="line">       BottomSheetBehavior behavior = BottomSheetBehavior.<span class="keyword">from</span>(parent);</div><div class="line"></div><div class="line">       contentView.measure(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line"></div><div class="line">       behavior.setPeekHeight(contentView.getMeasuredHeight());</div><div class="line"></div><div class="line">       CoordinatorLayout.LayoutParams <span class="keyword">params</span> = (CoordinatorLayout.LayoutParams) parent.getLayoutParams();</div><div class="line"></div><div class="line">       <span class="keyword">params</span>.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;</div><div class="line"></div><div class="line">       parent.setLayoutParams(<span class="keyword">params</span>);</div><div class="line"></div><div class="line">       bottomSheetDialog.show();</div></pre></td></tr></table></figure>
+<p>###坑2：</p>
+<p>当我们设置bottomSheetDialog每次点击后不new,而是直接show的话，然而当我们会bottomSheetDialog 展开后，我们将BottomSheetDialog划下隐藏后， 再点击展示BottomSheetDialog后，会发现页面只是变暗，BottomsheetDialog未展开，这是由于之前我们划下收缩隐藏BottomSheetDialog后，bottomSheetDialogBehavior的状态为隐藏，再次show之后，系统未恢复bottomSheetDialogBehavior的状态，还是隐藏，所以再次点击后页面只是变暗。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line"></div><div class="line">       <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line"></div><div class="line">           <span class="keyword">case</span> R.id.showBottomSheetDialogButton:</div><div class="line"></div><div class="line">               <span class="keyword">if</span> (bottomSheetDialog != <span class="keyword">null</span>) &#123;</div><div class="line"></div><div class="line">                   bottomSheetDialog.show();</div><div class="line"></div><div class="line">                   Log.i(<span class="string">"0000"</span>, <span class="string">"behavior_state:"</span> + bottomSheetDialogBehavior.getState());</div><div class="line"></div><div class="line">                   Log.i(<span class="string">"0000"</span>, <span class="string">"STATE_HIDDEN :"</span> + BottomSheetBehavior.STATE_HIDDEN);</div><div class="line"></div><div class="line">                   <span class="keyword">return</span>;</div><div class="line"></div><div class="line">               &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">               bottomSheetDialog = <span class="keyword">new</span> BottomSheetDialog(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">               bottomSheetDialog.show();</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/04/移动周分享-第46期/" data-id="cj2xi6dzt002p2zx14u4ios6r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第45期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/26/移动周分享-第45期/" class="article-date">
+  <time datetime="2016-02-26T10:30:00.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/移动周分享-第45期/">移动周分享-第45期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="swift-的-guard-amp-defer-杨志平"><a href="#swift-的-guard-amp-defer-杨志平" class="headerlink" title="swift 的 guard &amp; defer - 杨志平"></a>swift 的 guard &amp; defer - 杨志平</h2><h4 id="guard-使用"><a href="#guard-使用" class="headerlink" title="guard 使用"></a>guard 使用</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 原始方法 (强解包可能会出现问题)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tranIntToString1</span><span class="params">(x: Int?)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">if</span> x == <span class="literal">nil</span> || x! &lt;= <span class="number">0</span> &#123;</div><div class="line">  	    <span class="comment">// 不符合值的要求时，写点代码</span></div><div class="line">        <span class="keyword">return</span> <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 使用x</span></div><div class="line">    <span class="keyword">return</span> x!.description</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 改进</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tranIntToString2</span><span class="params">(x: Int?)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> x = x <span class="keyword">where</span> x&gt;<span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> x.description</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">""</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 保镖模式</span></div><div class="line"><span class="comment">// 和上面写法对比</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tranIntToString3</span><span class="params">(x: Int?)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> x = x <span class="keyword">where</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 变量不符合条件判断时，执行下面代码</span></div><div class="line">    <span class="keyword">return</span> x.description</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 非可选型</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tranIntToString4</span><span class="params">(x: Int)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">guard</span> x &gt; <span class="number">0</span> <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> x.description</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 常常用于条件判断拦截</span></div><div class="line"><span class="keyword">var</span> view = <span class="type">UIView</span>(frame: <span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">80</span>,<span class="number">80</span>))</div><div class="line">view.backgroundColor = <span class="type">UIColor</span>.redColor()</div><div class="line"></div><div class="line"><span class="type">UIView</span>.animateWithDuration(<span class="number">0.3</span>) &#123; [<span class="keyword">weak</span> view]() -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> view = view <span class="keyword">where</span> view.alpha&gt;<span class="number">0</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</div><div class="line">    view.alpha = <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.分析 NSArray 是一个闭包的返回值，而这是一个没有参数的闭包 </span></div><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> dataArray:<span class="type">NSArray</span> = &#123; [] &#125;() </div><div class="line"></div><div class="line"><span class="comment">//2.也可以写成这样 </span></div><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> dataArray:<span class="type">NSArray</span> = &#123; <span class="keyword">return</span> <span class="type">NSArray</span>() &#125;()</div><div class="line"></div><div class="line"><span class="comment">//3.从plist文件加载 </span></div><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> dataArray:<span class="type">Array</span>&lt;<span class="type">XWWine</span>&gt; = &#123;</div><div class="line">    <span class="keyword">let</span> winePath = <span class="type">NSBundle</span>.mainBundle().pathForResource(<span class="string">"wine.plist"</span>, ofType: <span class="literal">nil</span>)!</div><div class="line">    <span class="keyword">let</span> winesM = <span class="type">NSMutableArray</span>(contentsOfFile: winePath);</div><div class="line">    <span class="keyword">var</span> tmpArray:<span class="type">Array</span>&lt;<span class="type">XWWine</span>&gt;! = []</div><div class="line">    <span class="keyword">for</span> tmpWineDict <span class="keyword">in</span> winesM! &#123;</div><div class="line">        <span class="keyword">var</span> wine:<span class="type">XWWine</span> = <span class="type">XWWine</span>.wineWithDict(tmpWineDict <span class="keyword">as</span>! <span class="type">NSDictionary</span>)</div><div class="line">        tmpArray.append(wine)</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"我就运行一次"</span>)</div><div class="line">    <span class="keyword">return</span> tmpArray &#125;()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>调用的时候再在家初始化方法（懒加载）</p>
+</blockquote>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">lazy private <span class="built_in">var</span> underlineView: UIView = &#123;</div><div class="line">    <span class="built_in">let</span> <span class="built_in">view</span> = UIView(frame: .zero)</div><div class="line">    <span class="built_in">return</span> <span class="built_in">view</span></div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<h4 id="defer-关键字"><a href="#defer-关键字" class="headerlink" title="defer 关键字"></a>defer 关键字</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">    defer 关键字</div><div class="line">*/</div><div class="line"><span class="keyword">postfix</span> <span class="function"><span class="keyword">func</span> ++<span class="params">(<span class="keyword">inout</span> x: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">defer</span> &#123;</div><div class="line">        x = x/<span class="number">2</span></div><div class="line">        <span class="keyword">defer</span> &#123;</div><div class="line">            x += <span class="number">100</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> x</div><div class="line">&#125;</div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//postfix func ++(inout x: Int) -&gt; Int &#123;</span></div><div class="line"><span class="comment">//    let current = x</span></div><div class="line"><span class="comment">//    x += 2</span></div><div class="line"><span class="comment">//    return current</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> num = <span class="number">100</span></div><div class="line"><span class="keyword">let</span> num2 = num++</div><div class="line">num		<span class="comment">//150</span></div><div class="line">num2	<span class="comment">//100</span></div><div class="line"></div><div class="line"><span class="keyword">prefix</span> <span class="function"><span class="keyword">func</span> ++<span class="params">(<span class="keyword">inout</span> x:Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    x += <span class="number">2</span></div><div class="line">    <span class="keyword">return</span> x</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> number = <span class="number">100</span></div><div class="line"><span class="keyword">let</span> number2 = ++number</div><div class="line">number 		<span class="comment">// 102</span></div><div class="line">number2		<span class="comment">// 102</span></div></pre></td></tr></table></figure>
+<h4 id="嵌套枚举使用-简直就是动态Model"><a href="#嵌套枚举使用-简直就是动态Model" class="headerlink" title="嵌套枚举使用(简直就是动态Model)"></a>嵌套枚举使用(简直就是动态Model)</h4><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">MenuScrollingMode</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> ScrollEnabled</div><div class="line">    <span class="keyword">case</span> ScrollEnabledAndBouces</div><div class="line">    <span class="keyword">case</span> PagingEnabled</div><div class="line">&#125;</div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">MenuItemWidthMode</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> Flexible</div><div class="line">    <span class="keyword">case</span> Fixed(<span class="symbol">width:</span> CGFloat)</div><div class="line">&#125;</div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">MenuDisplayMode</span> &#123;</span></div><div class="line">    <span class="keyword">case</span> Standard(<span class="symbol">widthMode:</span> MenuItemWidthMode, <span class="symbol">centerItem:</span> Bool, <span class="symbol">scrollingMode:</span> MenuScrollingMode)</div><div class="line">    <span class="keyword">case</span> SegmentedControl</div><div class="line">    <span class="keyword">case</span> Infinite(<span class="symbol">widthMode:</span> MenuItemWidthMode)</div><div class="line">&#125;</div><div class="line"></div><div class="line">/<span class="regexp">/ 初始化：用来携带信息很不错</span></div><div class="line">public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Fixed(width: 44), centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)</div><div class="line"></div><div class="line">/<span class="regexp">/ 实例</span></div><div class="line">func labelWidth(size size: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -&gt; CGFloat &#123;</div><div class="line"></div><div class="line">    switch widthMode &#123;</div><div class="line">    case .Flexible: return ceil(size.width)</div><div class="line">    case let .Fixed(width): return width</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="iOS事件传递-amp-事件响应-张超耀"><a href="#iOS事件传递-amp-事件响应-张超耀" class="headerlink" title="iOS事件传递 &amp; 事件响应 - 张超耀"></a>iOS事件传递 &amp; 事件响应 - 张超耀</h1><h3 id="什么是响应链"><a href="#什么是响应链" class="headerlink" title="什么是响应链"></a>什么是响应链</h3><ul>
+<li>在我们点击屏幕的时候，iphone获取到了用户进行了“单击”这一行为，操作系统把包含这些点击事件的信息包装成UITouch和UIEvent形式的实例，然后找到当前运行的程序，逐级寻找能够响应这个事件的对象，直到没有响应者响应。这一寻找的过程，被称作事件的响应链</li>
+</ul>
+<h3 id="什么是响应者"><a href="#什么是响应者" class="headerlink" title="什么是响应者"></a>什么是响应者</h3><ul>
+<li>在iOS中，能够响应事件的对象都是<code>UIResponder</code>的子类对象。<code>UIResponder</code>提供了四个用户点击的回调方法，分别对应用户点击开始、移动、点击结束以及取消点击，其中只有在程序强制退出或者来电时，取消点击事件才会调用</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>(void)touchesBegan:(NSSet<uitouch *=""> *)touches withEvent:(nullable UIEvent *)event;</uitouch></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesEnded:(NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesCancelled:(nullable NSSet&lt;UITouch *&gt; *)touches withEvent:(nullable UIEvent *)event;</div><div class="line">- (void)touchesEstimatedPropertiesUpdated:(NSSet * _Nonnull)touches NS_AVAILABLE_IOS(9_1);</div></pre></td></tr></table></figure>
+<ul>
+<li>我们可以看到方法接收两个参数，一个<code>UITouch</code>对象的集合，还有一个<code>UIEvent</code>对象。这两个参数分别代表的是点击对象和事件对象</li>
+</ul>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><ul>
+<li>iOS使用<code>UIEvent</code>表示用户交互的事件对象，在<code>UIEvent.h</code>文件中，我们可以看到有一个<code>UIEventType</code>类型的属性，这个属性表示了当前的响应事件类型。分别有多点触控、摇一摇以及远程操作（在iOS之后新增了<code>3DTouch</code>事件类型）。在一个用户点击事件处理过程中，<code>UIEvent</code>对象是唯一的</li>
+</ul>
+<h3 id="点击对象"><a href="#点击对象" class="headerlink" title="点击对象"></a>点击对象</h3><ul>
+<li><p><code>UITouch</code>表示单个点击，其类文件中存在枚举类型<code>UITouchPhase</code>的属性，用来表示当前点击的状态。这些状态包括点击开始、移动、停止不动、结束和取消五个状态。每次点击发生的时候，点击对象都放在一个集合中传入<code>UIResponder</code>的回调方法中，我们通过集合中对象获取用户点击的位置。其中通过<code>- (CGPoint)locationInView:(nullable UIView *)view</code>获取当前点击坐标点，<code>- (CGPoint)previousLocationInView:(nullable UIView *)view</code>获取上个点击位置的坐标点。</p>
+</li>
+<li><p>为了确认UIView确实是通过UIResponder的点击方法响应点击事件的，我创建了UIView的类别，并重写<code>+ (void)load</code>方法，使用<code>method_swizzling</code>的方式交换点击事件的实现 ——参照最下方<code>demo</code></p>
+</li>
+</ul>
+<h3 id="响应链传递"><a href="#响应链传递" class="headerlink" title="响应链传递"></a>响应链传递</h3><ul>
+<li>上面已经介绍了某个控件在接收到点击事件时的处理，那么系统是怎么通过用户点击的位置找到处理点击事件的view的呢？</li>
+<li>存在着这么一个方法：<code>- (nullable UIResponder *)nextResponder</code>，通过方法名我们不难发现这是获取当前view的下一个响应者，逐级获取下一响应者，直到没有下一个响应者位置</li>
+</ul>
+<p><a href="https://github.com/prettychaoyao/EventResponsderDemo.git" target="_blank" rel="external">源码地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/26/移动周分享-第45期/" data-id="cj2xi6dzs002n2zx1wmwjakx0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第44期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/19/移动周分享-第44期/" class="article-date">
+  <time datetime="2016-02-19T10:30:00.000Z" itemprop="datePublished">2016-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/19/移动周分享-第44期/">移动周分享-第44期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##从右到左布局（RTL Layout）- 王进</p>
+<p>从Android 4.2开始，Android SDK支持一种从右到左（RTL，Right-to-Left）UI布局的方式，尽管这种布局方式经常被使用在诸如阿拉伯语、希伯来语等环境中，中国用户很少使用。不过在某些特殊用途中还是很方便的。</p>
+<p>使用：</p>
+<ul>
+<li><p>要在AndroidManifest.xml文件中将<application>标签的android:supportsRtl属性值设为”true”，</application></p>
+</li>
+<li><p>将布局中”left/right”改成”start/end” </p>
+</li>
+</ul>
+<p>例如</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">android:</span>paddingStart  </div><div class="line"></div><div class="line"><span class="symbol">android:</span>layout_marginStart  </div><div class="line"></div><div class="line"><span class="symbol">android:</span>paddingEnd  </div><div class="line"></div><div class="line"><span class="symbol">android:</span>layout_marginEnd</div></pre></td></tr></table></figure>
+<ul>
+<li>设置显示方向，改为从右向左</li>
+</ul>
+<p>xml中</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">android:</span>layoutDirection=<span class="string">"rtl"</span></div><div class="line"></div><div class="line"><span class="symbol">android:</span>textDirection</div><div class="line"></div><div class="line"><span class="symbol">android:</span>textAlignment</div></pre></td></tr></table></figure>
+<p>Java中</p>
+<ul>
+<li><p>getLayoutDirectionFromLocale</p>
+</li>
+<li><p>View.isLayoutRtl()</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//  <span class="keyword">if</span>  this  class <span class="keyword">is</span> the subclass <span class="keyword">of</span> View, <span class="keyword">then</span> it can <span class="keyword">use</span>  <span class="keyword">if</span> (isLayoutRtl()) &#123; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Configuration.getLayoutDirection()</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> android.content.res.Configuration; Configuration <span class="built_in">config</span> = getResources().getConfiguratin(); <span class="built_in">if</span> (<span class="built_in">config</span>.getLayoutDirection() == View.LAYOUT_DIRECTIN_RTL) &#123; &#125;</div></pre></td></tr></table></figure>
+<p>加载特定从右到左布局，图片等</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res<span class="regexp">/ drawable-hdpi /</span><span class="regexp">/ Default drawable-ldltr-hdpi /</span><span class="regexp">/ LTR drawable-ldrtl-hpid /</span><span class="regexp">/ RTL</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://s1.51cto.com/wyfs01/M02/32/CE/wKioJlKPZyjzCdeVAAAxAmZW9ww089.jpg" alt="wKioJlKPZyjzCdeVAAAxAmZW9ww089.jpg (269×215)"></p>
+<h2 id="玩《Ori-and-the-Blind-Forest》-曾铭"><a href="#玩《Ori-and-the-Blind-Forest》-曾铭" class="headerlink" title="玩《Ori and the Blind Forest》- 曾铭"></a>玩《Ori and the Blind Forest》- 曾铭</h2><p>先上百科：<a href="https://zh.wikipedia.org/wiki/%E5%A5%A7%E9%87%8C%E8%88%87%E8%BF%B7%E5%A4%B1%E6%A3%AE%E6%9E%97" target="_blank" rel="external">奥里与迷失森林 - 维基百科，自由的百科全书</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-8cc366cac68827a1.jpg" alt="Ori And The Blind Forest 封面"></p>
+<h3 id="画面美"><a href="#画面美" class="headerlink" title="画面美"></a>画面美</h3><p>画面美是最容易直观感受的第一印象，随便上个图就能感受到。用朋友的话来说『随便一张截图就是精美的壁纸』</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-e39edac8e3bc4f83.jpg" alt="Ori And The Blind Forest 画面美"></p>
+<h3 id="音乐燃"><a href="#音乐燃" class="headerlink" title="音乐燃"></a>音乐燃</h3><p>音乐一直是游戏容易被忽略的一块，特别是 ori 这类『小制作』很容易重视画面而忽视音乐。不过其已经拿下了 2015 年金摇杆奖的最佳游戏音效奖，这方面自然了得。<br>上手一会走过两个剧情你就会发现，音乐与音效与剧情衔接的十分自然。而洪水漫上来的那一段，我随着音乐不禁『燃』了起来，一段音乐已值回票价。<br>对音乐的分析见这里：<a href="https://www.zhihu.com/question/29471127/answer/62215550" target="_blank" rel="external">如何评价《Ori and the Blind Forest 》的配乐水平？ - 舟行的回答 - 知乎</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-3b1c3955db25b781.jpg" alt="Ori And The Blind Forest 音乐燃"></p>
+<h3 id="剧情沉浸"><a href="#剧情沉浸" class="headerlink" title="剧情沉浸"></a>剧情沉浸</h3><p>奥瑞希望拯救『养母』，挣扎许久竟然发现悲剧都是自己酿成的，黑子的暴虐也有其苦衷。通关一刻，竟不知如何是好。<br>于剧情，我没能理解更深。而从序幕到最后一刻，过场动画所陈诉的剧情都如游戏一般令我沉浸其中。这是令人沉浸的好剧情。<br>想看大师的剧情分析看这里：<a href="http://tieba.baidu.com/p/3646461185?share=9105&amp;fr=share" target="_blank" rel="external">对奥里这款游戏的细节、故事以及人物的一些看法。奥日与黑暗森林吧</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-0ee5f5d36671ca5a.png" alt="Ori And The Blind Forest 剧情沉浸"></p>
+<h3 id="地图赞"><a href="#地图赞" class="headerlink" title="地图赞"></a>地图赞</h3><p>Ori 属于横版过关游戏，地图设计比较复杂。特别是随着剧情的进展，主角逐步有二段跳，滑翔，贴墙等技能。最难的点就这个『逐步』。</p>
+<ul>
+<li>主角能力未到时，有些地图是去不了的，随着剧情变化，能到的『自然』能到</li>
+<li>一条路线跑过去，活得了某项能力，同样路线跑回来，新能力在这条路线上神奇的延伸的新玩法。滑翔那段尤其明显。</li>
+<li>地图很大，游戏没设传送门。剧情整体路线不重复，而部分的路线重复，确因角色能力的不同有了新的『跑路方式』，这点地图和场景结合得特好</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-babf2f9371c45ec7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Ori And The Blind Forest 全地图"></p>
+<h3 id="总结-系统平衡-神作"><a href="#总结-系统平衡-神作" class="headerlink" title="总结 - 系统平衡 - 神作"></a>总结 - 系统平衡 - 神作</h3><p>大学游戏大神魏巍有句话：『做游戏就是做平衡，你画面音乐剧情战斗任一方面做得完美都没有意义，只要有一点做得很不平衡，短板明显，就会毁掉这个游戏。』</p>
+<p>Ori 难能可贵的就是这一点，角色能力设计、操控、地图、画面、音乐。每一点设计都很『完美』，更完美的是这些方面衔接的是如此之好，互为衬映提升游戏的整体感受。在我心中，他是又一款神作。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/193400-52cd22630c1cd2c2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="像不像古堡迷踪与 Yorda 一起吃西瓜 ; ) 懂的自然懂~ "></p>
+<h2 id="ClassyShark-李仙鹏"><a href="#ClassyShark-李仙鹏" class="headerlink" title="ClassyShark - 李仙鹏"></a>ClassyShark - 李仙鹏</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><ul>
+<li><a href="https://github.com/google/android-classyshark" target="_blank" rel="external">ClassyShark</a>并非Google官方产品。</li>
+<li><a href="https://github.com/google/android-classyshark" target="_blank" rel="external">ClassyShark</a>是针对Android开发者的独立工具。它能够可靠的浏览任何Android可执行文件，并且显示apk的重要信息，比如类、接口和成员，以及dex数量和依赖。它还支持多种格式，比如库（.dex，.aar，.so），可执行文件（.apk，.jar，.class）和AndroidManifest</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>打开APK（GUI展现）<ul>
+<li>java -jar ClassyShark.jar -open YOUR_APK.apk</li>
+</ul>
+</li>
+<li>检测APK<ul>
+<li>java -jar ClassyShark.jar -inspect YOUR_APK.apk</li>
+</ul>
+</li>
+<li>以文本形式存储APK中classes.dex的字符串表<ul>
+<li>java -jar ClassyShark.jar -stringdump YOUR_APK.apk</li>
+</ul>
+</li>
+</ul>
+<h2 id="Google-Protocol-Buffer-介绍与使用"><a href="#Google-Protocol-Buffer-介绍与使用" class="headerlink" title="Google Protocol Buffer 介绍与使用"></a>Google Protocol Buffer 介绍与使用</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li><p>官网<a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="external">https://developers.google.com/protocol-buffers/</a></p>
+</li>
+<li><p>Google Protocol Buffer( 以下简称PB) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。PB是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。</p>
+<blockquote>
+<p>“Protocol Buffers是一种以有效并可扩展的格式编码结构化数据的方式。”</p>
+<pre><code>message Person {
+  required int32 id = 1;
+  required string name = 2;
+  optional string email = 3;
+}
+</code></pre></blockquote>
+</li>
+</ul>
+<h3 id="PB-的优点"><a href="#PB-的优点" class="headerlink" title="PB 的优点"></a>PB 的优点</h3><ul>
+<li>性能好，效率高</li>
+</ul>
+<blockquote>
+<p>同 XML 相比， PB 的主要优点在于性能高。它以高效的二进制方式存储，比 XML 小 3 到 10 倍，快 20 到 100 倍。Protobuf 序列化后所生成的二进制消息非常紧凑，这得益于 Protobuf 采用的非常巧妙的 <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="external">Encoding</a> 方法。</p>
+<p>Total Time 指一个对象操作的整个时间，包括创建对象，将对象序列化为内存中的字节序列，然后再反序列化的整个过程。从测试结果可以看到 Protobuf 的成绩很好，感兴趣的读者可以自行到<a href="http://code.google.com/p/thrift-protobuf-compare/wiki/Benchmarking" target="_blank" rel="external">网站</a>上了解更详细的测试结果。</p>
+</blockquote>
+<ul>
+<li>代码生成机制，数据解析类自动生成</li>
+</ul>
+<blockquote>
+<p>PB 语义更清晰，无需类似 XML 解析器的东西（因为 PB 编译器会将 .proto 文件编译生成对应的数据访问类以对 PB数据进行序列化、反序列化操作）。使用 PB无需学习复杂的文档对象模型，PB 的编程模式比较友好，简单易学，同时它拥有良好的文档和示例，对于喜欢简单事物的人们而言，PB 比其他的技术更加有吸引力</p>
+</blockquote>
+<ul>
+<li>支持向后兼容和向前兼容</li>
+</ul>
+<blockquote>
+<p>它有一个非常棒的特性，即“向后”兼容性好，人们不必破坏已部署的、依靠“老”数据格式的程序就可以对数据结构进行升级。这样您的程序就可以不必担心因为消息结构的改变而造成的大规模的代码重构或者迁移的问题。因为添加新的消息中的 field 并不会引起已经发布的程序的任何改变。</p>
+</blockquote>
+<h3 id="PB-使用-java"><a href="#PB-使用-java" class="headerlink" title="PB 使用(java)"></a>PB 使用(java)</h3><ul>
+<li>step1： 下载protobuf</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/google/protobuf" target="_blank" rel="external">下载</a>并编译获得proto.exe和protobuf-java.jar<br>也可以直接从网上下载proto.exe <a href="http://repo1.maven.org/maven2/com/google/protobuf/protoc/" target="_blank" rel="external">下载</a>和protobuf-java-2.4.1.jar（<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">下载</a>）</p>
+</blockquote>
+<ul>
+<li>step2：编写.proto文件，eg：</li>
+</ul>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">option</span> java_package = <span class="string">"com.jeson.roster.proto"</span>;  </div><div class="line"><span class="keyword">option</span> java_outer_classname = <span class="string">"Roster"</span>;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">Student</span></span>&#123;  </div><div class="line"><span class="keyword">required</span> <span class="built_in">int32</span> id = <span class="number">1</span>;  </div><div class="line"><span class="keyword">required</span> <span class="built_in">string</span> name = <span class="number">2</span>;   </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Sex</span></span>&#123;  </div><div class="line">MALE = <span class="number">0</span>;  </div><div class="line">FEMALE = <span class="number">1</span>;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">required</span> Sex sex = <span class="number">3</span>;  </div><div class="line">  </div><div class="line">&#125;  </div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">StudentRoster</span></span>&#123;  </div><div class="line"><span class="keyword">repeated</span> Student student = <span class="number">1</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>step3：编译.proto文件生成 java类文件：在proto.exe目录下：protoc  –java_out=./src   ./proto/msg.proto</li>
+</ul>
+<blockquote>
+<p>在所使用的proto文件路径下打开cmd窗口执行以下命令</p>
+</blockquote>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protoc -I=源地址 <span class="params">--java_out=</span>目标地址  源地址<span class="string">/xxx.proto</span></div></pre></td></tr></table></figure>
+<ul>
+<li>step4：导入java类文件和依赖包直接使用</li>
+</ul>
+<blockquote>
+<p>Android Studio eg :   <a href="https://github.com/bingxuebage/testpb" target="_blank" rel="external">完整demo地址</a></p>
+<blockquote>
+<p>1 添加依赖包 compile ‘com.google.protobuf:protobuf-java:3.0.0-beta-2’</p>
+<p>2 导入生成的 Roster 到对应的package下</p>
+<p>3 使用Roster 序列化或反序列化数据</p>
+</blockquote>
+</blockquote>
+<pre><code>package com.jeson.testpb;
+
+import com.jeson.roster.proto.Roster.Student;
+import com.jeson.roster.proto.Roster.Student.Sex;
+import com.jeson.roster.proto.Roster.StudentRoster;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InfoHelper {
+
+
+    public static final String FILE_NAME = &quot;/mnt/sdcard/roster.dat&quot;;
+
+
+    /**
+     * 反序列化
+     */
+
+    public static List&lt;StudentInfo&gt; getStudentsFromFile() {
+
+        ArrayList&lt;StudentInfo&gt; list = new ArrayList&lt;StudentInfo&gt;();
+        FileInputStream fis = null;
+
+        try {
+            fis = new FileInputStream(FILE_NAME);
+            StudentRoster roster = StudentRoster.parseFrom(fis);
+            int student_count = roster.getStudentCount();
+
+            for (int i = 0; i &lt; student_count; i++) {
+                Student student = roster.getStudent(i);
+                StudentInfo info = new StudentInfo();
+                info.setId(student.getId());
+                info.setName(student.getName());
+                info.setSex(student.getSex().toString());
+                list.add(info);
+            }
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            if (null != fis) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return list;
+    }
+
+
+    /**
+     * 序列化
+     */
+
+    public static void saveStudentIntoFile(int id, String name, String sex) {
+        FileOutputStream fos = null;
+
+        StudentRoster.Builder rosterBuid = StudentRoster.newBuilder();
+
+
+        Student.Builder student = Student.newBuilder();
+        student.setId(id);
+        student.setName(name);
+        if (&quot;MALE&quot;.equalsIgnoreCase(sex)) {
+            student.setSex(Sex.MALE);
+        } else {
+            student.setSex(Sex.FEMALE);
+        }
+
+        rosterBuid.addStudent(student.build());
+
+        try {
+            fos = new FileOutputStream(FILE_NAME, true);
+            rosterBuid.build().writeTo(fos);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+    }
+
+}
+</code></pre><h2 id="Andoid最近搜索记录"><a href="#Andoid最近搜索记录" class="headerlink" title="Andoid最近搜索记录"></a>Andoid最近搜索记录</h2><ul>
+<li>原生搜<ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/youtube%E6%9C%80%E8%BF%91%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95.jpg" alt="Alt Image Text"></li>
+<li><a href="http://developer.android.com/intl/zh-cn/guide/topics/search/search-dialog.html" target="_blank" rel="external">Android搜索记录(需翻墙)</a> </li>
+<li>问题:没有清除历史记录界面</li>
+</ul>
+</li>
+<li>APP最近搜索记录<ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/bilibilihistory.jpg" alt="Alt Image Text"></li>
+</ul>
+</li>
+<li>实现<ul>
+<li>SearchView+ListPopupWindow+SQLite</li>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/mysuggestion.jpg" alt="Alt Image Text"></li>
+<li><a href="https://github.com/milin411/TestProject.git" target="_blank" rel="external">托管代码</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/19/移动周分享-第44期/" data-id="cj2xi6dzq002k2zx1epa02uwq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第43期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/29/移动周分享-第43期/" class="article-date">
+  <time datetime="2016-01-29T10:30:00.000Z" itemprop="datePublished">2016-01-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/周技术分享/">周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/29/移动周分享-第43期/">移动周分享-第43期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="tablayout方法setupWithViewPager-坑-吴明"><a href="#tablayout方法setupWithViewPager-坑-吴明" class="headerlink" title="tablayout方法setupWithViewPager()坑 - 吴明"></a>tablayout方法setupWithViewPager()坑 - 吴明</h4><ul>
+<li>tallayout平常使用setupWithViewPager()</li>
+</ul>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager)<span class="comment">;</span></div><div class="line">TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contain)<span class="comment">;</span></div><div class="line">viewPager.setAdatper(new FragmentStatePagerAdapter(FragmentManager,fragments))<span class="comment">;</span></div><div class="line">tabContainView. setupWithViewPager(viewPager)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>查看setupWithViewPager()方法源码</li>
+</ul>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setupWithViewPager</span><span class="params">(@NonNull ViewPager viewPager)</span> </span>&#123;</div><div class="line">       <span class="keyword">final</span> PagerAdapter adapter = viewPager.getAdapter();</div><div class="line">       <span class="keyword">if</span> (adapter == <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"ViewPager does not have a PagerAdapter set"</span>);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">// First we'll add Tabs, using the adapter's page titles</span></div><div class="line">       setTabsFromPagerAdapter(adapter);</div><div class="line"></div><div class="line">       <span class="comment">// Now we'll add our page change listener to the ViewPager</span></div><div class="line">       viewPager.addOnPageChangeListener(<span class="keyword">new</span> TabLayoutOnPageChangeListener(<span class="keyword">this</span>));</div><div class="line"></div><div class="line">       <span class="comment">// Now we'll add a tab selected listener to set ViewPager's current item</span></div><div class="line">       setOnTabSelectedListener(<span class="keyword">new</span> ViewPagerOnTabSelectedListener(viewPager));</div><div class="line"></div><div class="line">       <span class="comment">// Make sure we reflect the currently set ViewPager item</span></div><div class="line">       <span class="keyword">if</span> (adapter.getCount() &gt; <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">final</span> <span class="keyword">int</span> curItem = viewPager.getCurrentItem();</div><div class="line">           <span class="keyword">if</span> (getSelectedTabPosition() != curItem) &#123;</div><div class="line">               selectTab(getTabAt(curItem));</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>就会发现这里有三个坑</p>
+<ul>
+<li><p>setTabsFromPagerAdapter</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">public</span> <span class="selector-tag">void</span> <span class="selector-tag">setTabsFromPagerAdapter</span>(<span class="variable">@NonNull</span> PagerAdapter adapter) &#123;</div><div class="line">       <span class="selector-tag">removeAllTabs</span>();</div><div class="line">       <span class="selector-tag">for</span> (int i = <span class="number">0</span>, count = adapter.getCount(); i &lt; count; i++) &#123;</div><div class="line">           <span class="selector-tag">addTab</span>(newTab().setText(adapter.getPageTitle(i)));</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>removeAllTabs()这个就是说把前面所有tablayout添加的view都删掉。也就是说在之前不管怎么处理view都被干掉。然后设置为PagerAdapter返回的title</p>
+</li>
+<li><p>setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager));</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewPagerOnTabSelectedListener</span> <span class="keyword">implements</span> <span class="title">TabLayout</span>.<span class="title">OnTabSelectedListener</span> </span>&#123;</div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> ViewPager mViewPager;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="title">ViewPagerOnTabSelectedListener</span><span class="params">(ViewPager viewPager)</span> </span>&#123;</div><div class="line">          mViewPager = viewPager;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabSelected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</div><div class="line">          mViewPager.setCurrentItem(tab.getPosition());</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabUnselected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</div><div class="line">          <span class="comment">// No-op</span></div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabReselected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</div><div class="line">          <span class="comment">// No-op</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>  这里主要不算不算太坑，最主要的是设置了点击tablayot默认是viewpager是滚动的，自己可以设置这个时间监听。重写他的方法</p>
+</li>
+<li><p>selectTab(getTabAt(curItem));</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (adapter.getCount() &gt; <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">final</span> <span class="keyword">int</span> curItem = viewPager.getCurrentItem();</div><div class="line">           <span class="keyword">if</span> (getSelectedTabPosition() != curItem) &#123;</div><div class="line">               selectTab(getTabAt(curItem));</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>这里最主要是第一次默认选中第一个。相对应一些viewpager第一次就选中的不是第一个，这个就是一个很大的一个问题就是相当于viewpager点击了两次。</p>
+</li>
+<li>分享这个坑主要是给大家提前填。以后还是不能偷懒就为了省代码而忘了看封装的方法的代码是不是有问题。</li>
+</ul>
+</li>
+</ul>
+<p>###Chrome Custom Tabs 标签优点 - 王进</p>
+<ul>
+<li>Chrome自定义标签页（Custom Tabs）将允许应用预加载，从而将网页的加载时间直接减半。</li>
+</ul>
+<p>它的速度比WebView更快，预加载的效果甚至好于Chrome本身。</p>
+<ul>
+<li><p>持良好的用户体验，并且让用户感觉这个自定义 Tab 就是您应用的一部分。</p>
+</li>
+<li><p>使用方法比WebView 简单，只需要一行代码，和直接调用系统浏览器显示网页没啥区别</p>
+</li>
+<li><p>有大量自定义属性，改善用户体验</p>
+</li>
+</ul>
+<p><img src="http://static.cnbetacdn.com/article/2015/0903/876e381328b066a.gif" alt=""></p>
+<p>###使用方法</p>
+<p>需要导入Custom Tabs 的支持包：</p>
+<p> compile ‘com.android.support:customtabs:23.1.0’</p>
+<p>最简单的使用方式是只需要使用 <a href="http://developer.android.com/reference/android/support/customtabs/CustomTabsIntent.Builder.html" target="_blank" rel="external">CustomTabsIntent.Builder</a> 对象来设置一些常用自定义选项，然后调用 <a href="http://developer.android.com/reference/android/support/customtabs/CustomTabsIntent.html#launchUrl(android.app.Activity, android.net.Uri" target="_blank" rel="external">CustomTabsIntent.launchUrl(Activity context, Uri url)</a>) 函数即可。当然在具体使用过程中，您还需要判断用户手机是否支持 Custom Tabs。</p>
+<p>###配置属性：</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"> CustomTabsIntent.Builder intentBuilder = <span class="keyword">new</span> CustomTabsIntent.Builder();</div><div class="line"></div><div class="line">    <span class="comment">// 修改 ActionBar 的颜色</span></div><div class="line">    intentBuilder.setToolbarColor(Color.RED);</div><div class="line"></div><div class="line">    <span class="comment">// 添加一个分享按钮</span></div><div class="line">    String shareLabel = <span class="string">"分享"</span>;</div><div class="line">    Bitmap icon = BitmapFactory.decodeResource(getResources(), android.R.drawable.ic<span class="number">_m</span>enu<span class="number">_</span>share);</div><div class="line">    PendingIntent pendingIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, <span class="keyword">new</span> Intent(<span class="keyword">this</span>, BlankActivity.<span class="keyword">class</span>), <span class="number">0</span>);</div><div class="line">    intentBuilder.setActionButton(icon, shareLabel, pendingIntent);</div><div class="line"></div><div class="line">    <span class="comment">//添加Menu 按钮</span></div><div class="line">    intentBuilder.addMenuItem(<span class="string">"打开"</span>, pendingIntent);</div><div class="line"></div><div class="line">    <span class="comment">//是否显示网页标题</span></div><div class="line">    intentBuilder.setShowTitle(true);</div><div class="line"></div><div class="line">    <span class="comment">//隐藏网页Bar</span></div><div class="line">    intentBuilder.enableUrlBarHiding();</div><div class="line"></div><div class="line">    <span class="comment">//自定义关闭 Custom tabs 的图标</span></div><div class="line">    intentBuilder.setCloseButtonIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic<span class="number">_</span>launcher));</div><div class="line"></div><div class="line">    <span class="comment">//自定义 Activity 转场 动画</span></div><div class="line">    intentBuilder.setStartAnimations(<span class="keyword">this</span>, R.anim.slide<span class="number">_</span><span class="keyword">in</span><span class="number">_</span>right, R.anim.slide<span class="number">_</span><span class="keyword">out</span><span class="number">_</span>left);</div><div class="line">    intentBuilder.setExitAnimations(<span class="keyword">this</span>, android.R.anim.slide<span class="number">_</span><span class="keyword">in</span><span class="number">_</span>left, android.R.anim.slide<span class="number">_</span><span class="keyword">out</span><span class="number">_</span>right);</div><div class="line"></div><div class="line">    CustomTabsIntent customTabsIntent = intentBuilder.build();</div><div class="line"><span class="comment">//    customTabsIntent.launchUrl(this, Uri.parse("http://www.51offer.com/"));</span></div></pre></td></tr></table></figure>
+<h2 id="Android-NDK-入门-杨俊构"><a href="#Android-NDK-入门-杨俊构" class="headerlink" title="Android NDK 入门 - 杨俊构"></a>Android NDK 入门 - 杨俊构</h2><h3 id="什么是NDK"><a href="#什么是NDK" class="headerlink" title="什么是NDK?"></a>什么是NDK?</h3><ul>
+<li>NDK是一系列工具的集合</li>
+</ul>
+<blockquote>
+<p>NDK提供了一系列的工具，帮助开发者快速开发C（或C++）的动态库，并能自动将so和java应用一起打包成apk。这些工具对开发者的帮助是巨大的。<br>    NDK集成了交叉编译器，并提供了相应的mk文件隔离CPU、平台、ABI等差异，开发人员只需要简单修改mk文件（指出“哪些文件需要编译”、“编译特性要求”等），就可以创建出so。<br>    NDK可以自动地将so和Java应用一起打包，极大地减轻了开发人员的打包工作。</p>
+</blockquote>
+<ul>
+<li>NDK提供了一份稳定、功能有限的API头文件声</li>
+</ul>
+<blockquote>
+<p>Google明确声明该API是稳定的，在后续所有版本中都稳定支持当前发布的API。从该版本的NDK中看出，这些API支持的功能非常有限，包含有：C标准库（libc）、标准数学库（libm）、压缩库（libz）、Log库（liblog）。</p>
+</blockquote>
+<h3 id="为什么使用NDK"><a href="#为什么使用NDK" class="headerlink" title="为什么使用NDK"></a>为什么使用NDK</h3><ol>
+<li>代码的保护。由于apk的java层代码很容易被反编译，而C/C++库反汇难度较大。</li>
+<li>可以方便地使用现存的开源库。大部分现存的开源库都是用C/C++代码编写的。</li>
+<li>提高程序的执行效率。将要求高性能的应用逻辑使用C开发，从而提高应用程序的执行效率。</li>
+<li>便于移植。用C/C++写得库可以方便在其他的嵌入式平台上再次使用</li>
+</ol>
+<h3 id="如何使用NDK"><a href="#如何使用NDK" class="headerlink" title="如何使用NDK"></a>如何使用NDK</h3><ul>
+<li><p>Android JNI 原理</p>
+<blockquote>
+<p>Android上层的Application和ApplicationFramework都是使用Java编写,底层包括系统和使用众多的LIiraries都是C/C++编写的。所以上层Java要调用底层的C/C++函数库必须通过Java的JNI来实现。<br><img src="http://7xohph.com1.z0.glb.clouddn.com/20160131223059.png?imageView2/2/w/600" alt=""></p>
+</blockquote>
+</li>
+<li><p>Android studio NDK 开发</p>
+</li>
+</ul>
+<ol>
+<li>解压NDK开发工具集 </li>
+<li>打开android  studio,新建Android工程 </li>
+<li>点击：File -&gt;ProjectStructure:如图：<br> <img src="http://7xohph.com1.z0.glb.clouddn.com/20160131225242.png?imageView2/2/w/600" alt=""></li>
+<li>在 local.properties 文件中设置ndk的路径  </li>
+<li>在 gradle.properties 添加”android.useDeprecatedNdk=true”</li>
+<li>在 build.gradle 添加NDK 的配置<br> <img src="http://7xohph.com1.z0.glb.clouddn.com/20160131225205.png?imageView2/2/w/600" alt=""></li>
+<li>添加JAVA 接口类文件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.example.jungou.jnitest;</div><div class="line"><span class="comment">// Created by jungou on 2016/1/28 0028.</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniApi</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"jesonlib"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> String <span class="title">getTitle</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>添加jni文件夹<br> <img src="http://7xohph.com1.z0.glb.clouddn.com/20160131225921.png?imageView2/2/w/600" alt=""></li>
+<li>JAVA 接口类使用Alt+回车 自动修正，自动实现C代码</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"><span class="function">JNIEXPORT jstring JNICALL</span></div><div class="line"><span class="title">Java_com_example_jungou_jnitest_JniApi_getTitle</span><span class="params">(JNIEnv *env, jobject instance)</span> &#123;</div><div class="line">	<span class="comment">// TODO</span></div><div class="line">	<span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, <span class="string">"hello tile"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>完成接口调用，测试完成    </p>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/20160131231227.png?imageView2/2/w/600" alt="">  </p>
+</li>
+</ol>
+<p><a href="https://github.com/bingxuebage/android-jni-demo" target="_blank" rel="external">demo地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/29/移动周分享-第43期/" data-id="cj2xi6dzq002h2zx1uhmsqpv8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/坑/">坑</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-移动周分享-第42期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/15/移动周分享-第42期/" class="article-date">
+  <time datetime="2016-01-15T10:30:00.000Z" itemprop="datePublished">2016-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动组周技术分享/">移动组周技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/15/移动周分享-第42期/">移动周分享-第42期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="软件推荐-suger-amp-nvalt-曾铭"><a href="#软件推荐-suger-amp-nvalt-曾铭" class="headerlink" title="软件推荐 suger &amp; nvalt - 曾铭"></a>软件推荐 suger &amp; nvalt - 曾铭</h2><h3 id="surge"><a href="#surge" class="headerlink" title="surge"></a>surge</h3><p>iOS 正常上网神器，68元，目前已下架</p>
+<ul>
+<li><a href="https://medium.com/@scomper/surge-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-a1533c10e80b#.m68o22az4" target="_blank" rel="external">Surge 新手使用指南 — Medium</a></li>
+</ul>
+<h4 id="衍生品-Replica-Web-Developer-Tool"><a href="#衍生品-Replica-Web-Developer-Tool" class="headerlink" title="衍生品 Replica - Web Developer Tool"></a>衍生品 Replica - Web Developer Tool</h4><p>iOS 网络调试神器，iOS 设备中代理所有网络流量，方便查看所有网络请求。68 元，Surge 用户直接解锁。</p>
+<ul>
+<li><a href="https://itunes.apple.com/cn/app/replica-web-developer-tool/id1068196306" target="_blank" rel="external">Replica - Web Developer Tool：在 App Store 上的内容</a></li>
+</ul>
+<h3 id="nvalt"><a href="#nvalt" class="headerlink" title="nvalt"></a>nvalt</h3><p>『惊的速记』，最快速的笔记方式，本地纯文本存储，优秀的快捷键配置，支持 tag, markdown, 预览等。开源。</p>
+<ul>
+<li><a href="http://brettterpstra.com/projects/nvalt/" target="_blank" rel="external">nvALT - BrettTerpstra.com</a></li>
+<li><a href="https://github.com/ttscoff/nv" target="_blank" rel="external">ttscoff/nv: MultiMarkdown version (with HTML source tab) of Notational Velocity: modeless, mouseless Mac OS X note-taking application</a> nvalt 源代码</li>
+<li><a href="http://macdown.uranusjr.com/blog/post/5/show-hn-macdown/" target="_blank" rel="external">MacDown: The open source Markdown editor for OS X.</a> macdown 的有趣历史</li>
+<li><a href="https://github.com/uranusjr/macdown" target="_blank" rel="external">uranusjr/macdown</a> macdown 源代码</li>
+</ul>
+<h2 id="Android-微信抢红包-吴明"><a href="#Android-微信抢红包-吴明" class="headerlink" title="Android 微信抢红包 - 吴明"></a>Android 微信抢红包 - 吴明</h2><ul>
+<li><p>主要原理：监听微信APP,如果发送[微信红包]相关通知,则通过Android辅助类服务AccessibilityService实现抢红包点击一系列动作</p>
+</li>
+<li><p>通过AccessibilityService服务监听微信</p>
+</li>
+<li>主要监听配置如下:</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">监听动作类型</div><div class="line"><span class="symbol">android:</span>accessibilityEventTypes=<span class="string">"typeNotificationStateChanged|typeWindowStateChanged|typeViewScrolled"</span></div><div class="line">完成反馈动作类型</div><div class="line"><span class="symbol">android:</span>accessibilityFeedbackType=<span class="string">"feedbackGeneric"</span></div><div class="line">标识</div><div class="line"><span class="symbol">android:</span>accessibilityFlags=<span class="string">""</span></div><div class="line">是否可以屏幕内容</div><div class="line"><span class="symbol">android:</span>canRetrieveWindowContent=<span class="string">"true"</span></div><div class="line">服务描述</div><div class="line"><span class="symbol">android:</span>description=<span class="string">"@string/server_description"</span></div><div class="line">通知反应时间</div><div class="line"><span class="symbol">android:</span>notificationTimeout=<span class="string">"0"</span></div><div class="line">监听应用包名</div><div class="line"><span class="symbol">android:</span>packageNames=<span class="string">"com.tencent.mm"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>AccessibilityService实现方法：<ul>
+<li>onAccessibilityEvent()时间监听回调方法</li>
+<li>onServiceConnected启动服务</li>
+<li>onUnbind服务器解绑</li>
+<li>onInterrupt中断服务</li>
+</ul>
+</li>
+<li><p>事件</p>
+<ul>
+<li>AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:通知消息事件</li>
+<li>AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:屏幕window变化时间</li>
+<li>AccessibilityEvent.TYPE_VIEW_SCROLLED屏幕滚动监听事件</li>
+</ul>
+</li>
+<li><p>1.微信后台抢红包：</p>
+<ul>
+<li>后台TYPE_NOTIFICATION_STATE_CHANGED事件监听有[微信红包]通知则点击通知，TYPE_WINDOW_STATE_CHANGED事件点击‘抢红包’，TYPE_WINDOW_STATE_CHANGED点击‘拆红包’，TYPE_WINDOW_STATE_CHANGED跳转红包查看详情</li>
+</ul>
+</li>
+<li>2.微信当前聊天页面抢红包<ul>
+<li>当前聊天页面，不能接受通知</li>
+<li>AccessibilityEvent.TYPE_VIEW_SCROLLED监听屏幕view有新消息，则查看屏幕是否有’抢红包’view，有则点击‘抢红包’view,点击抢红包后则同上通过TYPE_WINDOW_STATE_CHANGED事件完成抢红包一系列动作</li>
+</ul>
+</li>
+<li><a href="https://github.com/milin411/RedWallet.git" target="_blank" rel="external">代码地址</a></li>
+</ul>
+<p>##Android Ripple - 王进<br><img src="http://static.open-open.com/lib/uploadImg/20141122/20141122214256_785.gif" alt="ripple"></p>
+<p>###使用效果如下：</p>
+<p>B1是不设任何背景的按钮</p>
+<p>B2设置了<strong>?android:attr/selectableItemBackground</strong></p>
+<p>B3设置了<strong>?android:attr/selectableItemBackgroundBorderless</strong></p>
+<p>###设置波纹颜色：</p>
+<p><strong>android:colorControlHighlight</strong>：设置波纹颜色<br><strong>android:colorAccent</strong>：设置checkbox等控件的选中颜色<br><strong>ripple xml 中设置color 属性</strong></p>
+<h3 id="设置自定义RippleDrawable"><a href="#设置自定义RippleDrawable" class="headerlink" title="设置自定义RippleDrawable"></a>设置自定义RippleDrawable</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!<span class="comment">-- An unbounded red ripple. --/&gt; </span></div><div class="line">&lt;ripple android:color=<span class="string">"#ffff0000"</span> /&gt;</div></pre></td></tr></table></figure>
+<p><strong>也可以更改主题的波纹样式</strong><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="built_in">item</span> <span class="built_in">name</span>=<span class="string">"android:selectableItemBackground"</span>&gt;@drawable/selectable_item_stroke_bg&lt;/<span class="built_in">item</span>&gt;</div><div class="line">&lt;<span class="built_in">item</span> <span class="built_in">name</span>=<span class="string">"android:selectableItemBackgroundBorderless"</span>&gt;@drawable/selectable_item_bg&lt;/<span class="built_in">item</span>&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>更改主题波纹颜色</strong><br><strong>android:colorControlHighlight</strong>：设置波纹颜色</p>
+<p>   更改样式波纹后，会对app系统内置具有波纹效果app造成影响，NavigationView,Toolbar 上Menu 等,特别是波纹的背景色</p>
+<blockquote>
+<p>因为波纹是在background属性上设置的，所以如果控件需要其他背景要素，可以在ripple的默认<item> 上设置</item></p>
+</blockquote>
+<h3 id="5-0-兼容"><a href="#5-0-兼容" class="headerlink" title="5.0 兼容"></a>5.0 兼容</h3><p>兼容方法有二：</p>
+<ul>
+<li>V21 之前用selector</li>
+<li>第三方控件<a href="https://github.com/balysv/material-ripple" target="_blank" rel="external">MaterialRippleLayout</a></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"@dimen/common_action_button_h"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">stroke</span>  <span class="attr">android:width</span>=<span class="string">"1dp"</span> <span class="attr">android:color</span>=<span class="string">"@color/colorAccent"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"@dimen/common_action_button_h"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#E5E5E5"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"@dimen/common_action_button_h"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">stroke</span>  <span class="attr">android:width</span>=<span class="string">"1dp"</span> <span class="attr">android:color</span>=<span class="string">"@color/colorAccent"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"@dimen/common_action_button_h"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#E5E5E5"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/shape_logout_btn"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>drawable-v21<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ripple</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:color</span>=<span class="string">"#E5E5E5"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:id</span>=<span class="string">"@android:id/mask"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"@dimen/common_action_button_h"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@android:color/white"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/shape_logout_btn"</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ripple</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/15/移动周分享-第42期/" data-id="cj2xi6dzp002f2zx1xy2syzd2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Why-Git-Learn-It" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/07/Why-Git-Learn-It/" class="article-date">
+  <time datetime="2016-01-06T16:00:00.000Z" itemprop="datePublished">2016-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术部分享/">技术部分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><ul>
+<li>为什么要用 Git？</li>
+<li>Git + SourceTree + Gitlab 的使用演示</li>
+<li>提醒和推荐</li>
+</ul>
+<h2 id="为什么要用-Git？"><a href="#为什么要用-Git？" class="headerlink" title="为什么要用 Git？"></a>为什么要用 Git？</h2><ul>
+<li>一个工具、一套方案，解决源码管理的问题</li>
+</ul>
+<h3 id="对于版本控制，我们需要什么？"><a href="#对于版本控制，我们需要什么？" class="headerlink" title="对于版本控制，我们需要什么？"></a>对于版本控制，我们需要什么？</h3><ul>
+<li>代码历史追溯<ul>
+<li>某一次提交的改动（SVN，Git）</li>
+<li>某一个功能的改动过程（好的提交习惯更重要，在多人协作情况下提交历史更清晰）</li>
+</ul>
+</li>
+<li>协同开发<ul>
+<li>用分支来隔离上线与开发中的代码</li>
+<li>多人多线并行开发：1 人对 N 线，N 人对 1 线都有可能</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>秒极定律<br>一件事情如果能控制在 10s 内完成，人们就会极频繁的使用它。<br>举栗子：</p>
+<ul>
+<li>docker 被推崇，从虚拟机到 Vagrant 到 docker，碰到了秒级定律</li>
+<li>持续集成，快速迭代</li>
+</ul>
+</blockquote>
+<h3 id="秒级的代码管理？"><a href="#秒级的代码管理？" class="headerlink" title="秒级的代码管理？"></a>秒级的代码管理？</h3><ul>
+<li>本地代码飞快变化至任意历史提交记录：SVN 30s-2min；Git 秒级<ul>
+<li>工作状态快速切换</li>
+</ul>
+</li>
+<li>代码提交速度飞快：SVN 受限于网络速度；Git commit 秒级，push 受限于网络速度</li>
+<li>代码创建、切换、合并分支飞快：SVN 速度慢，很麻烦；Git 赞！<ul>
+<li>勇于原型探索，历史清晰，易调整方向，易新建，易弃用</li>
+<li>与 code review 结合</li>
+</ul>
+</li>
+</ul>
+<h2 id="SVN-比-Git-好在哪里"><a href="#SVN-比-Git-好在哪里" class="headerlink" title="SVN 比 Git 好在哪里"></a>SVN 比 Git 好在哪里</h2><ul>
+<li>更简单，符合原有自主文件夹管理版本的心理预期<ul>
+<li>Git 暴露概念过多，学习曲线陡峭，这点不如 hg</li>
+</ul>
+</li>
+<li>SVN 有目录级的权限控制<ul>
+<li>适合大中型中间件软件公司：目录划分权限，职能长期固定</li>
+</ul>
+</li>
+<li>也许还有其它，我不清楚</li>
+</ul>
+<h3 id="Git-真实的影响力"><a href="#Git-真实的影响力" class="headerlink" title="Git 真实的影响力"></a>Git 真实的影响力</h3><blockquote>
+<p>I’m an egotistical bastard, and I name all my projects after myself. First Linux, now Git.<br>—— Linus</p>
+</blockquote>
+<ul>
+<li>在 2016 问这个问题对互联网来说已是大势所趋<ul>
+<li>npm + pip 均托管在 Github</li>
+<li>OpenJDK 使用 Hg（Mercurial）</li>
+<li>Github 早已一统开源天下，Java 概莫能外</li>
+</ul>
+</li>
+<li>SVN 与 Git 二分天下，但 Git 占据的是互联网明星创业公司和 BAT 的优秀团队，为何？</li>
+<li>会 Git 找工作是加分项</li>
+<li>学习版本控制的另一种思维方式（学习一门语言就是学习一类思维方式）</li>
+</ul>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ul>
+<li>Git 不能直接解决目前后端的开发环境<ul>
+<li>code 规范的 branch 流程</li>
+<li>依赖，理清 maven 依赖和配合方式</li>
+<li>秒级上线（测试、预发布、正式）</li>
+<li>相应（尽可能少人力介入的）自动化测试、监控</li>
+</ul>
+</li>
+</ul>
+<h2 id="Git-SourceTree-Gitlab-的使用演示"><a href="#Git-SourceTree-Gitlab-的使用演示" class="headerlink" title="Git + SourceTree + Gitlab 的使用演示"></a>Git + SourceTree + Gitlab 的使用演示</h2><p><img src="http://7j1xgb.com5.z0.glb.clouddn.com/FullSizeRender.jpg" alt="Git 使用流程示意图"></p>
+<h3 id="local-repo"><a href="#local-repo" class="headerlink" title="local repo"></a>local repo</h3><ul>
+<li>用 SourceTree 初始化一个本地项目</li>
+<li>小步提交，介绍 staged 的用法<ul>
+<li>stage or unstage or discard</li>
+<li>stage 某一行代码</li>
+</ul>
+</li>
+<li>一次提交</li>
+<li>介绍 master 分支及 branchs 界面<ul>
+<li>留意 commit 编号</li>
+</ul>
+</li>
+<li>创建一个分支 feature/login</li>
+<li>新建 login.java 文件，index.html 加一行代码</li>
+<li>commit，观察分支树变化</li>
+<li>切换分支，观察代码变化</li>
+<li>创建一个分支 feature/share</li>
+<li>新建 share.py 文件，index.html 改一行代码</li>
+<li>commit，观察分支树变化</li>
+<li>切回 feature/login，临时处理事情，再切回 feature/share</li>
+<li>feature/share 分支删几行代码，再提交一次</li>
+<li>feature/share merge to master 分支，观察分支树变化</li>
+<li>feature/login merge to master 分支，处理冲突</li>
+<li>初始化 Git-flow</li>
+<li>新建 feature/school 分支，commit once</li>
+<li>用 Git-flow-gui 完成 feature/school 分支</li>
+<li>留意刚才的所有提交都在本地，思考与 SVN 区别（很像，只是分支极灵活）</li>
+<li>Q&amp;A</li>
+</ul>
+<h3 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h3><ul>
+<li>注册帐号，ssh-key 授权（略）</li>
+<li>介绍 Gitlab 结构：team-project</li>
+<li>新建项目 test-repo</li>
+<li>留意空项目向导，复制代码库 url</li>
+<li>本地配置 remote-url，观察 remotes 变化</li>
+<li>push，注意是 push 多条分支，留意 local-remote 分支对应关系</li>
+<li>再看 remotes 变化，分支树变化<ul>
+<li>remotes branchs 与 local branchs 一致</li>
+<li>分支树中多了 origin/*</li>
+</ul>
+</li>
+<li>观察 Gitlab 界面变化</li>
+<li>介绍 Gitlab 单个项目界面</li>
+<li>Q&amp;A</li>
+</ul>
+<h3 id="来一次典型的开发过程（包含-code-review）"><a href="#来一次典型的开发过程（包含-code-review）" class="headerlink" title="来一次典型的开发过程（包含 code review）"></a>来一次典型的开发过程（包含 code review）</h3><ul>
+<li>保证在 develop 分支，pull 最新代码</li>
+<li>网页端提交 readme 文件，造成 origin 变化，介绍 fetch，注意 branchs 变化</li>
+<li>重新 pull</li>
+<li>用 Git-flow-gui 建立 feature/news 分支</li>
+<li>产生两次 commit（包含 rename 文件）</li>
+<li>留意分支树变化，注意 Gitlab-web 端不存在刚才的提交，push，再对比</li>
+<li>Gitlab-web 端新建 merge-request, 留意 source-branch, target-branch, title, ass</li>
+<li>被指派者 review 代码，web 端回复建议</li>
+<li>根据建议产生新的 commit，同时 push</li>
+<li>刷新 web 端观察变化：查看一次 commit，查看全部 changes</li>
+<li>被指派者回复 LGTM（look good to me），点击 merge</li>
+<li>回到 SourceTree，观察分支树变化，fetch 再看</li>
+<li>切回 develop 分支</li>
+<li>Q&amp;A<ul>
+<li>有冲突 merge 按钮会不可点击，merge develop to work_branch ，在 develop 分支外解决冲突，commit&amp;push，merge 按钮就可点击了</li>
+<li>可方便的与自动化测试等结合起来</li>
+</ul>
+</li>
+</ul>
+<h2 id="提醒和推荐"><a href="#提醒和推荐" class="headerlink" title="提醒和推荐"></a>提醒和推荐</h2><h2 id="一些提醒（坑）"><a href="#一些提醒（坑）" class="headerlink" title="一些提醒（坑）"></a>一些提醒（坑）</h2><ul>
+<li>初次使用 Git，注意设置 <code>git config --global email&amp;name</code></li>
+<li>Windows 下的 Git 使用的确有些不便（不过我不熟悉，也不清楚具体问题）</li>
+<li>授权方式推荐 ssh-key</li>
+<li>忽略文件的配置</li>
+<li>着手代码前思考终极问题：『我在哪里，要去何处？』（先认清所在分支，pull）</li>
+<li>commit 已经 push 到远端了，这个时候不要想着再去修改了</li>
+<li>学习新东西，坑总是有的，多填了也就会了</li>
+</ul>
+<h3 id="一些推荐"><a href="#一些推荐" class="headerlink" title="一些推荐"></a>一些推荐</h3><ul>
+<li>强调思路，记住秒级定律，效率为王</li>
+<li>小步提交，每小时至少提交一次<ul>
+<li>一次任务的实现过程：整体设计，框架（类），接口，单元测试，实现</li>
+</ul>
+</li>
+<li>完整提交，完整提交，必须完整提交！不该有任一个提交项目不可运行。</li>
+<li>保证非工作期间，工作区间干净</li>
+<li>不想提交但要切换分支处理事物用 stash 处理</li>
+<li>Github 经常被 X<ul>
+<li>coding.net 代码私有库托管可以用。找开源代码，永远是 Github</li>
+<li>Google 也是被 X。珍爱生命，自配 VPN</li>
+</ul>
+</li>
+<li>国内 Git 私有库托管推荐 coding.net，国外推荐 bitbucket（支持hg） 和 Gitlab</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>依赖（迷信）工具不可取，但工具会影响思维方式，而思维方式非常重要</li>
+</ul>
+<blockquote>
+<p>举例：<br>SVN 的思维方式决定了 diff patch 的开源合作方式。交流不顺畅，实现思路难以程现，这种合作方式很长时间里都是高端人士的特权。<br>Git + Github 催生了 fork，成就了最大的程序员社交网站，也极力促进了开源社区的发展。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/07/Why-Git-Learn-It/" data-id="cj2xi6dzm00252zx1gghpefnb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周技术分享/">周技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术部分享/">技术部分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动组周技术分享/">移动组周技术分享</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit4/">JUnit4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Playground/">Playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog-tools-ci/">blog, tools, ci</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaScript/">javaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phython/">phython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weui/">weui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/JUnit4/" style="font-size: 10px;">JUnit4</a> <a href="/tags/Playground/" style="font-size: 10px;">Playground</a> <a href="/tags/blog-tools-ci/" style="font-size: 10px;">blog, tools, ci</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javaScript/" style="font-size: 10px;">javaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/phython/" style="font-size: 10px;">phython</a> <a href="/tags/shell/" style="font-size: 20px;">shell</a> <a href="/tags/tablayout/" style="font-size: 10px;">tablayout</a> <a href="/tags/weui/" style="font-size: 10px;">weui</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/同步异步/" style="font-size: 10px;">同步异步</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/开发效率/" style="font-size: 10px;">开发效率</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/研发杂谈/" style="font-size: 10px;">研发杂谈</a> <a href="/tags/线程/" style="font-size: 10px;">线程</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/29/移动周分享-第61期/">移动周分享-第61期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/22/移动周分享-第60期/">移动周分享-第60期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/15/移动周分享-第59期/">移动周分享-第59期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/17/移动周分享-第58期/">移动周分享-第58期</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/27/移动周分享-第57期/">移动周分享-第57期</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wilson<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
