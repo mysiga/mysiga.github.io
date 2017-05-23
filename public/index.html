@@ -21,7 +21,7 @@
 <meta name="description" content="每周分享博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wilson">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="mysiga.cn/index.html">
 <meta property="og:site_name" content="Wilson">
 <meta property="og:description" content="每周分享博客">
 <meta name="twitter:card" content="summary">
@@ -474,71 +474,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="谓词-刘康"><a href="#谓词-刘康" class="headerlink" title="谓词 - 刘康"></a>谓词 - 刘康</h2><ul>
-<li>NSPredicate是Foundation框架中的一个类。</li>
-<li>作用：指定数据被获取和过滤的方式。提供了类似于自然语言一样定义一个集合被搜寻的逻辑条件。</li>
-</ul>
-<p>为了证明NSPredicate的强大功能，先写一个Person类，做准备工作。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.age = age</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"name: <span class="subst">\(<span class="keyword">self</span>.name)</span>, age: <span class="subst">\(<span class="keyword">self</span>.age)</span>"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> colleagues = <span class="type">NSMutableArray</span>()</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Arthur"</span>, age: <span class="number">45</span>))</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Michael"</span>, age: <span class="number">23</span>))</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Kenny"</span>, age: <span class="number">25</span>))</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Bella"</span>, age: <span class="number">24</span>))</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Vincent"</span>, age: <span class="number">36</span>))</div><div class="line">colleagues.addObject(<span class="type">Person</span>(name: <span class="string">"Adolph"</span>, age: <span class="number">39</span>))</div></pre></td></tr></table></figure>
-<p>###基本使用</p>
-<p><strong>找出年龄为24岁的人:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">predicateByAge</span> = NSPredicate(format: <span class="string">"age == 24"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result</span> = colleagues.filteredArrayUsingPredicate(predicateByAge)</div></pre></td></tr></table></figure>
-<p><strong>参数可以传入:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">age</span> = NSNumber(int: <span class="number">25</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">predicateByPassAge</span> = NSPredicate(format: <span class="string">"age == %@"</span>, age)</div><div class="line"><span class="keyword">let</span> <span class="attr">result1</span> = colleagues.filteredArrayUsingPredicate(predicateByPassAge)</div></pre></td></tr></table></figure>
-<p><strong>也可传入要对比的属性，这里是age. 属性的key:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">pridicateByAge1</span> = NSPredicate(format: <span class="string">"%K == %@"</span>, <span class="string">"age"</span>, NSNumber(int: <span class="number">36</span>))</div><div class="line"><span class="keyword">let</span> <span class="attr">result2</span> = colleagues.filteredArrayUsingPredicate(pridicateByAge1)</div></pre></td></tr></table></figure>
-<p><strong>指定通配的变量，这里用24来替代age:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">pridicateByAge2</span> = NSPredicate (format: <span class="string">"age == $age"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result3</span> = colleagues.filteredArrayUsingPredicate(pridicateByAge2.predicateWithSubstitutionVariables([<span class="string">"age"</span>: NSNumber(int: <span class="number">24</span>)]))</div></pre></td></tr></table></figure>
-<p>####语法小结</p>
-<ul>
-<li>使用<code>%@</code>对应数字，字符串，日期的替代值</li>
-<li>使用<code>%K</code>对应要比较的属性，也就是KVC中的key</li>
-<li>使用$变量名来表示通配的变量，然后<code>predicateWithSubstitutionVariables</code>来决定具体的变量值</li>
-</ul>
-<p>###基本比较</p>
-<p><strong>找出年龄大于40岁的同事:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">predicateAgeOver40</span> = NSPredicate(format: <span class="string">"age &gt; 40"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">boss</span> = colleagues.filteredArrayUsingPredicate(predicateAgeOver40)</div></pre></td></tr></table></figure>
-<p><strong>找出年龄在22岁~35岁的人:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">minAge</span> = NSNumber(int: <span class="number">22</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">maxAge</span> = NSNumber(int: <span class="number">35</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">predicateByAge3</span> = NSPredicate(format: <span class="string">"age BETWEEN &#123;%@, %@&#125;"</span>, minAge, maxAge)</div><div class="line"><span class="keyword">let</span> <span class="attr">result4</span> = colleagues.filteredArrayUsingPredicate(predicateByAge3)</div></pre></td></tr></table></figure>
-<p>####语法小结</p>
-<ul>
-<li><code>&gt;</code> 大于</li>
-<li><code>&gt;=</code> 大于等于</li>
-<li><code>&lt;</code> 小于</li>
-<li><code>&lt;=</code> 小于等于</li>
-<li><code>==</code> 等于</li>
-<li><code>!=</code> 或者 <code>&lt;&gt;</code> 不等于</li>
-<li><code>BETWEEN</code> 介于两者之间,包括上下限</li>
-</ul>
-<p>###复合比较</p>
-<ul>
-<li><code>&amp;&amp;</code> 或者<code>AND</code> 逻辑与</li>
-<li><code>||</code> 或者 <code>OR</code> 逻辑或</li>
-<li><code>!</code>或者<code>NOT</code> 逻辑非</li>
-</ul>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">predicateByCompare</span> = NSPredicate(format: <span class="string">"age &lt; 30 OR age &gt;= 40"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result5</span> = colleagues.filteredArrayUsingPredicate(predicateByCompare)</div></pre></td></tr></table></figure>
-<p>###字符串比较</p>
-<ul>
-<li><code>BEGINSWITH</code> 左边表达式以右边表达式开头</li>
-<li><code>CONTAINS</code> 左边表达式包含右边表达式</li>
-<li><code>ENDSWITH</code> 左边表达式以右边表达式结尾</li>
-<li><code>LIKE</code> 左边表达式和右边表达式相似（简单的正则表达式匹配，?匹配一个字符，*匹配0个或者多个字符）</li>
-<li><code>MATCHES</code> 可以实现较为复杂的正则表达式匹配</li>
-<li>用方括号加<code>cd</code>来不区分大小写和变音符号</li>
-<li><code>IN</code> 左边的表达式在右边的集合里</li>
-</ul>
-<p><strong>找出名字以“A”开头的同事:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">pridivateByName1</span> = NSPredicate(format: <span class="string">"name BEGINSWITH %@"</span>, <span class="string">"A"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result6</span> = colleagues.filteredArrayUsingPredicate(pridivateByName1)</div></pre></td></tr></table></figure>
-<p><strong>名字里包含in,不区分大小写，并且年龄大于等于24:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">pridivateByName2</span> = NSPredicate(format: <span class="string">"name CONTAINS %@ &amp;&amp; age &gt;= %@"</span>, <span class="string">"in"</span>, NSNumber(int: <span class="number">24</span>))</div><div class="line"><span class="keyword">let</span> <span class="attr">result7</span> = colleagues.filteredArrayUsingPredicate(pridivateByName2)</div></pre></td></tr></table></figure>
-<p><strong>复合正则表达式<code>T[a-z]*k</code>:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">privatedivateByName3</span> = NSPredicate(format: <span class="string">"name MATCHES 'T[a-z]*k'"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result8</span> = colleagues.filteredArrayUsingPredicate(privatedivateByName3)</div></pre></td></tr></table></figure>
-<p><strong>名字是两者中的一个:</strong></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">privatedivateByName4</span> = NSPredicate(format: <span class="string">"name IN &#123;'Bella', 'Jack Tomphon'&#125;"</span>)</div><div class="line"><span class="keyword">let</span> <span class="attr">result9</span> = colleagues.filteredArrayUsingPredicate(privatedivateByName4)</div></pre></td></tr></table></figure>
-<p>###基于Block的谓词</p>
-<p><strong>基于Block能够灵活的定制谓词，这里简单的Block定义<code>age &gt; 24</code>:</strong></p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> blockPredicate = <span class="type">NSPredicate</span> &#123; (person: <span class="type">AnyObject</span>!, _) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">var</span> <span class="literal">result</span> = <span class="literal">false</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> castResult = person <span class="keyword">as</span>? <span class="type">Person</span> &#123;</div><div class="line">        <span class="keyword">if</span> castResult.age &gt; <span class="number">24</span> &#123;</div><div class="line">            <span class="literal">result</span> = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">result</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> result10 = colleagues.filteredArrayUsingPredicate(blockPredicate)</div></pre></td></tr></table></figure>
-<p>###Array使用谓词参考：<br><a href="http://stackoverflow.com/questions/24382580/filteredarrayusingpredicate-does-not-exist-in-swift-array" target="_blank" rel="external">StackOverFlow</a></p>
 
       
     </div>
