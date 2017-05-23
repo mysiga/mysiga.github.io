@@ -1,7 +1,7 @@
 title: Axure工具分享
 date: 2015-05-08 23:04:29
 tags:
-categories: 其他
+categories: 移动组周分享
 ---
 ## Axure工具分享
 

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)WEB 登录『原理』 - 曾铭Session &amp;amp; cookie HTTP 是无状态协议 Session 服务器端简单存储 cookie 客户端简单存储（注意：在请求头中）  密码如何存储 明文存储 md5 碰撞库破解  md5(pwd) md5+salt   md5(pwd+salt)  salt  pwd sha1…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知其所以然">
+<meta property="og:url" content="http://yoursite.com/2015/07/08/知其所以然/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)WEB 登录『原理』 - 曾铭Session &amp;amp; cookie HTTP 是无状态协议 Session 服务器端简单存储 cookie 客户端简单存储（注意：在请求头中）  密码如何存储 明文存储 md5 碰撞库破解  md5(pwd) md5+salt   md5(pwd+salt)  salt  pwd sha1…">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542711/2952b918-24ca-11e5-8dda-f42e42f57e72.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542720/2987624e-24ca-11e5-8380-658f9fc08f24.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542715/29552c5c-24ca-11e5-9849-bd352ede57f4.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542712/2952ba3a-24ca-11e5-85b7-0149e855e0cd.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542713/2952e118-24ca-11e5-9128-f30ac093e8f4.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542716/29557bf8-24ca-11e5-8869-afc7972ac5bf.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542714/2952e884-24ca-11e5-8ade-4f3a69c19df4.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542721/29879a5c-24ca-11e5-85a0-535bf058fa62.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542718/29855f58-24ca-11e5-83b2-e5d4e679f543.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542717/29851a3e-24ca-11e5-8eab-3d5703d032ea.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/9360037/8542719/2986620e-24ca-11e5-9686-6fad2780ab63.png">
+<meta property="og:updated_time" content="2017-05-23T14:12:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知其所以然">
+<meta name="twitter:description" content="2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)WEB 登录『原理』 - 曾铭Session &amp;amp; cookie HTTP 是无状态协议 Session 服务器端简单存储 cookie 客户端简单存储（注意：在请求头中）  密码如何存储 明文存储 md5 碰撞库破解  md5(pwd) md5+salt   md5(pwd+salt)  salt  pwd sha1…">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/9360037/8542711/2952b918-24ca-11e5-8dda-f42e42f57e72.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>知其所以然 | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-知其所以然" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/08/知其所以然/" class="article-date">
+      <time datetime="2015-07-07T23:04:29.000Z" itemprop="datePublished">2015-07-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      知其所以然
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="2015-07-07-知其所以然-10分钟解释一个和开发相关的原理"><a href="#2015-07-07-知其所以然-10分钟解释一个和开发相关的原理" class="headerlink" title="2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)"></a>2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)</h2><h3 id="WEB-登录『原理』-曾铭"><a href="#WEB-登录『原理』-曾铭" class="headerlink" title="WEB 登录『原理』 - 曾铭"></a>WEB 登录『原理』 - 曾铭</h3><h4 id="Session-amp-cookie"><a href="#Session-amp-cookie" class="headerlink" title="Session &amp; cookie"></a>Session &amp; cookie</h4><ul>
+<li>HTTP 是无状态协议</li>
+<li>Session 服务器端简单存储</li>
+<li>cookie 客户端简单存储（注意：在请求头中）</li>
+</ul>
+<h4 id="密码如何存储"><a href="#密码如何存储" class="headerlink" title="密码如何存储"></a>密码如何存储</h4><ul>
+<li>明文存储</li>
+<li>md5 碰撞库破解  md5(pwd)</li>
+<li>md5+salt   md5(pwd+salt)  salt  pwd</li>
+<li>sha1……都能用，千万不要自己实现散列算法</li>
+</ul>
+<h4 id="一个登录的过程"><a href="#一个登录的过程" class="headerlink" title="一个登录的过程"></a>一个登录的过程</h4><ul>
+<li>明文密码</li>
+<li>session_id, access_token, token</li>
+<li>第三方登录：OAuth2, OpenID</li>
+</ul>
+<hr>
+<p>###iBeacon - 潘君</p>
+<ul>
+<li><p>BLE</p>
+<ul>
+<li>RSSI(Received Signal Strength Indicator)</li>
+<li>唯一标识码</li>
+<li>例:<a href="http://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-3501608320.8.8JO7JE&amp;id=22152768901" target="_blank" rel="external"> 防丢器</a></li>
+</ul>
+</li>
+<li><p><a href="http://www.brtbeacon.com/home/industry_solution.shtml" target="_blank" rel="external">应用场景</a></p>
+<ul>
+<li>配合微信摇一摇</li>
+<li>商城导购</li>
+<li>地下停车库导航</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/ibip/ibip_document/wiki/%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84" target="_blank" rel="external">室内定位</a></p>
+<ul>
+<li>标签定位</li>
+<li>三角定位</li>
+<li>指纹定位</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="andoid虚拟机-吴明"><a href="#andoid虚拟机-吴明" class="headerlink" title="andoid虚拟机 - 吴明"></a>andoid虚拟机 - 吴明</h3><ul>
+<li>系统框架对比android vs ios</li>
+<li><a href="http://blog.csdn.net/xyz_lmn/article/details/8907502" target="_blank" rel="external">ios系统框架</a></li>
+<li><a href="http://www.cnblogs.com/royenhome/archive/2010/04/24/1719293.html" target="_blank" rel="external">android系统框架</a></li>
+<li><p>Dalvik虚拟机</p>
+<ul>
+<li>Dalvik虚拟机是Android程序的虚拟机，是Android中Java程序的运行基础。其指令集基于寄存器架构，执行其特有的文件格式——dex字节码来完成对象生命周期管理、堆栈管理、线程管理、安全异常管理、垃圾回收等重要功能。它的核心内容是实现库（libdvm.so），大体由C语言实现。依赖于Linux内核的一部分功能——线程机制、内存管理机制，能高效使用内存，并在低速CPU上表现出的高性能。每一个Android应用在底层都会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。</li>
+</ul>
+</li>
+<li><p>Android系统是以Linux系统为底层构建的，Android系统是开源(源代码公开)的，Android系统势必会适配到不同硬件配置的设备上，因此谷歌为了降低应用的开发难度在Linux底层之上构筑了一个名为“Dalvik”的虚拟机。</p>
+</li>
+<li>一个应用，一个虚拟机实例，一个进程！！！</li>
+<li><p><a href="http://blog.csdn.net/andyxm/article/details/6126907/" target="_blank" rel="external">android虚拟机详细</a></p>
+</li>
+<li><p>其他：</p>
+<ul>
+<li>ART模式:Android4.4中新加入的ART模式，该模式的完整名称是Androidruntime.</li>
+<li>ART：Android 4.4开始推出的新的运行环境，在APP安装的时候使用dex2oat工具直接把DEX文件转换为机器码文件，运行的时候以机器码方式运行，可以充分利用系统性能；此外，改进的内存回收机制使得ART运行模式下的内存回收速度只有Dalvik运行时模式下的50%，也能够提升系统运行速度。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏"><a href="#Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏" class="headerlink" title="Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏"></a>Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏</h3><p>Android中，我们在线程之间通信传递通常采用Android的消息机制，而这机制传递的正是Message。</p>
+<p>通常，我们使用<a href="http://developer.android.com/reference/android/os/Message.html#obtain(" target="_blank" rel="external">Message.obtain()</a>)和<a href="http://developer.android.com/reference/android/os/Handler.html#obtainMessage(" target="_blank" rel="external">Handler.obtainMessage()</a>)从Message Pool中获取Message，避免直接构造Message。</p>
+<h4 id="Message-obtain-源码"><a href="#Message-obtain-源码" class="headerlink" title="Message.obtain()源码"></a>Message.obtain()源码</h4><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Return a<span class="built_in"> new </span>Message<span class="built_in"> instance </span>from the global pool. Allows us to</div><div class="line"> * avoid allocating<span class="built_in"> new </span>objects in many cases.</div><div class="line"> */<span class="keyword"></span></div><div class="line">public<span class="keyword"> static</span> Message obtain() &#123;</div><div class="line">    synchronized (sPoolSync) &#123;</div><div class="line">       <span class="built_in"> if </span>(sPool != null) &#123;</div><div class="line">            Message m = sPool;</div><div class="line">            sPool = m.next;</div><div class="line">            m.next = null;</div><div class="line">            m.flags = 0; // clear in-use flag</div><div class="line">            sPoolSize--;</div><div class="line">           <span class="built_in"> return </span>m;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">   <span class="built_in"> return </span>new Message();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从代码片中，可以看到Message是直接由sPool赋值的。</p>
+<h4 id="Handler-obtain-源码"><a href="#Handler-obtain-源码" class="headerlink" title="Handler.obtain()源码"></a>Handler.obtain()源码</h4><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Returns a<span class="built_in"> new </span>&#123;@link android.os.Message Message&#125; from the global message pool. More efficient than</div><div class="line"> * creating<span class="built_in"> and </span>allocating<span class="built_in"> new </span>instances. The retrieved message has its handler set to this<span class="built_in"> instance </span>(Message.target == this).</div><div class="line"> *  If you don't want that facility, just call Message.obtain() instead.</div><div class="line"> */<span class="keyword"></span></div><div class="line">public<span class="keyword"> final</span> Message obtainMessage()</div><div class="line">&#123;</div><div class="line">   <span class="built_in"> return </span>Message.obtain(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Handler.obtain()最终还是调用Message.obtain()来获取的。</p>
+<h4 id="Message-Pool相关源码分析"><a href="#Message-Pool相关源码分析" class="headerlink" title="Message Pool相关源码分析"></a>Message Pool相关源码分析</h4><h5 id="Message-Pool数据结构"><a href="#Message-Pool数据结构" class="headerlink" title="Message Pool数据结构"></a>Message Pool数据结构</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sometimes we store linked lists of these things</span></div><div class="line"><span class="comment">/*package*/</span> Message next;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">Object</span> sPoolSync = <span class="keyword">new</span> <span class="keyword">Object</span>();</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> Message sPool;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> sPoolSize = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> MAX_POOL_SIZE = <span class="number">50</span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">boolean</span> gCheckRecycle = <span class="keyword">true</span>;</div></pre></td></tr></table></figure>
+<p>从代码中可以很明确的看到，Message Pool的数据结构实际就是一个链表。sPool就是一个全局的消息池，sPoolSize记录链表长度，MAX_POOL_SIZE表示链表的最大长度为50。</p>
+<h5 id="Message-Pool如何存放Message"><a href="#Message-Pool如何存放Message" class="headerlink" title="Message Pool如何存放Message"></a>Message Pool如何存放Message</h5><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** <span class="doctag">@hide</span> */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">updateCheckRecycle</span><span class="params">(<span class="keyword">int</span> targetSdkVersion)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (targetSdkVersion &lt; Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">        gCheckRecycle = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Return a Message instance to the global pool.</div><div class="line"> * &lt;p&gt;</div><div class="line"> * You MUST NOT touch the Message after calling this function because it has</div><div class="line"> * effectively been freed.  It is an error to recycle a message that is currently</div><div class="line"> * enqueued or that is in the process of being delivered to a Handler.</div><div class="line"> * &lt;/p&gt;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">recycle</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (isInUse()) &#123;</div><div class="line">        <span class="keyword">if</span> (gCheckRecycle) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"This message cannot be recycled because it "</span></div><div class="line">                    + <span class="string">"is still in use."</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    recycleUnchecked();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Recycles a Message that may be in-use.</div><div class="line"> * Used internally by the MessageQueue and Looper when disposing of queued Messages.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">recycleUnchecked</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// Mark the message as in use while it remains in the recycled object pool.</span></div><div class="line">    <span class="comment">// Clear out all other details.</span></div><div class="line">    flags = FLAG_IN_USE;</div><div class="line">    what = <span class="number">0</span>;</div><div class="line">    arg1 = <span class="number">0</span>;</div><div class="line">    arg2 = <span class="number">0</span>;</div><div class="line">    obj = <span class="keyword">null</span>;</div><div class="line">    replyTo = <span class="keyword">null</span>;</div><div class="line">    sendingUid = <span class="number">-1</span>;</div><div class="line">    when = <span class="number">0</span>;</div><div class="line">    <span class="keyword">target</span> = <span class="keyword">null</span>;</div><div class="line">    callback = <span class="keyword">null</span>;</div><div class="line">    data = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">synchronized</span> (sPoolSync) &#123;</div><div class="line">        <span class="keyword">if</span> (sPoolSize &lt; MAX_POOL_SIZE) &#123;</div><div class="line">            next = sPool;</div><div class="line">            sPool = <span class="keyword">this</span>;</div><div class="line">            sPoolSize++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从代码分析上看，消息池存放的核心方法就是上面的recycleUnchecked()方法：</p>
+<blockquote>
+<p>1、将待回收的Message对象字段置空（避免因Message过大，使静态的消息池内存泄漏）。</p>
+<p>2、以内置锁对方式（线程安全），判断当前线程池的大小是否小于50。若小于50，直接将mesaage插入到消息池链表尾部；若大于等于50，则直接丢弃掉，交由GC管理。</p>
+</blockquote>
+<hr>
+<h3 id="消费者心理学：三个趣味经济学原理-–-张超耀"><a href="#消费者心理学：三个趣味经济学原理-–-张超耀" class="headerlink" title="消费者心理学：三个趣味经济学原理 – 张超耀"></a><a href="http://i.wshang.com/Post/Default/Index/pid/32949.html" target="_blank" rel="external">消费者心理学：三个趣味经济学原理</a> – 张超耀</h3><ul>
+<li>价格越低为什么不但不好卖，反而价格越高越好卖</li>
+<li>为什么大手大脚的浪费反而可以拯救经济？</li>
+<li>为什么免费未必就是最好的</li>
+</ul>
+<p>这些经济学原理背后又有哪些逻辑在支撑，让我去探讨一下这些好玩的经济学吧。</p>
+<h4 id="价格越高越好卖——虚荣效应"><a href="#价格越高越好卖——虚荣效应" class="headerlink" title="价格越高越好卖——虚荣效应"></a>价格越高越好卖——虚荣效应</h4><ul>
+<li><p>富人们一般不喜欢大众模仿他们的消费行为，这种情况就叫做虚荣效应(snob effect)。虚荣效应具体是指购买商品的时候追求与众不同的个性的现象。</p>
+</li>
+<li><p>虚荣效应主要有以下两种表现。</p>
+<ul>
+<li><p>高档商品刚上市的时候迅速购买。这是因为，在这一瞬间并不是每个人都能享受到消费高档商品的荣誉。</p>
+</li>
+<li><p>不论之前如何热情赞美的商品，一旦其市场占有率达到一般大众都可以消费的水平就不再继续购买。这是因为人人都能购买使用的商品既不会让人感到荣誉，也不会有高档的感觉。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="大手大脚的浪费能拯救经济——节约悖论"><a href="#大手大脚的浪费能拯救经济——节约悖论" class="headerlink" title="大手大脚的浪费能拯救经济——节约悖论"></a>大手大脚的浪费能拯救经济——节约悖论</h4><ul>
+<li><p>我们都知道，如果消费超过收入，就没有余钱可以储蓄，也就无法积累资金，最终只能过贫穷的生活。所以，为了成为富人我们会努力工作，有时候也会变成小气鬼，为了能储蓄更多钱而努力。</p>
+</li>
+<li><p>这个原理对于个人是适用的，但是对于国家整体经济是否也适用呢？如果所有国民都变成小气鬼，这个国家真的能够变得更加富强吗？答案是否定的，尤其是在经济不景气的时候。让我们看看其原因何在。</p>
+</li>
+<li><p>一旦经济进入不景气，基于对未来的担忧，人们会选择更多的储蓄进而减少消费。可是如果所有人都减少消费的话，企业的销售额就会降低，库存就会增加。随之而来的是企业只能降低生产减少雇用，而企业员工的收入就会减少。那么，对未来的担忧就会强化，人们会更加坚定地减少消费增加储蓄，于是整体经济就会陷入愈发不景气的恶性循环中。</p>
+</li>
+</ul>
+<h4 id="免费未必就好——免费经济学"><a href="#免费未必就好——免费经济学" class="headerlink" title="免费未必就好——免费经济学"></a>免费未必就好——免费经济学</h4><ul>
+<li><p>“世上没有免费的午餐”是1976年获得诺贝尔经济学奖的着名经济学家米尔顿弗里德曼(Milton Friedman)常说的一句话。</p>
+</li>
+<li><p>有的信息粗看之下似乎是免费的，实际上经过了解后发现并不是免费的意思；或者可以解释为免费后面隐藏着某种诱饵，还可以理解为不要期待不付出代价的免费东西。就像“免费的奶酪只存在于捕鼠器上”的俄罗斯谚语一样，对免费的东西保持警惕是亘古不变的道理。</p>
+</li>
+<li><p>看看我们周围，就能发现很多免费营销，地铁站前的免费报纸就是其中一种。曾经威胁到日报和体育报纸的免费报纸因为有很多读者，所以可以从广告收入上获得高收益。人气差的免费报纸会因为得不到足够的广告收入而被淘汰，这样的话，幸存下来的免费报纸就可以逐步占据更加有利的位置。越是资金实力雄厚的公司，在这种免费竞争中能够生存下来的概率就越大。因此，消费者也可能会面临因为垄断招致的损失。</p>
+</li>
+<li><p>免费经济市场的另一个弊端就是对资源的浪费。以免费报纸为例，因为免费派发给消费者，所以新闻纸会被大量浪费掉。大量生产大量消费的体制会导致能源的过度使用而招致地球变暖势头的加速。”</p>
+</li>
+</ul>
+<hr>
+<p>###Icon制作 - 杨志平</p>
+<p><img width="487" alt="qq20150707-6 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542711/2952b918-24ca-11e5-8dda-f42e42f57e72.png"><br><img width="568" alt="qq20150707-11 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542720/2987624e-24ca-11e5-8380-658f9fc08f24.png"></p>
+<p>####51offer的Icon的流程<br><img width="491" alt="qq20150707-1 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542715/29552c5c-24ca-11e5-9849-bd352ede57f4.png"><br><img width="497" alt="qq20150707-2 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542712/2952ba3a-24ca-11e5-85b7-0149e855e0cd.png"><br><img width="493" alt="qq20150707-3 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542713/2952e118-24ca-11e5-9128-f30ac093e8f4.png"><br><img width="493" alt="qq20150707-4 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542716/29557bf8-24ca-11e5-8869-afc7972ac5bf.png"><br><img width="492" alt="qq20150707-5 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542714/2952e884-24ca-11e5-8ade-4f3a69c19df4.png"></p>
+<p>####另一个Icon的制作的流程</p>
+<p><img width="589" alt="qq20150707-7 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542721/29879a5c-24ca-11e5-85a0-535bf058fa62.png"><br><img width="573" alt="qq20150707-8 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542718/29855f58-24ca-11e5-83b2-e5d4e679f543.png"><br><img width="586" alt="qq20150707-9 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542717/29851a3e-24ca-11e5-8eab-3d5703d032ea.png"><br><img width="578" alt="qq20150707-10 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542719/2986620e-24ca-11e5-9686-6fad2780ab63.png"></p>
+<h3 id="Android-动画制作-王胜"><a href="#Android-动画制作-王胜" class="headerlink" title="Android 动画制作 - 王胜"></a>Android 动画制作 - 王胜</h3><h4 id="View-Animation"><a href="#View-Animation" class="headerlink" title="View Animation"></a>View Animation</h4><ul>
+<li>AlphaAnimation 淡入淡出效果</li>
+<li>TranslateAnimation 移动效果</li>
+<li>ScaleAnimation 缩放效果</li>
+<li>RotateAnimation 旋转效果</li>
+</ul>
+<p>原理：提供动画的起始和结束状态信息，中间的状态根据上述类里差值器算法填充<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
+<h4 id="Property-Animation"><a href="#Property-Animation" class="headerlink" title="Property Animation"></a>Property Animation</h4><p>View Animation动画比较简单，一般都是单个因素的变化，如果牵扯到复杂的动画，就显得力不从心。因此，Android 3.0 引入了属性动画。注：可通过<a href="http://nineoldandroids.com/" target="_blank" rel="external">[NineOldAndroids]</a>项目在3.0之前的系统中使用Property Animation</p>
+<p>原理：暴露出差值算法的回调方法，有工程师自己发挥想象，造出奇妙的动画效果。<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
+<h4 id="Drawable-Animation"><a href="#Drawable-Animation" class="headerlink" title="Drawable Animation"></a>Drawable Animation</h4><h5 id="逐帧动画"><a href="#逐帧动画" class="headerlink" title="逐帧动画"></a>逐帧动画</h5><p>原理：提供动画每个帧上的图片资源，顺序播放<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
+<h5 id="ClipDrawable-剪切动画"><a href="#ClipDrawable-剪切动画" class="headerlink" title="ClipDrawable 剪切动画"></a>ClipDrawable 剪切动画</h5><p>原理：提供一个背景图片，前景图片是一个ClipDrawable对象。通过线程操作ClipDrawable的剪切进度。</p>
+<p>实例：</p>
+<ul>
+<li>ClipDrawable 定义xml文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">clip</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:clipOrientation</span>=<span class="string">"vertical"</span></div><div class="line">    <span class="attr">android:drawable</span>=<span class="string">"@drawable/loading_progress"</span></div><div class="line">    <span class="attr">android:gravity</span>=<span class="string">"bottom"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">clip</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>组件引用</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/iv"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:scaleType</span>=<span class="string">"centerInside"</span></div><div class="line">        <span class="attr">android:paddingTop</span>=<span class="string">"5dp"</span></div><div class="line">        <span class="attr">android:paddingLeft</span>=<span class="string">"5dp"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/loading_bg"</span></div><div class="line">        <span class="attr">android:src</span>=<span class="string">"@drawable/clip_loading"</span>/&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>线程动态改变剪切进度</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">	    <span class="comment">// 如果消息是本程序发送的</span></div><div class="line">        <span class="keyword">if</span> (msg.what == MSG_WHAT) &#123;</div><div class="line">            mClipDrawable.setLevel(mProgress);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">.......</div><div class="line">Runnable mRunnable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        isRunning = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">while</span> (isRunning) &#123;</div><div class="line">            handler.sendEmptyMessage(MSG_WHAT);</div><div class="line">            <span class="keyword">if</span> (mProgress &gt; MAX_PROGRESS) &#123;</div><div class="line">                mProgress = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            mProgress += <span class="number">100</span>;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">18</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/07/08/知其所以然/">知其所以然</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2015-07-07, 23:04:29</p>
+        <p><span>最后更新:</span>2017-05-23, 22:12:28</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/07/08/知其所以然/" title="知其所以然">http://yoursite.com/2015/07/08/知其所以然/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/07/08/知其所以然/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/07/10/微信公众号开发/">
+                    微信公众号开发
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/06/27/线程并发和同步/">
+                    扯扯线程并发和同步的那些事
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2015-07-07-知其所以然-10分钟解释一个和开发相关的原理"><span class="toc-number">1.</span> <span class="toc-text">2015.07.07 - 知其所以然(10分钟解释一个和开发相关的原理)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB-登录『原理』-曾铭"><span class="toc-number">1.1.</span> <span class="toc-text">WEB 登录『原理』 - 曾铭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Session-amp-cookie"><span class="toc-number">1.1.1.</span> <span class="toc-text">Session & cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#密码如何存储"><span class="toc-number">1.1.2.</span> <span class="toc-text">密码如何存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个登录的过程"><span class="toc-number">1.1.3.</span> <span class="toc-text">一个登录的过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#andoid虚拟机-吴明"><span class="toc-number">1.2.</span> <span class="toc-text">andoid虚拟机 - 吴明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏"><span class="toc-number">1.3.</span> <span class="toc-text">Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Message-obtain-源码"><span class="toc-number">1.3.1.</span> <span class="toc-text">Message.obtain()源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Handler-obtain-源码"><span class="toc-number">1.3.2.</span> <span class="toc-text">Handler.obtain()源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Message-Pool相关源码分析"><span class="toc-number">1.3.3.</span> <span class="toc-text">Message Pool相关源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Message-Pool数据结构"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">Message Pool数据结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Message-Pool如何存放Message"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">Message Pool如何存放Message</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消费者心理学：三个趣味经济学原理-–-张超耀"><span class="toc-number">1.4.</span> <span class="toc-text">消费者心理学：三个趣味经济学原理 – 张超耀</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#价格越高越好卖——虚荣效应"><span class="toc-number">1.4.1.</span> <span class="toc-text">价格越高越好卖——虚荣效应</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大手大脚的浪费能拯救经济——节约悖论"><span class="toc-number">1.4.2.</span> <span class="toc-text">大手大脚的浪费能拯救经济——节约悖论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#免费未必就好——免费经济学"><span class="toc-number">1.4.3.</span> <span class="toc-text">免费未必就好——免费经济学</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-动画制作-王胜"><span class="toc-number">1.5.</span> <span class="toc-text">Android 动画制作 - 王胜</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#View-Animation"><span class="toc-number">1.5.1.</span> <span class="toc-text">View Animation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Property-Animation"><span class="toc-number">1.5.2.</span> <span class="toc-text">Property Animation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Drawable-Animation"><span class="toc-number">1.5.3.</span> <span class="toc-text">Drawable Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#逐帧动画"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">逐帧动画</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ClipDrawable-剪切动画"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">ClipDrawable 剪切动画</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"知其所以然　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/07/10/微信公众号开发/" title="上一篇: 微信公众号开发">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/06/27/线程并发和同步/" title="下一篇: 扯扯线程并发和同步的那些事">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -5,7 +5,6 @@ categories: Android
 
 ---
 
-##Android-mvp
 - [mvc与mvp对比](http://www.cnblogs.com/end/archive/2011/06/02/2068512.html)
 - mvp
 	- model:依然是业务逻辑和实体模型

@@ -1,0 +1,234 @@
+title: Swift入门专题
+
+date: 2015-11-13  10:30:00
+
+tags:
+
+categories: 移动组周分享
+
+---
+
+## Swift初见 -- 张超耀
+
+### 宏 
+```
+// in objective-c, but in swift, #define can't be used any more  
+// use let keyword to define a macro, look up original document:  
+/*  
+Simple Macros  
+Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead. For example, the constant definition #define FADE_ANIMATION_DURATION 0.35 can be better expressed in Swift with let FADE_ANIMATION_DURATION = 0.35. Because simple constant-like macros map directly to Swift global variables, the compiler automatically imports simple macros defined in C and Objective-C source files.  
+*/  
+// in objective-c  
+// #define kCommonAPI @"http://xxxxxxx"  
+// but in swift, no #define, just use let to define  
+let kCommonAPI = "http://xxxxxxx"
+```
+### 注释 & 分号
+- 在Swift中，注释跟C/OC语言中的注释很像，但最大的不同点就是在Swift中多行注释可以嵌套
+
+```
+// 这是单行注释  
+  
+/* 这也是注释，但是多行注释   
+  /*多行注释在swift中是可以嵌套的*/  
+  /*原官方指导教程上说嵌套多行注释可以快速、简单地把大的代码块分成多块来注释 */  
+*/ 
+
+```
+
+- 与其它开发语言不同的时，swift是不要求写分号的，当然如果想写，也是可以的。当你想把多个语句写到同一行时，这种情况下就一定要使用分号来隔开不同的语句了
+
+``` 
+let dog = "a gog" // 可以不添加分号  
+let cat = "a cat"; print(cat)// 除了最后一条语句可以不添加分号外，其它都需要添加分号来隔开  
+let catTwo = "two cats"; let name = "Jobs"; print("\(name) has \(catTwos)")  
+
+```
+
+### 类型转换
+- Swift不会像C、OC那样自动**隐式转换**类型，所以我们需要手动进行类型转换 
+
+
+```
+let twoThousand: UInt16 = 2000   
+// one是UInt8类型  
+let one: UInt8 = 1  
+// twoThousand是UInt16类型，one是UInt8类型，如果要执行相加，那么就需要进行类型转换   
+// 否则会报错的。  
+let twoThousandAndOne = twoThousand + UInt16(one) 
+
+** 浮点值转换成整型时，会截尾**
+```
+
+### 类型别名(Typealias)
+
+- 类型别名也就是给已经存在的类型起一个别名。定义类型别名是使用关键字typealias。 类型别名一般是为了让开发者更容易看出变量或者常量的类型或者是更好地归类某一个模块中需要使用到的类型，让开发者见名知意。
+
+```
+// 下面是给UInt16起一个别名，叫mySample  
+// 然后就可以在其它地方使用这个mySample声明变量或者常量  
+typealias mySample = UInt16  
+  
+// 由于前面已经定义了类型别名，那么这里使用AudioSample也相当于使用UInt16  
+所以mySample.min = UInt16.min,也就是0 
+var maxAmplitudeFound = mySample.min  
+```
+
+### "?" 和 "!" 
+- Swift语言使用var定义变量，但和别的语言不同，Swift里不会自动给变量赋初始值， 也就是说变量不会有默认值，所以要求使用变量之前必须要对其初始化
+。如果在使用变量之前不进行初始化就会报错.
+
+```
+var stringValue : String?
+stringValue = nil
+print("\(stringValue)")
+let hashValue = stringValue?.hashValue
+
+// 这就是optional, strValue自动得到默认值：nil
+// 这个nil跟Objective-C中的nil不同，不是指针，而是表示值不存在。
+var strValue: String?
+
+// 判断optional是否有值
+if (strValue != nil) {
+    // do what you need to do here
+}
+```
+
+##下期预告
+### 深度理解Swift的"?"和"!"
+### Swift之断言
+### 浅谈Swift的closure
+
+## Dubbo 上手 -- 陈奎
+
+## 『图像和滤镜』 - 图像选择器
+
+`我们可以使用以下常规的图像获取方式`
+
+![Alt text](./Simulator Screen Shot Nov 12, 2015, 8.11.12 PM.png)
+
+`图库与相册`
+
+![Alt text](./Simulator Screen Shot Nov 12, 2015, 8.16.30 PM.png)
+
+
+#### 系统自带
+``` swift
+override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    
+    let sheet = UIAlertController(title: "图片选择", message: "简单版的三种选择", preferredStyle: .ActionSheet)
+    // 判断设备是否支持相机（iPod & Simulator）
+    if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+        sheet.addAction(UIAlertAction.init(title: "Camera", style: .Default, handler: { _ in
+            self.showPhotoes(.Camera)
+        }))
+    }
+    sheet.addAction(UIAlertAction.init(title: "PhotoLibrary", style: .Default, handler: { _ in
+        self.showPhotoes(.PhotoLibrary)
+    }))
+    sheet.addAction(UIAlertAction.init(title: "SavedPhotosAlbum", style: .Default, handler: { _ in
+        self.showPhotoes(.SavedPhotosAlbum)
+    }))
+    sheet.addAction(UIAlertAction.init(title: "Cancel", style: .Cancel, handler: nil))
+    presentViewController(sheet, animated: true, completion: nil)
+}
+```
+```
+func showPhotoes(source: UIImagePickerControllerSourceType) {
+    let controller = UIImagePickerController()
+    controller.delegate = self
+    controller.sourceType = source
+    controller.allowsEditing = source == .SavedPhotosAlbum ? true:false
+
+    self.presentViewController(controller, animated: true, completion: nil)
+}
+```
+`UIImagePickerController的代理`
+```
+func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    dismissViewControllerAnimated(true, completion: nil)
+}
+// 非常坑，这个方法废弃了但代码提示只有它
+//	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+//	}
+func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+}
+```
+#####[info字典介绍](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImagePickerControllerDelegate_Protocol/#//apple_ref/doc/constant_group/Editing_Information_Keys)
+```
+UIImagePickerControllerMediaType: String
+UIImagePickerControllerOriginalImage: UIImage
+UIImagePickerControllerEditedImage: UIImage
+UIImagePickerControllerCropRect: NSValue -> CGRect
+// MediaURL只为视频提供
+UIImagePickerControllerMediaURL:  NSURL
+// LivePhoto是一张图片，保留那个moment的前后动作和声音
+UIImagePickerControllerLivePhoto: String
+// 摄像摄影时返回media的信息字典
+UIImagePickerControllerMediaMetadata: NSDictionary
+```
+```
+// SavedPhotosAlbum 的 info 示例
+
+▿ 5 elements
+  ▿ [0] : 2 elements
+    - .0 : "UIImagePickerControllerCropRect"
+  ▿ [1] : 2 elements
+    - .0 : "UIImagePickerControllerOriginalImage"
+  ▿ [2] : 2 elements
+    - .0 : "UIImagePickerControllerReferenceURL"
+    - .1 : assets-library://asset/asset.JPG?id=99D53A1F-FEEF-40E1-8BB3-7DD55A43C8B7&ext=JPG
+  ▿ [3] : 2 elements
+    - .0 : "UIImagePickerControllerMediaType"
+    - .1 : public.image
+  ▿ [4] : 2 elements
+    - .0 : "UIImagePickerControllerEditedImage"
+```
+### 自定义
+
+![Alt text](./1447343597718.png)
+
+遍历相册的所有图片
+``` swift
+// AssetsLibrary.framework
+// ALAssetsLibrary 的使用,但是它慢慢的被放弃了
+    func loadLocalPhotoes(){
+        var countOne = 0
+        //ALAssetsGroupSavedPhotos表示只读取相机胶卷（ALAssetsGroupAll则读取全部相簿）
+        assetsLibrary.enumerateGroupsWithTypes(ALAssetsGroupSavedPhotos, usingBlock: {
+            (group: ALAssetsGroup!, stop) in
+            print("is goin")
+            if group != nil {
+                let assetBlock : ALAssetsGroupEnumerationResultsBlock = {
+                    (result: ALAsset!, index: Int, stop) in
+                    if result != nil {
+                        self.assets.append(result)
+                        countOne++
+                    }
+                }
+                group.enumerateAssetsUsingBlock(assetBlock)
+                print("assets:\(countOne)")
+                self.startChangeLocalImages(0)
+            }
+            }, failureBlock: { (fail) in
+                print(fail)
+        })
+    }
+    
+// 展现本地图片
+func startChangeLocalImages(var index: Int){
+        if index==assets.count {
+            index = 0
+        }
+        let myAsset = assets[index]
+        let image = UIImage(CGImage:myAsset.thumbnail().takeUnretainedValue())
+        self.backImageView.image = image
+        
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            self.startChangeLocalImages(index+1)
+        }
+    }
+```
+iOS9 开始使用新库
+[PHPhotoLibrary](https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHPhotoLibrary_Class/index.html)

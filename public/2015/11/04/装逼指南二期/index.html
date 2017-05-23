@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="Android 单元测试  吴明 Android单元测试支持 Android studio 1.2 beta3版本，原生支持单元测试   环境搭建  配置环境命令：./gradlew build connectedCheck     测试示例         123456789101112131415161718public class MyFirstTestActivityTest extend">
+<meta property="og:type" content="article">
+<meta property="og:title" content="周精益分享 - 程序员装逼指南二期">
+<meta property="og:url" content="http://yoursite.com/2015/11/04/装逼指南二期/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="Android 单元测试  吴明 Android单元测试支持 Android studio 1.2 beta3版本，原生支持单元测试   环境搭建  配置环境命令：./gradlew build connectedCheck     测试示例         123456789101112131415161718public class MyFirstTestActivityTest extend">
+<meta property="og:image" content="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png">
+<meta property="og:updated_time" content="2017-05-23T14:18:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="周精益分享 - 程序员装逼指南二期">
+<meta name="twitter:description" content="Android 单元测试  吴明 Android单元测试支持 Android studio 1.2 beta3版本，原生支持单元测试   环境搭建  配置环境命令：./gradlew build connectedCheck     测试示例         123456789101112131415161718public class MyFirstTestActivityTest extend">
+<meta name="twitter:image" content="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>周精益分享 - 程序员装逼指南二期 | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-装逼指南二期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/04/装逼指南二期/" class="article-date">
+      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">2015-11-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      周精益分享 - 程序员装逼指南二期
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Android-单元测试-吴明"><a href="#Android-单元测试-吴明" class="headerlink" title="Android 单元测试  吴明"></a>Android 单元测试  吴明</h2><ul>
+<li><a href="https://developer.android.com/intl/zh-cn/training/activity-testing/preparing-activity-testing.html" target="_blank" rel="external">Android单元测试支持</a><ul>
+<li>Android studio 1.2 beta3版本，原生支持单元测试</li>
+</ul>
+</li>
+<li>环境搭建 <ul>
+<li>配置环境命令：./gradlew build connectedCheck  </li>
+</ul>
+</li>
+<li>测试示例    <ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyFirstTestActivityTest</span> <span class="keyword">extends</span> <span class="title">ActivityInstrumentationTestCase2&lt;MyFirstTestActivity&gt;</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">MyFirstTestActivity</span> mFirstTestActivity;</div><div class="line">    <span class="keyword">private</span> <span class="type">TextView</span> mFirstTestText;</div><div class="line"></div><div class="line">    public <span class="type">MyFirstTestActivityTest</span>() &#123;</div><div class="line">        <span class="keyword">super</span>(<span class="type">MyFirstTestActivity</span>.<span class="keyword">class</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void setUp() <span class="keyword">throws</span> <span class="type">Exception</span> &#123;</div><div class="line">        <span class="keyword">super</span>.setUp();</div><div class="line">        mFirstTestActivity = getActivity();</div><div class="line">        mFirstTestText =</div><div class="line">                (<span class="type">TextView</span>) mFirstTestActivity</div><div class="line">                .findViewById(<span class="type">R</span>.id.my_first_test_text_view);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ps:由于配置环境一直报:</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Test </span>running failed: Instrumentation run failed due to 'java.lang.RuntimeException'</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/ui-testing/index.html" target="_blank" rel="external">Automating UI Tests</a></li>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html" target="_blank" rel="external">Building Effective Unit Tests</a></li>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/performance.html" target="_blank" rel="external">Testing Display  Performance</a></li>
+<li>问题：<ul>
+<li>运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+<li>测试的编写和维护较为困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 /home/img_temp 目录，处理权限问题后搞定</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>user, group, others</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[dev1@apps-51offer ~]$ ll</div><div class="line">total 16</div><div class="line">-rw-r--r--<span class="number"> 1 </span>dev1 dev  <span class="number"> 742 </span>Nov <span class="number"> 5 </span>11:22 ming.pub</div><div class="line">drwxrwx---<span class="number"> 4 </span>root root<span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test1</div><div class="line">drwxr-xr--<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>10:44 test2</div><div class="line">drwxr-xr-x<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test3</div></pre></td></tr></table></figure>
+<ul>
+<li>文件 <code>-</code></li>
+<li>文件夹 <code>d</code></li>
+<li>链接 <code>l</code></li>
+</ul>
+<p>rwx 读、写、执行权限 , 754 代表什么</p>
+<ul>
+<li>文件所有者变更：<code>chown ming:mobile file</code></li>
+<li>文件权限变更： <code>chmod g+rx file</code></li>
+</ul>
+<h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><blockquote>
+<p><code>drwxr-xr-- 2 dev1 dev  4096 Nov  6 10:44 test2</code> 文件夹下有 <code>-rwxr-xr-- 2 root root  4096 Nov  6 10:44 file</code><br>dev1 用户可以删除 file 这个文件吗？</p>
+</blockquote>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><blockquote>
+<p>可以，文件的 rwx 控制文件本身的读写运行权限，文件的增删文件名的修改要看文件夹的权限。</p>
+</blockquote>
+<p>##Android 压力测试工具 Monkey&amp;MonkeyRunner- 杨俊构</p>
+<p>###Monkey</p>
+<h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a>一、Monkey 是什么？</h4><ul>
+<li>Monkey 就是SDK中附带的一个工具。</li>
+</ul>
+<h4 id="二、Monkey-测试的目的？"><a href="#二、Monkey-测试的目的？" class="headerlink" title="二、Monkey 测试的目的？"></a>二、Monkey 测试的目的？</h4><ul>
+<li>该工具用于进行压力测试。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</li>
+</ul>
+<h4 id="三、Monkey-测试的特点？"><a href="#三、Monkey-测试的特点？" class="headerlink" title="三、Monkey 测试的特点？"></a>三、Monkey 测试的特点？</h4><ul>
+<li>Monkey 测试,所有的事件都是随机产生的，不带任何人的主观性。</li>
+</ul>
+<h4 id="四、Monkey-命令详解"><a href="#四、Monkey-命令详解" class="headerlink" title="四、Monkey 命令详解"></a>四、Monkey 命令详解</h4><ul>
+<li><p>标准的monkey 命令: [adb shell] monkey [options] <eventcount> ,</eventcount></p>
+<blockquote>
+<p> 例如：adb shell monkey -v 500 ——–产生500次随机事件，</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>四大类—— 常用选项 、 事件选项 、 约束选项 、 调试选项</p>
+<blockquote>
+<p>-v：指定打印信息的详细级别，一个 -v增加一个级别 ， 默认级别为 0 。</p>
+<p>-s：指定产生随机事件种子值，相同的种子值产生相同的事件序列。如： -s 200</p>
+<p>-p：指定有效的package（如不指定，则对系统中所有package有效），一个-p 对应一个有效package， 如：-p com.ckt -p com.ckt.asura；</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="五、一个简单的monkey命令："><a href="#五、一个简单的monkey命令：" class="headerlink" title="五、一个简单的monkey命令："></a>五、一个简单的monkey命令：</h4><ul>
+<li><p>adb shell monkey -p com.xy.android.junit -s 500 -v 10000</p>
+</li>
+<li><p>但是，工作中为了保证测试数量的完整进行，我们一般不会在发生错误时立刻退出压力测试。</p>
+</li>
+<li><p>monkey 测试命令如下</p>
+</li>
+</ul>
+<blockquote>
+<p>adb shell monkey -p com.xy.android.junit -s 500 –ignore-crashes –ignore-timeouts –monitor-native-crashes -v -v 10000 &gt; E:\monkey_log\java_monkey_log.txt</p>
+</blockquote>
+<p>###MonkeyRunner</p>
+<p>####一、什么是monkeyrunner</p>
+<ul>
+<li><p>monkeyrunner工具提供了一个API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片。</p>
+</li>
+<li><p>monkeyrunner工具的主要设计目的是用于测试功能/框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
+</li>
+</ul>
+<h4 id="二、monkeyrunner工具同Monkey工具的差别"><a href="#二、monkeyrunner工具同Monkey工具的差别" class="headerlink" title="二、monkeyrunner工具同Monkey工具的差别"></a>二、monkeyrunner工具同Monkey工具的差别</h4><ul>
+<li><p>Monkey： Monkey工具直接运行在设备或模拟器的adb shell中，生成用户或系统的伪随机事件流，属于黑盒测试。</p>
+</li>
+<li><p>monkeyrunner：monkeyrunner工具则是类似于灰盒测试的样子，可以编写定制一些测试方法和用例针对具体情况测试。</p>
+</li>
+</ul>
+<h4 id="三、实例-：双11抽取优惠券不停点击一个按钮脚本"><a href="#三、实例-：双11抽取优惠券不停点击一个按钮脚本" class="headerlink" title="三、实例 ：双11抽取优惠券不停点击一个按钮脚本"></a>三、实例 ：双11抽取优惠券不停点击一个按钮脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8 </span></div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner, MonkeyDevice, MonkeyImage</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner <span class="keyword">as</span> mr</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyDevice <span class="keyword">as</span> md</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyImage <span class="keyword">as</span> mi</div><div class="line">device=mr.waitForConnection()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </div><div class="line">	MonkeyRunner.sleep(<span class="number">1</span>)</div><div class="line">	<span class="keyword">print</span> i</div><div class="line">	device.touch(<span class="number">500</span>,<span class="number">950</span>,<span class="string">'DOWN_AND_UP'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"end"</span></div></pre></td></tr></table></figure>
+<p>##人脸识别技术简单介绍- 王进</p>
+<h4 id="Android自带的API-FaceDetector"><a href="#Android自带的API-FaceDetector" class="headerlink" title="Android自带的API:FaceDetector"></a>Android自带的API:FaceDetector</h4><ul>
+<li><p>Step 1: 读取bitmap图片（API 只接受Bitmap）</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Bitmap </span>sampleBmp=<span class="keyword">BitmapFactory.decodeResource(getResources(), </span>R.drawable.sample1)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>(拍照或者从相册中也可以)</p>
+</li>
+<li><p>Step 2: 通过FaceDetector API进行人脸识别</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//FaceDetecor只能读取RGB 565格式的Bitmap</span></div><div class="line">  Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, <span class="literal">true</span>);</div><div class="line">  <span class="comment">//新建FaceDetector 实例，</span></div><div class="line">  FaceDetector faceDet = <span class="keyword">new</span> <span class="type">FaceDetector</span>(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);<span class="comment">//MAX_FACES 搜索人脸个数</span></div><div class="line">  <span class="comment">// 调用findFaces方法，将数据储存在facelist中</span></div><div class="line">  FaceDetector.Face[] faceList = <span class="keyword">new</span> <span class="type">FaceDetector</span>.Face[MAX_FACES];</div><div class="line">faceDet.findFaces(tmpBmp, faceList);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>找人脸的原理是：找眼睛。<br>它返回的人脸数据face中，<br>通过调用public float eyesDistance ()，得到眼距<br>public void getMidPoint (PointF point)，得到两眼中心点位置。<br>public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
+</blockquote>
+</li>
+<li><p>Step3:对原图进行缩放，并在图上显示人脸框</p>
+<ul>
+<li>吐槽：<br>A，只能接受Bitmap 格式的数据；<br>B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br>C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</li>
+</ul>
+</li>
+</ul>
+<p>###第三方Face++</p>
+<ul>
+<li>在线API：基础版API供免费调用测试和小规模使用（会尽力维护API服务稳定性，但不保证每次调用均会成功），企业版API相对基础版API在算法和稳定性方面会有更好的表现</li>
+<li>离线SDK包括人脸关键点定位等功能。</li>
+<li>网址：<a href="http://www.faceplusplus.com.cn/" target="_blank" rel="external">http://www.faceplusplus.com.cn/</a></li>
+</ul>
+<h2 id="Android启动模式之singelTask扫盲－-李仙鹏"><a href="#Android启动模式之singelTask扫盲－-李仙鹏" class="headerlink" title="Android启动模式之singelTask扫盲－ 李仙鹏"></a>Android启动模式之singelTask扫盲－ 李仙鹏</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2015-11-04, 10:30:00</p>
+        <p><span>最后更新:</span>2017-05-23, 22:18:59</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/11/04/装逼指南二期/" title="周精益分享 - 程序员装逼指南二期">http://yoursite.com/2015/11/04/装逼指南二期/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/11/04/装逼指南二期/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/11/13/Swift入门专题/">
+                    Swift入门专题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/10/30/程序员装逼指南/">
+                    周精益分享 - 程序员装逼指南
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-单元测试-吴明"><span class="toc-number">1.</span> <span class="toc-text">Android 单元测试  吴明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-文件权限入门-曾铭"><span class="toc-number">2.</span> <span class="toc-text">Linux 文件权限入门 - 曾铭</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个线上-bug"><span class="toc-number">2.1.</span> <span class="toc-text">一个线上 bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">2.2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个小坑"><span class="toc-number">2.3.</span> <span class="toc-text">一个小坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问："><span class="toc-number">2.3.1.</span> <span class="toc-text">问：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#答："><span class="toc-number">2.3.2.</span> <span class="toc-text">答：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一、Monkey-是什么？"><span class="toc-number">2.3.3.</span> <span class="toc-text">一、Monkey 是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、Monkey-测试的目的？"><span class="toc-number">2.3.4.</span> <span class="toc-text">二、Monkey 测试的目的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、Monkey-测试的特点？"><span class="toc-number">2.3.5.</span> <span class="toc-text">三、Monkey 测试的特点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、Monkey-命令详解"><span class="toc-number">2.3.6.</span> <span class="toc-text">四、Monkey 命令详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、一个简单的monkey命令："><span class="toc-number">2.3.7.</span> <span class="toc-text">五、一个简单的monkey命令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、monkeyrunner工具同Monkey工具的差别"><span class="toc-number">2.3.8.</span> <span class="toc-text">二、monkeyrunner工具同Monkey工具的差别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、实例-：双11抽取优惠券不停点击一个按钮脚本"><span class="toc-number">2.3.9.</span> <span class="toc-text">三、实例 ：双11抽取优惠券不停点击一个按钮脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android自带的API-FaceDetector"><span class="toc-number">2.3.10.</span> <span class="toc-text">Android自带的API:FaceDetector</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android启动模式之singelTask扫盲－-李仙鹏"><span class="toc-number">3.</span> <span class="toc-text">Android启动模式之singelTask扫盲－ 李仙鹏</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"周精益分享 - 程序员装逼指南二期　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/11/13/Swift入门专题/" title="上一篇: Swift入门专题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/10/30/程序员装逼指南/" title="下一篇: 周精益分享 - 程序员装逼指南">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

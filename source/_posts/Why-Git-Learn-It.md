@@ -3,7 +3,7 @@ date: 2016-01-06 16:00:00
 tags:
 - git
 
-categories: 其他
+categories: 移动组周分享
 ---
 
 ## Why Git? Learn It! -曾铭

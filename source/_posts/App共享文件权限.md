@@ -6,8 +6,6 @@ categories: Android
 ---
 
 
-
-## Android App共享文件Uri不能为file://
 - 先看异常信息:
 
 ````

@@ -1,7 +1,7 @@
 title: 优秀APP推荐
 date: 2015-03-27 23:04:29
 tags:
-categories: 其他
+categories: 移动组周分享
 ---
 
 

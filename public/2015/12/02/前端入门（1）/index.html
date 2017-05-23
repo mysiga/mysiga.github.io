@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="Ruby on Rails 初体验 - 王胜使用命令行快速创建应用的步骤 创建应用程序 1$rails new hello -d mysql 备注 这里演示使用mysql作为数据持久层  浏览hello world界面 123$cd hello$rake db:create RAILS_ENV=&apos;development&apos; // 创建开发数据库$bin/rails server 备注 由于这里的ra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端入门（1）">
+<meta property="og:url" content="http://yoursite.com/2015/12/02/前端入门（1）/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="Ruby on Rails 初体验 - 王胜使用命令行快速创建应用的步骤 创建应用程序 1$rails new hello -d mysql 备注 这里演示使用mysql作为数据持久层  浏览hello world界面 123$cd hello$rake db:create RAILS_ENV=&apos;development&apos; // 创建开发数据库$bin/rails server 备注 由于这里的ra">
+<meta property="og:image" content="http://static.oschina.net/uploads/img/201510/01095231_IR6O.svg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/05120101.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/05120103.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/05120105.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/X3.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/X1.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/X4.jpg">
+<meta property="og:image" content="http://7xohph.com1.z0.glb.clouddn.com/X2.jpg">
+<meta property="og:updated_time" content="2017-05-23T14:04:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端入门（1）">
+<meta name="twitter:description" content="Ruby on Rails 初体验 - 王胜使用命令行快速创建应用的步骤 创建应用程序 1$rails new hello -d mysql 备注 这里演示使用mysql作为数据持久层  浏览hello world界面 123$cd hello$rake db:create RAILS_ENV=&apos;development&apos; // 创建开发数据库$bin/rails server 备注 由于这里的ra">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/img/201510/01095231_IR6O.svg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>前端入门（1） | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-前端入门（1）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/02/前端入门（1）/" class="article-date">
+      <time datetime="2015-12-02T10:30:00.000Z" itemprop="datePublished">2015-12-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端入门（1）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Ruby-on-Rails-初体验-王胜"><a href="#Ruby-on-Rails-初体验-王胜" class="headerlink" title="Ruby on Rails 初体验 - 王胜"></a>Ruby on Rails 初体验 - 王胜</h2><h3 id="使用命令行快速创建应用的步骤"><a href="#使用命令行快速创建应用的步骤" class="headerlink" title="使用命令行快速创建应用的步骤"></a>使用命令行快速创建应用的步骤</h3><ul>
+<li><p>创建应用程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">rails new hello <span class="_">-d</span> mysql</span></div></pre></td></tr></table></figure>
+<p><strong>备注</strong> 这里演示使用mysql作为数据持久层</p>
+</li>
+<li><p>浏览hello world界面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> hello</span></div><div class="line"><span class="meta">$</span><span class="bash">rake db:create RAILS_ENV=<span class="string">'development'</span> // 创建开发数据库</span></div><div class="line"><span class="meta">$</span><span class="bash">bin/rails server</span></div></pre></td></tr></table></figure>
+<p><strong>备注</strong> 由于这里的rails版本是4.2.1，与msqyl2的最高版本有不兼容行，所以需要手动将Gemfile中mysql2降级。降级之后执行bundle install。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="string">'mysql2'</span> -&gt; gem <span class="string">'mysql2'</span>, <span class="string">'~&gt; 0.3.18'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使用脚手架，创建模型、数据迁移脚本以及控制器和试图</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rails generate scaffold Person name:string age:<span class="built_in">integer</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>执行数据迁移</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rake db:migrate RAILS_ENV=development</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>启动应用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rails server</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>浏览效果</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">http:</span><span class="comment">//localhost:3000/people</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>备注</strong></p>
+<p>此演示项目，ruby、gems和Rails的版本信息如下:</p>
+<ul>
+<li>ruby: 2.0.0p481</li>
+<li>rubygems: 2.4.5</li>
+<li>rails: 4.2.1</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="http://guides.rubyonrails.org/command_line.html" target="_blank" rel="external">rubyonrails.org</a></li>
+</ul>
+<h2 id="Express-for-Node-js-上手演示-曾铭-（先占坑）"><a href="#Express-for-Node-js-上手演示-曾铭-（先占坑）" class="headerlink" title="Express for Node.js 上手演示 - 曾铭 （先占坑）"></a>Express for Node.js 上手演示 - 曾铭 （先占坑）</h2><h2 id="矢量图在Android-上应用-王进"><a href="#矢量图在Android-上应用-王进" class="headerlink" title="矢量图在Android 上应用 - 王进"></a>矢量图在Android 上应用 - 王进</h2><p>###VectorDrawable<br>示例：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="tag">&lt;<span class="name">vector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">        &lt;!<span class="attr">--</span>  <span class="attr">intrinsic</span>  <span class="attr">size</span>  <span class="attr">of</span>  <span class="attr">the</span>  <span class="attr">drawable</span>  <span class="attr">--</span>&gt;</div><div class="line">        android:height="300dp"</div><div class="line">        android:width="300dp"</div><div class="line">        <span class="comment">&lt;!-- size of the virtual canvas --&gt;</span></div><div class="line">        android:viewportHeight="40"</div><div class="line">        android:viewportWidth="40"</div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">path</span> <span class="attr">android:fillColor</span>=<span class="string">"#ff00ff"</span></span></div><div class="line">                <span class="attr">android:pathData</span>=<span class="string">"M20.5,9.5</span></div><div class="line">                        c-1.955,0,-3.83,1.268,-4.5,3</div><div class="line">                        c-0.67,-1.732,-2.547,-3,-4.5,-3</div><div class="line">                        C8.957,9.5,7,11.432,7,14</div><div class="line">                        c0,3.53,3.793,6.257,9,11.5</div><div class="line">                        c5.207,-5.242,9,-7.97,9,-11.5</div><div class="line">                        C25,11.432,23.043,9.5,20.5,9.5z"</div><div class="line">                /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">vector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>###SVG→Vector<br>Android并不原生支持读取常见的向量文件格式，如ＳＶＧ<br>（主要是缺少ｃｓｓ支持），但是支持相同路径数据语法，<br>所以ＳＶＧ资源需要经过一定的转换；</p>
+<p>###使用SVG Path Data </p>
+<ul>
+<li>M： move to 移动绘制点</li>
+<li>L：line to 直线</li>
+<li>Z：close 闭合</li>
+<li>C：cubic bezier 三次贝塞尔曲线</li>
+<li>Q：quatratic bezier 二次贝塞尔曲线</li>
+<li>A：ellipse 圆弧</li>
+</ul>
+<blockquote>
+<p>每个命令都有大小写形式，大写代表后面的参数是绝对坐标，小写表示相对坐标。参数之间用空格或逗号隔开</p>
+</blockquote>
+<p><strong>命令详解：</strong></p>
+<ul>
+<li>M (x y) 移动到x,y</li>
+<li>L (x y) 直线连到x,y，还有简化命令H(x) 水平连接、V(y)垂直连接</li>
+<li>Z，没有参数，连接起点和终点</li>
+<li>C(x1 y1 x2 y2 x y)，控制点x1,y1 x2,y2，终点x,y</li>
+<li>Q(x1 y1 x y)，控制点x1,y1，终点x,y</li>
+<li>A(rx ry x-axis-rotation large-arc-flag sweep-flag x y) <ul>
+<li>rx ry 椭圆半径 </li>
+<li>x-axis-rotation x轴旋转角度 </li>
+<li>large-arc-flag 为0时表示取小弧度，1时取大弧度 </li>
+<li>sweep-flag 0取逆时针方向，1取顺时针方向<br><img src="http://static.oschina.net/uploads/img/201510/01095231_IR6O.svg" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>详细参考：<a href="http://www.w3.org/TR/SVG11/paths.html#PathData" target="_blank" rel="external">http://www.w3.org/TR/SVG11/paths.html#PathData</a></p>
+<p>###Icon Font<br>解决矢量图低版本不兼容问题</p>
+<p>详细参考：<br>1,<a href="http://blog.csdn.net/a345017062/article/details/46455745" target="_blank" rel="external">http://blog.csdn.net/a345017062/article/details/46455745</a><br>2,<a href="http://blog.csdn.net/goodlixueyong/article/details/41448483" target="_blank" rel="external">http://blog.csdn.net/goodlixueyong/article/details/41448483</a></p>
+<h2 id="WordPress快速建站-–杨俊构"><a href="#WordPress快速建站-–杨俊构" class="headerlink" title="WordPress快速建站 –杨俊构"></a>WordPress快速建站 –杨俊构</h2><h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
+<li><p>服务器php套件（ Nginx+PHP7.0）： <a href="http://www.upupw.net/" target="_blank" rel="external">UPUPW绿色服务器</a></p>
+</li>
+<li><p>WordPress代码包：<a href="https://cn.wordpress.org/" target="_blank" rel="external">wordpress-4.3.1-zh_CN</a></p>
+</li>
+</ul>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ul>
+<li><p>配置服务器和数据库</p>
+<ol>
+<li>解压UPUPW_NP7.0-1511.7z 到本地目录</li>
+<li>打开解压包后的upupw.exe配置平台。<br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120101.jpg" alt=""></li>
+<li>输入“S1”开启全部服务</li>
+<li>打开地址 <a href="http://127.0.0.1/" target="_blank" rel="external">http://127.0.0.1/</a> 会看到UPUPWPHP探针页面<br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120103.jpg" alt=""></li>
+<li>打开地址 <a href="http://127.0.0.1/pmd/" target="_blank" rel="external">http://127.0.0.1/pmd/</a> 配置mysql数据库（默认用户名密码都是root）</li>
+<li>新建数据库，用户名，密码</li>
+<li>打开地址 <a href="http://127.0.0.1/" target="_blank" rel="external">http://127.0.0.1/</a> 使用数据库连接测试连接数据库是否正常</li>
+</ol>
+</li>
+<li><p>安装配置wordpress</p>
+<ol>
+<li>解压wordpress-4.3.1-zh_CN.zip压缩包</li>
+<li>将wordpress文件夹拷贝到UPUPW发布根目录/htdocs文件夹下</li>
+<li>打来地址<a href="http://127.0.0.1/wordpress，根据开始安装" target="_blank" rel="external">http://127.0.0.1/wordpress，根据开始安装</a></li>
+<li>输入刚才配置的数据库名，用户名，密码，点击提交进行</li>
+<li>设置站点标题，后台登陆用户名，后台密码，邮件地址完成安装</li>
+<li>再次打开地址<a href="http://127.0.0.1/wordpress测试安装完成" target="_blank" rel="external">http://127.0.0.1/wordpress测试安装完成</a><br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120105.jpg" alt=""></li>
+</ol>
+</li>
+</ul>
+<h3 id="WordPress相关资源"><a href="#WordPress相关资源" class="headerlink" title="WordPress相关资源"></a>WordPress相关资源</h3><ul>
+<li><p>推荐主题 ：<a href="http://www.weisay.com/blog/" target="_blank" rel="external">威言威语</a>     <a href="http://www.prower.cn/" target="_blank" rel="external">prower</a></p>
+</li>
+<li><p>推荐插件 ： <a href="http://duoshuo.com/" target="_blank" rel="external">多说</a> （评论快速提交，文章聚合发布）   <a href="http://developer.qiniu.com/download/index.html" target="_blank" rel="external">七牛镜像存储wordpress 插件</a>     <a href="http://www.youpzt.com/267.html" target="_blank" rel="external">youpzt-optimizer</a>（网站优化工具）</p>
+</li>
+<li><p><a href="http://www.oschina.net/news/55174/nextapp-opensource" target="_blank" rel="external">NextApp</a> —— 开源的WordPress手机博客 App 自动生成系统</p>
+</li>
+</ul>
+<h2 id="spring-aop-简单介绍"><a href="#spring-aop-简单介绍" class="headerlink" title="spring aop 简单介绍"></a>spring aop 简单介绍</h2><h2 id="51offer-Android重构之Architecture-xpleemoon"><a href="#51offer-Android重构之Architecture-xpleemoon" class="headerlink" title="51offer Android重构之Architecture - xpleemoon"></a>51offer Android重构之Architecture - xpleemoon</h2><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><ul>
+<li>我们的app经历了一次重构，在重构过程中将IDE切换到Android Studio，并且编译脚本从Ant切换到了Gradle。</li>
+<li>不介绍IDE和Gradle的优势，主要介绍重构后app的Architecture相关部分。</li>
+</ul>
+<blockquote>
+<p>从0到1是一个开始，再从1到N又是另一个开始。</p>
+</blockquote>
+<h3 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h3><ul>
+<li>当前我们的结构主要为4层：<ol>
+<li>app</li>
+<li>core</li>
+<li>lib</li>
+<li>model</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X3.jpg" alt="project结构"></p>
+<ul>
+<li>app依赖core，而core依赖lib和model。随着以后的业务发展、产品迭代或者有更好的结构划分，会再做调整。</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X1.jpg" alt="module依赖"></p>
+<h3 id="app——展现层（presention）"><a href="#app——展现层（presention）" class="headerlink" title="app——展现层（presention）"></a>app——展现层（presention）</h3><ul>
+<li>用于页面展现，主要包含MVP模式中的VP。我们对V采用接口的方式去定义，然后让Activity或者Fragment去实现V接口，这样我们就达到接口编程的目的，P只需要关注V接口即可。以注册中的地区列表页面为例</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X4.jpg" alt="VP"></p>
+<ul>
+<li>V</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 地区view，MVP－V</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IRegionView</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 搜索更新</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">search2Update</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>P</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 国家地区，MVP－P</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegionPresenter</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> List&lt;Region&gt; mRegions = OFRRegionHelper.getRegions();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取地区列表</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Region&gt; <span class="title">getRegions</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mRegions;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 搜索</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> regionView</div><div class="line">     * <span class="doctag">@param</span> searchRegion</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(@NonNull IRegionView regionView, String searchRegion)</span> </span>&#123;</div><div class="line">        mRegions.clear();</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(searchRegion)) &#123;</div><div class="line">            mRegions.addAll(OFRRegionHelper.getRegions());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mRegions.addAll(OFRRegionHelper.searchRegions(searchRegion));</div><div class="line">        &#125;</div><div class="line">        regionView.search2Update();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>另外，我们的app有太多的业务逻辑，所以我们也使用了比较多的策略模式，方便以后的扩展和维护。比如不同的国家，它在意向单展现时就有不同的表现：<ul>
+<li>可以同时选择的最多意向单数量</li>
+<li>每个学校可以同时选择的最多专业数量 </li>
+<li>意向单名字</li>
+</ul>
+</li>
+<li>于是，我们就对此采用了策略模式</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X2.jpg" alt="国家意向单策略图"></p>
+<ul>
+<li>国家意向单策略接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 国家策略</div><div class="line"> * &lt;ul&gt;</div><div class="line"> * &lt;li&gt;不同国家可选的意向单数量不同，具体见&#123;<span class="doctag">@link</span> #maxCount2Select()&#125;&lt;/li&gt;</div><div class="line"> * &lt;li&gt;不同国家的学校专业可选数量不同，具体见&#123;<span class="doctag">@link</span> #maxCountOfPerSchool2Select()&#125;&lt;/li&gt;</div><div class="line"> * &lt;/ul&gt;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICountryPurpose</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 国家可以同时选择的最多意向单数量</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCount2Select</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 每个学校可以同时选择的最多专业数量</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCountOfPerSchool2Select</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 意向单名字，目前可用名字为：</div><div class="line">     * &lt;ol&gt;</div><div class="line">     * &lt;li&gt;专业&lt;/li&gt;</div><div class="line">     * &lt;li&gt;入学时间，当前只限日本&lt;/&gt;</div><div class="line">     * &lt;/ol&gt;</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> ctx</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function">String <span class="title">getName</span><span class="params">(@NonNull Context ctx)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="core"><a href="#core" class="headerlink" title="core"></a>core</h3><ul>
+<li>核心层，主要用于应用相关的URL拼接、图片加载、网络请求、json解析、第三方平台、配置和工具。</li>
+</ul>
+<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h3><ul>
+<li>通用库层，不依赖于应用的任何业务，方便快速的移植到其它项目.</li>
+</ul>
+<h3 id="model"><a href="#model" class="headerlink" title="model"></a>model</h3><ul>
+<li>数据层，作为MVP的M，用于应用的数据模型.</li>
+</ul>
+<h2 id="简单HTML5-吴明"><a href="#简单HTML5-吴明" class="headerlink" title="简单HTML5 吴明"></a>简单HTML5 吴明</h2><ul>
+<li><a href="http://www.17sucai.com/pins/demoshow/4583" target="_blank" rel="external">烟火效果</a></li>
+<li><a href="http://www.html5tricks.com/demo/html5-css3-404-animation/index.html" target="_blank" rel="external">404动画</a></li>
+<li><a href="http://keleyi.com/keleyi/phtml/html5/31.htm" target="_blank" rel="external">爱心树</a></li>
+<li>开发ide storm</li>
+<li>目录结构<ul>
+<li>dist:第三库存放地方，以下为存放指定文件类型目录<ul>
+<li>css</li>
+<li>js</li>
+<li>doc</li>
+<li>img</li>
+</ul>
+</li>
+<li>src:项目指定文件类型目录<ul>
+<li>css</li>
+<li>js</li>
+<li>doc</li>
+<li>img  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简单代码</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--html5网页声明--&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>mobile<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 此处还可以插入其他meta,样式单等信息--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--页面部分--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>现实是残酷的,别做梦,从hello word开始吧!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span>不支持html5<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></div><div class="line">    <span class="comment">&lt;!-- 获取内容中id为canvas的元素--&gt;</span></div><div class="line">    var canvas = document.getElementById('canvas');</div><div class="line">//    获取canvas的环境,</div><div class="line">    var ctx = canvas.getContext('2d');</div><div class="line">//      填充的样式为红色</div><div class="line">    ctx.fillStyle = '#ff0000';</div><div class="line">    ctx.st//    画一个矩形,位置x,y,w,h</div><div class="line">    ctx.fillRect(0, 0, 600, 100);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>参考链接<ul>
+<li><a href="http://caniuse.com/" target="_blank" rel="external">链接一</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" target="_blank" rel="external">链接二</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/12/02/前端入门（1）/">前端入门（1）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2015-12-02, 10:30:00</p>
+        <p><span>最后更新:</span>2017-05-23, 22:04:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/12/02/前端入门（1）/" title="前端入门（1）">http://yoursite.com/2015/12/02/前端入门（1）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/02/前端入门（1）/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/12/11/前端入门（2）/">
+                    前端入门（2）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/11/18/动画/">
+                    动画
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruby-on-Rails-初体验-王胜"><span class="toc-number">1.</span> <span class="toc-text">Ruby on Rails 初体验 - 王胜</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用命令行快速创建应用的步骤"><span class="toc-number">1.1.</span> <span class="toc-text">使用命令行快速创建应用的步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Express-for-Node-js-上手演示-曾铭-（先占坑）"><span class="toc-number">2.</span> <span class="toc-text">Express for Node.js 上手演示 - 曾铭 （先占坑）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矢量图在Android-上应用-王进"><span class="toc-number">3.</span> <span class="toc-text">矢量图在Android 上应用 - 王进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordPress快速建站-–杨俊构"><span class="toc-number">4.</span> <span class="toc-text">WordPress快速建站 –杨俊构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工具"><span class="toc-number">4.1.</span> <span class="toc-text">准备工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作步骤"><span class="toc-number">4.2.</span> <span class="toc-text">操作步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WordPress相关资源"><span class="toc-number">4.3.</span> <span class="toc-text">WordPress相关资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-aop-简单介绍"><span class="toc-number">5.</span> <span class="toc-text">spring aop 简单介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#51offer-Android重构之Architecture-xpleemoon"><span class="toc-number">6.</span> <span class="toc-text">51offer Android重构之Architecture - xpleemoon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#历史"><span class="toc-number">6.1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Architecture"><span class="toc-number">6.2.</span> <span class="toc-text">Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#app——展现层（presention）"><span class="toc-number">6.3.</span> <span class="toc-text">app——展现层（presention）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#core"><span class="toc-number">6.4.</span> <span class="toc-text">core</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib"><span class="toc-number">6.5.</span> <span class="toc-text">lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model"><span class="toc-number">6.6.</span> <span class="toc-text">model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单HTML5-吴明"><span class="toc-number">7.</span> <span class="toc-text">简单HTML5 吴明</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"前端入门（1）　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/12/11/前端入门（2）/" title="上一篇: 前端入门（2）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/11/18/动画/" title="下一篇: 动画">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
