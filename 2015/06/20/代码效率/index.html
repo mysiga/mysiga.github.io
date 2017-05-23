@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="2015.06.19 - 技术分享，主题”代码开发效率提升方法”snippet的制作与使用 - 杨志平#####备份路径  ~/Library/Developer/Xcode/UserData/CodeSnippets/  #####界面 #####使用 1.系统自带很多我们的代码提示都是snippet系统已经有的代码块如：block变量定义  typedef &amp;lt;#returnType#&amp;g">
+<meta name="keywords" content="开发效率,效率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码开发效率提升方法">
+<meta property="og:url" content="http://yoursite.com/2015/06/20/代码效率/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="2015.06.19 - 技术分享，主题”代码开发效率提升方法”snippet的制作与使用 - 杨志平#####备份路径  ~/Library/Developer/Xcode/UserData/CodeSnippets/  #####界面 #####使用 1.系统自带很多我们的代码提示都是snippet系统已经有的代码块如：block变量定义  typedef &amp;lt;#returnType#&amp;g">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2014/0306/145357_xj9O_868062.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2014/0306/143716_p6Kl_868062.png">
+<meta property="og:updated_time" content="2017-05-23T13:54:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代码开发效率提升方法">
+<meta name="twitter:description" content="2015.06.19 - 技术分享，主题”代码开发效率提升方法”snippet的制作与使用 - 杨志平#####备份路径  ~/Library/Developer/Xcode/UserData/CodeSnippets/  #####界面 #####使用 1.系统自带很多我们的代码提示都是snippet系统已经有的代码块如：block变量定义  typedef &amp;lt;#returnType#&amp;g">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/space/2014/0306/145357_xj9O_868062.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>代码开发效率提升方法 | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-代码效率" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/20/代码效率/" class="article-date">
+      <time datetime="2015-06-19T23:04:29.000Z" itemprop="datePublished">2015-06-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      代码开发效率提升方法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="2015-06-19-技术分享，主题”代码开发效率提升方法”"><a href="#2015-06-19-技术分享，主题”代码开发效率提升方法”" class="headerlink" title="2015.06.19 - 技术分享，主题”代码开发效率提升方法”"></a>2015.06.19 - 技术分享，主题”代码开发效率提升方法”</h2><h4 id="snippet的制作与使用-杨志平"><a href="#snippet的制作与使用-杨志平" class="headerlink" title="snippet的制作与使用 - 杨志平"></a>snippet的制作与使用 - 杨志平</h4><p>#####备份路径</p>
+<blockquote>
+<p>~/Library/Developer/Xcode/UserData/CodeSnippets/</p>
+</blockquote>
+<p>#####界面<br><img src="http://static.oschina.net/uploads/space/2014/0306/145357_xj9O_868062.png" alt="image"></p>
+<p>#####使用</p>
+<h6 id="1-系统自带"><a href="#1-系统自带" class="headerlink" title="1.系统自带"></a>1.系统自带</h6><p>很多我们的代码提示都是snippet系统已经有的代码块如：<br>block变量定义</p>
+<blockquote>
+<p>typedef &lt;#returnType#&gt;(^&lt;#name#&gt;)(&lt;#arguments#&gt;);</p>
+</blockquote>
+<h6 id="2-常用变量"><a href="#2-常用变量" class="headerlink" title="2.常用变量"></a>2.常用变量</h6><ul>
+<li>strong</li>
+<li>weak</li>
+<li>assign</li>
+<li>block</li>
+</ul>
+<h6 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h6><ul>
+<li>比如：hiddenKeyBoard</li>
+<li>网络请求：getData</li>
+<li>上下拉刷新，等等</li>
+</ul>
+<h6 id="4-常用模块"><a href="#4-常用模块" class="headerlink" title="4.常用模块"></a>4.常用模块</h6><ul>
+<li>常用的代理协议方法集</li>
+</ul>
+<p>#####制作<br>选中代码块拖入snippet library即可。为了方便调用可简单编辑</p>
+<p><img src="http://static.oschina.net/uploads/space/2014/0306/143716_p6Kl_868062.png" alt="image2"></p>
+<p>#####PaintCode的简单使用</p>
+<p>简单的图形绘制，可像xib一样拖拽图形，并添加到view的CALayer层上</p>
+<ul>
+<li>drawRect方法</li>
+</ul>
+<h4 id="myEclipse分享-吴明"><a href="#myEclipse分享-吴明" class="headerlink" title="myEclipse分享 - 吴明"></a>myEclipse分享 - 吴明</h4><ul>
+<li><p>myEclipse主要WebService开发工具</p>
+</li>
+<li><p>MyEclipse，是在eclipse 基础上加上自己的插件开发而成的功能强大的企业级集成开发环境，主要用于Java、Java EE以及移动应用的开发。MyEclipse的功能非常强大，支持也十分广泛，尤其是对各种开源产品的支持相当不错。</p>
+</li>
+<li><p><a href="http://www.cnblogs.com/younes/archive/2011/12/21/2295759.html" target="_blank" rel="external">myEclipse使用ssh框架</a></p>
+</li>
+<li><p>myEclipse常用快捷键</p>
+<ul>
+<li>Alt+Shift+s:<br>  打开myEclipse快捷键菜单<ul>
+<li>自动生成get set方法</li>
+<li>自动生成无参和有参构造方法</li>
+</ul>
+</li>
+<li>Ctrl+D：删除当前行</li>
+<li>Ctrl+Alt+↓：复制当前行到下一行(复制增加)</li>
+<li>Ctrl+Alt+↑：复制当前行到上一行(复制增加)</li>
+<li>Alt+↓：当前行和下面一行交互位置</li>
+<li>Alt+↑：当前行和上面一行交互位置</li>
+<li>Ctrl+Shift+O：快速生成import，当从网上拷贝一段程序后，不知道如何import进所调用的类</li>
+</ul>
+</li>
+<li><a href="http://baike.baidu.com/link?url=-FpesVZmaLqL3GJTVfPriU4jZQlvjIWKgbmy1lxgSlzT83WVAbFUA952pclZJbIkqzDTWVc7L-dTBalJjXTNH_" target="_blank" rel="external">ssh框架</a></li>
+</ul>
+<h4 id="OSX-快捷键入门-曾铭"><a href="#OSX-快捷键入门-曾铭" class="headerlink" title="OSX 快捷键入门 - 曾铭"></a>OSX 快捷键入门 - 曾铭</h4><h5 id="OSX-系统级的快捷键支持"><a href="#OSX-系统级的快捷键支持" class="headerlink" title="OSX 系统级的快捷键支持"></a>OSX 系统级的快捷键支持</h5><ul>
+<li>统一标准的全局快捷键：如 FX、『设置』、opt<ul>
+<li><a href="https://support.apple.com/kb/PH18802?locale=zh_CN&amp;viewlocale=zh_CN" target="_blank" rel="external">一些『奇怪的』符号</a></li>
+<li><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">Mac 键盘快捷键</a></li>
+<li>有时，略略隐晦了些：如截图、奇葩的 cmd+tab,opt</li>
+</ul>
+</li>
+<li>在统一之外，留意每个应用的快捷键：如 chrome：opt+cmd+i，cmd+l</li>
+</ul>
+<h5 id="讨论常用快捷键-（具体快捷键请自己查）"><a href="#讨论常用快捷键-（具体快捷键请自己查）" class="headerlink" title="讨论常用快捷键 （具体快捷键请自己查）"></a>讨论常用快捷键 （具体快捷键请自己查）</h5><ul>
+<li>设置</li>
+<li>剪切复制粘贴全选</li>
+<li>新建、新建 tab、切换 tab、关闭 tab、关闭应用</li>
+<li>光标的自由游走<ul>
+<li>上下左右（推荐 hjkl）、字符移动、行首行尾、文首文尾、向后删除、单词删除、行向前向后删除</li>
+</ul>
+</li>
+<li>Xcode<ul>
+<li>上下移行 （@志平 推荐）</li>
+<li>reveal to project navigator、切换 .h.m 文件</li>
+<li>显示隐藏 navigatiors、Debug area、Utilities</li>
+<li>new tab、切换 tab、分割窗口</li>
+</ul>
+</li>
+</ul>
+<h5 id="定制"><a href="#定制" class="headerlink" title="定制"></a>定制</h5><ul>
+<li>System Preferences -&gt; Keyboard : 配置快捷键、菜单快捷键、modifier keys</li>
+<li><a href="https://pqrs.org/osx/karabiner/index.html.en" target="_blank" rel="external">Karabiner</a></li>
+<li><a href="http://www.waerfa.com/keyboard-maestro" target="_blank" rel="external">Keyboard Maestro 介绍</a></li>
+<li>定制建议<ul>
+<li>原生为主，定制为辅</li>
+<li>fix 原生不爽、有冲突的个别快捷键<ul>
+<li>合理使用 opt， 规避冲突</li>
+</ul>
+</li>
+<li>根据自己习惯定制</li>
+<li>常反思，记不住的快捷键都是『对你不重要』的快捷键</li>
+</ul>
+</li>
+</ul>
+<h4 id="VIM-潘君"><a href="#VIM-潘君" class="headerlink" title="VIM - 潘君"></a>VIM - 潘君</h4><p>#####vim起源</p>
+<ul>
+<li>源自开源vi</li>
+<li>作者Bram Moolenaar</li>
+<li>80年代末,Amiga计算机中无vi,作者自行开发</li>
+<li>Vi IMitation(模拟) -&gt; Vi IMproved(改良)</li>
+</ul>
+<p>#####vim应用场景</p>
+<ul>
+<li>linux</li>
+<li>平时代码</li>
+</ul>
+<p>#####vim模式<br>列举常用模式如下<br>需要了解所有模式<br>在vim中使用<code>:help vim-modes</code></p>
+<ul>
+<li><p>Insert模式</p>
+<ul>
+<li>进入<ul>
+<li>i -&gt; 在光标前插入</li>
+<li>I-&gt; 在句首插入</li>
+<li>a -&gt; 在光标后插入</li>
+<li>A -&gt; 在句尾插入</li>
+</ul>
+</li>
+<li>离开<ul>
+<li>Esc</li>
+<li>Ctrl + c</li>
+<li>Ctrl + [</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Normal模式</p>
+<ul>
+<li>进入vim的默认模式</li>
+<li>命令的天下<ul>
+<li>简单移动<ul>
+<li>h j k l  -&gt; 左 下 上 右</li>
+<li>0 (数字零) -&gt; 移动光标到行头</li>
+<li>$ -&gt; 移动光标到行尾</li>
+<li>gg -&gt; 到第一行</li>
+<li>G -&gt; 到最后一行</li>
+<li>w -&gt; 到下一个单词的开头。</li>
+<li>e -&gt; 到下一个单词的结尾。</li>
+</ul>
+</li>
+<li>简单操作<ul>
+<li>dd -&gt; 剪切当前行</li>
+<li>yy -&gt;  赋值当前行</li>
+<li>p -&gt; 粘贴</li>
+<li>u -&gt; 撤销</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>神奇的<code>.</code></p>
+<ul>
+<li>上次命令的重复</li>
+</ul>
+</li>
+<li><p>命令的组合</p>
+<ul>
+<li>daw -&gt; 删除当前单词</li>
+<li>2dd -&gt; 删除2行</li>
+<li>3p → 粘贴文本3次</li>
+<li>100idesu [ESC] → 会写下 “desu “100次</li>
+<li>0y$ -&gt; 从行头拷贝到本行最后一个字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>visual模式</p>
+<ul>
+<li>进入<ul>
+<li>v</li>
+<li>V</li>
+<li>Ctrl + v</li>
+</ul>
+</li>
+<li>退出<ul>
+<li>Esc</li>
+<li>Ctrl + c</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>select模式</p>
+<ul>
+<li><p>进入</p>
+<ul>
+<li>gh</li>
+<li>gH</li>
+<li>g(Ctrl + h)</li>
+</ul>
+</li>
+<li><p>切换</p>
+<ul>
+<li>Ctrl + o -&gt;临时切换到可视化模式执行一个命令</li>
+<li>Ctrl + g -&gt;切换到可视化模式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>#####vim大冒险游戏</p>
+<ul>
+<li><a href="http://vim-adventures.com/" target="_blank" rel="external">游戏链接</a></li>
+</ul>
+<h4 id="VIM常用命令-王胜"><a href="#VIM常用命令-王胜" class="headerlink" title="VIM常用命令 - 王胜"></a>VIM常用命令 - 王胜</h4><h5 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h5><ul>
+<li>fx：移动光标到当前行的下一个 x 处。很明显，x 可以是任意一个字母，而且你可以使用 ; 来重复你的上一个 f 命令。</li>
+<li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。</li>
+<li>Fx：和 fx 类似，不过是往回找。</li>
+<li>w：光标往前移动一个词。</li>
+<li>b：光标往后移动一个词。</li>
+<li>0：移动光标到当前行首。</li>
+<li>^：移动光标到当前行的第一个字母位置。</li>
+<li>$：移动光标到行尾。</li>
+<li>)：移动光标到下一个句子。</li>
+<li>( ：移动光标到上一个句子</li>
+</ul>
+<h5 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h5><ul>
+<li>:s/hello/world 替换当前行中第一个hello为world</li>
+<li>:%s/hello/world 替换每一行中第一个hello为world</li>
+<li>:s/hello/world/g 替换当前行中所有的hello为world</li>
+<li>:%s/hello/world/g 替换每一行中所有的hello为world</li>
+<li>:%s/hello/world/gc 找到当前文件中所有的hello，并逐一询问用户是否要替换</li>
+</ul>
+<h5 id="内容提取"><a href="#内容提取" class="headerlink" title="内容提取"></a>内容提取</h5><ul>
+<li>:r !date 将当前时间插入到当前文件</li>
+<li>:r /path/to/src.file 将src.file里的内容输出到当前文件</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>VIM的命令甚多，组合也很多，记忆是不能长时间记住的。唯一的捷径就是多多使用，用的多了，使用这些命令时就像手拿筷子一样，变成了本能。</p>
+<h4 id="Xcode插件管理-张超耀"><a href="#Xcode插件管理-张超耀" class="headerlink" title="Xcode插件管理 - 张超耀"></a>Xcode插件管理 - 张超耀</h4><ul>
+<li><p>古人云“工欲善其事,必先利其器”，打造一个强大的开发环境，是立即提升自身战斗力的绝佳途径！以下是常用的一些有力的XCode插件。</p>
+</li>
+<li><p>插件管理器：<a href="http://alcatraz.io/" target="_blank" rel="external">Alcatraz</a> - The package manager for Xcode。</p>
+</li>
+<li><p><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">ColorSense</a>XCode颜色显示插件</p>
+<ul>
+<li>代码里的那些冷冰冰的颜色数值，到底时什么颜色？如果你经常遇到这个问题，每每不得不运行下模拟器去看看，那么这个插件绝对不容错过。更彪悍的是你甚至可以点击显示的颜色面板，直接通过系统的ColorPicker来自动生成对应颜色代码，再也不用做各种颜色代码转换了！</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">VVDocumenter</a>规范注释生成器</p>
+<ul>
+<li>很多时候，为了快速开发，很多的技术文档都是能省则省，这个时候注释就变得异常重要，再配合Doxygen这种注释自动生成文档的，就完美了。但是每次都要手动输入规范化的注释，着实也麻烦，但有了VVDocumenter，规范化的注释，主需要输入三个斜线“///”，就OK啦！</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/qfish/XAlign" target="_blank" rel="external">XAlign</a>代码整理</p>
+<ul>
+<li>XAlign是一款专门用于代码整理的Xcode插件，其作者为来自Geek Zoo Studio的开发者QFish。XAlign能够对开发者的代码非常快速地进行对齐优化，有“=”、宏定义、属性三种对齐模式。当然，如果默认的对齐风格不是自己喜欢的，开发者还可以自定义或提出issues。</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin" target="_blank" rel="external">FuzzyAutocompletePlugin</a>代码自动补全插件</p>
+<ul>
+<li>通过添加模糊匹配来提高Xcode代码自动补全功能，开发者无需遵循从头匹配的原则，只要记得方法里某个关键字即可进行匹配，很好地提高了工作效率。</li>
+</ul>
+</li>
+<li><p>XcodeBoost</p>
+<ul>
+<li>XcodeBoost是一款可以让开发者轻而易举地检查和修改Objective-C代码的插件。XcodeBoost能够自动进行一些繁琐的操作，比如方法的定义与声明、添加基于命令行的代码处理（剪切/复制/粘贴/重复/删除行）、持续高亮等。</li>
+</ul>
+</li>
+</ul>
+<h5 id="盘点开发者最喜爱的十大开源Xcode插件"><a href="#盘点开发者最喜爱的十大开源Xcode插件" class="headerlink" title="盘点开发者最喜爱的十大开源Xcode插件"></a><a href="http://www.csdn.net/article/2014-05-04/2819586-the-best-xcode-plugins/1" target="_blank" rel="external">盘点开发者最喜爱的十大开源Xcode插件</a></h5><h5 id="那些不能错过的Xcode插件"><a href="#那些不能错过的Xcode插件" class="headerlink" title="那些不能错过的Xcode插件"></a><a href="http://www.cocoachina.com/industry/20130918/7022.html" target="_blank" rel="external">那些不能错过的Xcode插件</a></h5>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/06/20/代码效率/">代码开发效率提升方法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2015-06-19, 23:04:29</p>
+        <p><span>最后更新:</span>2017-05-23, 21:54:57</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/06/20/代码效率/" title="代码开发效率提升方法">http://yoursite.com/2015/06/20/代码效率/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/06/20/代码效率/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/06/27/线程并发和同步/">
+                    扯扯线程并发和同步的那些事
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/06/13/开源/">
+                    开源
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2015-06-19-技术分享，主题”代码开发效率提升方法”"><span class="toc-number">1.</span> <span class="toc-text">2015.06.19 - 技术分享，主题”代码开发效率提升方法”</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#snippet的制作与使用-杨志平"><span class="toc-number">1.0.1.</span> <span class="toc-text">snippet的制作与使用 - 杨志平</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-系统自带"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text">1.系统自带</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-常用变量"><span class="toc-number">1.0.1.0.2.</span> <span class="toc-text">2.常用变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-常用方法"><span class="toc-number">1.0.1.0.3.</span> <span class="toc-text">3.常用方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-常用模块"><span class="toc-number">1.0.1.0.4.</span> <span class="toc-text">4.常用模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#myEclipse分享-吴明"><span class="toc-number">1.0.2.</span> <span class="toc-text">myEclipse分享 - 吴明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OSX-快捷键入门-曾铭"><span class="toc-number">1.0.3.</span> <span class="toc-text">OSX 快捷键入门 - 曾铭</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#OSX-系统级的快捷键支持"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">OSX 系统级的快捷键支持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#讨论常用快捷键-（具体快捷键请自己查）"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">讨论常用快捷键 （具体快捷键请自己查）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定制"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">定制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VIM-潘君"><span class="toc-number">1.0.4.</span> <span class="toc-text">VIM - 潘君</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VIM常用命令-王胜"><span class="toc-number">1.0.5.</span> <span class="toc-text">VIM常用命令 - 王胜</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#光标移动"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">光标移动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#替换"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内容提取"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">内容提取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#总结"><span class="toc-number">1.0.5.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Xcode插件管理-张超耀"><span class="toc-number">1.0.6.</span> <span class="toc-text">Xcode插件管理 - 张超耀</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#盘点开发者最喜爱的十大开源Xcode插件"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">盘点开发者最喜爱的十大开源Xcode插件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#那些不能错过的Xcode插件"><span class="toc-number">1.0.6.2.</span> <span class="toc-text">那些不能错过的Xcode插件</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"代码开发效率提升方法　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/06/27/线程并发和同步/" title="上一篇: 扯扯线程并发和同步的那些事">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/06/13/开源/" title="下一篇: 开源">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
