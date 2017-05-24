@@ -6,8 +6,6 @@ categories: Android
 ---
 
 
-## Moto 360 Sport初体验
-
 - 前奏
 	- 美版
 	- 第一连接需要连接Android手机

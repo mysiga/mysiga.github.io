@@ -4,7 +4,6 @@ tags:
 categories: 单元测试
 
 ---
-## Android单元测试框架
 - Android单元测试
 	- 在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。  
 - 框架比较

@@ -10,7 +10,6 @@ categories: Android
 
 
 
-#### tablayout方法setupWithViewPager()坑 - 吴明
 - tallayout平常使用setupWithViewPager()
 
 ````

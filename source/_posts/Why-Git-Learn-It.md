@@ -1,4 +1,4 @@
-title: Why Git? Learn It!
+title: Why Git? Learn It!-曾铭
 date: 2016-01-06 16:00:00
 tags:
 - git
@@ -6,7 +6,6 @@ tags:
 categories: 移动组周分享
 ---
 
-## Why Git? Learn It! -曾铭
 
 - 为什么要用 Git？
 - Git + SourceTree + Gitlab 的使用演示

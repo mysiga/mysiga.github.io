@@ -5,7 +5,6 @@ categories: 移动组周分享
 ---
 
 
-## 优秀APP推荐
 
 #### APP分享 - 张超耀
 - [网易云音乐](http://music.163.com/#/download)

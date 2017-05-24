@@ -6,7 +6,7 @@ categories: Android
 ---
 
 
-## Android 微信抢红包
+
 - 主要原理：监听微信APP,如果发送[微信红包]相关通知,则通过Android辅助类服务AccessibilityService实现抢红包点击一系列动作
 
 - 通过AccessibilityService服务监听微信
