@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference） 强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下： 1Object o=new Object();   //  强引用 当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用">
+<meta property="og:url" content="mysiga.cn/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference） 强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下： 1Object o=new Object();   //  强引用 当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-6fd93a3a77688946?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-11T05:27:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用">
+<meta name="twitter:description" content="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference） 强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下： 1Object o=new Object();   //  强引用 当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1534431-6fd93a3a77688946?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用 | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/mysiga" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zhipingyang.github.io/">zhipingyang</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.tomatopeter.com/">阿潘</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/d6f6c875ad03">zvving</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/ac4f127d5150">xpleemoon</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/iNXuJG/timeline">冰雪八哥</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jinwong001.com/">Jinwong</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wangsheng.github.io/">Victor</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://origheart.com/">Origheart</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://ckjava.com/">ck</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://prettychaoyao.github.io/">prettychaoyao</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/mysiga" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Java7之强引用-弱引用-软引用-虚引用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="article-date">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="转载-Java-7之基础-强引用、弱引用、软引用、虚引用"><a href="#转载-Java-7之基础-强引用、弱引用、软引用、虚引用" class="headerlink" title="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用"></a>(转载)<a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h3><p>1、强引用（StrongReference）</p>
+<p>强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">//  强引用</span></div></pre></td></tr></table></figure>
+<p>当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱化引用，如下：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">o</span>=null<span class="comment">;     // 帮助垃圾收集器回收此对象</span></div></pre></td></tr></table></figure>
+<p>显式地设置o为null，或超出对象的生命周期范围，则gc认为该对象不存在引用，这时就可以回收这个对象。具体什么时候收集这要取决于gc的算法。<br>举例：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> test()&#123;  </div><div class="line">    <span class="keyword">Object</span> o=<span class="keyword">new</span> <span class="keyword">Object</span>();  </div><div class="line">    <span class="comment">// 省略其他操作  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在一个方法的内部有一个强引用，这个引用保存在栈中，而真正的引用内容（Object）保存在堆中。当这个方法运行完成后就会退出方法栈，则引用内容的引用不存在，这个Object会被回收。<br>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。<br>强引用在实际中有非常重要的用处，举个ArrayList的实现源代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">Object</span>[] elementData;  </div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="built_in">clear</span>() &#123;  </div><div class="line">        modCount++;  </div><div class="line">        <span class="comment">// Let gc do its work  </span></div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)  </div><div class="line">            elementData[i] = <span class="keyword">null</span>;  </div><div class="line">        <span class="built_in">size</span> = <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在ArrayList类中定义了一个私有的变量elementData数组，在调用方法清空数组时可以看到为每个数组内容赋值为null。不同于elementData=null，强引用仍然存在，避免在后续调用 add()等方法添加元素时进行重新的内存分配。使用如clear()方法中释放内存的方法对数组中存放的引用类型特别适用，这样就可以及时释放内存。</p>
+<p>2、软引用（SoftReference）</p>
+<p>如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。 </p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);                                     <span class="comment">// 强引用  </span></div><div class="line">SoftReference&lt;<span class="keyword">String</span>&gt; softRef=<span class="keyword">new</span> SoftReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);     <span class="comment">// 软引用</span></div></pre></td></tr></table></figure>
+<p>当内存不足时，等价于：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">If</span>(JVM.内存不足()) &#123;  </div><div class="line">   str = <span class="built_in">null</span>;  <span class="comment">// 转换为软引用  </span></div><div class="line">   <span class="keyword">System</span>.gc(); <span class="comment">// 垃圾回收器进行回收  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>软引用在实际中有重要的应用，例如浏览器的后退按钮。按后退时，这个后退时显示的网页内容是重新进行请求还是从缓存中取出呢？这就要看具体的实现策略了。</p>
+<ul>
+<li>如果一个网页在浏览结束时就进行内容的回收，则按后退查看前面浏览过的页面时，需要重新构建</li>
+<li>如果将浏览过的网页存储到内存中会造成内存的大量浪费，甚至会造成内存溢出<br>这时候就可以使用软引用</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Browser prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 获取页面进行浏览  </span></div><div class="line">SoftReference sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev); <span class="comment">// 浏览完毕后置为软引用         </span></div><div class="line">&lt;br&gt;<span class="keyword">if</span>(sr.<span class="keyword">get</span>()!=<span class="literal">null</span>) &#123;&lt;br&gt;&#125;&lt;br&gt;  </div><div class="line">    rev = (Browser) sr.<span class="keyword">get</span>();           <span class="comment">// 还没有被回收器回收，直接获取  </span></div><div class="line">&#125;<span class="keyword">else</span>&#123;  </div><div class="line">    prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 由于内存吃紧，所以对软引用的对象回收了  </span></div><div class="line">    sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev);       <span class="comment">// 重新构建  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就很好的解决了实际的问题。<br>       软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。</p>
+<p>3、弱引用（WeakReference）</p>
+<p>   弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);      </div><div class="line">WeakReference&lt;<span class="keyword">String</span>&gt; abcWeakRef = <span class="keyword">new</span> WeakReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);  </div><div class="line"><span class="built_in">str</span>=<span class="keyword">null</span>;</div></pre></td></tr></table></figure>
+<p> 当垃圾回收器进行扫描回收时等价于：</p>
+ <figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> str = null<span class="comment">;  </span></div><div class="line">System.gc()<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p> 如果这个对象是偶尔的使用，并且希望在使用时随时就能获取到，但又不想影响此对象的垃圾收集，那么你应该用 Weak Reference 来记住此对象。<br>   下面的代码会让str再次变为一个强引用：</p>
+   <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span>  abc = abcWeakRef.<span class="built_in">get</span>();</div></pre></td></tr></table></figure>
+<p>   弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。<br>当你想引用一个对象，但是这个对象有自己的生命周期，你不想介入这个对象的生命周期，这时候你就是用弱引用。</p>
+<p>这个引用不会在对象的垃圾回收判断中产生任何附加的影响。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy print?<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceTest</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReferenceQueue&lt;VeryBig&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;VeryBig&gt;();  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkQueue</span><span class="params">()</span> </span>&#123;  </div><div class="line">        Reference&lt;? extends VeryBig&gt; ref = <span class="keyword">null</span>;  </div><div class="line">        <span class="keyword">while</span> ((ref = rq.poll()) != <span class="keyword">null</span>) &#123;  </div><div class="line">            <span class="keyword">if</span> (ref != <span class="keyword">null</span>) &#123;  </div><div class="line">                System.out.println(<span class="string">"In queue: "</span> + ((VeryBigWeakReference) (ref)).id);  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> size = <span class="number">3</span>;  </div><div class="line">        LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt; weakList = <span class="keyword">new</span> LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt;();  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;  </div><div class="line">            weakList.add(<span class="keyword">new</span> VeryBigWeakReference(<span class="keyword">new</span> VeryBig(<span class="string">"Weak "</span> + i), rq));  </div><div class="line">            System.out.println(<span class="string">"Just created weak: "</span> + weakList.getLast());  </div><div class="line">  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        System.gc();   </div><div class="line">        <span class="keyword">try</span> &#123; <span class="comment">// 下面休息几分钟，让上面的垃圾回收线程运行完成  </span></div><div class="line">            Thread.currentThread().sleep(<span class="number">6000</span>);  </div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">        checkQueue();  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBig</span> </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">    <span class="comment">// 占用空间,让线程进行回收  </span></div><div class="line">    <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span> * <span class="number">1024</span>];  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBig</span><span class="params">(String id)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.id = id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBig "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBigWeakReference</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">VeryBig</span>&gt; </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBigWeakReference</span><span class="params">(VeryBig big, ReferenceQueue&lt;VeryBig&gt; rq)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>(big, rq);  </div><div class="line">        <span class="keyword">this</span>.id = big.id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBigWeakReference "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后的输出结果为：</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">1641</span>c0  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">136</span>ab79  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">33</span>c1aa  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">0</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>4、虚引用（PhantomReference）</p>
+<p> “虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。</p>
+<p>  虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中</p>
+<p>5、总结</p>
+<p>Java4种引用的级别由高到低依次为：</p>
+<p>强引用  &gt;  软引用  &gt;  弱引用  &gt;  虚引用</p>
+<p>通过图来看一下他们之间在垃圾回收时的区别：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6fd93a3a77688946?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收关系图"></p>
+<p>当垃圾回收器回收时，某些对象会被回收，某些不会被回收。垃圾回收器会从根对象Object来标记存活的对象，然后将某些不可达的对象和一些引用的对象进行回收，如果对这方面不是很了解，可以参考如下的文章：<a href="http://blog.csdn.net/mazhimazh/article/category/1907599" target="_blank" rel="external">Java内存管理</a></p>
+<p>通过表格来说明一下，如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">引用类型</th>
+<th style="text-align:center">被垃圾回收时间</th>
+<th style="text-align:right">用途</th>
+<th style="text-align:right">生存时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">强引用</td>
+<td style="text-align:center">从来不会</td>
+<td style="text-align:right">对象的一般状态</td>
+<td style="text-align:right">JVM停止运行时终止</td>
+</tr>
+<tr>
+<td style="text-align:left">软引用</td>
+<td style="text-align:center">在内存不足时</td>
+<td style="text-align:right">对象缓存</td>
+<td style="text-align:right">内存不足时终止</td>
+</tr>
+<tr>
+<td style="text-align:left">弱引用</td>
+<td style="text-align:center">在垃圾回收时</td>
+<td style="text-align:right">对象缓存</td>
+<td style="text-align:right">gc运行后终止</td>
+</tr>
+<tr>
+<td style="text-align:left">虚引用</td>
+<td style="text-align:center">Unknown</td>
+<td style="text-align:right">Unknown</td>
+<td style="text-align:right">Unknown</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2016-05-28, 14:50:29</p>
+        <p><span>最后更新:</span>2017-06-11, 13:27:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" title="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用">mysiga.cn/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/</a>
+            <span class="copy-path" data-clipboard-text="原文: mysiga.cn/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/28/Java单例模式/">
+                    Java单例模式，线程安全
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/01/Android-mvp/">
+                    Android-mvp
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载-Java-7之基础-强引用、弱引用、软引用、虚引用"><span class="toc-number">1.</span> <span class="toc-text">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/28/Java单例模式/" title="上一篇: Java单例模式，线程安全">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/01/Android-mvp/" title="下一篇: Android-mvp">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/11/推荐博文/">推荐博文</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/Android各个版本新特性/">Android各个版本新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/24/Android面试/">Android面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Andoid最近搜索记录/">Andoid最近搜索记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!-曾铭</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然(10分钟解释一个和开发相关的原理)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
