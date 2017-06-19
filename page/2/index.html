@@ -263,6 +263,145 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java7之强引用-弱引用-软引用-虚引用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="article-date">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="转载-Java-7之基础-强引用、弱引用、软引用、虚引用"><a href="#转载-Java-7之基础-强引用、弱引用、软引用、虚引用" class="headerlink" title="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用"></a>(转载)<a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h3><p>1、强引用（StrongReference）</p>
+<p>强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">//  强引用</span></div></pre></td></tr></table></figure>
+<p>当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱化引用，如下：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">o</span>=null<span class="comment">;     // 帮助垃圾收集器回收此对象</span></div></pre></td></tr></table></figure>
+<p>显式地设置o为null，或超出对象的生命周期范围，则gc认为该对象不存在引用，这时就可以回收这个对象。具体什么时候收集这要取决于gc的算法。<br>举例：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> test()&#123;  </div><div class="line">    <span class="keyword">Object</span> o=<span class="keyword">new</span> <span class="keyword">Object</span>();  </div><div class="line">    <span class="comment">// 省略其他操作  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在一个方法的内部有一个强引用，这个引用保存在栈中，而真正的引用内容（Object）保存在堆中。当这个方法运行完成后就会退出方法栈，则引用内容的引用不存在，这个Object会被回收。<br>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。<br>强引用在实际中有非常重要的用处，举个ArrayList的实现源代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">Object</span>[] elementData;  </div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="built_in">clear</span>() &#123;  </div><div class="line">        modCount++;  </div><div class="line">        <span class="comment">// Let gc do its work  </span></div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)  </div><div class="line">            elementData[i] = <span class="keyword">null</span>;  </div><div class="line">        <span class="built_in">size</span> = <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在ArrayList类中定义了一个私有的变量elementData数组，在调用方法清空数组时可以看到为每个数组内容赋值为null。不同于elementData=null，强引用仍然存在，避免在后续调用 add()等方法添加元素时进行重新的内存分配。使用如clear()方法中释放内存的方法对数组中存放的引用类型特别适用，这样就可以及时释放内存。</p>
+<p>2、软引用（SoftReference）</p>
+<p>如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。 </p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);                                     <span class="comment">// 强引用  </span></div><div class="line">SoftReference&lt;<span class="keyword">String</span>&gt; softRef=<span class="keyword">new</span> SoftReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);     <span class="comment">// 软引用</span></div></pre></td></tr></table></figure>
+<p>当内存不足时，等价于：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">If</span>(JVM.内存不足()) &#123;  </div><div class="line">   str = <span class="built_in">null</span>;  <span class="comment">// 转换为软引用  </span></div><div class="line">   <span class="keyword">System</span>.gc(); <span class="comment">// 垃圾回收器进行回收  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>软引用在实际中有重要的应用，例如浏览器的后退按钮。按后退时，这个后退时显示的网页内容是重新进行请求还是从缓存中取出呢？这就要看具体的实现策略了。</p>
+<ul>
+<li>如果一个网页在浏览结束时就进行内容的回收，则按后退查看前面浏览过的页面时，需要重新构建</li>
+<li>如果将浏览过的网页存储到内存中会造成内存的大量浪费，甚至会造成内存溢出<br>这时候就可以使用软引用</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Browser prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 获取页面进行浏览  </span></div><div class="line">SoftReference sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev); <span class="comment">// 浏览完毕后置为软引用         </span></div><div class="line">&lt;br&gt;<span class="keyword">if</span>(sr.<span class="keyword">get</span>()!=<span class="literal">null</span>) &#123;&lt;br&gt;&#125;&lt;br&gt;  </div><div class="line">    rev = (Browser) sr.<span class="keyword">get</span>();           <span class="comment">// 还没有被回收器回收，直接获取  </span></div><div class="line">&#125;<span class="keyword">else</span>&#123;  </div><div class="line">    prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 由于内存吃紧，所以对软引用的对象回收了  </span></div><div class="line">    sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev);       <span class="comment">// 重新构建  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就很好的解决了实际的问题。<br>       软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。</p>
+<p>3、弱引用（WeakReference）</p>
+<p>   弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);      </div><div class="line">WeakReference&lt;<span class="keyword">String</span>&gt; abcWeakRef = <span class="keyword">new</span> WeakReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);  </div><div class="line"><span class="built_in">str</span>=<span class="keyword">null</span>;</div></pre></td></tr></table></figure>
+<p> 当垃圾回收器进行扫描回收时等价于：</p>
+ <figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> str = null<span class="comment">;  </span></div><div class="line">System.gc()<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p> 如果这个对象是偶尔的使用，并且希望在使用时随时就能获取到，但又不想影响此对象的垃圾收集，那么你应该用 Weak Reference 来记住此对象。<br>   下面的代码会让str再次变为一个强引用：</p>
+   <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span>  abc = abcWeakRef.<span class="built_in">get</span>();</div></pre></td></tr></table></figure>
+<p>   弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。<br>当你想引用一个对象，但是这个对象有自己的生命周期，你不想介入这个对象的生命周期，这时候你就是用弱引用。</p>
+<p>这个引用不会在对象的垃圾回收判断中产生任何附加的影响。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy print?<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceTest</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReferenceQueue&lt;VeryBig&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;VeryBig&gt;();  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkQueue</span><span class="params">()</span> </span>&#123;  </div><div class="line">        Reference&lt;? extends VeryBig&gt; ref = <span class="keyword">null</span>;  </div><div class="line">        <span class="keyword">while</span> ((ref = rq.poll()) != <span class="keyword">null</span>) &#123;  </div><div class="line">            <span class="keyword">if</span> (ref != <span class="keyword">null</span>) &#123;  </div><div class="line">                System.out.println(<span class="string">"In queue: "</span> + ((VeryBigWeakReference) (ref)).id);  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> size = <span class="number">3</span>;  </div><div class="line">        LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt; weakList = <span class="keyword">new</span> LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt;();  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;  </div><div class="line">            weakList.add(<span class="keyword">new</span> VeryBigWeakReference(<span class="keyword">new</span> VeryBig(<span class="string">"Weak "</span> + i), rq));  </div><div class="line">            System.out.println(<span class="string">"Just created weak: "</span> + weakList.getLast());  </div><div class="line">  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        System.gc();   </div><div class="line">        <span class="keyword">try</span> &#123; <span class="comment">// 下面休息几分钟，让上面的垃圾回收线程运行完成  </span></div><div class="line">            Thread.currentThread().sleep(<span class="number">6000</span>);  </div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">        checkQueue();  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBig</span> </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">    <span class="comment">// 占用空间,让线程进行回收  </span></div><div class="line">    <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span> * <span class="number">1024</span>];  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBig</span><span class="params">(String id)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.id = id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBig "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBigWeakReference</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">VeryBig</span>&gt; </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBigWeakReference</span><span class="params">(VeryBig big, ReferenceQueue&lt;VeryBig&gt; rq)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>(big, rq);  </div><div class="line">        <span class="keyword">this</span>.id = big.id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBigWeakReference "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后的输出结果为：</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">1641</span>c0  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">136</span>ab79  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">33</span>c1aa  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">0</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>4、虚引用（PhantomReference）</p>
+<p> “虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。</p>
+<p>  虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中</p>
+<p>5、总结</p>
+<p>Java4种引用的级别由高到低依次为：</p>
+<p>强引用  &gt;  软引用  &gt;  弱引用  &gt;  虚引用</p>
+<p>通过图来看一下他们之间在垃圾回收时的区别：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6fd93a3a77688946?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收关系图"></p>
+<p>当垃圾回收器回收时，某些对象会被回收，某些不会被回收。垃圾回收器会从根对象Object来标记存活的对象，然后将某些不可达的对象和一些引用的对象进行回收，如果对这方面不是很了解，可以参考如下的文章：<a href="http://blog.csdn.net/mazhimazh/article/category/1907599" target="_blank" rel="external">Java内存管理</a></p>
+<p>通过表格来说明一下，如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">引用类型</th>
+<th style="text-align:center">被垃圾回收时间</th>
+<th style="text-align:right">用途</th>
+<th style="text-align:right">生存时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">强引用</td>
+<td style="text-align:center">从来不会</td>
+<td style="text-align:right">对象的一般状态</td>
+<td style="text-align:right">JVM停止运行时终止</td>
+</tr>
+<tr>
+<td style="text-align:left">软引用</td>
+<td style="text-align:center">在内存不足时</td>
+<td style="text-align:right">对象缓存</td>
+<td style="text-align:right">内存不足时终止</td>
+</tr>
+<tr>
+<td style="text-align:left">弱引用</td>
+<td style="text-align:center">在垃圾回收时</td>
+<td style="text-align:right">对象缓存</td>
+<td style="text-align:right">gc运行后终止</td>
+</tr>
+<tr>
+<td style="text-align:left">虚引用</td>
+<td style="text-align:center">Unknown</td>
+<td style="text-align:right">Unknown</td>
+<td style="text-align:right">Unknown</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Android-mvp" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1457,256 +1596,6 @@ func onButtonTap() {
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">table</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;<span class="attribute">border-collapse</span>: collapse; &#125;</div><div class="line">  <span class="selector-tag">table</span> <span class="selector-tag">tr</span> &#123;</div><div class="line">    <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">    <span class="attribute">background-color</span>: white;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span>:nth-child(<span class="number">2</span>n) &#123;</div><div class="line">      <span class="attribute">background-color</span>: <span class="number">#f8f8f8</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> &#123;</div><div class="line">      <span class="attribute">font-weight</span>: bold;</div><div class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">      <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">      <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">13px</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> &#123;</div><div class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#cccccc</span>;</div><div class="line">      <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">      <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">13px</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> :first-child, <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> :first-child &#123;</div><div class="line">      <span class="attribute">margin-top</span>: <span class="number">0</span>; &#125;</div><div class="line">    <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">th</span> :last-child, <span class="selector-tag">table</span> <span class="selector-tag">tr</span> <span class="selector-tag">td</span> :last-child &#123;</div><div class="line">      <span class="attribute">margin-bottom</span>: <span class="number">0</span>; &#125;</div></pre></td></tr></table></figure>
 <p>代码高亮</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">code</span>, <span class="selector-tag">tt</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">2px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span>;</div><div class="line">  <span class="attribute">white-space</span>: nowrap;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eaeaea</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#f8f8f8</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">3px</span>; &#125;</div><div class="line"></div><div class="line"> <span class="selector-tag">code</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="attribute">border</span>: none;</div><div class="line">  <span class="attribute">background</span>: transparent; &#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-前端入门（1）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/02/前端入门（1）/" class="article-date">
-      <time datetime="2015-12-02T10:30:00.000Z" itemprop="datePublished">2015-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/02/前端入门（1）/">前端入门（1）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="Ruby-on-Rails-初体验-王胜"><a href="#Ruby-on-Rails-初体验-王胜" class="headerlink" title="Ruby on Rails 初体验 - 王胜"></a>Ruby on Rails 初体验 - 王胜</h2><h3 id="使用命令行快速创建应用的步骤"><a href="#使用命令行快速创建应用的步骤" class="headerlink" title="使用命令行快速创建应用的步骤"></a>使用命令行快速创建应用的步骤</h3><ul>
-<li><p>创建应用程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">rails new hello <span class="_">-d</span> mysql</span></div></pre></td></tr></table></figure>
-<p><strong>备注</strong> 这里演示使用mysql作为数据持久层</p>
-</li>
-<li><p>浏览hello world界面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> hello</span></div><div class="line"><span class="meta">$</span><span class="bash">rake db:create RAILS_ENV=<span class="string">'development'</span> // 创建开发数据库</span></div><div class="line"><span class="meta">$</span><span class="bash">bin/rails server</span></div></pre></td></tr></table></figure>
-<p><strong>备注</strong> 由于这里的rails版本是4.2.1，与msqyl2的最高版本有不兼容行，所以需要手动将Gemfile中mysql2降级。降级之后执行bundle install。</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem <span class="string">'mysql2'</span> -&gt; gem <span class="string">'mysql2'</span>, <span class="string">'~&gt; 0.3.18'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>使用脚手架，创建模型、数据迁移脚本以及控制器和试图</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rails generate scaffold Person name:string age:<span class="built_in">integer</span></span></div></pre></td></tr></table></figure>
-</li>
-<li><p>执行数据迁移</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rake db:migrate RAILS_ENV=development</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>启动应用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">bin/rails server</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>浏览效果</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">http:</span><span class="comment">//localhost:3000/people</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>备注</strong></p>
-<p>此演示项目，ruby、gems和Rails的版本信息如下:</p>
-<ul>
-<li>ruby: 2.0.0p481</li>
-<li>rubygems: 2.4.5</li>
-<li>rails: 4.2.1</li>
-</ul>
-<p>参考：</p>
-<ul>
-<li><a href="http://guides.rubyonrails.org/command_line.html" target="_blank" rel="external">rubyonrails.org</a></li>
-</ul>
-<h2 id="矢量图在Android-上应用-王进"><a href="#矢量图在Android-上应用-王进" class="headerlink" title="矢量图在Android 上应用 - 王进"></a>矢量图在Android 上应用 - 王进</h2><p>###VectorDrawable<br>示例：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="tag">&lt;<span class="name">vector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">        &lt;!<span class="attr">--</span>  <span class="attr">intrinsic</span>  <span class="attr">size</span>  <span class="attr">of</span>  <span class="attr">the</span>  <span class="attr">drawable</span>  <span class="attr">--</span>&gt;</div><div class="line">        android:height="300dp"</div><div class="line">        android:width="300dp"</div><div class="line">        <span class="comment">&lt;!-- size of the virtual canvas --&gt;</span></div><div class="line">        android:viewportHeight="40"</div><div class="line">        android:viewportWidth="40"</div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">path</span> <span class="attr">android:fillColor</span>=<span class="string">"#ff00ff"</span></span></div><div class="line">                <span class="attr">android:pathData</span>=<span class="string">"M20.5,9.5</span></div><div class="line">                        c-1.955,0,-3.83,1.268,-4.5,3</div><div class="line">                        c-0.67,-1.732,-2.547,-3,-4.5,-3</div><div class="line">                        C8.957,9.5,7,11.432,7,14</div><div class="line">                        c0,3.53,3.793,6.257,9,11.5</div><div class="line">                        c5.207,-5.242,9,-7.97,9,-11.5</div><div class="line">                        C25,11.432,23.043,9.5,20.5,9.5z"</div><div class="line">                /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">vector</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>###SVG→Vector<br>Android并不原生支持读取常见的向量文件格式，如ＳＶＧ<br>（主要是缺少ｃｓｓ支持），但是支持相同路径数据语法，<br>所以ＳＶＧ资源需要经过一定的转换；</p>
-<p>###使用SVG Path Data </p>
-<ul>
-<li>M： move to 移动绘制点</li>
-<li>L：line to 直线</li>
-<li>Z：close 闭合</li>
-<li>C：cubic bezier 三次贝塞尔曲线</li>
-<li>Q：quatratic bezier 二次贝塞尔曲线</li>
-<li>A：ellipse 圆弧</li>
-</ul>
-<blockquote>
-<p>每个命令都有大小写形式，大写代表后面的参数是绝对坐标，小写表示相对坐标。参数之间用空格或逗号隔开</p>
-</blockquote>
-<p><strong>命令详解：</strong></p>
-<ul>
-<li>M (x y) 移动到x,y</li>
-<li>L (x y) 直线连到x,y，还有简化命令H(x) 水平连接、V(y)垂直连接</li>
-<li>Z，没有参数，连接起点和终点</li>
-<li>C(x1 y1 x2 y2 x y)，控制点x1,y1 x2,y2，终点x,y</li>
-<li>Q(x1 y1 x y)，控制点x1,y1，终点x,y</li>
-<li>A(rx ry x-axis-rotation large-arc-flag sweep-flag x y) <ul>
-<li>rx ry 椭圆半径 </li>
-<li>x-axis-rotation x轴旋转角度 </li>
-<li>large-arc-flag 为0时表示取小弧度，1时取大弧度 </li>
-<li>sweep-flag 0取逆时针方向，1取顺时针方向<br><img src="http://static.oschina.net/uploads/img/201510/01095231_IR6O.svg" alt=""></li>
-</ul>
-</li>
-</ul>
-<p>详细参考：<a href="http://www.w3.org/TR/SVG11/paths.html#PathData" target="_blank" rel="external">http://www.w3.org/TR/SVG11/paths.html#PathData</a></p>
-<p>###Icon Font<br>解决矢量图低版本不兼容问题</p>
-<p>详细参考：<br>1,<a href="http://blog.csdn.net/a345017062/article/details/46455745" target="_blank" rel="external">http://blog.csdn.net/a345017062/article/details/46455745</a><br>2,<a href="http://blog.csdn.net/goodlixueyong/article/details/41448483" target="_blank" rel="external">http://blog.csdn.net/goodlixueyong/article/details/41448483</a></p>
-<h2 id="WordPress快速建站-–杨俊构"><a href="#WordPress快速建站-–杨俊构" class="headerlink" title="WordPress快速建站 –杨俊构"></a>WordPress快速建站 –杨俊构</h2><h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
-<li><p>服务器php套件（ Nginx+PHP7.0）： <a href="http://www.upupw.net/" target="_blank" rel="external">UPUPW绿色服务器</a></p>
-</li>
-<li><p>WordPress代码包：<a href="https://cn.wordpress.org/" target="_blank" rel="external">wordpress-4.3.1-zh_CN</a></p>
-</li>
-</ul>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ul>
-<li><p>配置服务器和数据库</p>
-<ol>
-<li>解压UPUPW_NP7.0-1511.7z 到本地目录</li>
-<li>打开解压包后的upupw.exe配置平台。<br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120101.jpg" alt=""></li>
-<li>输入“S1”开启全部服务</li>
-<li>打开地址 <a href="http://127.0.0.1/" target="_blank" rel="external">http://127.0.0.1/</a> 会看到UPUPWPHP探针页面<br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120103.jpg" alt=""></li>
-<li>打开地址 <a href="http://127.0.0.1/pmd/" target="_blank" rel="external">http://127.0.0.1/pmd/</a> 配置mysql数据库（默认用户名密码都是root）</li>
-<li>新建数据库，用户名，密码</li>
-<li>打开地址 <a href="http://127.0.0.1/" target="_blank" rel="external">http://127.0.0.1/</a> 使用数据库连接测试连接数据库是否正常</li>
-</ol>
-</li>
-<li><p>安装配置wordpress</p>
-<ol>
-<li>解压wordpress-4.3.1-zh_CN.zip压缩包</li>
-<li>将wordpress文件夹拷贝到UPUPW发布根目录/htdocs文件夹下</li>
-<li>打来地址<a href="http://127.0.0.1/wordpress，根据开始安装" target="_blank" rel="external">http://127.0.0.1/wordpress，根据开始安装</a></li>
-<li>输入刚才配置的数据库名，用户名，密码，点击提交进行</li>
-<li>设置站点标题，后台登陆用户名，后台密码，邮件地址完成安装</li>
-<li>再次打开地址<a href="http://127.0.0.1/wordpress测试安装完成" target="_blank" rel="external">http://127.0.0.1/wordpress测试安装完成</a><br><img src="http://7xohph.com1.z0.glb.clouddn.com/05120105.jpg" alt=""></li>
-</ol>
-</li>
-</ul>
-<h3 id="WordPress相关资源"><a href="#WordPress相关资源" class="headerlink" title="WordPress相关资源"></a>WordPress相关资源</h3><ul>
-<li><p>推荐主题 ：<a href="http://www.weisay.com/blog/" target="_blank" rel="external">威言威语</a>     <a href="http://www.prower.cn/" target="_blank" rel="external">prower</a></p>
-</li>
-<li><p>推荐插件 ： <a href="http://duoshuo.com/" target="_blank" rel="external">多说</a> （评论快速提交，文章聚合发布）   <a href="http://developer.qiniu.com/download/index.html" target="_blank" rel="external">七牛镜像存储wordpress 插件</a>     <a href="http://www.youpzt.com/267.html" target="_blank" rel="external">youpzt-optimizer</a>（网站优化工具）</p>
-</li>
-<li><p><a href="http://www.oschina.net/news/55174/nextapp-opensource" target="_blank" rel="external">NextApp</a> —— 开源的WordPress手机博客 App 自动生成系统</p>
-</li>
-</ul>
-<h2 id="51offer-Android重构之Architecture-xpleemoon"><a href="#51offer-Android重构之Architecture-xpleemoon" class="headerlink" title="51offer Android重构之Architecture - xpleemoon"></a>51offer Android重构之Architecture - xpleemoon</h2><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><ul>
-<li>我们的app经历了一次重构，在重构过程中将IDE切换到Android Studio，并且编译脚本从Ant切换到了Gradle。</li>
-<li>不介绍IDE和Gradle的优势，主要介绍重构后app的Architecture相关部分。</li>
-</ul>
-<blockquote>
-<p>从0到1是一个开始，再从1到N又是另一个开始。</p>
-</blockquote>
-<h3 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h3><ul>
-<li>当前我们的结构主要为4层：<ol>
-<li>app</li>
-<li>core</li>
-<li>lib</li>
-<li>model</li>
-</ol>
-</li>
-</ul>
-<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X3.jpg" alt="project结构"></p>
-<ul>
-<li>app依赖core，而core依赖lib和model。随着以后的业务发展、产品迭代或者有更好的结构划分，会再做调整。</li>
-</ul>
-<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X1.jpg" alt="module依赖"></p>
-<h3 id="app——展现层（presention）"><a href="#app——展现层（presention）" class="headerlink" title="app——展现层（presention）"></a>app——展现层（presention）</h3><ul>
-<li>用于页面展现，主要包含MVP模式中的VP。我们对V采用接口的方式去定义，然后让Activity或者Fragment去实现V接口，这样我们就达到接口编程的目的，P只需要关注V接口即可。以注册中的地区列表页面为例</li>
-</ul>
-<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X4.jpg" alt="VP"></p>
-<ul>
-<li>V</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 地区view，MVP－V</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IRegionView</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 搜索更新</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">search2Update</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>P</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 国家地区，MVP－P</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegionPresenter</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> List&lt;Region&gt; mRegions = OFRRegionHelper.getRegions();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取地区列表</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Region&gt; <span class="title">getRegions</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mRegions;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 搜索</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> regionView</div><div class="line">     * <span class="doctag">@param</span> searchRegion</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(@NonNull IRegionView regionView, String searchRegion)</span> </span>&#123;</div><div class="line">        mRegions.clear();</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(searchRegion)) &#123;</div><div class="line">            mRegions.addAll(OFRRegionHelper.getRegions());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mRegions.addAll(OFRRegionHelper.searchRegions(searchRegion));</div><div class="line">        &#125;</div><div class="line">        regionView.search2Update();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>另外，我们的app有太多的业务逻辑，所以我们也使用了比较多的策略模式，方便以后的扩展和维护。比如不同的国家，它在意向单展现时就有不同的表现：<ul>
-<li>可以同时选择的最多意向单数量</li>
-<li>每个学校可以同时选择的最多专业数量 </li>
-<li>意向单名字</li>
-</ul>
-</li>
-<li>于是，我们就对此采用了策略模式</li>
-</ul>
-<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X2.jpg" alt="国家意向单策略图"></p>
-<ul>
-<li>国家意向单策略接口</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 国家策略</div><div class="line"> * &lt;ul&gt;</div><div class="line"> * &lt;li&gt;不同国家可选的意向单数量不同，具体见&#123;<span class="doctag">@link</span> #maxCount2Select()&#125;&lt;/li&gt;</div><div class="line"> * &lt;li&gt;不同国家的学校专业可选数量不同，具体见&#123;<span class="doctag">@link</span> #maxCountOfPerSchool2Select()&#125;&lt;/li&gt;</div><div class="line"> * &lt;/ul&gt;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICountryPurpose</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 国家可以同时选择的最多意向单数量</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCount2Select</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 每个学校可以同时选择的最多专业数量</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCountOfPerSchool2Select</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 意向单名字，目前可用名字为：</div><div class="line">     * &lt;ol&gt;</div><div class="line">     * &lt;li&gt;专业&lt;/li&gt;</div><div class="line">     * &lt;li&gt;入学时间，当前只限日本&lt;/&gt;</div><div class="line">     * &lt;/ol&gt;</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> ctx</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function">String <span class="title">getName</span><span class="params">(@NonNull Context ctx)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="core"><a href="#core" class="headerlink" title="core"></a>core</h3><ul>
-<li>核心层，主要用于应用相关的URL拼接、图片加载、网络请求、json解析、第三方平台、配置和工具。</li>
-</ul>
-<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h3><ul>
-<li>通用库层，不依赖于应用的任何业务，方便快速的移植到其它项目.</li>
-</ul>
-<h3 id="model"><a href="#model" class="headerlink" title="model"></a>model</h3><ul>
-<li>数据层，作为MVP的M，用于应用的数据模型.</li>
-</ul>
-<h2 id="简单HTML5-吴明"><a href="#简单HTML5-吴明" class="headerlink" title="简单HTML5 吴明"></a>简单HTML5 吴明</h2><ul>
-<li><a href="http://www.17sucai.com/pins/demoshow/4583" target="_blank" rel="external">烟火效果</a></li>
-<li><a href="http://www.html5tricks.com/demo/html5-css3-404-animation/index.html" target="_blank" rel="external">404动画</a></li>
-<li><a href="http://keleyi.com/keleyi/phtml/html5/31.htm" target="_blank" rel="external">爱心树</a></li>
-<li>开发ide storm</li>
-<li>目录结构<ul>
-<li>dist:第三库存放地方，以下为存放指定文件类型目录<ul>
-<li>css</li>
-<li>js</li>
-<li>doc</li>
-<li>img</li>
-</ul>
-</li>
-<li>src:项目指定文件类型目录<ul>
-<li>css</li>
-<li>js</li>
-<li>doc</li>
-<li>img  </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>简单代码</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--html5网页声明--&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>mobile<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 此处还可以插入其他meta,样式单等信息--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--页面部分--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>现实是残酷的,别做梦,从hello word开始吧!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span>不支持html5<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></div><div class="line">    <span class="comment">&lt;!-- 获取内容中id为canvas的元素--&gt;</span></div><div class="line">    var canvas = document.getElementById('canvas');</div><div class="line">//    获取canvas的环境,</div><div class="line">    var ctx = canvas.getContext('2d');</div><div class="line">//      填充的样式为红色</div><div class="line">    ctx.fillStyle = '#ff0000';</div><div class="line">    ctx.st//    画一个矩形,位置x,y,w,h</div><div class="line">    ctx.fillRect(0, 0, 600, 100);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>参考链接<ul>
-<li><a href="http://caniuse.com/" target="_blank" rel="external">链接一</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" target="_blank" rel="external">链接二</a></li>
-</ul>
-</li>
-</ul>
 
       
     </div>
