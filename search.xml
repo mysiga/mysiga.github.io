@@ -3,6 +3,228 @@
   
     
     <entry>
+      <title><![CDATA[Java - Java基础]]></title>
+      <url>/2018/06/20/Java%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<p>##Java基础<br><img src="https://upload-images.jianshu.io/upload_images/1534431-82e3766a45c98f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java"></p>
+<p>###<a href="http://www.importnew.com/6804.html" target="_blank" rel="external">“==”和equals区别</a><br>“==”是比较的内存地址，equals是Object的方法，默认是比较两个对象内存地址，具体看对象是否重写equals方法。</p>
+<p>###<a href="https://www.cnblogs.com/Qian123/p/5703507.html" target="_blank" rel="external">equals和hashCode</a><br>使用Hashset、Hashmap、Hashtable不允许添加重复元素，为了提高效率首先判断元素生成的hashcode()是否相同，如果生成的hashCode()不同在判断equls()方法。</p>
+<p>###String、StringBuffer与StringBuilder<br>||线程安全|序列化|默认长度|增长倍数|<br>|-|-|-|-|-|<br>|String|线程安全|支持序列化|0|-|<br>|StringBuffer|线程安全|支持序列化|16|2n+2|<br>|StringBuilder|线程不安全|支持序列化|16|2n+2|</p>
+<p>###List子类<br>| List | 实现 | 默认容器大小  | 容量扩充 | 线程是否安全 | 元素是否可以为null |是否支持序列化|优势|<br>| —– | —– | —– | —– | —– | —– | —– | —– |<br>| Vector | 数组实现 | 10  | 2倍 | 安全 | 可以 |否|已经基本不再使用|<br>| ArrayList | 数组实现 | 10  | 2倍 | 不安全 | 可以 |是|查找效率高，插入或删除元素效率低|<br>| LinkedList | 双向循环链表 | 0  | 不需要扩容 | 不安全 | 可以 |是|插入删除效率高，查找效率低|</p>
+<p>###Set子类</p>
+<p>###Map子类<br>| Map | 实现 | 默认容器大小  | 容量扩充 | 线程是否安全 | 元素是否可以为null |是否支持序列化|优势|<br>| —– | —– | —– | —– | —– | —– | —– | —– |<br>| <a href="https://github.com/francistao/LearningNotes/blob/master/Part2/JavaSE/HashMap源码剖析.md" target="_blank" rel="external">HashMap</a> | 哈希表实现的 | 16  | 2倍| 不安全 |key和value都允许为null，如果key为null，则直接从哈希表的第一个位置table[0]对应的链表上查找。记住，key为null的键值对永远都放在以table[0]为头结点的链表中，当然不一定是存放在头结点table[0]中, |支持|如果单链表中存在与目标key相等的键值对，则将新的value覆盖旧的value|<br>| LinkedHashMap | 哈希表实现的 | 16  | 2倍 | 安全 | 不可以 |支持||<br>| Hashtable | 哈希表实现的 | 16  | 2倍+1 | 安全 | key可以为null，value不允许为null |支持||</p>
+<ul>
+<li><a href="http://wiki.jikexueyuan.com/project/java-vm/storage.html" target="_blank" rel="external">Java内存</a><br><img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存区域"></li>
+<li>程序计数器</li>
+<li>Java 虚拟机栈</li>
+</ul>
+<ol>
+<li><p>局部变量表</p>
+<blockquote>
+<p>局部变量表是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型（它指向了一条字节码指令的地址）.</p>
+</blockquote>
+</li>
+<li><p>操作数栈</p>
+<blockquote>
+<p>操作数栈又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</p>
+</blockquote>
+</li>
+<li>动态连接<blockquote>
+<p>每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</p>
+</blockquote>
+</li>
+<li>方法返回地址<blockquote>
+<p>当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>本地方法栈<br>该区域与虚拟机栈所发挥的作用非常相似，只是虚拟机栈为虚拟机执行 Java 方法服务，而本地方法栈则为使用到的本地操作系统（Native）方法服务。</li>
+<li>Java 堆<br>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。Java Heap 是垃圾收集器管理的主要区域，因此很多时候也被称为“GC堆”。</li>
+<li>方法区<br>方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</li>
+<li>直接内存<br>不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。<blockquote>
+<p>在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I/O 方式，可以使用Native函数库直接分配堆外内存，然后通过存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
+</blockquote>
+</li>
+<li>参考文章</li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7517213" target="_blank" rel="external">Java类生命周期</a></li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7331354" target="_blank" rel="external">单例模式讨论篇：单例模式与垃圾回收</a><br>###<a href="http://www.importnew.com/26383.html" target="_blank" rel="external">JVM 垃圾回收算法及回收器详解</a><br>垃圾回收算法</li>
+<li>标记清除</li>
+<li>复制算法</li>
+<li>标记整理</li>
+<li>增量算法</li>
+</ul>
+<p>垃圾回收器</p>
+<ul>
+<li>Serial收集器</li>
+<li>ParNew收集器</li>
+<li>Parallel Scavenge收集器</li>
+<li>CMS收集器（应用非常广泛）</li>
+<li>G1收集器（面向服务端应用）<br><a href="https://juejin.im/post/5909c7ef570c3500583bf433" target="_blank" rel="external">Android GC 那点事</a><br>###多线程</li>
+<li>线程</li>
+<li>Thread</li>
+<li>Runable</li>
+<li>callable</li>
+<li>锁</li>
+<li>synchronized  </li>
+<li>lock  </li>
+<li>semaphore</li>
+</ul>
+<p>###int-char-long各占多少字节数</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">位数</th>
+<th style="text-align:left">字节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">short</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">int</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">long</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">8</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>/2018/02/08/2017-%E6%8A%80%E6%9C%AF%E7%AF%87/</url>
+      <content type="html"><![CDATA[<p>###2017技术篇</p>
+<p>今天第一篇—技术篇，</p>
+<p>今年主要做的项目是Android系统定制，BSS，云掌柜等，那就主要说下从项目学到哪些东西</p>
+<p>####<a href="https://www.jianshu.com/p/ed9b6b299f5a" target="_blank" rel="external">git命令</a></p>
+<ul>
+<li>Android系统开发需要下载Android源码(附录提供在线源码地址)用到各种命令编译，首先是git命令，原来都是通过soucetree搞定，可是系统git相关验证有限制。然后就缝缝补补总结了自己常用到<a href="https://www.jianshu.com/p/ed9b6b299f5a" target="_blank" rel="external">git命令</a>。</li>
+</ul>
+<p>####<a href="https://www.jianshu.com/p/b4ef67b30d5e" target="_blank" rel="external">自定义控件</a></p>
+<p>Android系统定制主要是做汽车定制化的东西！自定义控件，比较多以前都是能用系统控件优先考虑用系统控件（主要系统控件在不同的系统兼容性好点），实在不行再使用自定义的控件。</p>
+<p>####<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a></p>
+<p>用起来很爽，主要是方便线程切换，也避免一些代码经常使用Handler内存泄漏问题。解决网络请求没有在Activity,Fragment生命周期没有结束后回收问题。</p>
+<p>####使用RxJava+OkHttp+Retrofit+ButterKnife+MVP爽爆了</p>
+<p>####单元测试</p>
+<p>模仿<a href="https://github.com/googlesamples/android-architecture/blob/todo-mvp-rxjava/todoapp/app/src/test/java/com/example/android/architecture/blueprints/todoapp/statistics/StatisticsPresenterTest.java" target="_blank" rel="external">Google MVP单元测试</a>+mock方式最新代码单元测试。（写了单元测试就可以很明显的看出自己代码结构是否设计合理。可是如果代码之前已经成形你现在是维护，并不建议过多的单元测试而测试或者也可以是用Robolectric）</p>
+<p>####<a href="https://www.jianshu.com/p/db7af03a4311" target="_blank" rel="external">自动化Android发版</a></p>
+<p>主要采用Jenkins+shell脚本调接口方式实现自动化脚本，原来都是用Jenkins打包脚本比较简单，然后自动化上传apk到官网就需要调用shell脚本网络请求，原来这块不会写琢磨了很久才成功。后面公司有皮皮虾就把我这个用在qa环境的自动化忽略了。</p>
+<p>####蓝牙打印<br>主要方式APP接受的到相应服务端信息，根据相关信息发送指令给蓝牙打印机，然后蓝牙打印完成。整个过程这样实际开发中就要考虑各种问题，通过两个星期的梳理才理解透相关逻辑，实际开发蓝牙也总结了一些问题</p>
+<ul>
+<li>推送和App socket通信</li>
+<li>推送和socket保活</li>
+<li>推送和App socket的，去重，线程安全问题</li>
+<li>app打印信息在不同的打印机上的展示问题</li>
+<li>app与蓝牙打印连接问题，连接蓝牙成功，打印没有反应，蓝牙打印回斥问题。</li>
+</ul>
+<p>####<a href="https://github.com/alibaba/ARouter" target="_blank" rel="external">阿里路由框架，项目模块化</a><br>当项目大了，人多开发的时候。总会遇到代码冲突。除了合代码前review代码外还需要解决开发效率。首先是模块化开发，互不依赖。然后就有了路由，考虑大公司维护好最后采用了ARouter。（如果项目不大和人员不是很多暂时不建议使用路由）</p>
+<p>####Kotlin<br>Kotlin为Android 官方支持语言，自己写了一些代码，主要体现简化代码，非空认证优势。其他还没有发现太多。实际项目开发没有用到。</p>
+<p>####AI: Python<br>今年的AI很火，然后自己就找视频自学Python，自学两个星期，中间公司比较忙后面懒了没有完成。2018一定要补上。</p>
+<p>####微信小程序<br>自己一直想开发一个共享卡包类的工具。开始想做成app,觉得还是太大了，最后还是使用微信小程序的方式，使用微信小程序主要的好处：一是利用微信的群体，另外人人都有微信的时代使用小程序比较轻便。用微信小程序就需要node.js+后台开发。基本要从零开始，然后一直模式，目前只做成一个demo形式。2018年一定要做完这个。</p>
+<p>####其他<br>2017也写了可怜几篇技术文章</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/d827a0610fd5" target="_blank" rel="external">Android使用枚举正确姿态</a></li>
+<li><a href="https://www.jianshu.com/p/8a66806588bc" target="_blank" rel="external">Android各个版本新特性</a></li>
+<li><a href="https://www.jianshu.com/p/dd3fd85d3299" target="_blank" rel="external">Java面试—排序算法总结</a></li>
+<li><a href="https://www.jianshu.com/p/0070763a5558" target="_blank" rel="external">Switch String</a></li>
+</ul>
+<p>####附录</p>
+<ul>
+<li><a href="http://androidxref.com/" target="_blank" rel="external">在线Android系统源码地址</a></li>
+</ul>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>/2017/11/13/Android%E5%85%BC%E5%AE%B9%E5%8C%85%E8%B0%83%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h2 id="Android与iOS开发统一坑"><a href="#Android与iOS开发统一坑" class="headerlink" title="Android与iOS开发统一坑"></a>Android与iOS开发统一坑</h2><h3 id="时间搓"><a href="#时间搓" class="headerlink" title="时间搓"></a>时间搓</h3><ul>
+<li>Java取时间戳为13位</li>
+<li>iOS取时间戳10位</li>
+<li>解决方案：统一用13位，后台Java写的，其他平台调用都是以13位取<h3 id="下拉刷新"><a href="#下拉刷新" class="headerlink" title="下拉刷新"></a>下拉刷新</h3></li>
+<li>Android下拉刷新View没有偏移</li>
+<li>iOS下拉刷新有偏移</li>
+<li>解决方案:下拉有偏移体验更好，Android重新写view，根据移动偏移计算偏移位置，github有很多成型的项目</li>
+</ul>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>/2017/08/31/long-long%E7%94%A8%E4%BB%80%E4%B9%88%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<h2 id="long-long用什么保存数据"><a href="#long-long用什么保存数据" class="headerlink" title="long*long用什么保存数据"></a>long*long用什么保存数据</h2><ul>
+<li><p>前言</p>
+<ul>
+<li><p>突然想起一个问到的面试题：</p>
+ <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">问：<span class="keyword">int</span>*<span class="keyword">int</span>你用什么数据保存？</div><div class="line">答：用<span class="keyword">long</span></div><div class="line">问：那<span class="keyword">long</span>*<span class="keyword">long</span>用什么数据保存？</div><div class="line">答：应该用<span class="keyword">String</span>吧</div><div class="line">后面就没有结果</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>其实主要考的int或者long超过了他最多长度你该什么保存数据，这主要后台计算大金额或者大数据的时候会用到。可是问道我这个Android移动开发的，懵逼了。那答案是什么了–&gt;BigDecimal</p>
+<ul>
+<li><p><a href="https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html" target="_blank" rel="external">BigDecimal    </a></p>
+<ul>
+<li>一般的float型和Double型数据只可以用来做科学计算或者是工程计算，对精度要求不高。但是在商业计算中，要求的数字精度比较高Java提供了BigDecimal来解决精度不高问题。</li>
+<li><p>先看例子就知道为什么用BigDecimal了</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">	<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BigTests</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"1111111111 * 1111111111="</span> + <span class="number">1111111111</span> * <span class="number">1111111111</span>);</div><div class="line">        BigDecimal bigDecimal = BigDecimal.valueOf(<span class="number">1111111111</span>);</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"BigDecimal.valueOf(1111111111) * BigDecimal.valueOf(1111111111)="</span> + bigDecimal.multiply(bigDecimal).toString());</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"11111111.111 * 11111111.111="</span> + <span class="number">11111111.111</span> * <span class="number">11111111.111</span>);</div><div class="line">        BigDecimal longDecimal = BigDecimal.valueOf(<span class="number">11111111.111</span>);</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"BigDecimal.valueOf(11111111.111) * BigDecimal.valueOf(11111111.111)="</span> + longDecimal.multiply(longDecimal).toString());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	<span class="number">1111111111</span> * <span class="number">1111111111</span>=<span class="number">91750577</span></div><div class="line">BigDecimal.valueOf(<span class="number">1111111111</span>) * BigDecimal.valueOf(<span class="number">1111111111</span>)=<span class="number">1234567900987654321</span></div><div class="line"><span class="number">11111111.111</span> * <span class="number">11111111.111</span>=<span class="number">1.2345679012098764E14</span></div><div class="line">BigDecimal.valueOf(<span class="number">11111111.111</span>) * BigDecimal.valueOf(<span class="number">11111111.111</span>)=<span class="number">123456790120987.654321</span></div></pre></td></tr></table></figure>
+<p>很明显通过BigDecimal计算的结果才是正确的计算结果。那我们就知道大数据计算需要用BigDecimal处理了，那也就有两个问题了：</p>
+</li>
+<li><p>long为什么计算的结果是错误的？</p>
+</li>
+<li>BigDecimal是怎么实现计算的？</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Jenkins配置Android深坑]]></title>
       <url>/2017/07/17/Jenkins%E9%85%8D%E7%BD%AEAndroid%E6%B7%B1%E5%9D%91/</url>
       <content type="html"><![CDATA[<p>在Jenkins上配置Android的一些持续集成（自动打包上传，单元测试，集成测试等）应该是很普遍的事情了。Jenkins一般配置在一个通用的测试服务器上，原来都是拿一个mac当测试服务器，在上面想怎么玩怎么就怎么玩，想怎么配置就怎么配置。可是如果测试服务器是在虚拟机上而且测试服务器不是你能控制的，那就要在Jenkins上配置Android就不能想自己控制自己电脑那边方便了，在配置过程中也填了不少的坑。那就讲下填坑之路吧。</p>
