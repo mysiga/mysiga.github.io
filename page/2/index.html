@@ -670,92 +670,6 @@
 
 
   
-    <article id="post-Java单例模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/28/Java单例模式/" class="article-date">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>懒汉式:线程安全，开销大</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> 	<span class="keyword">if</span>(singleton==<span class="keyword">null</span>)&#123;</div><div class="line"> 	 singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>双重检查锁：线程安全，根据需求使用</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton getInstance()&#123;</div><div class="line">  	<span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	  <span class="keyword">synchronized</span>(Singleton.<span class="keyword">class</span>)&#123;</div><div class="line">  	    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	    singleton=<span class="keyword">new</span> Singleton();</div><div class="line">  	    &#125;</div><div class="line">  	  &#125;</div><div class="line">  	&#125;</div><div class="line">   <span class="keyword">return</span> singleton;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>静态内部类锁：线程安全，比较推荐</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">return</span> Holder.singleton;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>饿汗式：线程安全，但没有实现懒加载</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> <span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>枚举:线程安全，但比较少人用</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">EasySingleton</span>&#123;</span></div><div class="line">    INSTANCE;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>参考文章<ul>
-<li><a href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization" target="_blank" rel="external">具体JVM机制</a></li>
-<li><a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">具体代码讲解</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Java7之强引用-弱引用-软引用-虚引用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -865,6 +779,92 @@
 </tr>
 </tbody>
 </table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/28/Java单例模式/" class="article-date">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>懒汉式:线程安全，开销大</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> 	<span class="keyword">if</span>(singleton==<span class="keyword">null</span>)&#123;</div><div class="line"> 	 singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>双重检查锁：线程安全，根据需求使用</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton getInstance()&#123;</div><div class="line">  	<span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	  <span class="keyword">synchronized</span>(Singleton.<span class="keyword">class</span>)&#123;</div><div class="line">  	    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	    singleton=<span class="keyword">new</span> Singleton();</div><div class="line">  	    &#125;</div><div class="line">  	  &#125;</div><div class="line">  	&#125;</div><div class="line">   <span class="keyword">return</span> singleton;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>静态内部类锁：线程安全，比较推荐</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">return</span> Holder.singleton;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>饿汗式：线程安全，但没有实现懒加载</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> <span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>枚举:线程安全，但比较少人用</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">EasySingleton</span>&#123;</span></div><div class="line">    INSTANCE;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>参考文章<ul>
+<li><a href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization" target="_blank" rel="external">具体JVM机制</a></li>
+<li><a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">具体代码讲解</a></li>
+</ul>
+</li>
+</ul>
 
       
     </div>

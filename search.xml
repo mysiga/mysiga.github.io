@@ -128,6 +128,168 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Android各个版本新特性]]></title>
+      <url>/2018/06/06/Android%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7/</url>
+      <content type="html"><![CDATA[<p>目前主流的Android适配版本最低版本4.0或5.0，这里主要总结一下Android 4.0以后各个版本特性，方便适配和面试。加粗标注为面试中问到的重点特性，其他为重要适配特性。（倒序）</p>
+<ul>
+<li><a href="https://developer.android.google.cn/about/versions/oreo/android-8.0.html" target="_blank" rel="external">Android 8.0</a><ul>
+<li>优化通知<ul>
+<li>通知渠道</li>
+<li>通知标志</li>
+<li>休眠</li>
+<li>通知超时</li>
+<li>通知设置</li>
+<li>通知清除</li>
+</ul>
+</li>
+<li>自动填充框架</li>
+<li>画中画模式：清单中Activity设置android:supportsPictureInPicture</li>
+<li><strong>可下载字体</strong>：<a href="https://developer.android.google.cn/reference/android/provider/FontsContract.html" target="_blank" rel="external">FontRequest</a></li>
+<li><a href="https://developer.android.google.cn/guide/topics/ui/look-and-feel/fonts-in-xml.html" target="_blank" rel="external">XML 中的字体</a></li>
+<li><strong>自动调整 TextView 的大小</strong></li>
+<li><a href="https://developer.android.google.cn/guide/practices/ui_guidelines/icon_design_adaptive.html" target="_blank" rel="external">自适应图标</a></li>
+<li>颜色管理</li>
+<li><a href="https://developer.android.google.cn/guide/webapps/managing-webview.html" target="_blank" rel="external">WebView API</a></li>
+<li>多显示器支持</li>
+<li><strong>统一的布局外边距和内边距</strong><br><img src="http://upload-images.jianshu.io/upload_images/1534431-b4ba4d688a817290.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>指针捕获</li>
+<li>应用类别</li>
+<li>Android TV 启动器</li>
+<li>AnimatorSet</li>
+<li><strong>新的 StrictMode 检测程序</strong><br><img src="http://upload-images.jianshu.io/upload_images/1534431-e33af7003dde9550.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>缓存数据</li>
+<li><strong>findViewById() 签名变更</strong><br><img src="http://upload-images.jianshu.io/upload_images/1534431-89c0141aa910db0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li><strong>权限</strong><br><img src="http://upload-images.jianshu.io/upload_images/1534431-f4c146ef0be3c03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li><strong>更新的 Java 支持</strong><br><img src="http://upload-images.jianshu.io/upload_images/1534431-0464c897b3051935.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="https://developer.android.google.cn/about/versions/nougat/android-7.1.html" target="_blank" rel="external">Android 7.1</a><ul>
+<li>加入重启按钮</li>
+<li>App圆形图标</li>
+<li>添加新的Emoji</li>
+</ul>
+</li>
+<li><a href="https://developer.android.google.cn/about/versions/nougat/android-7.0-changes.html" target="_blank" rel="external">Android 7.0</a><ul>
+<li>电池和内存<ul>
+<li>低电耗模式</li>
+<li>Project Svelte：后台优化</li>
+</ul>
+</li>
+<li><strong>权限更改</strong><ul>
+<li>系统权限更改</li>
+</ul>
+</li>
+<li><strong>在应用间文件共享权限控制</strong></li>
+<li><strong>多窗口支持</strong></li>
+<li><strong>通知栏快捷回复</strong></li>
+<li><strong>支持VR</strong></li>
+<li>引入JIT编译器</li>
+<li><strong>画中画</strong></li>
+<li><strong>App快捷菜单</strong></li>
+</ul>
+</li>
+<li><a href="https://developer.android.google.cn/about/versions/marshmallow/android-6.0-changes.html" target="_blank" rel="external">Android 6.0</a><ul>
+<li><strong>运行时请求权限</strong></li>
+<li>低电耗模式和应用待机模式</li>
+<li><strong>取消支持 Apache HTTP 客户端</strong></li>
+<li>BoringSSL</li>
+<li>硬件标识符访问权</li>
+<li>通知</li>
+<li>音频管理器变更</li>
+<li><strong>支持文本选择</strong></li>
+<li>Android 密钥库不再支持 DSA。但仍支持 ECDSA</li>
+<li>WLAN 和网络连接变更</li>
+<li>相机服务变更</li>
+<li>APK 验证</li>
+<li>USB 连接</li>
+</ul>
+</li>
+<li><a href="https://developer.android.google.cn/about/versions/android-5.0-changes.html#managed_profiles" target="_blank" rel="external">Android 5.0</a><ul>
+<li><strong>Android Runtime (ART)默认运行平台设置</strong></li>
+<li><strong>通知</strong><pre><code>- Material Design 样式
+- 声音和振动
+- 锁定屏幕可见性
+- 媒体播放
+- 浮动通知
+</code></pre></li>
+<li><strong>引入Material Design设计</strong></li>
+<li>支持OpenGL ES3.1 </li>
+<li>媒体控件和 RemoteControlClient</li>
+<li>getRecentTasks()</li>
+<li><strong>支持Android NDK中的64位</strong></li>
+<li><strong>只能显示绑定到服务，取消隐藏绑定服务</strong></li>
+<li>WebView API修改</li>
+<li>自定义权限唯一性要求</li>
+<li><strong>TLS/SSL 默认配置变更</strong><pre><code>- 服务器不支持任何已启用的加密套件
+- 应用对用于连接服务器的加密套件做出错误的假设
+- 服务器不支持 TLSv1.1、TLSv1.2 或新的 TLS 扩展
+</code></pre></li>
+<li>支持托管配置文件</li>
+</ul>
+</li>
+<li><a href="https://developer.android.google.cn/about/versions/kitkat.html" target="_blank" rel="external">Android 4.4</a><ul>
+<li><strong>支持Android Beam</strong></li>
+<li><strong>添加打印框架</strong></li>
+<li>存储访问框架</li>
+<li>低功耗传感器</li>
+<li>添加短信提供程序</li>
+<li><strong>添加全屏沉浸模式</strong><ul>
+<li><a href="http://www.jianshu.com/p/be2b7be418d7#" target="_blank" rel="external">Android 沉浸式状态栏的三种实现方式</a></li>
+<li><a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">兼容库SystemBarTint</a></li>
+</ul>
+</li>
+<li><strong>添加透明系统 UI 样式</strong></li>
+<li>添加新的媒体功能</li>
+<li>RenderScript Compute<ul>
+<li>持续性能提升</li>
+<li><strong>GPU 加速</strong></li>
+<li>Android NDK 中的 RenderScript</li>
+</ul>
+</li>
+<li>图形<ul>
+<li>GLES2.0 SurfaceFlinge</li>
+<li>新的硬件合成器支持虚拟显示</li>
+</ul>
+</li>
+<li>支持新的连接类型<ul>
+<li>新的蓝牙配置文件</li>
+<li>红外发射器</li>
+<li>Wi-Fi TDLS 支持</li>
+</ul>
+</li>
+<li>无障碍功能</li>
+<li>安全增强功能</li>
+<li>内存使用率分析工具<ul>
+<li>Procstats </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://developer.android.google.cn/about/versions/jelly-bean.html" target="_blank" rel="external">Android 4.0,4.1,4.2,4.3</a><ul>
+<li>支持OpenGL ES 3.0</li>
+<li>增强蓝牙连接</li>
+<li>优化位置和传感器</li>
+<li><strong>添加转场动画</strong></li>
+<li>支持Daydream</li>
+<li><strong>人脸识别解锁</strong></li>
+<li><strong>Photo Sphere 全景相片</strong></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/2018/02/08/2017-%E6%8A%80%E6%9C%AF%E7%AF%87/</url>
       <content type="html"><![CDATA[<p>###2017技术篇</p>
@@ -373,137 +535,6 @@
         <categories>
             
             <category> 其他 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Android各个版本新特性]]></title>
-      <url>/2017/04/06/Android%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7/</url>
-      <content type="html"><![CDATA[<p>目前主流的Android适配版本最低版本4.0或5.0，这里主要总结一下Android 4.0以后各个版本特性，方便适配和面试。加粗标注为面试中问到的重点特性，其他为重要适配特性。</p>
-<ul>
-<li><a href="https://developer.android.google.cn/about/versions/jelly-bean.html" target="_blank" rel="external">Android 4.0,4.1,4.2,4.3</a><ul>
-<li>支持OpenGL ES 3.0</li>
-<li>增强蓝牙连接</li>
-<li>优化位置和传感器</li>
-<li><strong>添加转场动画</strong></li>
-<li>支持Daydream</li>
-<li><strong>人脸识别解锁</strong></li>
-<li><strong>Photo Sphere 全景相片</strong></li>
-</ul>
-</li>
-<li><a href="https://developer.android.google.cn/about/versions/kitkat.html" target="_blank" rel="external">Android 4.4</a><ul>
-<li><strong>支持Android Beam</strong></li>
-<li><strong>添加打印框架</strong></li>
-<li>存储访问框架</li>
-<li>低功耗传感器</li>
-<li>添加短信提供程序</li>
-<li><strong>添加全屏沉浸模式</strong><ul>
-<li><a href="http://www.jianshu.com/p/be2b7be418d7#" target="_blank" rel="external">Android 沉浸式状态栏的三种实现方式</a></li>
-<li><a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">兼容库SystemBarTint</a></li>
-</ul>
-</li>
-<li><strong>添加透明系统 UI 样式</strong></li>
-<li>添加新的媒体功能</li>
-<li>RenderScript Compute<ul>
-<li>持续性能提升</li>
-<li><strong>GPU 加速</strong></li>
-<li>Android NDK 中的 RenderScript</li>
-</ul>
-</li>
-<li>图形<ul>
-<li>GLES2.0 SurfaceFlinge</li>
-<li>新的硬件合成器支持虚拟显示</li>
-</ul>
-</li>
-<li>支持新的连接类型<ul>
-<li>新的蓝牙配置文件</li>
-<li>红外发射器</li>
-<li>Wi-Fi TDLS 支持</li>
-</ul>
-</li>
-<li>无障碍功能</li>
-<li>安全增强功能</li>
-<li>内存使用率分析工具<ul>
-<li>Procstats </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a href="https://developer.android.google.cn/about/versions/android-5.0-changes.html#managed_profiles" target="_blank" rel="external">Android 5.0</a></p>
-<ul>
-<li><strong>Android Runtime (ART)默认运行平台设置</strong></li>
-<li><strong>通知</strong><pre><code>- Material Design 样式
-- 声音和振动
-- 锁定屏幕可见性
-- 媒体播放
-- 浮动通知
-</code></pre></li>
-<li><strong>引入Material Design设计</strong></li>
-<li>支持OpenGL ES3.1 </li>
-<li>媒体控件和 RemoteControlClient</li>
-<li>getRecentTasks()</li>
-<li><strong>支持Android NDK中的64位</strong></li>
-<li><strong>只能显示绑定到服务，取消隐藏绑定服务</strong></li>
-<li>WebView API修改</li>
-<li>自定义权限唯一性要求</li>
-<li><strong>TLS/SSL 默认配置变更</strong><pre><code>- 服务器不支持任何已启用的加密套件
-- 应用对用于连接服务器的加密套件做出错误的假设
-- 服务器不支持 TLSv1.1、TLSv1.2 或新的 TLS 扩展
-</code></pre></li>
-<li>支持托管配置文件</li>
-</ul>
-</li>
-<li><p><a href="https://developer.android.google.cn/about/versions/marshmallow/android-6.0-changes.html" target="_blank" rel="external">Android 6.0</a></p>
-<ul>
-<li><strong>运行时请求权限</strong></li>
-<li>低电耗模式和应用待机模式</li>
-<li><strong>取消支持 Apache HTTP 客户端</strong></li>
-<li>BoringSSL</li>
-<li>硬件标识符访问权</li>
-<li>通知</li>
-<li>音频管理器变更</li>
-<li><strong>支持文本选择</strong></li>
-<li>Android 密钥库不再支持 DSA。但仍支持 ECDSA</li>
-<li>WLAN 和网络连接变更</li>
-<li>相机服务变更</li>
-<li>APK 验证</li>
-<li>USB 连接</li>
-</ul>
-</li>
-<li><a href="https://developer.android.google.cn/about/versions/nougat/android-7.0-changes.html" target="_blank" rel="external">Android 7.0</a><ul>
-<li>电池和内存<ul>
-<li>低电耗模式</li>
-<li>Project Svelte：后台优化</li>
-</ul>
-</li>
-<li><strong>权限更改</strong><ul>
-<li>系统权限更改</li>
-</ul>
-</li>
-<li><strong>在应用间文件共享权限控制</strong></li>
-<li><strong>多窗口支持</strong></li>
-<li><strong>通知栏快捷回复</strong></li>
-<li><strong>支持VR</strong></li>
-<li>引入JIT编译器</li>
-<li><strong>画中画</strong></li>
-<li><strong>App快捷菜单</strong></li>
-</ul>
-</li>
-<li><a href="https://developer.android.google.cn/about/versions/nougat/android-7.1.html" target="_blank" rel="external">Android 7.1</a><ul>
-<li>加入重启按钮</li>
-<li>App圆形图标</li>
-<li>添加新的Emoji</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
             
         </categories>
         
@@ -970,47 +1001,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Java单例模式，线程安全]]></title>
-      <url>/2016/05/28/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<ul>
-<li>懒汉式:线程安全，开销大</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> 	<span class="keyword">if</span>(singleton==<span class="keyword">null</span>)&#123;</div><div class="line"> 	 singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>双重检查锁：线程安全，根据需求使用</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton getInstance()&#123;</div><div class="line">  	<span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	  <span class="keyword">synchronized</span>(Singleton.<span class="keyword">class</span>)&#123;</div><div class="line">  	    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	    singleton=<span class="keyword">new</span> Singleton();</div><div class="line">  	    &#125;</div><div class="line">  	  &#125;</div><div class="line">  	&#125;</div><div class="line">   <span class="keyword">return</span> singleton;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>静态内部类锁：线程安全，比较推荐</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">return</span> Holder.singleton;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>饿汗式：线程安全，但没有实现懒加载</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> <span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>枚举:线程安全，但比较少人用</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">EasySingleton</span>&#123;</span></div><div class="line">    INSTANCE;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>参考文章<ul>
-<li><a href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization" target="_blank" rel="external">具体JVM机制</a></li>
-<li><a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">具体代码讲解</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用]]></title>
       <url>/2016/05/28/Java7%E4%B9%8B%E5%BC%BA%E5%BC%95%E7%94%A8-%E5%BC%B1%E5%BC%95%E7%94%A8-%E8%BD%AF%E5%BC%95%E7%94%A8-%E8%99%9A%E5%BC%95%E7%94%A8/</url>
       <content type="html"><![CDATA[<h3 id="转载-Java-7之基础-强引用、弱引用、软引用、虚引用"><a href="#转载-Java-7之基础-强引用、弱引用、软引用、虚引用" class="headerlink" title="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用"></a>(转载)<a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h3><p>1、强引用（StrongReference）</p>
@@ -1093,6 +1083,47 @@
 </tr>
 </tbody>
 </table>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java单例模式，线程安全]]></title>
+      <url>/2016/05/28/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<ul>
+<li>懒汉式:线程安全，开销大</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> 	<span class="keyword">if</span>(singleton==<span class="keyword">null</span>)&#123;</div><div class="line"> 	 singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>双重检查锁：线程安全，根据需求使用</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton getInstance()&#123;</div><div class="line">  	<span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	  <span class="keyword">synchronized</span>(Singleton.<span class="keyword">class</span>)&#123;</div><div class="line">  	    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	    singleton=<span class="keyword">new</span> Singleton();</div><div class="line">  	    &#125;</div><div class="line">  	  &#125;</div><div class="line">  	&#125;</div><div class="line">   <span class="keyword">return</span> singleton;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>静态内部类锁：线程安全，比较推荐</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">return</span> Holder.singleton;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>饿汗式：线程安全，但没有实现懒加载</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> <span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>枚举:线程安全，但比较少人用</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">EasySingleton</span>&#123;</span></div><div class="line">    INSTANCE;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>参考文章<ul>
+<li><a href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization" target="_blank" rel="external">具体JVM机制</a></li>
+<li><a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">具体代码讲解</a></li>
+</ul>
+</li>
+</ul>
 ]]></content>
       
         <categories>
