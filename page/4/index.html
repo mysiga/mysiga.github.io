@@ -137,10 +137,10 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
                     </ul>
@@ -259,9 +259,511 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-装逼指南二期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/04/装逼指南二期/" class="article-date">
+      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">2015-11-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Android-单元测试-吴明"><a href="#Android-单元测试-吴明" class="headerlink" title="Android 单元测试  吴明"></a>Android 单元测试  吴明</h2><ul>
+<li><a href="https://developer.android.com/intl/zh-cn/training/activity-testing/preparing-activity-testing.html" target="_blank" rel="external">Android单元测试支持</a><ul>
+<li>Android studio 1.2 beta3版本，原生支持单元测试</li>
+</ul>
+</li>
+<li>环境搭建 <ul>
+<li>配置环境命令：./gradlew build connectedCheck  </li>
+</ul>
+</li>
+<li>测试示例    <ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyFirstTestActivityTest</span> <span class="keyword">extends</span> <span class="title">ActivityInstrumentationTestCase2&lt;MyFirstTestActivity&gt;</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">MyFirstTestActivity</span> mFirstTestActivity;</div><div class="line">    <span class="keyword">private</span> <span class="type">TextView</span> mFirstTestText;</div><div class="line"></div><div class="line">    public <span class="type">MyFirstTestActivityTest</span>() &#123;</div><div class="line">        <span class="keyword">super</span>(<span class="type">MyFirstTestActivity</span>.<span class="keyword">class</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void setUp() <span class="keyword">throws</span> <span class="type">Exception</span> &#123;</div><div class="line">        <span class="keyword">super</span>.setUp();</div><div class="line">        mFirstTestActivity = getActivity();</div><div class="line">        mFirstTestText =</div><div class="line">                (<span class="type">TextView</span>) mFirstTestActivity</div><div class="line">                .findViewById(<span class="type">R</span>.id.my_first_test_text_view);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ps:由于配置环境一直报:</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Test </span>running failed: Instrumentation run failed due to 'java.lang.RuntimeException'</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/ui-testing/index.html" target="_blank" rel="external">Automating UI Tests</a></li>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html" target="_blank" rel="external">Building Effective Unit Tests</a></li>
+<li><a href="https://developer.android.com/intl/zh-cn/training/testing/performance.html" target="_blank" rel="external">Testing Display  Performance</a></li>
+<li>问题：<ul>
+<li>运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+<li>测试的编写和维护较为困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 /home/img_temp 目录，处理权限问题后搞定</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>user, group, others</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[dev1@apps-51offer ~]$ ll</div><div class="line">total 16</div><div class="line">-rw-r--r--<span class="number"> 1 </span>dev1 dev  <span class="number"> 742 </span>Nov <span class="number"> 5 </span>11:22 ming.pub</div><div class="line">drwxrwx---<span class="number"> 4 </span>root root<span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test1</div><div class="line">drwxr-xr--<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>10:44 test2</div><div class="line">drwxr-xr-x<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test3</div></pre></td></tr></table></figure>
+<ul>
+<li>文件 <code>-</code></li>
+<li>文件夹 <code>d</code></li>
+<li>链接 <code>l</code></li>
+</ul>
+<p>rwx 读、写、执行权限 , 754 代表什么</p>
+<ul>
+<li>文件所有者变更：<code>chown ming:mobile file</code></li>
+<li>文件权限变更： <code>chmod g+rx file</code></li>
+</ul>
+<h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><blockquote>
+<p><code>drwxr-xr-- 2 dev1 dev  4096 Nov  6 10:44 test2</code> 文件夹下有 <code>-rwxr-xr-- 2 root root  4096 Nov  6 10:44 file</code><br>dev1 用户可以删除 file 这个文件吗？</p>
+</blockquote>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><blockquote>
+<p>可以，文件的 rwx 控制文件本身的读写运行权限，文件的增删文件名的修改要看文件夹的权限。</p>
+</blockquote>
+<p>##Android 压力测试工具 Monkey&amp;MonkeyRunner- 杨俊构</p>
+<p>###Monkey</p>
+<h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a>一、Monkey 是什么？</h4><ul>
+<li>Monkey 就是SDK中附带的一个工具。</li>
+</ul>
+<h4 id="二、Monkey-测试的目的？"><a href="#二、Monkey-测试的目的？" class="headerlink" title="二、Monkey 测试的目的？"></a>二、Monkey 测试的目的？</h4><ul>
+<li>该工具用于进行压力测试。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</li>
+</ul>
+<h4 id="三、Monkey-测试的特点？"><a href="#三、Monkey-测试的特点？" class="headerlink" title="三、Monkey 测试的特点？"></a>三、Monkey 测试的特点？</h4><ul>
+<li>Monkey 测试,所有的事件都是随机产生的，不带任何人的主观性。</li>
+</ul>
+<h4 id="四、Monkey-命令详解"><a href="#四、Monkey-命令详解" class="headerlink" title="四、Monkey 命令详解"></a>四、Monkey 命令详解</h4><ul>
+<li><p>标准的monkey 命令: [adb shell] monkey [options] <eventcount> ,</eventcount></p>
+<blockquote>
+<p> 例如：adb shell monkey -v 500 ——–产生500次随机事件，</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>四大类—— 常用选项 、 事件选项 、 约束选项 、 调试选项</p>
+<blockquote>
+<p>-v：指定打印信息的详细级别，一个 -v增加一个级别 ， 默认级别为 0 。</p>
+<p>-s：指定产生随机事件种子值，相同的种子值产生相同的事件序列。如： -s 200</p>
+<p>-p：指定有效的package（如不指定，则对系统中所有package有效），一个-p 对应一个有效package， 如：-p com.ckt -p com.ckt.asura；</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="五、一个简单的monkey命令："><a href="#五、一个简单的monkey命令：" class="headerlink" title="五、一个简单的monkey命令："></a>五、一个简单的monkey命令：</h4><ul>
+<li><p>adb shell monkey -p com.xy.android.junit -s 500 -v 10000</p>
+</li>
+<li><p>但是，工作中为了保证测试数量的完整进行，我们一般不会在发生错误时立刻退出压力测试。</p>
+</li>
+<li><p>monkey 测试命令如下</p>
+</li>
+</ul>
+<blockquote>
+<p>adb shell monkey -p com.xy.android.junit -s 500 –ignore-crashes –ignore-timeouts –monitor-native-crashes -v -v 10000 &gt; E:\monkey_log\java_monkey_log.txt</p>
+</blockquote>
+<p>###MonkeyRunner</p>
+<p>####一、什么是monkeyrunner</p>
+<ul>
+<li><p>monkeyrunner工具提供了一个API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片。</p>
+</li>
+<li><p>monkeyrunner工具的主要设计目的是用于测试功能/框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
+</li>
+</ul>
+<h4 id="二、monkeyrunner工具同Monkey工具的差别"><a href="#二、monkeyrunner工具同Monkey工具的差别" class="headerlink" title="二、monkeyrunner工具同Monkey工具的差别"></a>二、monkeyrunner工具同Monkey工具的差别</h4><ul>
+<li><p>Monkey： Monkey工具直接运行在设备或模拟器的adb shell中，生成用户或系统的伪随机事件流，属于黑盒测试。</p>
+</li>
+<li><p>monkeyrunner：monkeyrunner工具则是类似于灰盒测试的样子，可以编写定制一些测试方法和用例针对具体情况测试。</p>
+</li>
+</ul>
+<h4 id="三、实例-：双11抽取优惠券不停点击一个按钮脚本"><a href="#三、实例-：双11抽取优惠券不停点击一个按钮脚本" class="headerlink" title="三、实例 ：双11抽取优惠券不停点击一个按钮脚本"></a>三、实例 ：双11抽取优惠券不停点击一个按钮脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8 </span></div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner, MonkeyDevice, MonkeyImage</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner <span class="keyword">as</span> mr</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyDevice <span class="keyword">as</span> md</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyImage <span class="keyword">as</span> mi</div><div class="line">device=mr.waitForConnection()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </div><div class="line">	MonkeyRunner.sleep(<span class="number">1</span>)</div><div class="line">	<span class="keyword">print</span> i</div><div class="line">	device.touch(<span class="number">500</span>,<span class="number">950</span>,<span class="string">'DOWN_AND_UP'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"end"</span></div></pre></td></tr></table></figure>
+<p>##人脸识别技术简单介绍- 王进</p>
+<h4 id="Android自带的API-FaceDetector"><a href="#Android自带的API-FaceDetector" class="headerlink" title="Android自带的API:FaceDetector"></a>Android自带的API:FaceDetector</h4><ul>
+<li><p>Step 1: 读取bitmap图片（API 只接受Bitmap）</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Bitmap </span>sampleBmp=<span class="keyword">BitmapFactory.decodeResource(getResources(), </span>R.drawable.sample1)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>(拍照或者从相册中也可以)</p>
+</li>
+<li><p>Step 2: 通过FaceDetector API进行人脸识别</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//FaceDetecor只能读取RGB 565格式的Bitmap</span></div><div class="line">  Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, <span class="literal">true</span>);</div><div class="line">  <span class="comment">//新建FaceDetector 实例，</span></div><div class="line">  FaceDetector faceDet = <span class="keyword">new</span> <span class="type">FaceDetector</span>(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);<span class="comment">//MAX_FACES 搜索人脸个数</span></div><div class="line">  <span class="comment">// 调用findFaces方法，将数据储存在facelist中</span></div><div class="line">  FaceDetector.Face[] faceList = <span class="keyword">new</span> <span class="type">FaceDetector</span>.Face[MAX_FACES];</div><div class="line">faceDet.findFaces(tmpBmp, faceList);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>找人脸的原理是：找眼睛。<br>它返回的人脸数据face中，<br>通过调用public float eyesDistance ()，得到眼距<br>public void getMidPoint (PointF point)，得到两眼中心点位置。<br>public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
+</blockquote>
+</li>
+<li><p>Step3:对原图进行缩放，并在图上显示人脸框</p>
+<ul>
+<li>吐槽：<br>A，只能接受Bitmap 格式的数据；<br>B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br>C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</li>
+</ul>
+</li>
+</ul>
+<p>###第三方Face++</p>
+<ul>
+<li>在线API：基础版API供免费调用测试和小规模使用（会尽力维护API服务稳定性，但不保证每次调用均会成功），企业版API相对基础版API在算法和稳定性方面会有更好的表现</li>
+<li>离线SDK包括人脸关键点定位等功能。</li>
+<li>网址：<a href="http://www.faceplusplus.com.cn/" target="_blank" rel="external">http://www.faceplusplus.com.cn/</a></li>
+</ul>
+<h2 id="Android启动模式之singelTask扫盲－-李仙鹏"><a href="#Android启动模式之singelTask扫盲－-李仙鹏" class="headerlink" title="Android启动模式之singelTask扫盲－ 李仙鹏"></a>Android启动模式之singelTask扫盲－ 李仙鹏</h2>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-程序员装逼指南" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/30/程序员装逼指南/" class="article-date">
+      <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="『图像和滤镜』"><a href="#『图像和滤镜』" class="headerlink" title="『图像和滤镜』"></a>『图像和滤镜』</h2><p>@(Share)[UIImage]</p>
+<p>[toc]</p>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><h4 id="常见的图像格式"><a href="#常见的图像格式" class="headerlink" title="常见的图像格式"></a>常见的图像格式</h4><ul>
+<li>png（Portable Network Graphic）便携式网络图形格式</li>
+<li>tiff、tif（Tagged Image File Format）标记图像文件格式</li>
+<li>jpg、jpeg（Joint Photographic Experts Group）联合摄影专家组</li>
+<li>gif（Graphic Interchange Format）图形交换格式</li>
+</ul>
+<h4 id="图像实例化"><a href="#图像实例化" class="headerlink" title="图像实例化"></a>图像实例化</h4><ul>
+<li><p>imageNamed:</p>
+<blockquote>
+<p>使用频率高，内存缓存优化</p>
+</blockquote>
+</li>
+<li><p>imageWithContentsOfFile:</p>
+<blockquote>
+<p>单次使用，暂时不清楚如何支持ImageAssert下的图片路径</p>
+</blockquote>
+</li>
+<li><p>imageWithData:</p>
+<blockquote>
+<p>本地或网络的文件数据加载</p>
+</blockquote>
+</li>
+<li><p>imageWithCGImage:</p>
+<blockquote>
+<p>绘制生成图，代码如下</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 旧图局部裁剪</span></div><div class="line">   <span class="built_in">CGImageRef</span> myImageRef = [oldImage <span class="built_in">CGImageRef</span>];</div><div class="line">   <span class="built_in">CGRect</span> subRect = <span class="built_in">CGRectMake</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">   <span class="built_in">CGImageRef</span> cgCrop = <span class="built_in">CGImageCreateWithImageInRect</span>(myImageRef, subRect);</div><div class="line">   <span class="built_in">UIImage</span> *imageCrop = [<span class="built_in">UIImage</span> imageWithCGImage:cgCrop];</div></pre></td></tr></table></figure>
+<h4 id="显示图像"><a href="#显示图像" class="headerlink" title="显示图像"></a>显示图像</h4><blockquote>
+<p>屏幕的缩放因子，导致我们需要@2x及@3x图，对视图截图操作也同样需要针对Retina及plus优化<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIImage</span>*)screenShotBy:(<span class="built_in">UIImageView</span>*)imagView</div><div class="line">&#123;</div><div class="line"><span class="comment">//  UIGraphicsBeginImageContext(imagView.bounds.size);</span></div><div class="line"><span class="comment">// 2表示Retina，3表示plus分辨率，1正常，0则是当前设备的缩放因子</span></div><div class="line"><span class="comment">// YES 表示不包含图像的alpha通道</span></div><div class="line">	<span class="built_in">UIGraphicsBeginImageContextWithOptions</span>((imagView.bounds.size), <span class="literal">YES</span>, <span class="number">2</span>);</div><div class="line">	[imagView.layer renderInContext:<span class="built_in">UIGraphicsGetCurrentContext</span>()];</div><div class="line">	<span class="built_in">UIImage</span>*image = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">	<span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">	<span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="contentModel"><a href="#contentModel" class="headerlink" title="contentModel"></a>contentModel</h5><p><em>图像内容展现方式</em></p>
+<ul>
+<li>UIViewContentModelScaleToFill（默认）</li>
+<li>UIViewContentModelScaleAspectFill（下拉放大）</li>
+<li>UIViewContentModelScaleAspectFit</li>
+<li>UIViewContentModelCenter （一些停靠模式）</li>
+<li>UIViewContentModelTop/Bottom</li>
+<li>UIViewContentModelLeft/Right</li>
+</ul>
+<h5 id="拉伸属性"><a href="#拉伸属性" class="headerlink" title="拉伸属性"></a>拉伸属性</h5><p><code>代码</code><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">image=[oldIconImage <span class="string">stretchableImageWithLeftCapWidth:</span><span class="number">10</span> <span class="string">topCapHeight:</span><span class="number">12</span>];</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line">image = [oldIconImage <span class="string">resizableImageWithCapInsets:</span>UIEdgeInsetsMake(<span class="number">17</span>, <span class="number">17</span>, <span class="number">17</span>, <span class="number">25</span>)];</div></pre></td></tr></table></figure></p>
+<p><code>ImageAssert</code></p>
+<p><img src="./1446137205500.png" alt="Alt text"><br>使用slicing，小变大无视差<br><img src="./1446137161636.png" alt="Alt text"></p>
+<hr>
+<h3 id="图像选择器"><a href="#图像选择器" class="headerlink" title="图像选择器"></a>图像选择器</h3><h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><hr>
+<h3 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h3><h3 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h3><h2 id="聊聊-QCon2015-曾铭"><a href="#聊聊-QCon2015-曾铭" class="headerlink" title="聊聊 QCon2015 - 曾铭"></a>聊聊 QCon2015 - 曾铭</h2><h3 id="pure-native-移动跨平台架构设计与实战"><a href="#pure-native-移动跨平台架构设计与实战" class="headerlink" title="pure-native 移动跨平台架构设计与实战"></a>pure-native 移动跨平台架构设计与实战</h3><p>by 赵世婚</p>
+<h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
+<li>重复逻辑：网络层、账户逻辑</li>
+<li>性能（网络压缩、打破内存限制）</li>
+<li>多一层封装应对业务变动</li>
+</ul>
+<h4 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h4><ul>
+<li>跨平台开发代码生成</li>
+<li>调试：异常捕获</li>
+</ul>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>学不来：人员构成决定技术选型，技术选型决定依赖人员 {:&amp;.rollIn}</li>
+<li>分层来应对业务变动（横向分层和纵向分层）</li>
+</ul>
+<h3 id="JavaScript-The-World’s-Best-Programming-Language"><a href="#JavaScript-The-World’s-Best-Programming-Language" class="headerlink" title="JavaScript - The World’s Best Programming Language"></a>JavaScript - The World’s Best Programming Language</h3><p>by Hax</p>
+<h4 id="JavaScript-最好-？"><a href="#JavaScript-最好-？" class="headerlink" title="JavaScript 最好 ？"></a>JavaScript 最好 ？</h4><ul>
+<li>语言简陋：弱类型、标准库、面向对象、模块、异步 {:&amp;.rollIn}</li>
+<li>编程时注意：好的范式、不好的范式</li>
+</ul>
+<h4 id="不过"><a href="#不过" class="headerlink" title="不过"></a>不过</h4><ul>
+<li>npm 飞速发展的 packages 数量 {:&amp;.rollIn}</li>
+<li>ECMAScript 6，语言特性问题完美解决 (c)</li>
+<li>Babel 6to5 (python)<ul>
+<li>most hard to upgrade -&gt; always use latest feature!</li>
+</ul>
+</li>
+<li>最快的动态语言，还会更快 (ruby)</li>
+<li>JS as a Platform：中间语言 (c#, java）</li>
+<li>生态系统：浏览器、node.js、公司、社区</li>
+</ul>
+<h4 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>js 是现阶段发展最快的语言 {:&amp;.rollIn}</li>
+<li>前端前途无量！</li>
+</ul>
+<h3 id="react"><a href="#react" class="headerlink" title="react"></a>react</h3><h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><ul>
+<li>DOM 操作</li>
+<li>组件散乱，社区力量难以聚合</li>
+</ul>
+<h4 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h4><ul>
+<li>绑定 数据与数据、数据与视图之间的关系</li>
+<li>npm</li>
+</ul>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ul>
+<li>用 js 写界面……（似乎是一种倒退）</li>
+<li>还整个 JSX 让界面好写一点</li>
+<li>React Native</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>前端风起云涌 {:&amp;.rollIn}</li>
+<li>小扎灭我客户端之心不死</li>
+</ul>
+<h3 id="总的总结"><a href="#总的总结" class="headerlink" title="总的总结"></a>总的总结</h3><ul>
+<li>拥抱变化</li>
+<li>最差也可以变最好，关键要敢于拥抱变化</li>
+<li>技术紧迫感：勇于尝试新东西</li>
+<li>业务紧迫感：技术改变留学</li>
+</ul>
+<h3 id="推荐："><a href="#推荐：" class="headerlink" title="推荐："></a>推荐：</h3><ul>
+<li>JavaScript - The World’s Best Programming Language</li>
+<li>pure-native移动跨平台架构设计与实战</li>
+<li>注重实效的性能</li>
+<li>ReactJS 实战</li>
+<li>ELE.ME是如何运行的</li>
+</ul>
+<h2 id="Android-6-0运行权限-王胜"><a href="#Android-6-0运行权限-王胜" class="headerlink" title="Android 6.0运行权限 - 王胜"></a>Android 6.0运行权限 - 王胜</h2><h3 id="一般权限和危险权限"><a href="#一般权限和危险权限" class="headerlink" title="一般权限和危险权限"></a>一般权限和危险权限</h3><p>Android 6.0以前，所有的权限在应用安装或者更新时自动完成授权。如果用户想安装这个App，必需接受所有的权限申请。为了保护用户的隐私，Android M特意调整了Android的授权架构。将应用权限分为一般(Normal)和危险(Dangerous)两种级别的权限:</p>
+<ul>
+<li><p>一般权限不会直接危害用户的隐私。如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。</p>
+</li>
+<li><p>危险权限可以访问用户的隐私数据。 如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。如果列出危险权限，需要通过用户显示交互通过你的应用权限申请。</p>
+</li>
+</ul>
+<h3 id="权限组"><a href="#权限组" class="headerlink" title="权限组"></a>权限组</h3><p>Anroid系统里所有的危险权限都拥有所归属的权限组。如果设备运行在Android6.0(API level 23)，并且App的targetSdkVersion是23或者更高，当App请求危险权限时将会有以下表现：</p>
+<ul>
+<li><p>如果App请求manifest里声明的危险权限，并且App当前还没有获取任何权限组里的权限，系统将弹出一个描述App想要访问权限的对话框。但是对话框不会描述该权限属于哪个权限组。例如：App请求权限 <strong>READ_CONTACTS</strong>  ，系统对话框只显示App需要访问设备的联系人。如果用户授权通过，系统仅仅给App需要的权限。</p>
+</li>
+<li><p>如果App请求manifest里声明的危险权限，并且App已经用户该危险权限所在的权限组的权限，系统则直接授予此次请求的权限，而不需要用户手动交互。例如：如果App已经有先前的 <strong>READ_CONTACTS</strong> 权限，那么再请求 <strong>WRITE_CONTACTS</strong> 权限，系统则直接授予。</p>
+</li>
+</ul>
+<blockquote>
+<p>任何权限都有所归属的权限组，包括一般权限和App自定义的权限。然而，权限组只影响那些危险权限相关的用户体验。你可以忽略一般权限的权限组。</p>
+</blockquote>
+<p><strong>危险权限和权限组</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">权限组</th>
+<th style="text-align:center">权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CALENDAR</td>
+<td style="text-align:center"><ul><li>READ_CALENDAR</li><li>WRITE_CALENDAR</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">CAMERA</td>
+<td style="text-align:center"><ul><li>CAMERA</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">CONTACTS</td>
+<td style="text-align:center"><ul><li>READ_CONTACTS</li><li> WRITE_CONTACTS</li><li>GET_ACCOUNTS</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">LOCATION</td>
+<td style="text-align:center"><ul><li>ACCESS_FINE_LOCATION</li><li> ACCESS_COARSE_LOCATION</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">MICROPHONE</td>
+<td style="text-align:center"><ul><li>RECORD_AUDIO</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">PHONE</td>
+<td style="text-align:center"><ul><li>READ_PHONE_STATE</li><li>CALL_PHONE</li><li>READ_CALL_LOG</li><li>WRITE_CALL_LOG</li><li> ADD_VOICEMAIL</li><li>USE_SIP</li><li> PROCESS_OUTGOING_CALLS</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">SENSORS</td>
+<td style="text-align:center"><ul><li>BODY_SENSORS</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">SMS</td>
+<td style="text-align:center"><ul><li>SEND_SMS</li><li>RECEIVE_SMS</li><li> READ_SMS</li><li>RECEIVE_WAP_PUSH</li><li>RECEIVE_MMS</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:center">STORAGE</td>
+<td style="text-align:center"><ul><li>READ_EXTERNAL_STORAGE</li><li> WRITE_EXTERNAL_STORAGE</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="权限检测"><a href="#权限检测" class="headerlink" title="权限检测"></a>权限检测</h3><p>Android的所有版本里，都需要将所需的一般权限和危险权限都声明在App的manifest里。然而这些声明在不同的系统版本和App的target SDK Level会有不同的影响:</p>
+<ul>
+<li><p>如果设备运行在Android 5.1或者更低，或者你的App target SDK是22或者更低：如果你在manifest里声明了危险权限，用户则不得不在安装App时给予授权；如果他们不授权，系统将不会安装此App。</p>
+</li>
+<li><p>如果设备运行在Android 6.0或者更高，或者你的App target SDK是23或者更高：App不仅需要在manifest里声明危险权限，而且App在运行时还需要在每次需要危险权限时发起请求。用户可以接受也可以拒绝权限申请，App也需要在用户拒绝危险权限申请时能长长运行。</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：此处的权限处理只有App的target API level 23或者更高，而且运行在Android 6.0 (API level 23)或者更高的设备上才会如此。如果设备的中App的targetSdkVersion 是 22或者更低，系统则在安装或者更新App时自动授予危险权限。</p>
+</blockquote>
+<p><a href="http://developer.android.com/tools/support-library/index.html" target="_blank" rel="external">The Android Support Library</a>能很好地处理检测、请求和权限。Android 6.0 (API level 23) framework也提供了类似的方法。然而，使用support库能更简单一些，因为你不需要在调用方法之前检测android系统的版本。 </p>
+<h3 id="发起权限申请请求"><a href="#发起权限申请请求" class="headerlink" title="发起权限申请请求"></a>发起权限申请请求</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Here, this Activity is the current activity</span></div><div class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity,</div><div class="line">                Manifest.permission.READ_CONTACTS)</div><div class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Should we show an explanation?</span></div><div class="line">    <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</div><div class="line">            Manifest.permission.READ_CONTACTS)) &#123;</div><div class="line"></div><div class="line">        <span class="comment">// Show an expanation to the user *asynchronously* -- don't block</span></div><div class="line">        <span class="comment">// this thread waiting for the user's response! After the user</span></div><div class="line">        <span class="comment">// sees the explanation, try again to request the permission.</span></div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        <span class="comment">// No explanation needed, we can request the permission.</span></div><div class="line"></div><div class="line">        ActivityCompat.requestPermissions(thisActivity,</div><div class="line">                <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</div><div class="line">                MY_PERMISSIONS_REQUEST_READ_CONTACTS);</div><div class="line"></div><div class="line">        <span class="comment">// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an</span></div><div class="line">        <span class="comment">// app-defined int constant. The callback method gets the</span></div><div class="line">        <span class="comment">// result of the request.</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="处理权限请求结果"><a href="#处理权限请求结果" class="headerlink" title="处理权限请求结果"></a>处理权限请求结果</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></div><div class="line">        String permissions[], <span class="keyword">int</span>[] grantResults) &#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</div><div class="line">            <span class="comment">// If request is cancelled, the result arrays are empty.</span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></div><div class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">                <span class="comment">// permission was granted, yay! Do the</span></div><div class="line">                <span class="comment">// contacts-related task you need to do.</span></div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">                <span class="comment">// permission denied, boo! Disable the</span></div><div class="line">                <span class="comment">// functionality that depends on this permission.</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// other 'case' lines to check for other</span></div><div class="line">        <span class="comment">// permissions this app might request</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：每次需要权限时，都需要显示请求调用，即使你已经获得的同权限组的其他权限。另外，权限分组处理的机制在将来的Android发型版本中有可能更改。因此你的App不应该依赖所需的权限在或者不在同一个权限组里。</p>
+</blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="http://developer.android.com/training/permissions/requesting.html" target="_blank" rel="external">Requesting Permissions at Run Time</a></li>
+<li><a href="http://developer.android.com/training/permissions/best-practices.html" target="_blank" rel="external">Permissions Best Practices</a></li>
+</ul>
+<p>##Swift Access Control - 潘君<br>(未完待续)</p>
+<ul>
+<li><p>三个级别</p>
+<ul>
+<li>Public</li>
+<li>Internal</li>
+<li><p>Private</p>
+<p>大部分默认是internal</p>
+</li>
+</ul>
+</li>
+<li><p>可应用于</p>
+<ul>
+<li>Module<ul>
+<li>application</li>
+<li>framework</li>
+</ul>
+</li>
+<li>source file<ul>
+<li>properties</li>
+<li>types</li>
+<li>functions</li>
+<li>and so on（苹果文档这个太二了）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>准则</p>
+<ul>
+<li>public变量不能定义为internal或者private的类型</li>
+<li>函数的访问权限不能高于参数和返回值</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<ul>
+<li>Single-Target Apps    Internal</li>
+<li>Frameworks  Public</li>
+<li>Unit Test Targets      @testable<img src="./1446175520419.png" alt="Alt text"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>会级联影响 例如修饰了type 同时也会影响type的members</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SomePublicClass</span> </span>&#123;          <span class="comment">// explicitly public class</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> somePublicProperty = <span class="number">0</span>    <span class="comment">// explicitly public class member</span></div><div class="line">    <span class="keyword">var</span> someInternalProperty = <span class="number">0</span>         <span class="comment">// implicitly internal class member</span></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;  <span class="comment">// explicitly private class member</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeInternalClass</span> </span>&#123;               <span class="comment">// implicitly internal class</span></div><div class="line">    <span class="keyword">var</span> someInternalProperty = <span class="number">0</span>         <span class="comment">// implicitly internal class member</span></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;  <span class="comment">// explicitly private class member</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SomePrivateClass</span> </span>&#123;        <span class="comment">// explicitly private class</span></div><div class="line">    <span class="keyword">var</span> somePrivateProperty = <span class="number">0</span>          <span class="comment">// implicitly private class member</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;          <span class="comment">// implicitly private class member</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Function</p>
+</li>
+<li><p>Tuple</p>
+<ul>
+<li>取元素中访问level最小的为准</li>
+<li>例如 （PrivateClass, InternalClass） 则取private</li>
+</ul>
+</li>
+<li><p>Enumeration </p>
+<ul>
+<li>一样</li>
+</ul>
+</li>
+<li><p>class</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span> &#123;&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span>: <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">internal</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span> &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-英语" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1898,362 +2400,9 @@
 
 
   
-    <article id="post-微信公众号开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/10/微信公众号开发/" class="article-date">
-      <time datetime="2015-07-10T15:51:00.000Z" itemprop="datePublished">2015-07-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/10/微信公众号开发/">微信公众号开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="对于微信公众号开发的疑问"><a href="#对于微信公众号开发的疑问" class="headerlink" title="对于微信公众号开发的疑问"></a>对于微信公众号开发的疑问</h2><ul>
-<li>微信公众点与自己服务器配对流程</li>
-<li>本地如何调试</li>
-<li>微信整体流程中用到的一些特殊协议?</li>
-<li>openId/unionId 哪里查看</li>
-<li>access_token 为什么要有时间限制 为什么是2小时</li>
-<li>网页授权如何做的?能取到哪些信息?</li>
-<li>参加活动不关注 能拿到多少信息</li>
-<li>菜单type类型</li>
-<li>有哪些好的第三方开发工具包</li>
-<li>所有的活动行为全部调一个url 有没有好的分发解决方案</li>
-</ul>
-<h2 id="公众号查询通讯录的实现-曾铭"><a href="#公众号查询通讯录的实现-曾铭" class="headerlink" title="公众号查询通讯录的实现 - 曾铭"></a>公众号查询通讯录的实现 - 曾铭</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>通讯录表 -&gt; 后台数据库</li>
-<li>用户关注公众号</li>
-<li>用户发消息（姓名）给公众号</li>
-<li>微信后台转发此消息给网站后台 post XML</li>
-<li>后台根据此消息（姓名）查询数据库，得到此人具体数据，组合 XML 返回给微信后台</li>
-<li>微信后台把具体数据展示给用户</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
-<li>通讯录表 xls -&gt; csv -&gt; 导入到 LeanCloud 数据库</li>
-<li>基于 express (node.js web 框架)，建立 51offer_wechat.avosapps.com/contact_bot 站点；</li>
-<li>微信公众号后台配置开发者后台 URL，处理后台网址 get 请求，完成微信对开发者后台的验证</li>
-<li>处理网址 post 请求，完成接受消息，查询数据库，返回用户信息工作。具体参考：<a href="https://github.com/51offer/wechat_bot/commit/25d457c7430d88167d62b053a5d072d588c9c95b" target="_blank" rel="external">这里</a></li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>node.js (express) 处理网络请求的确精简方便</li>
-<li>微信公众号的所有信息都转发到一个接口，后续处理类型多时要设计合理的分发机制</li>
-<li>微信接口为什么用 XML 而不是 json 啊，这点不熟悉占用不少时间</li>
-<li>做这个很有意思，推荐大家多玩玩~</li>
-</ul>
-<h2 id="商户端APP集成微信扫描支付-王胜"><a href="#商户端APP集成微信扫描支付-王胜" class="headerlink" title="商户端APP集成微信扫描支付 - 王胜"></a>商户端APP集成微信扫描支付 - 王胜</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
-<li>APP端微信支付SDK<br><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419317784&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">[Android]</a> | <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419317782&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">[iOS]</a></li>
-<li>服务端微信支付SDK<br><a href="https://pay.weixin.qq.com/wiki/doc/api/download/wxpay_scanpay_java_sdk_proj-master.zip" target="_blank" rel="external">[JAVA]</a> |<br><a href="https://pay.weixin.qq.com/wiki/doc/api/download/WxpayAPI_php_v3.zip" target="_blank" rel="external">[PHP]</a></li>
-<li>服务端暴露notify接口</li>
-<li>push通道</li>
-</ul>
-<h3 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h3><ol>
-<li>用户在APP端浏览商品</li>
-<li>加入购物车</li>
-<li>结算</li>
-<li>调用提交订单接口</li>
-<li>提交订单接口返回预支付链接(<strong>预支付链接可根据服务端微信支付sdk生成</strong>)</li>
-<li>APP根据链接生成二维码</li>
-<li>用户拿起手机扫描支付</li>
-<li>微信调用第三方开发者服务端暴露的notify接口</li>
-<li>第三方服务端在收到notify接口调用时，更新订单库里订单状态，同时调用push通道告诉APP支付成功</li>
-<li>APP收到push命令后进行页面跳转</li>
-</ol>
-<h2 id="微信分享-吴明"><a href="#微信分享-吴明" class="headerlink" title="微信分享 - 吴明"></a>微信分享 - 吴明</h2><ul>
-<li>微信工作原理<ul>
-<li><img src="http://img.blog.csdn.net/20140823103621745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR29vZFNob3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></li>
-</ul>
-</li>
-<li>接口：<ul>
-<li>你需要触发什么事件</li>
-<li>微信事件触发会回调哪里接口</li>
-</ul>
-</li>
-<li>微信服务：<ul>
-<li>订阅号：</li>
-<li><a href="https://mp.weixin.qq.com" target="_blank" rel="external">服务号</a><ul>
-<li><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">微信公众测试账号</a></li>
-<li><a href="http://mp.weixin.qq.com/debug" target="_blank" rel="external">微信公众平台接口调试工具</a></li>
-</ul>
-</li>
-<li>企业号<ul>
-<li><a href="https://qy.weixin.qq.com" target="_blank" rel="external">微信企业号</a></li>
-<li><a href="https://qy.weixin.qq.com/try" target="_blank" rel="external">微信企业号申请体验号</a></li>
-<li><a href="http://www.iwork365.com/experience" target="_blank" rel="external">iwork365企业号体验</a></li>
-</ul>
-</li>
-<li>微购物</li>
-<li>微信公众号自定义菜单开发<ul>
-<li>接口文档<pre><code>- [获取access token](http://mp.weixin.qq.com/wiki/11/0e4b294685f817b95cbed85ba5e82b8f.html)
-- [自定义菜单创建接口](http://mp.weixin.qq.com/wiki/13/43de8269be54a0a6f64413e4dfa94f39.html)
-- 以下操作都是在[微信公众平台接口调试工具](http://mp.weixin.qq.com/debug)调试方法
-</code></pre></li>
-<li>步骤1：调用“获取access token”接口,传入你申请的测试微信公众号的appid和secret获取access_token</li>
-<li>步骤2：调用“自定义菜单创建接口”，传入上面生成的access_token和“自定义菜单json数据”如下</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"button"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"51offer"</span>,</div><div class="line">            <span class="attr">"url"</span>: <span class="string">"http://www.51offer.com/"</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"移动"</span>,</div><div class="line">            <span class="attr">"sub_button"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">                    <span class="attr">"name"</span>: <span class="string">"blog"</span>,</div><div class="line">                    <span class="attr">"url"</span>: <span class="string">"http://51offer.github.io/"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">                    <span class="attr">"name"</span>: <span class="string">"github"</span>,</div><div class="line">                    <span class="attr">"url"</span>: <span class="string">"https://github.com/51offer/public-docs/wiki"</span></div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"type"</span>: <span class="string">"click"</span>,</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"我"</span>,</div><div class="line">            <span class="attr">"key"</span>: <span class="string">"me"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>推荐：公众号：招商信用卡</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-知其所以然" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/08/知其所以然/" class="article-date">
-      <time datetime="2015-07-07T23:04:29.000Z" itemprop="datePublished">2015-07-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/08/知其所以然/">知其所以然(10分钟解释一个和开发相关的原理)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="WEB-登录『原理』-曾铭"><a href="#WEB-登录『原理』-曾铭" class="headerlink" title="WEB 登录『原理』 - 曾铭"></a>WEB 登录『原理』 - 曾铭</h3><h4 id="Session-amp-cookie"><a href="#Session-amp-cookie" class="headerlink" title="Session &amp; cookie"></a>Session &amp; cookie</h4><ul>
-<li>HTTP 是无状态协议</li>
-<li>Session 服务器端简单存储</li>
-<li>cookie 客户端简单存储（注意：在请求头中）</li>
-</ul>
-<h4 id="密码如何存储"><a href="#密码如何存储" class="headerlink" title="密码如何存储"></a>密码如何存储</h4><ul>
-<li>明文存储</li>
-<li>md5 碰撞库破解  md5(pwd)</li>
-<li>md5+salt   md5(pwd+salt)  salt  pwd</li>
-<li>sha1……都能用，千万不要自己实现散列算法</li>
-</ul>
-<h4 id="一个登录的过程"><a href="#一个登录的过程" class="headerlink" title="一个登录的过程"></a>一个登录的过程</h4><ul>
-<li>明文密码</li>
-<li>session_id, access_token, token</li>
-<li>第三方登录：OAuth2, OpenID</li>
-</ul>
-<hr>
-<p>###iBeacon - 潘君</p>
-<ul>
-<li><p>BLE</p>
-<ul>
-<li>RSSI(Received Signal Strength Indicator)</li>
-<li>唯一标识码</li>
-<li>例:<a href="http://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-3501608320.8.8JO7JE&amp;id=22152768901" target="_blank" rel="external"> 防丢器</a></li>
-</ul>
-</li>
-<li><p><a href="http://www.brtbeacon.com/home/industry_solution.shtml" target="_blank" rel="external">应用场景</a></p>
-<ul>
-<li>配合微信摇一摇</li>
-<li>商城导购</li>
-<li>地下停车库导航</li>
-</ul>
-</li>
-<li><p><a href="https://github.com/ibip/ibip_document/wiki/%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84" target="_blank" rel="external">室内定位</a></p>
-<ul>
-<li>标签定位</li>
-<li>三角定位</li>
-<li>指纹定位</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="andoid虚拟机-吴明"><a href="#andoid虚拟机-吴明" class="headerlink" title="andoid虚拟机 - 吴明"></a>andoid虚拟机 - 吴明</h3><ul>
-<li>系统框架对比android vs ios</li>
-<li><a href="http://blog.csdn.net/xyz_lmn/article/details/8907502" target="_blank" rel="external">ios系统框架</a></li>
-<li><a href="http://www.cnblogs.com/royenhome/archive/2010/04/24/1719293.html" target="_blank" rel="external">android系统框架</a></li>
-<li><p>Dalvik虚拟机</p>
-<ul>
-<li>Dalvik虚拟机是Android程序的虚拟机，是Android中Java程序的运行基础。其指令集基于寄存器架构，执行其特有的文件格式——dex字节码来完成对象生命周期管理、堆栈管理、线程管理、安全异常管理、垃圾回收等重要功能。它的核心内容是实现库（libdvm.so），大体由C语言实现。依赖于Linux内核的一部分功能——线程机制、内存管理机制，能高效使用内存，并在低速CPU上表现出的高性能。每一个Android应用在底层都会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。</li>
-</ul>
-</li>
-<li><p>Android系统是以Linux系统为底层构建的，Android系统是开源(源代码公开)的，Android系统势必会适配到不同硬件配置的设备上，因此谷歌为了降低应用的开发难度在Linux底层之上构筑了一个名为“Dalvik”的虚拟机。</p>
-</li>
-<li>一个应用，一个虚拟机实例，一个进程！！！</li>
-<li><p><a href="http://blog.csdn.net/andyxm/article/details/6126907/" target="_blank" rel="external">android虚拟机详细</a></p>
-</li>
-<li><p>其他：</p>
-<ul>
-<li>ART模式:Android4.4中新加入的ART模式，该模式的完整名称是Androidruntime.</li>
-<li>ART：Android 4.4开始推出的新的运行环境，在APP安装的时候使用dex2oat工具直接把DEX文件转换为机器码文件，运行的时候以机器码方式运行，可以充分利用系统性能；此外，改进的内存回收机制使得ART运行模式下的内存回收速度只有Dalvik运行时模式下的50%，也能够提升系统运行速度。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏"><a href="#Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏" class="headerlink" title="Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏"></a>Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏</h3><p>Android中，我们在线程之间通信传递通常采用Android的消息机制，而这机制传递的正是Message。</p>
-<p>通常，我们使用<a href="http://developer.android.com/reference/android/os/Message.html#obtain(" target="_blank" rel="external">Message.obtain()</a>)和<a href="http://developer.android.com/reference/android/os/Handler.html#obtainMessage(" target="_blank" rel="external">Handler.obtainMessage()</a>)从Message Pool中获取Message，避免直接构造Message。</p>
-<h4 id="Message-obtain-源码"><a href="#Message-obtain-源码" class="headerlink" title="Message.obtain()源码"></a>Message.obtain()源码</h4><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Return a<span class="built_in"> new </span>Message<span class="built_in"> instance </span>from the global pool. Allows us to</div><div class="line"> * avoid allocating<span class="built_in"> new </span>objects in many cases.</div><div class="line"> */<span class="keyword"></span></div><div class="line">public<span class="keyword"> static</span> Message obtain() &#123;</div><div class="line">    synchronized (sPoolSync) &#123;</div><div class="line">       <span class="built_in"> if </span>(sPool != null) &#123;</div><div class="line">            Message m = sPool;</div><div class="line">            sPool = m.next;</div><div class="line">            m.next = null;</div><div class="line">            m.flags = 0; // clear in-use flag</div><div class="line">            sPoolSize--;</div><div class="line">           <span class="built_in"> return </span>m;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">   <span class="built_in"> return </span>new Message();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从代码片中，可以看到Message是直接由sPool赋值的。</p>
-<h4 id="Handler-obtain-源码"><a href="#Handler-obtain-源码" class="headerlink" title="Handler.obtain()源码"></a>Handler.obtain()源码</h4><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Returns a<span class="built_in"> new </span>&#123;@link android.os.Message Message&#125; from the global message pool. More efficient than</div><div class="line"> * creating<span class="built_in"> and </span>allocating<span class="built_in"> new </span>instances. The retrieved message has its handler set to this<span class="built_in"> instance </span>(Message.target == this).</div><div class="line"> *  If you don't want that facility, just call Message.obtain() instead.</div><div class="line"> */<span class="keyword"></span></div><div class="line">public<span class="keyword"> final</span> Message obtainMessage()</div><div class="line">&#123;</div><div class="line">   <span class="built_in"> return </span>Message.obtain(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Handler.obtain()最终还是调用Message.obtain()来获取的。</p>
-<h4 id="Message-Pool相关源码分析"><a href="#Message-Pool相关源码分析" class="headerlink" title="Message Pool相关源码分析"></a>Message Pool相关源码分析</h4><h5 id="Message-Pool数据结构"><a href="#Message-Pool数据结构" class="headerlink" title="Message Pool数据结构"></a>Message Pool数据结构</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sometimes we store linked lists of these things</span></div><div class="line"><span class="comment">/*package*/</span> Message next;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">Object</span> sPoolSync = <span class="keyword">new</span> <span class="keyword">Object</span>();</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> Message sPool;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> sPoolSize = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> MAX_POOL_SIZE = <span class="number">50</span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">boolean</span> gCheckRecycle = <span class="keyword">true</span>;</div></pre></td></tr></table></figure>
-<p>从代码中可以很明确的看到，Message Pool的数据结构实际就是一个链表。sPool就是一个全局的消息池，sPoolSize记录链表长度，MAX_POOL_SIZE表示链表的最大长度为50。</p>
-<h5 id="Message-Pool如何存放Message"><a href="#Message-Pool如何存放Message" class="headerlink" title="Message Pool如何存放Message"></a>Message Pool如何存放Message</h5><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** <span class="doctag">@hide</span> */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">updateCheckRecycle</span><span class="params">(<span class="keyword">int</span> targetSdkVersion)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (targetSdkVersion &lt; Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">        gCheckRecycle = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Return a Message instance to the global pool.</div><div class="line"> * &lt;p&gt;</div><div class="line"> * You MUST NOT touch the Message after calling this function because it has</div><div class="line"> * effectively been freed.  It is an error to recycle a message that is currently</div><div class="line"> * enqueued or that is in the process of being delivered to a Handler.</div><div class="line"> * &lt;/p&gt;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">recycle</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (isInUse()) &#123;</div><div class="line">        <span class="keyword">if</span> (gCheckRecycle) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"This message cannot be recycled because it "</span></div><div class="line">                    + <span class="string">"is still in use."</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    recycleUnchecked();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Recycles a Message that may be in-use.</div><div class="line"> * Used internally by the MessageQueue and Looper when disposing of queued Messages.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">recycleUnchecked</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// Mark the message as in use while it remains in the recycled object pool.</span></div><div class="line">    <span class="comment">// Clear out all other details.</span></div><div class="line">    flags = FLAG_IN_USE;</div><div class="line">    what = <span class="number">0</span>;</div><div class="line">    arg1 = <span class="number">0</span>;</div><div class="line">    arg2 = <span class="number">0</span>;</div><div class="line">    obj = <span class="keyword">null</span>;</div><div class="line">    replyTo = <span class="keyword">null</span>;</div><div class="line">    sendingUid = <span class="number">-1</span>;</div><div class="line">    when = <span class="number">0</span>;</div><div class="line">    <span class="keyword">target</span> = <span class="keyword">null</span>;</div><div class="line">    callback = <span class="keyword">null</span>;</div><div class="line">    data = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">synchronized</span> (sPoolSync) &#123;</div><div class="line">        <span class="keyword">if</span> (sPoolSize &lt; MAX_POOL_SIZE) &#123;</div><div class="line">            next = sPool;</div><div class="line">            sPool = <span class="keyword">this</span>;</div><div class="line">            sPoolSize++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从代码分析上看，消息池存放的核心方法就是上面的recycleUnchecked()方法：</p>
-<blockquote>
-<p>1、将待回收的Message对象字段置空（避免因Message过大，使静态的消息池内存泄漏）。</p>
-<p>2、以内置锁对方式（线程安全），判断当前线程池的大小是否小于50。若小于50，直接将mesaage插入到消息池链表尾部；若大于等于50，则直接丢弃掉，交由GC管理。</p>
-</blockquote>
-<hr>
-<h3 id="消费者心理学：三个趣味经济学原理-–-张超耀"><a href="#消费者心理学：三个趣味经济学原理-–-张超耀" class="headerlink" title="消费者心理学：三个趣味经济学原理 – 张超耀"></a><a href="http://i.wshang.com/Post/Default/Index/pid/32949.html" target="_blank" rel="external">消费者心理学：三个趣味经济学原理</a> – 张超耀</h3><ul>
-<li>价格越低为什么不但不好卖，反而价格越高越好卖</li>
-<li>为什么大手大脚的浪费反而可以拯救经济？</li>
-<li>为什么免费未必就是最好的</li>
-</ul>
-<p>这些经济学原理背后又有哪些逻辑在支撑，让我去探讨一下这些好玩的经济学吧。</p>
-<h4 id="价格越高越好卖——虚荣效应"><a href="#价格越高越好卖——虚荣效应" class="headerlink" title="价格越高越好卖——虚荣效应"></a>价格越高越好卖——虚荣效应</h4><ul>
-<li><p>富人们一般不喜欢大众模仿他们的消费行为，这种情况就叫做虚荣效应(snob effect)。虚荣效应具体是指购买商品的时候追求与众不同的个性的现象。</p>
-</li>
-<li><p>虚荣效应主要有以下两种表现。</p>
-<ul>
-<li><p>高档商品刚上市的时候迅速购买。这是因为，在这一瞬间并不是每个人都能享受到消费高档商品的荣誉。</p>
-</li>
-<li><p>不论之前如何热情赞美的商品，一旦其市场占有率达到一般大众都可以消费的水平就不再继续购买。这是因为人人都能购买使用的商品既不会让人感到荣誉，也不会有高档的感觉。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="大手大脚的浪费能拯救经济——节约悖论"><a href="#大手大脚的浪费能拯救经济——节约悖论" class="headerlink" title="大手大脚的浪费能拯救经济——节约悖论"></a>大手大脚的浪费能拯救经济——节约悖论</h4><ul>
-<li><p>我们都知道，如果消费超过收入，就没有余钱可以储蓄，也就无法积累资金，最终只能过贫穷的生活。所以，为了成为富人我们会努力工作，有时候也会变成小气鬼，为了能储蓄更多钱而努力。</p>
-</li>
-<li><p>这个原理对于个人是适用的，但是对于国家整体经济是否也适用呢？如果所有国民都变成小气鬼，这个国家真的能够变得更加富强吗？答案是否定的，尤其是在经济不景气的时候。让我们看看其原因何在。</p>
-</li>
-<li><p>一旦经济进入不景气，基于对未来的担忧，人们会选择更多的储蓄进而减少消费。可是如果所有人都减少消费的话，企业的销售额就会降低，库存就会增加。随之而来的是企业只能降低生产减少雇用，而企业员工的收入就会减少。那么，对未来的担忧就会强化，人们会更加坚定地减少消费增加储蓄，于是整体经济就会陷入愈发不景气的恶性循环中。</p>
-</li>
-</ul>
-<h4 id="免费未必就好——免费经济学"><a href="#免费未必就好——免费经济学" class="headerlink" title="免费未必就好——免费经济学"></a>免费未必就好——免费经济学</h4><ul>
-<li><p>“世上没有免费的午餐”是1976年获得诺贝尔经济学奖的着名经济学家米尔顿弗里德曼(Milton Friedman)常说的一句话。</p>
-</li>
-<li><p>有的信息粗看之下似乎是免费的，实际上经过了解后发现并不是免费的意思；或者可以解释为免费后面隐藏着某种诱饵，还可以理解为不要期待不付出代价的免费东西。就像“免费的奶酪只存在于捕鼠器上”的俄罗斯谚语一样，对免费的东西保持警惕是亘古不变的道理。</p>
-</li>
-<li><p>看看我们周围，就能发现很多免费营销，地铁站前的免费报纸就是其中一种。曾经威胁到日报和体育报纸的免费报纸因为有很多读者，所以可以从广告收入上获得高收益。人气差的免费报纸会因为得不到足够的广告收入而被淘汰，这样的话，幸存下来的免费报纸就可以逐步占据更加有利的位置。越是资金实力雄厚的公司，在这种免费竞争中能够生存下来的概率就越大。因此，消费者也可能会面临因为垄断招致的损失。</p>
-</li>
-<li><p>免费经济市场的另一个弊端就是对资源的浪费。以免费报纸为例，因为免费派发给消费者，所以新闻纸会被大量浪费掉。大量生产大量消费的体制会导致能源的过度使用而招致地球变暖势头的加速。”</p>
-</li>
-</ul>
-<hr>
-<p>###Icon制作 - 杨志平</p>
-<p><img width="487" alt="qq20150707-6 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542711/2952b918-24ca-11e5-8dda-f42e42f57e72.png"><br><img width="568" alt="qq20150707-11 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542720/2987624e-24ca-11e5-8380-658f9fc08f24.png"></p>
-<p>####51offer的Icon的流程<br><img width="491" alt="qq20150707-1 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542715/29552c5c-24ca-11e5-9849-bd352ede57f4.png"><br><img width="497" alt="qq20150707-2 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542712/2952ba3a-24ca-11e5-85b7-0149e855e0cd.png"><br><img width="493" alt="qq20150707-3 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542713/2952e118-24ca-11e5-9128-f30ac093e8f4.png"><br><img width="493" alt="qq20150707-4 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542716/29557bf8-24ca-11e5-8869-afc7972ac5bf.png"><br><img width="492" alt="qq20150707-5 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542714/2952e884-24ca-11e5-8ade-4f3a69c19df4.png"></p>
-<p>####另一个Icon的制作的流程</p>
-<p><img width="589" alt="qq20150707-7 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542721/29879a5c-24ca-11e5-85a0-535bf058fa62.png"><br><img width="573" alt="qq20150707-8 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542718/29855f58-24ca-11e5-83b2-e5d4e679f543.png"><br><img width="586" alt="qq20150707-9 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542717/29851a3e-24ca-11e5-8eab-3d5703d032ea.png"><br><img width="578" alt="qq20150707-10 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542719/2986620e-24ca-11e5-9686-6fad2780ab63.png"></p>
-<h3 id="Android-动画制作-王胜"><a href="#Android-动画制作-王胜" class="headerlink" title="Android 动画制作 - 王胜"></a>Android 动画制作 - 王胜</h3><h4 id="View-Animation"><a href="#View-Animation" class="headerlink" title="View Animation"></a>View Animation</h4><ul>
-<li>AlphaAnimation 淡入淡出效果</li>
-<li>TranslateAnimation 移动效果</li>
-<li>ScaleAnimation 缩放效果</li>
-<li>RotateAnimation 旋转效果</li>
-</ul>
-<p>原理：提供动画的起始和结束状态信息，中间的状态根据上述类里差值器算法填充<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
-<h4 id="Property-Animation"><a href="#Property-Animation" class="headerlink" title="Property Animation"></a>Property Animation</h4><p>View Animation动画比较简单，一般都是单个因素的变化，如果牵扯到复杂的动画，就显得力不从心。因此，Android 3.0 引入了属性动画。注：可通过<a href="http://nineoldandroids.com/" target="_blank" rel="external">[NineOldAndroids]</a>项目在3.0之前的系统中使用Property Animation</p>
-<p>原理：暴露出差值算法的回调方法，有工程师自己发挥想象，造出奇妙的动画效果。<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
-<h4 id="Drawable-Animation"><a href="#Drawable-Animation" class="headerlink" title="Drawable Animation"></a>Drawable Animation</h4><h5 id="逐帧动画"><a href="#逐帧动画" class="headerlink" title="逐帧动画"></a>逐帧动画</h5><p>原理：提供动画每个帧上的图片资源，顺序播放<br><a href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html" target="_blank" rel="external">[示例参考]</a></p>
-<h5 id="ClipDrawable-剪切动画"><a href="#ClipDrawable-剪切动画" class="headerlink" title="ClipDrawable 剪切动画"></a>ClipDrawable 剪切动画</h5><p>原理：提供一个背景图片，前景图片是一个ClipDrawable对象。通过线程操作ClipDrawable的剪切进度。</p>
-<p>实例：</p>
-<ul>
-<li>ClipDrawable 定义xml文件</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">clip</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:clipOrientation</span>=<span class="string">"vertical"</span></div><div class="line">    <span class="attr">android:drawable</span>=<span class="string">"@drawable/loading_progress"</span></div><div class="line">    <span class="attr">android:gravity</span>=<span class="string">"bottom"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">clip</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>组件引用</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/iv"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:scaleType</span>=<span class="string">"centerInside"</span></div><div class="line">        <span class="attr">android:paddingTop</span>=<span class="string">"5dp"</span></div><div class="line">        <span class="attr">android:paddingLeft</span>=<span class="string">"5dp"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/loading_bg"</span></div><div class="line">        <span class="attr">android:src</span>=<span class="string">"@drawable/clip_loading"</span>/&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>线程动态改变剪切进度</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">	    <span class="comment">// 如果消息是本程序发送的</span></div><div class="line">        <span class="keyword">if</span> (msg.what == MSG_WHAT) &#123;</div><div class="line">            mClipDrawable.setLevel(mProgress);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">.......</div><div class="line">Runnable mRunnable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        isRunning = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">while</span> (isRunning) &#123;</div><div class="line">            handler.sendEmptyMessage(MSG_WHAT);</div><div class="line">            <span class="keyword">if</span> (mProgress &gt; MAX_PROGRESS) &#123;</div><div class="line">                mProgress = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            mProgress += <span class="number">100</span>;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">18</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -2265,14 +2414,14 @@
                 2016-2018 Wilson
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -2281,7 +2430,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -2314,9 +2463,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window

@@ -3,72 +3,179 @@
   
     
     <entry>
+      <title><![CDATA[Java异常]]></title>
+      <url>/2018/07/17/Java%E5%BC%82%E5%B8%B8/</url>
+      <content type="html"><![CDATA[<h2 id="Java异常"><a href="#Java异常" class="headerlink" title="Java异常"></a>Java异常</h2><p><img src="https://upload-images.jianshu.io/upload_images/1534431-11903c56d9e318ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java异常"></p>
+<ul>
+<li>对比Exception和Error </li>
+<li>运行异常与一般异常区别</li>
+<li>ClassNotFoundException和NoClassDefFoundError有什么区别</li>
+<li>throw和throws</li>
+<li>异常处理几点建议</li>
+<li>自定义异常<br>###对比Exception和Error。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-ad557fa71b48a3ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Exception和Error"><br>Exception和Error都继承Throwable,</li>
+<li>Exception是程序可以处理的异常，正常JVM运行外的异常。</li>
+<li>Error一般是JVM相关异常错误，不可恢复状态，也不方便捕获。<br>###运行异常与一般异常区别<br>Eeception又分为可检测异常（Checked Exception）和运行异常（也可叫不可检查异常，Runtime Exception）。</li>
+<li>可检查异常（Checked Exception）在代码里必须显式地进行捕获处理，可以被处理的异常。如：IOException。</li>
+<li>运行异常,类似NullPointerException,ArrayIndexOutOfBoundsException,通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译器强制要求。<br>###ClassNotFoundException和NoClassDefFoundError有什么区别</li>
+<li>ClassNotFoundException:Java动态加载类的时候，如果这个类在类路径中没有被找到或者当一个类已经某个类加载器加载到内存中了，此时另一个类加载器又尝试着动态地从同一个包中加载这个类就会抛出ClassNotFoundException异常。类加载中加载时从外存储器找不到需要的class。</li>
+<li><p>NoClassDefFoudError，指要查找的类在编译的时候是存在的，运行的时候却找不到的异常错误。类加载中连接时从内存找不到需要的class。<br>###throw和throws</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">custormException</span><span class="params">()</span><span class="keyword">throws</span>  CustomException</span>&#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> CustomException(<span class="string">"抛出CustormException"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>throw作用域方法体内</p>
+</li>
+<li>throws方法名后面<br>###异常处理几点建议</li>
+<li><p>只针对不正常的情况才使用异常,不需要异常处理的不要专门处理以增加系统额外检查降低性能。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">arr[i]=<span class="number">0</span>;</div><div class="line">i++;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">catch</span> (IndexOutOfBoundsException e) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>抛出的异常要适合于相应的抽象</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> E get(<span class="keyword">int</span> <span class="keyword">index</span>) &#123;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line"><span class="keyword">return</span> listIterator(<span class="keyword">index</span>).next();</div><div class="line">&#125; <span class="keyword">catch</span> (NoSuchElementException exc) &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">"Index: "</span>+<span class="keyword">index</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不要忽略异常，避免使用空的catch语句</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">...</div><div class="line">&#125; <span class="keyword">catch</span> (SomeException e) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>异常保证输出堆栈信息，在异常消息中加入导致异常发生的全部信息</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">...</div><div class="line">&#125; <span class="keyword">catch</span> (SomeException e) &#123;</div><div class="line">System.out.println(<span class="string">"12344"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>###自定义异常<br>一般根据项目需要自定义异常，特别是服务端处理业务的时候。一般自定义异常继承Exception，Throwable（因为Error一般用于JVM的异常错误，不常用自定义），因为异常已实现相关方法，只需重写构造方法就可以。代码如下：</p>
+<ul>
+<li>继承Exception<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomException</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomException</span><span class="params">()</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomException</span><span class="params">(String message)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomException</span><span class="params">(String message, Throwable cause)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message, cause);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomException</span><span class="params">(Throwable cause)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(cause);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomException</span><span class="params">(String message, Throwable cause, <span class="keyword">boolean</span> enableSuppression, <span class="keyword">boolean</span> writableStackTrace)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message, cause, enableSuppression, writableStackTrace);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestException</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">custormException();</div><div class="line">&#125; <span class="keyword">catch</span> (CustomException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">custormException</span><span class="params">()</span><span class="keyword">throws</span>  CustomException</span>&#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> CustomException(<span class="string">"抛出CustormException"</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">TestException testException=<span class="keyword">new</span> TestException();</div><div class="line">testException.testMethod();</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.CustomException</span>: 抛出CustormException</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestException</span><span class="selector-class">.custormException</span>(TestException<span class="selector-class">.java</span>:<span class="number">15</span>)</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestException</span><span class="selector-class">.testMethod</span>(TestException<span class="selector-class">.java</span>:<span class="number">9</span>)</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestException</span><span class="selector-class">.main</span>(TestException<span class="selector-class">.java</span>:<span class="number">19</span>)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>继承Throwable<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomThrowable</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomThrowable</span><span class="params">()</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomThrowable</span><span class="params">(String message)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomThrowable</span><span class="params">(String message, Throwable cause)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message, cause);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomThrowable</span><span class="params">(Throwable cause)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(cause);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">CustomThrowable</span><span class="params">(String message, Throwable cause, <span class="keyword">boolean</span> enableSuppression, <span class="keyword">boolean</span> writableStackTrace)</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>(message, cause, enableSuppression, writableStackTrace);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThrowable</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">custormException();</div><div class="line">&#125; <span class="keyword">catch</span> (CustomThrowable e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">custormException</span><span class="params">()</span><span class="keyword">throws</span>  CustomThrowable</span>&#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> CustomThrowable(<span class="string">"抛出CustomThrowable"</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">TestThrowable testThrowable=<span class="keyword">new</span> TestThrowable();</div><div class="line">testThrowable.testMethod();</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.CustomThrowable</span>: 抛出CustomThrowable</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestThrowable</span><span class="selector-class">.custormException</span>(TestThrowable<span class="selector-class">.java</span>:<span class="number">15</span>)</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestThrowable</span><span class="selector-class">.testMethod</span>(TestThrowable<span class="selector-class">.java</span>:<span class="number">9</span>)</div><div class="line">at com<span class="selector-class">.mysiga</span><span class="selector-class">.learn</span><span class="selector-class">.throwable</span><span class="selector-class">.TestThrowable</span><span class="selector-class">.main</span>(TestThrowable<span class="selector-class">.java</span>:<span class="number">19</span>)</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[我所知道的-Java垃圾回收机制]]></title>
+      <url>/2018/07/12/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</url>
+      <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1534431-a4831eb7feafd902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java垃圾回收机制"></p>
+<p>本文章你能知道的内容：</p>
+<ul>
+<li>Java内存模型</li>
+<li>Java堆</li>
+<li>对象什么时候回收</li>
+<li>垃圾回收算法</li>
+<li><p>垃圾回收器<br>###Java内存模型<br>要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图<br><img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存模型"></p>
+</li>
+<li><p>程序计数器</p>
+</li>
+<li>Java 虚拟机栈</li>
+</ul>
+<ol>
+<li>局部变量表：是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型(它指向了一条字节码指令的地址)。</li>
+<li>操作数栈：又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</li>
+<li>动态连接：每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</li>
+<li>方法返回地址：当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</li>
+</ol>
+<ul>
+<li>本地方法栈:该区域与虚拟机栈所发挥的作用非常相似，只是虚拟机栈为虚拟机执行 Java 方法服务，而本地方法栈则为使用到的本地操作系统（Native）方法服务。</li>
+<li>方法区<br>方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</li>
+<li>Java 堆:一般new的对象实例和数组都是在堆中的，而GC主要回收的内存也是这块堆内存，后面单独领出来来讲。</li>
+<li>直接内存<br>不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。<br>###Java 堆<br>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。<blockquote>
+<p>Java 堆内存由垃圾回收器的自动内存管理系统管理。<br>堆内存分为两大部分：新生代和老年代，默认比例为1：2，可修改。<br>老年代主要存放应用程序中生命周期长的存活对象。<br>新生代又分为三个部分：一个Eden区和两个Survivor区，默认比例为8：1：1，可修改。<br>Eden区存放新生的对象。<br>Survivor存放每次垃圾回收后存活的对象。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-062a3348d8286a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="堆内存"></p>
+</blockquote>
+</li>
+</ul>
+<p>###为什么？</p>
+<ul>
+<li>为什么要分新生代和老年代？</li>
+<li>新生代为什么分一个Eden区和两个Survivor区?</li>
+</ul>
+<p>带着这些疑问，我们就要先了解堆相关的垃圾回收算法和采用的垃圾回收器。在讲算法前先了解怎么判断对象是否回收。</p>
+<p>###对象什么时候回收？<br>判断对象是否回收主要有以下两种算法</p>
+<ul>
+<li>引用计数算法<br>给对象中添加一个引用计数器，每当有一个地方引用它时，计数器值就加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-982627fe64dfa349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用计数算法"></li>
+<li>优点：简单，高效，Objective-c用的就是这种算法。</li>
+<li>缺点：很难处理循环引用，比如图中相互引用的两个对象则无法释放。但是也有解决办法，想知道自行搜索。</li>
+<li>可达性分析算法（根搜索算法）<br>为了解决上面的循环引用问题，Java采用了一种新的算法：可达性分析算法。<br>从GC Roots（每种具体实现对GC Roots有不同的定义）作为起点，向下搜索它们引用的对象，可以生成一棵引用树，树的节点视为可达对象，反之视为不可达。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-a9dda2d42cd749cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可达性分析算法"><blockquote>
+<p>Java定义的GC Roots对象:<br>虚拟机栈（帧栈中的本地变量表）中引用的对象。<br>方法区中静态属性引用的对象。<br>方法区中常量引用的对象。<br>本地方法栈中JNI引用的对象。</p>
+</blockquote>
+</li>
+</ul>
+<p>如果出现循环引用了，只要没有被GC Roots引用了就会被回收，完美解决！</p>
+<p>###垃圾回收算法<br>知道了什么时候回收对象，那我们再看具体垃圾回收器有哪些垃圾回收算法。</p>
+<ul>
+<li>标记清除法<br>标记-清除法分为两个阶段：标记阶段和清除阶段。标记阶段的任务是标记出所有需要被回收的对象，清除阶段就是回收被标记的对象所占用的空间。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-43bc311c23427d67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记清除法"></li>
+<li>优点：是简单，容易实现。</li>
+<li>缺点：容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</li>
+<li><p>复制算法<br>复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-9bf508a2e534d864.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="复制算法"></p>
+</li>
+<li><p>优点：实现简单，运行高效且不容易产生内存碎片，适用于存活对象很少。回收对象多</p>
+</li>
+<li>缺点：内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半，如果存活对象很多，那么Copying算法的效率将会大大降低。</li>
+<li>标记整理算法<br>该算法标记阶段和标记清除法一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-4b6066a7e03fb403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记整理算法"></li>
+<li>优点：不会出现内存碎片问题，适用于存活对象多，回收对象少的情况使用</li>
+<li>缺点：整理时间长，容易导致卡顿。</li>
+<li>分代回收算法<br>分代回收算法其实不算一种新的算法，而是根据复制算法和标记整理算法的使用场景综合使用。<blockquote>
+<p>复制算法：适用于存活对象很少。回收对象多<br>标记整理算法: 适用用于存活对象多，回收对象少</p>
+</blockquote>
+</li>
+</ul>
+<p>分代算法就是根据对象存活的生命周期将内存划分为若干个不同的区域。一般情况下将堆区划分为老年代（Old Generation）和新生代（Young Generation），老年代的特点是每次垃圾收集时只有少量对象需要被回收所以采用标记整理法。而新生代的特点是每次垃圾回收时都有大量的对象需要被回收所以采用复制算法（改良的复制算法，不是按1：1分配）。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1534431-df6da09763c72d95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分代回收算法"></p>
+<ul>
+<li><p>Eden空间和两块Survivor空间的工作流程</p>
+<blockquote>
+<p>// 分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区满了，只能GC(新生代GC：Minor GC)了<br>把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区<br>// …<br>// 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区<br>// 有的对象太大，超过了Eden区，直接被分配在Old区<br>// 有的存活对象，放不下Survivor区，也被分配到Old区<br>// …<br>// 在某次Minor GC的过程中突然发现：<br>// 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)<br>Old区慢慢的整理一番，空间又够了<br>// 继续Minor GC<br>// …<br>// …<br>在回答上面提出的问题？<br>为什么要分新生代和老年代？<br>综合使用算法，最优采用分代算法所以分为新生代和老年代两块区域。具体为什么1：2？应该是根据实践测试得出的结果，也可以调整。</p>
+</blockquote>
+</li>
+<li><p>回答第二个问题<a href="https://blog.csdn.net/antony9118/article/details/51425581" target="_blank" rel="external">为什么新生代内存需要有两个Survivor区</a>，这里讲的比较详细</p>
+</li>
+<li><p>什么时候触发GC？</p>
+<blockquote>
+<p>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。<br>GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。<br>GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。<br>GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。<br>###垃圾回收器<br>在GC机制中，起重要作用的是垃圾收集器，垃圾收集器是GC的具体实现，Java虚拟机规范中对于垃圾收集器没有任何规定，所以不同厂商实现的垃圾 收集器各不相同，HotSpot 1.6版使用的垃圾收集器如下图（图来源于《深入理解Java虚拟机：JVM高级特效与最佳实现》，图中两个收集器之间有连线，说明它们可以配合使用）<br><img src="https://upload-images.jianshu.io/upload_images/1534431-e50e3a7a84da379d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收器"></p>
+</blockquote>
+</li>
+<li><p>Serial收集器</p>
+</li>
+<li>ParNew收集器</li>
+<li>Parallel Scavenge收集器</li>
+<li>CMS收集器（应用非常广泛）</li>
+<li>G1收集器（面向服务端应用）<br>###参考文章</li>
+<li><a href="https://juejin.im/post/5909c7ef570c3500583bf433" target="_blank" rel="external">Android GC 那点事</a></li>
+<li><a href="http://jayfeng.com/2016/03/11/%E7%90%86%E8%A7%A3Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/?from=singlemessage&amp;isappinstalled=0" target="_blank" rel="external">理解Java垃圾回收机制</a></li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7517213" target="_blank" rel="external">Java类生命周期</a></li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7331354" target="_blank" rel="external">单例模式讨论篇：单例模式与垃圾回收</a></li>
+<li><a href="http://www.importnew.com/26383.html" target="_blank" rel="external">JVM 垃圾回收算法及回收器详解</a></li>
+<li><a href="https://blog.csdn.net/antony9118/article/details/51425581" target="_blank" rel="external">为什么新生代内存需要有两个Survivor区</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java - Java基础]]></title>
       <url>/2018/06/20/Java%E5%9F%BA%E7%A1%80/</url>
-      <content type="html"><![CDATA[<p>##Java基础<br><img src="https://upload-images.jianshu.io/upload_images/1534431-82e3766a45c98f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java"></p>
-<p>###<a href="http://www.importnew.com/6804.html" target="_blank" rel="external">“==”和equals区别</a><br>“==”是比较的内存地址，equals是Object的方法，默认是比较两个对象内存地址，具体看对象是否重写equals方法。</p>
+      <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1534431-82e3766a45c98f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java"></p>
+<p>###<a href="http://www.importnew.com/6804.html" target="_blank" rel="external">“==”和equals区别</a><br>  “==”是比较的内存地址，equals是Object的方法，默认是比较两个对象内存地址，具体看对象是否重写equals方法。</p>
 <p>###<a href="https://www.cnblogs.com/Qian123/p/5703507.html" target="_blank" rel="external">equals和hashCode</a><br>使用Hashset、Hashmap、Hashtable不允许添加重复元素，为了提高效率首先判断元素生成的hashcode()是否相同，如果生成的hashCode()不同在判断equls()方法。</p>
 <p>###String、StringBuffer与StringBuilder<br>||线程安全|序列化|默认长度|增长倍数|<br>|-|-|-|-|-|<br>|String|线程安全|支持序列化|0|-|<br>|StringBuffer|线程安全|支持序列化|16|2n+2|<br>|StringBuilder|线程不安全|支持序列化|16|2n+2|</p>
 <p>###List子类<br>| List | 实现 | 默认容器大小  | 容量扩充 | 线程是否安全 | 元素是否可以为null |是否支持序列化|优势|<br>| —– | —– | —– | —– | —– | —– | —– | —– |<br>| Vector | 数组实现 | 10  | 2倍 | 安全 | 可以 |否|已经基本不再使用|<br>| ArrayList | 数组实现 | 10  | 2倍 | 不安全 | 可以 |是|查找效率高，插入或删除元素效率低|<br>| LinkedList | 双向循环链表 | 0  | 不需要扩容 | 不安全 | 可以 |是|插入删除效率高，查找效率低|</p>
 <p>###Set子类</p>
-<p>###Map子类<br>| Map | 实现 | 默认容器大小  | 容量扩充 | 线程是否安全 | 元素是否可以为null |是否支持序列化|优势|<br>| —– | —– | —– | —– | —– | —– | —– | —– |<br>| <a href="https://github.com/francistao/LearningNotes/blob/master/Part2/JavaSE/HashMap源码剖析.md" target="_blank" rel="external">HashMap</a> | 哈希表实现的 | 16  | 2倍| 不安全 |key和value都允许为null，如果key为null，则直接从哈希表的第一个位置table[0]对应的链表上查找。记住，key为null的键值对永远都放在以table[0]为头结点的链表中，当然不一定是存放在头结点table[0]中, |支持|如果单链表中存在与目标key相等的键值对，则将新的value覆盖旧的value|<br>| LinkedHashMap | 哈希表实现的 | 16  | 2倍 | 安全 | 不可以 |支持||<br>| Hashtable | 哈希表实现的 | 16  | 2倍+1 | 安全 | key可以为null，value不允许为null |支持||</p>
-<ul>
-<li><a href="http://wiki.jikexueyuan.com/project/java-vm/storage.html" target="_blank" rel="external">Java内存</a><br><img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存区域"></li>
-<li>程序计数器</li>
-<li>Java 虚拟机栈</li>
-</ul>
-<ol>
-<li><p>局部变量表</p>
-<blockquote>
-<p>局部变量表是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型（它指向了一条字节码指令的地址）.</p>
-</blockquote>
-</li>
-<li><p>操作数栈</p>
-<blockquote>
-<p>操作数栈又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</p>
-</blockquote>
-</li>
-<li>动态连接<blockquote>
-<p>每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</p>
-</blockquote>
-</li>
-<li>方法返回地址<blockquote>
-<p>当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li>本地方法栈<br>该区域与虚拟机栈所发挥的作用非常相似，只是虚拟机栈为虚拟机执行 Java 方法服务，而本地方法栈则为使用到的本地操作系统（Native）方法服务。</li>
-<li>Java 堆<br>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。Java Heap 是垃圾收集器管理的主要区域，因此很多时候也被称为“GC堆”。</li>
-<li>方法区<br>方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</li>
-<li>直接内存<br>不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。<blockquote>
-<p>在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I/O 方式，可以使用Native函数库直接分配堆外内存，然后通过存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
-</blockquote>
-</li>
-<li>参考文章</li>
-<li><a href="http://blog.csdn.net/zhengzhb/article/details/7517213" target="_blank" rel="external">Java类生命周期</a></li>
-<li><a href="http://blog.csdn.net/zhengzhb/article/details/7331354" target="_blank" rel="external">单例模式讨论篇：单例模式与垃圾回收</a><br>###<a href="http://www.importnew.com/26383.html" target="_blank" rel="external">JVM 垃圾回收算法及回收器详解</a><br>垃圾回收算法</li>
-<li>标记清除</li>
-<li>复制算法</li>
-<li>标记整理</li>
-<li>增量算法</li>
-</ul>
-<p>垃圾回收器</p>
-<ul>
-<li>Serial收集器</li>
-<li>ParNew收集器</li>
-<li>Parallel Scavenge收集器</li>
-<li>CMS收集器（应用非常广泛）</li>
-<li>G1收集器（面向服务端应用）<br><a href="https://juejin.im/post/5909c7ef570c3500583bf433" target="_blank" rel="external">Android GC 那点事</a><br>###多线程</li>
-<li>线程</li>
-<li>Thread</li>
-<li>Runable</li>
-<li>callable</li>
-<li>锁</li>
-<li>synchronized  </li>
-<li>lock  </li>
-<li>semaphore</li>
-</ul>
+<p>###Map子类<br>| Map | 实现 | 默认容器大小  | 容量扩充 | 线程是否安全 | 元素是否可以为null |是否支持序列化|优势|<br>| —– | —– | —– | —– | —– | —– | —– | —– |<br>| <a href="https://github.com/francistao/LearningNotes/blob/master/Part2/JavaSE/HashMap源码剖析.md" target="_blank" rel="external">HashMap</a> | 哈希表实现的 | 16  | 2倍| 不安全 |key和value都允许为null，如果key为null，则直接从哈希表的第一个位置table[0]对应的链表上查找。记住，key为null的键值对永远都放在以table[0]为头结点的链表中，当然不一定是存放在头结点table[0]中, |支持|如果单链表中存在与目标key相等的键值对，则将新的value覆盖旧的value|<br>| LinkedHashMap | 哈希表实现的 | 16  | 2倍 | 不安全 | 不可以 |支持||<br>| Hashtable | 哈希表实现的 | 16  | 2倍+1 | 安全 | key可以为null，value不允许为null |支持||</p>
 <p>###int-char-long各占多少字节数</p>
 <table>
 <thead>
@@ -116,6 +223,37 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li><a href="https://yuweiguocn.github.io/java-annotation-processor/" target="_blank" rel="external">自定义Java注解处理器</a></li>
+<li><p><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">Java 23种设计模式</a></p>
+<ul>
+<li>单例模式</li>
+<li><p><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">工厂模式</a></p>
+<ol>
+<li><a href="http://www.cnblogs.com/lcw/p/3802790.html" target="_blank" rel="external">静态工厂模式</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">工厂方法模式</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/abstract-factory-pattern.html" target="_blank" rel="external">抽象工厂模式</a></li>
+<li>区别：<blockquote>
+<p>静态工厂模式:用静态方法获取指定产品<br>   工厂方法模式:定义工厂接口,一个方法,让不同的子类工厂生产指定产品<br>   抽象工厂模式:同工厂方法模式类似,只是工厂接口有多个方法</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>建造者模式</p>
+</li>
+<li>代理模式</li>
+<li>策略模式</li>
+<li>模板模式</li>
+<li>观察者模式</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><ul>
+<li><a href="http://blog.csdn.net/bjyfb/article/details/6682913" target="_blank" rel="external">HTTP,TCP,Socket关系</a><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4MzQxMzg5MA==&amp;mid=2649830415&amp;idx=2&amp;sn=760da2138f07c96ef25d451d745c4c72&amp;scene=0#wechat_redirect" target="_blank" rel="external">TCP和UDP区别？TCP几次握手，几次断开？</a></li>
+</ul>
+</li>
+</ul>
 ]]></content>
       
         <categories>

@@ -137,10 +137,10 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
                     </ul>
@@ -259,9 +259,303 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Activity的启动四种模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/06/Activity的启动四种模式/" class="article-date">
+      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">2016-03-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Activity的启动四种模式"><a href="#Activity的启动四种模式" class="headerlink" title="Activity的启动四种模式"></a>Activity的启动四种模式</h4><ul>
+<li>standard(默认)<ul>
+<li>每次使用startActivity方法启动Activity时<br>都会创建该Activity的新实例<ul>
+<li>Activity的多个实例可以位于同一个task中<br>也可以分布在不同的task里</li>
+<li>在当前task中使用startActivity方法启动Activity<br>也在当前task中创建和运行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>singleTop：栈顶复用模式<ul>
+<li>当设置为singleTop模式Activity，未处于栈顶时<br>其运行特点与标准模式下一致</li>
+<li>当其位于栈顶时，如果使用startActivity方法<br>再次启动该Activity，则不会创建该Activity的新实例<br>而是直接使用栈顶的实例响应启动操作.并且调用该实例<br>的onNewIntent方法，将本次启动的intent传入到实例中</li>
+</ul>
+</li>
+<li><p>singleTask：栈内复用模式</p>
+<ul>
+<li>设置singleTask的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
+<li>当使用startActivity方法启动设置为singleTask的Activity时<br>如果该Activity的实例尚不存在，则创建该实例<br>否则，不会重复创建实例，而是将已经存在的实例重新带回到栈顶<br>如果在该实例上存在其他实例，则销毁这些实例后，将该实例重新<br>带回栈顶<ul>
+<li>在创建该Activity的实例时，<br>如果当前任务的taskAffinity值与该Activity的taskAffinity值相同，<br>则在当前任务中创建实例，<br>否则，在一个新的任务中创建实例</li>
+<li>具有clearTop的效果，如果再次启动具有实例的singleTask的Acitivity会清除它上面的Activity出栈</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>singleInstance</p>
+<ul>
+<li>设置singleInstance的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
+<li>当使用startActivity方法启动该Activity的实例时<br>如果该Activity的实例尚不存在，则直接在新的任务<br>中创建该实例。<br>如果该实例已经存在，则直接显示该实例</li>
+<li>该Activity的实例，不与其他activity的实例共存于一个<br>任务中,所以通过该实例启动的其他Activity的实例，只能<br>被创建在其他的task里，如果已经存在于新创建的activity实例<br>taskAffinity值相同的task，则直接在该task中创建实例，否则<br>就在一个新的任务中创建实例</li>
+</ul>
+</li>
+<li><p>Acitivity启动模式优先级</p>
+<ul>
+<li>第一种</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">           android:name=<span class="string">".launchmode.SingleTopActivity"</span></div><div class="line">           android:<span class="keyword">label</span><span class="bash">=<span class="string">"@string/title_activity_single_top"</span></span></div><div class="line">           android:launchMode=<span class="string">"singleTop"</span></div><div class="line">           android:theme=<span class="string">"@style/AppTheme"</span> /&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>第二种</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Intent</span> <span class="keyword">intent</span>=new <span class="keyword">Intent</span>(this,SingleTopActivity.<span class="keyword">class</span>);</div><div class="line">              <span class="keyword">intent</span>.addFlags(<span class="keyword">Intent</span>.FLAG_ACTIVITY_SINGLE_TOP);</div><div class="line">              startActivity(<span class="keyword">intent</span>);</div></pre></td></tr></table></figure>
+<p>第二种优先第一种，如果同时存在则以第二种方式为准</p>
+</li>
+</ul>
+</li>
+<li><p>Activity的Flags(标记位)    </p>
+<ul>
+<li>FLAG_ACTIVITY_SINGLE_TOP:Activity的SingleTop    启动模式 </li>
+<li>FLAG_ACTIVITY_NEW_TASK:Activity的SingleTask    启动模式 </li>
+<li>FLAG_ACTIVITY_CLEAR_TOP:同一个任务栈中所有位于它上面的Activity都要出栈，一般和FLAG_ACTIVITY_NEW_TASK一起使用，如果被启动的activity为standard模式则先连同启动的acivity一起出栈，在创建新的acticity实例放入栈顶</li>
+<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:等同android:excludeFromRecents=”true”</li>
+</ul>
+</li>
+</ul>
+<h4 id="任务栈属性"><a href="#任务栈属性" class="headerlink" title="任务栈属性:"></a>任务栈属性:</h4><ul>
+<li>分类<ul>
+<li>前台任务栈：</li>
+<li>后台任务栈：Acitivity位于暂停状态，用户可以通过切换将后台任务栈再次调到前台</li>
+</ul>
+</li>
+<li><p>属性</p>
+<ul>
+<li>TaskAffinity:任务栈名字，Activity和application默认为应用包名</li>
+<li><p>allowTaskReparenting(与字面理解相同，本属性允许activity重新指定Task。默认值是false)</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;application</div><div class="line">      android:allowBackup=<span class="string">"true"</span></div><div class="line">      android:icon=<span class="string">"@mipmap/ic_launcher"</span></div><div class="line">      android:<span class="keyword">label</span><span class="bash">=<span class="string">"@string/app_name"</span></span></div><div class="line">      android:supportsRtl=<span class="string">"true"</span></div><div class="line">      android:taskAffinity=<span class="string">""</span></div><div class="line">      android:allowTaskReparenting=<span class="string">""</span></div><div class="line">      android:theme=<span class="string">"@style/AppTheme"</span>&gt;</div><div class="line">      &lt;activity android:name=<span class="string">".MainActivity"</span>&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> 		<span class="attr">android:name</span>=<span class="string">".defaultsearch.DefaultSearchSuggestionActivity"</span></span></div><div class="line">           <span class="attr">android:taskAffinity</span>=<span class="string">""</span></div><div class="line">           <span class="attr">android:allowTaskReparenting</span>=<span class="string">""</span>&gt;</div><div class="line">           <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">               <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.SEARCH"</span> /&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Activity的IntentFilter"><a href="#Activity的IntentFilter" class="headerlink" title="Activity的IntentFilter"></a>Activity的IntentFilter</h4></li>
+<li>activity可以多个intentFilter</li>
+<li>action:一个intentFilter可以多个action，多个action只要匹配一个action就算匹配action成功。</li>
+<li>category：一个intentFilter可以多个category</li>
+<li>data：一个intentFilter可以多个data</li>
+</ul>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">data</span> android:scheme=<span class="string">"string"</span></div><div class="line">          android:host=<span class="string">"string"</span></div><div class="line">          android:port=<span class="string">"string"</span></div><div class="line">          android:<span class="built_in">path</span>=<span class="string">"string"</span></div><div class="line">          android:pathPattern=<span class="string">"string"</span></div><div class="line">          android:pathPrefix=<span class="string">"string"</span></div><div class="line">          android:mimeType=<span class="string">"string"</span>/&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>mimeType:指媒体类型，如:image/jpeg,audio/mpeg4-generic和video/*</li>
+<li>URI:<scheme>://<host>:<post>/[<path></path>/<pathprefix>/<pathpattern>]</pathpattern></pathprefix></post></host></scheme></li>
+</ul>
+<ul>
+<li><a href="https://github.com/milin411/TestProject" target="_blank" rel="external">demo代码</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Moto-360-Sport初体验" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/04/Moto-360-Sport初体验/" class="article-date">
+      <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">2016-03-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>前奏<ul>
+<li>美版</li>
+<li>第一连接需要连接Android手机</li>
+<li>需要翻墙</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>Android  Wear</li>
+<li>WearADay</li>
+</ul>
+</li>
+<li>iPhone支持<ul>
+<li>无需越狱，连接应用WearADay<ul>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055266573.jpg" alt="如图1"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055336913.jpg" alt="如图2"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055318883.jpg" alt="如图3"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055318092.jpg" alt="如图4"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055331041.jpg" alt="如图5"></li>
+</ul>
+</li>
+<li>包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示<ul>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055428219.jpg" alt="如图1"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055481895.jpg" alt="如图2"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055447453.jpg" alt="如图3"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055512184.jpg" alt="如图4"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055547831.jpg" alt="如图5"></li>
+<li><img src="http://pic.5577.com/up/2015-5/2015050417055580691.jpg" alt="如图6"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Android支持<ul>
+<li>微信:表情回复，语音回复，文字回复</li>
+<li>QQ:未测</li>
+</ul>
+</li>
+<li>缺陷<ul>
+<li>分辨率不高</li>
+<li>目前测试没有好的输入法每次提示都是在连接手机输入但每次都是提示手机不在附近</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>开发者模式安装应用</p>
+<ol>
+<li>打开手机以及手表的开发者选项<ul>
+<li>手机端：设置-关于手机，找到“版本号”，对着它连续点击7下即可开启，开机后进入“设置”-“开发者选项”，勾选“USB调试</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863912.png" alt="手机开启develp"></li>
+<li>手表端：长按右侧按钮唤出设置界面-“About”，找到“Build number”，对着它连续点击7下即可开启，开启后进入设置-“Developer options”，按图所示开启“ADB debugging”和“Debug over Bluetooth”</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863360.png" alt="Moto开启develp"></li>
+</ul>
+</li>
+<li>打开Android Wear软件，勾选设置菜单里的“Debugging over Bluetooth”。<ul>
+<li>你可以发现“Host”是disconnected未连接状态，这是代表手表端;“Target”是手机端，connected已连接状态;怎么让手表端的显示已连接呢?请继续往下看</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863594.png" alt="Android Wear打开蓝牙调试"> </li>
+</ul>
+</li>
+<li><p>把手机连接上电脑，在adb工具的文件夹里调出命令行，依次输入以下命令</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb forward <span class="string">tcp:</span><span class="number">4444</span> <span class="string">localabstract:</span>/adb-hub</div><div class="line">　　adb connect <span class="string">localhost:</span><span class="number">4444</span></div></pre></td></tr></table></figure>
+<p>分两次输入(电脑需支持adb命令，如果不支持请百度<a href="http://blog.sina.com.cn/s/blog_6268f10201016s64.html" target="_blank" rel="external">Mac配置adb</a>，<a href="http://blog.csdn.net/huangbiao86/article/details/6664779" target="_blank" rel="external">Window配置adb</a>两个链接是未测试)</p>
+</li>
+</ol>
+<ul>
+<li>输完以上两条命令后，留意手机，会弹出允许USB调试的窗口，勾选总是允许，点击OK即可，这时你就发现代表手表端的“Host”就变成connected已连接状态了，嗯，这就代表可以再电脑执行adb命令来控制手表了</li>
+<li><img src="http://image.anruan.com/imglist/20141021/20141021863363.png" alt="提示是否调试"></li>
+</ul>
+<ol>
+<li><p>相关命令</p>
+<ul>
+<li>adb devices (显示已连接的设备，如图所示，会显示出2个设备名，分别对应手机和手表)</li>
+<li><p><img src="http://image.anruan.com/imglist/20141021/20141021863452.png" alt="如图"></p>
+</li>
+<li><p>adb -s 手机ID号 install xxx.apk(给手机安装软件，要注意加上手机ID号，比如我的就是 adb -s TA26901ZLK install xxx.apk )</p>
+</li>
+<li>adb -s localhost:4444 install xxx.apk(给手表安装软件，MOTO 360的软件apk可以通过Android Wear软件专题下载，这里是通过手机的蓝牙给手表安装的，所以传输速度稍慢，要耐心等待，安装成功后会有提示)</li>
+<li>adb -s localhost:4444 unistall xxx(卸载手表端的某个软件，比如adb -s localhost:4444unistall com.whirlscape.minuum)</li>
+<li><p>查看Moto 360所有app的packages</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s localhos<span class="variable">t:4444</span> <span class="keyword">shell</span> pm <span class="keyword">list</span> packages</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载指定包名的app</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s localhost:4444 <span class="keyword">uninstall</span> [-k] &lt;<span class="keyword">insert</span> <span class="keyword">package</span> <span class="keyword">name</span> here&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>参考文章<ul>
+<li><a href="http://m.anruan.com/view_5488.html" target="_blank" rel="external">链接1</a></li>
+<li><a href="https://www.reddit.com/r/moto360/comments/3bkd5r/remove_wear_apps_without_uninstalling_app_from/" target="_blank" rel="external">链接2</a> </li>
+<li><a href="http://www.5577.com/wear/58563.html" target="_blank" rel="external">链接3</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Andoid最近搜索记录" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1597,511 +1891,9 @@ func onButtonTap() {
 
 
   
-    <article id="post-装逼指南二期" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/04/装逼指南二期/" class="article-date">
-      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">2015-11-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="Android-单元测试-吴明"><a href="#Android-单元测试-吴明" class="headerlink" title="Android 单元测试  吴明"></a>Android 单元测试  吴明</h2><ul>
-<li><a href="https://developer.android.com/intl/zh-cn/training/activity-testing/preparing-activity-testing.html" target="_blank" rel="external">Android单元测试支持</a><ul>
-<li>Android studio 1.2 beta3版本，原生支持单元测试</li>
-</ul>
-</li>
-<li>环境搭建 <ul>
-<li>配置环境命令：./gradlew build connectedCheck  </li>
-</ul>
-</li>
-<li>测试示例    <ul>
-<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyFirstTestActivityTest</span> <span class="keyword">extends</span> <span class="title">ActivityInstrumentationTestCase2&lt;MyFirstTestActivity&gt;</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">MyFirstTestActivity</span> mFirstTestActivity;</div><div class="line">    <span class="keyword">private</span> <span class="type">TextView</span> mFirstTestText;</div><div class="line"></div><div class="line">    public <span class="type">MyFirstTestActivityTest</span>() &#123;</div><div class="line">        <span class="keyword">super</span>(<span class="type">MyFirstTestActivity</span>.<span class="keyword">class</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void setUp() <span class="keyword">throws</span> <span class="type">Exception</span> &#123;</div><div class="line">        <span class="keyword">super</span>.setUp();</div><div class="line">        mFirstTestActivity = getActivity();</div><div class="line">        mFirstTestText =</div><div class="line">                (<span class="type">TextView</span>) mFirstTestActivity</div><div class="line">                .findViewById(<span class="type">R</span>.id.my_first_test_text_view);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>ps:由于配置环境一直报:</li>
-</ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Test </span>running failed: Instrumentation run failed due to 'java.lang.RuntimeException'</div></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://developer.android.com/intl/zh-cn/training/testing/ui-testing/index.html" target="_blank" rel="external">Automating UI Tests</a></li>
-<li><a href="https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html" target="_blank" rel="external">Building Effective Unit Tests</a></li>
-<li><a href="https://developer.android.com/intl/zh-cn/training/testing/performance.html" target="_blank" rel="external">Testing Display  Performance</a></li>
-<li>问题：<ul>
-<li>运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
-<li>测试的编写和维护较为困难</li>
-</ul>
-</li>
-</ul>
-<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 /home/img_temp 目录，处理权限问题后搞定</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>user, group, others</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[dev1@apps-51offer ~]$ ll</div><div class="line">total 16</div><div class="line">-rw-r--r--<span class="number"> 1 </span>dev1 dev  <span class="number"> 742 </span>Nov <span class="number"> 5 </span>11:22 ming.pub</div><div class="line">drwxrwx---<span class="number"> 4 </span>root root<span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test1</div><div class="line">drwxr-xr--<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>10:44 test2</div><div class="line">drwxr-xr-x<span class="number"> 2 </span>dev1 dev <span class="number"> 4096 </span>Nov <span class="number"> 6 </span>09:30 test3</div></pre></td></tr></table></figure>
-<ul>
-<li>文件 <code>-</code></li>
-<li>文件夹 <code>d</code></li>
-<li>链接 <code>l</code></li>
-</ul>
-<p>rwx 读、写、执行权限 , 754 代表什么</p>
-<ul>
-<li>文件所有者变更：<code>chown ming:mobile file</code></li>
-<li>文件权限变更： <code>chmod g+rx file</code></li>
-</ul>
-<h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><blockquote>
-<p><code>drwxr-xr-- 2 dev1 dev  4096 Nov  6 10:44 test2</code> 文件夹下有 <code>-rwxr-xr-- 2 root root  4096 Nov  6 10:44 file</code><br>dev1 用户可以删除 file 这个文件吗？</p>
-</blockquote>
-<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><blockquote>
-<p>可以，文件的 rwx 控制文件本身的读写运行权限，文件的增删文件名的修改要看文件夹的权限。</p>
-</blockquote>
-<p>##Android 压力测试工具 Monkey&amp;MonkeyRunner- 杨俊构</p>
-<p>###Monkey</p>
-<h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a>一、Monkey 是什么？</h4><ul>
-<li>Monkey 就是SDK中附带的一个工具。</li>
-</ul>
-<h4 id="二、Monkey-测试的目的？"><a href="#二、Monkey-测试的目的？" class="headerlink" title="二、Monkey 测试的目的？"></a>二、Monkey 测试的目的？</h4><ul>
-<li>该工具用于进行压力测试。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</li>
-</ul>
-<h4 id="三、Monkey-测试的特点？"><a href="#三、Monkey-测试的特点？" class="headerlink" title="三、Monkey 测试的特点？"></a>三、Monkey 测试的特点？</h4><ul>
-<li>Monkey 测试,所有的事件都是随机产生的，不带任何人的主观性。</li>
-</ul>
-<h4 id="四、Monkey-命令详解"><a href="#四、Monkey-命令详解" class="headerlink" title="四、Monkey 命令详解"></a>四、Monkey 命令详解</h4><ul>
-<li><p>标准的monkey 命令: [adb shell] monkey [options] <eventcount> ,</eventcount></p>
-<blockquote>
-<p> 例如：adb shell monkey -v 500 ——–产生500次随机事件，</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>四大类—— 常用选项 、 事件选项 、 约束选项 、 调试选项</p>
-<blockquote>
-<p>-v：指定打印信息的详细级别，一个 -v增加一个级别 ， 默认级别为 0 。</p>
-<p>-s：指定产生随机事件种子值，相同的种子值产生相同的事件序列。如： -s 200</p>
-<p>-p：指定有效的package（如不指定，则对系统中所有package有效），一个-p 对应一个有效package， 如：-p com.ckt -p com.ckt.asura；</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="五、一个简单的monkey命令："><a href="#五、一个简单的monkey命令：" class="headerlink" title="五、一个简单的monkey命令："></a>五、一个简单的monkey命令：</h4><ul>
-<li><p>adb shell monkey -p com.xy.android.junit -s 500 -v 10000</p>
-</li>
-<li><p>但是，工作中为了保证测试数量的完整进行，我们一般不会在发生错误时立刻退出压力测试。</p>
-</li>
-<li><p>monkey 测试命令如下</p>
-</li>
-</ul>
-<blockquote>
-<p>adb shell monkey -p com.xy.android.junit -s 500 –ignore-crashes –ignore-timeouts –monitor-native-crashes -v -v 10000 &gt; E:\monkey_log\java_monkey_log.txt</p>
-</blockquote>
-<p>###MonkeyRunner</p>
-<p>####一、什么是monkeyrunner</p>
-<ul>
-<li><p>monkeyrunner工具提供了一个API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片。</p>
-</li>
-<li><p>monkeyrunner工具的主要设计目的是用于测试功能/框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
-</li>
-</ul>
-<h4 id="二、monkeyrunner工具同Monkey工具的差别"><a href="#二、monkeyrunner工具同Monkey工具的差别" class="headerlink" title="二、monkeyrunner工具同Monkey工具的差别"></a>二、monkeyrunner工具同Monkey工具的差别</h4><ul>
-<li><p>Monkey： Monkey工具直接运行在设备或模拟器的adb shell中，生成用户或系统的伪随机事件流，属于黑盒测试。</p>
-</li>
-<li><p>monkeyrunner：monkeyrunner工具则是类似于灰盒测试的样子，可以编写定制一些测试方法和用例针对具体情况测试。</p>
-</li>
-</ul>
-<h4 id="三、实例-：双11抽取优惠券不停点击一个按钮脚本"><a href="#三、实例-：双11抽取优惠券不停点击一个按钮脚本" class="headerlink" title="三、实例 ：双11抽取优惠券不停点击一个按钮脚本"></a>三、实例 ：双11抽取优惠券不停点击一个按钮脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8 </span></div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner, MonkeyDevice, MonkeyImage</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyRunner <span class="keyword">as</span> mr</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyDevice <span class="keyword">as</span> md</div><div class="line"><span class="keyword">from</span> com.android.monkeyrunner <span class="keyword">import</span> MonkeyImage <span class="keyword">as</span> mi</div><div class="line">device=mr.waitForConnection()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </div><div class="line">	MonkeyRunner.sleep(<span class="number">1</span>)</div><div class="line">	<span class="keyword">print</span> i</div><div class="line">	device.touch(<span class="number">500</span>,<span class="number">950</span>,<span class="string">'DOWN_AND_UP'</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"end"</span></div></pre></td></tr></table></figure>
-<p>##人脸识别技术简单介绍- 王进</p>
-<h4 id="Android自带的API-FaceDetector"><a href="#Android自带的API-FaceDetector" class="headerlink" title="Android自带的API:FaceDetector"></a>Android自带的API:FaceDetector</h4><ul>
-<li><p>Step 1: 读取bitmap图片（API 只接受Bitmap）</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Bitmap </span>sampleBmp=<span class="keyword">BitmapFactory.decodeResource(getResources(), </span>R.drawable.sample1)<span class="comment">;</span></div></pre></td></tr></table></figure>
-<p>(拍照或者从相册中也可以)</p>
-</li>
-<li><p>Step 2: 通过FaceDetector API进行人脸识别</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//FaceDetecor只能读取RGB 565格式的Bitmap</span></div><div class="line">  Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, <span class="literal">true</span>);</div><div class="line">  <span class="comment">//新建FaceDetector 实例，</span></div><div class="line">  FaceDetector faceDet = <span class="keyword">new</span> <span class="type">FaceDetector</span>(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);<span class="comment">//MAX_FACES 搜索人脸个数</span></div><div class="line">  <span class="comment">// 调用findFaces方法，将数据储存在facelist中</span></div><div class="line">  FaceDetector.Face[] faceList = <span class="keyword">new</span> <span class="type">FaceDetector</span>.Face[MAX_FACES];</div><div class="line">faceDet.findFaces(tmpBmp, faceList);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>找人脸的原理是：找眼睛。<br>它返回的人脸数据face中，<br>通过调用public float eyesDistance ()，得到眼距<br>public void getMidPoint (PointF point)，得到两眼中心点位置。<br>public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
-</blockquote>
-</li>
-<li><p>Step3:对原图进行缩放，并在图上显示人脸框</p>
-<ul>
-<li>吐槽：<br>A，只能接受Bitmap 格式的数据；<br>B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br>C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</li>
-</ul>
-</li>
-</ul>
-<p>###第三方Face++</p>
-<ul>
-<li>在线API：基础版API供免费调用测试和小规模使用（会尽力维护API服务稳定性，但不保证每次调用均会成功），企业版API相对基础版API在算法和稳定性方面会有更好的表现</li>
-<li>离线SDK包括人脸关键点定位等功能。</li>
-<li>网址：<a href="http://www.faceplusplus.com.cn/" target="_blank" rel="external">http://www.faceplusplus.com.cn/</a></li>
-</ul>
-<h2 id="Android启动模式之singelTask扫盲－-李仙鹏"><a href="#Android启动模式之singelTask扫盲－-李仙鹏" class="headerlink" title="Android启动模式之singelTask扫盲－ 李仙鹏"></a>Android启动模式之singelTask扫盲－ 李仙鹏</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-程序员装逼指南" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/30/程序员装逼指南/" class="article-date">
-      <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">2015-10-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="『图像和滤镜』"><a href="#『图像和滤镜』" class="headerlink" title="『图像和滤镜』"></a>『图像和滤镜』</h2><p>@(Share)[UIImage]</p>
-<p>[toc]</p>
-<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><h4 id="常见的图像格式"><a href="#常见的图像格式" class="headerlink" title="常见的图像格式"></a>常见的图像格式</h4><ul>
-<li>png（Portable Network Graphic）便携式网络图形格式</li>
-<li>tiff、tif（Tagged Image File Format）标记图像文件格式</li>
-<li>jpg、jpeg（Joint Photographic Experts Group）联合摄影专家组</li>
-<li>gif（Graphic Interchange Format）图形交换格式</li>
-</ul>
-<h4 id="图像实例化"><a href="#图像实例化" class="headerlink" title="图像实例化"></a>图像实例化</h4><ul>
-<li><p>imageNamed:</p>
-<blockquote>
-<p>使用频率高，内存缓存优化</p>
-</blockquote>
-</li>
-<li><p>imageWithContentsOfFile:</p>
-<blockquote>
-<p>单次使用，暂时不清楚如何支持ImageAssert下的图片路径</p>
-</blockquote>
-</li>
-<li><p>imageWithData:</p>
-<blockquote>
-<p>本地或网络的文件数据加载</p>
-</blockquote>
-</li>
-<li><p>imageWithCGImage:</p>
-<blockquote>
-<p>绘制生成图，代码如下</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 旧图局部裁剪</span></div><div class="line">   <span class="built_in">CGImageRef</span> myImageRef = [oldImage <span class="built_in">CGImageRef</span>];</div><div class="line">   <span class="built_in">CGRect</span> subRect = <span class="built_in">CGRectMake</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">   <span class="built_in">CGImageRef</span> cgCrop = <span class="built_in">CGImageCreateWithImageInRect</span>(myImageRef, subRect);</div><div class="line">   <span class="built_in">UIImage</span> *imageCrop = [<span class="built_in">UIImage</span> imageWithCGImage:cgCrop];</div></pre></td></tr></table></figure>
-<h4 id="显示图像"><a href="#显示图像" class="headerlink" title="显示图像"></a>显示图像</h4><blockquote>
-<p>屏幕的缩放因子，导致我们需要@2x及@3x图，对视图截图操作也同样需要针对Retina及plus优化<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIImage</span>*)screenShotBy:(<span class="built_in">UIImageView</span>*)imagView</div><div class="line">&#123;</div><div class="line"><span class="comment">//  UIGraphicsBeginImageContext(imagView.bounds.size);</span></div><div class="line"><span class="comment">// 2表示Retina，3表示plus分辨率，1正常，0则是当前设备的缩放因子</span></div><div class="line"><span class="comment">// YES 表示不包含图像的alpha通道</span></div><div class="line">	<span class="built_in">UIGraphicsBeginImageContextWithOptions</span>((imagView.bounds.size), <span class="literal">YES</span>, <span class="number">2</span>);</div><div class="line">	[imagView.layer renderInContext:<span class="built_in">UIGraphicsGetCurrentContext</span>()];</div><div class="line">	<span class="built_in">UIImage</span>*image = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">	<span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">	<span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h5 id="contentModel"><a href="#contentModel" class="headerlink" title="contentModel"></a>contentModel</h5><p><em>图像内容展现方式</em></p>
-<ul>
-<li>UIViewContentModelScaleToFill（默认）</li>
-<li>UIViewContentModelScaleAspectFill（下拉放大）</li>
-<li>UIViewContentModelScaleAspectFit</li>
-<li>UIViewContentModelCenter （一些停靠模式）</li>
-<li>UIViewContentModelTop/Bottom</li>
-<li>UIViewContentModelLeft/Right</li>
-</ul>
-<h5 id="拉伸属性"><a href="#拉伸属性" class="headerlink" title="拉伸属性"></a>拉伸属性</h5><p><code>代码</code><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line">image=[oldIconImage <span class="string">stretchableImageWithLeftCapWidth:</span><span class="number">10</span> <span class="string">topCapHeight:</span><span class="number">12</span>];</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line">image = [oldIconImage <span class="string">resizableImageWithCapInsets:</span>UIEdgeInsetsMake(<span class="number">17</span>, <span class="number">17</span>, <span class="number">17</span>, <span class="number">25</span>)];</div></pre></td></tr></table></figure></p>
-<p><code>ImageAssert</code></p>
-<p><img src="./1446137205500.png" alt="Alt text"><br>使用slicing，小变大无视差<br><img src="./1446137161636.png" alt="Alt text"></p>
-<hr>
-<h3 id="图像选择器"><a href="#图像选择器" class="headerlink" title="图像选择器"></a>图像选择器</h3><h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><hr>
-<h3 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h3><h3 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h3><h2 id="聊聊-QCon2015-曾铭"><a href="#聊聊-QCon2015-曾铭" class="headerlink" title="聊聊 QCon2015 - 曾铭"></a>聊聊 QCon2015 - 曾铭</h2><h3 id="pure-native-移动跨平台架构设计与实战"><a href="#pure-native-移动跨平台架构设计与实战" class="headerlink" title="pure-native 移动跨平台架构设计与实战"></a>pure-native 移动跨平台架构设计与实战</h3><p>by 赵世婚</p>
-<h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
-<li>重复逻辑：网络层、账户逻辑</li>
-<li>性能（网络压缩、打破内存限制）</li>
-<li>多一层封装应对业务变动</li>
-</ul>
-<h4 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h4><ul>
-<li>跨平台开发代码生成</li>
-<li>调试：异常捕获</li>
-</ul>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
-<li>学不来：人员构成决定技术选型，技术选型决定依赖人员 {:&amp;.rollIn}</li>
-<li>分层来应对业务变动（横向分层和纵向分层）</li>
-</ul>
-<h3 id="JavaScript-The-World’s-Best-Programming-Language"><a href="#JavaScript-The-World’s-Best-Programming-Language" class="headerlink" title="JavaScript - The World’s Best Programming Language"></a>JavaScript - The World’s Best Programming Language</h3><p>by Hax</p>
-<h4 id="JavaScript-最好-？"><a href="#JavaScript-最好-？" class="headerlink" title="JavaScript 最好 ？"></a>JavaScript 最好 ？</h4><ul>
-<li>语言简陋：弱类型、标准库、面向对象、模块、异步 {:&amp;.rollIn}</li>
-<li>编程时注意：好的范式、不好的范式</li>
-</ul>
-<h4 id="不过"><a href="#不过" class="headerlink" title="不过"></a>不过</h4><ul>
-<li>npm 飞速发展的 packages 数量 {:&amp;.rollIn}</li>
-<li>ECMAScript 6，语言特性问题完美解决 (c)</li>
-<li>Babel 6to5 (python)<ul>
-<li>most hard to upgrade -&gt; always use latest feature!</li>
-</ul>
-</li>
-<li>最快的动态语言，还会更快 (ruby)</li>
-<li>JS as a Platform：中间语言 (c#, java）</li>
-<li>生态系统：浏览器、node.js、公司、社区</li>
-</ul>
-<h4 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h4><ul>
-<li>js 是现阶段发展最快的语言 {:&amp;.rollIn}</li>
-<li>前端前途无量！</li>
-</ul>
-<h3 id="react"><a href="#react" class="headerlink" title="react"></a>react</h3><h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><ul>
-<li>DOM 操作</li>
-<li>组件散乱，社区力量难以聚合</li>
-</ul>
-<h4 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h4><ul>
-<li>绑定 数据与数据、数据与视图之间的关系</li>
-<li>npm</li>
-</ul>
-<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ul>
-<li>用 js 写界面……（似乎是一种倒退）</li>
-<li>还整个 JSX 让界面好写一点</li>
-<li>React Native</li>
-</ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>前端风起云涌 {:&amp;.rollIn}</li>
-<li>小扎灭我客户端之心不死</li>
-</ul>
-<h3 id="总的总结"><a href="#总的总结" class="headerlink" title="总的总结"></a>总的总结</h3><ul>
-<li>拥抱变化</li>
-<li>最差也可以变最好，关键要敢于拥抱变化</li>
-<li>技术紧迫感：勇于尝试新东西</li>
-<li>业务紧迫感：技术改变留学</li>
-</ul>
-<h3 id="推荐："><a href="#推荐：" class="headerlink" title="推荐："></a>推荐：</h3><ul>
-<li>JavaScript - The World’s Best Programming Language</li>
-<li>pure-native移动跨平台架构设计与实战</li>
-<li>注重实效的性能</li>
-<li>ReactJS 实战</li>
-<li>ELE.ME是如何运行的</li>
-</ul>
-<h2 id="Android-6-0运行权限-王胜"><a href="#Android-6-0运行权限-王胜" class="headerlink" title="Android 6.0运行权限 - 王胜"></a>Android 6.0运行权限 - 王胜</h2><h3 id="一般权限和危险权限"><a href="#一般权限和危险权限" class="headerlink" title="一般权限和危险权限"></a>一般权限和危险权限</h3><p>Android 6.0以前，所有的权限在应用安装或者更新时自动完成授权。如果用户想安装这个App，必需接受所有的权限申请。为了保护用户的隐私，Android M特意调整了Android的授权架构。将应用权限分为一般(Normal)和危险(Dangerous)两种级别的权限:</p>
-<ul>
-<li><p>一般权限不会直接危害用户的隐私。如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。</p>
-</li>
-<li><p>危险权限可以访问用户的隐私数据。 如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。如果列出危险权限，需要通过用户显示交互通过你的应用权限申请。</p>
-</li>
-</ul>
-<h3 id="权限组"><a href="#权限组" class="headerlink" title="权限组"></a>权限组</h3><p>Anroid系统里所有的危险权限都拥有所归属的权限组。如果设备运行在Android6.0(API level 23)，并且App的targetSdkVersion是23或者更高，当App请求危险权限时将会有以下表现：</p>
-<ul>
-<li><p>如果App请求manifest里声明的危险权限，并且App当前还没有获取任何权限组里的权限，系统将弹出一个描述App想要访问权限的对话框。但是对话框不会描述该权限属于哪个权限组。例如：App请求权限 <strong>READ_CONTACTS</strong>  ，系统对话框只显示App需要访问设备的联系人。如果用户授权通过，系统仅仅给App需要的权限。</p>
-</li>
-<li><p>如果App请求manifest里声明的危险权限，并且App已经用户该危险权限所在的权限组的权限，系统则直接授予此次请求的权限，而不需要用户手动交互。例如：如果App已经有先前的 <strong>READ_CONTACTS</strong> 权限，那么再请求 <strong>WRITE_CONTACTS</strong> 权限，系统则直接授予。</p>
-</li>
-</ul>
-<blockquote>
-<p>任何权限都有所归属的权限组，包括一般权限和App自定义的权限。然而，权限组只影响那些危险权限相关的用户体验。你可以忽略一般权限的权限组。</p>
-</blockquote>
-<p><strong>危险权限和权限组</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">权限组</th>
-<th style="text-align:center">权限</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">CALENDAR</td>
-<td style="text-align:center"><ul><li>READ_CALENDAR</li><li>WRITE_CALENDAR</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">CAMERA</td>
-<td style="text-align:center"><ul><li>CAMERA</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">CONTACTS</td>
-<td style="text-align:center"><ul><li>READ_CONTACTS</li><li> WRITE_CONTACTS</li><li>GET_ACCOUNTS</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">LOCATION</td>
-<td style="text-align:center"><ul><li>ACCESS_FINE_LOCATION</li><li> ACCESS_COARSE_LOCATION</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">MICROPHONE</td>
-<td style="text-align:center"><ul><li>RECORD_AUDIO</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">PHONE</td>
-<td style="text-align:center"><ul><li>READ_PHONE_STATE</li><li>CALL_PHONE</li><li>READ_CALL_LOG</li><li>WRITE_CALL_LOG</li><li> ADD_VOICEMAIL</li><li>USE_SIP</li><li> PROCESS_OUTGOING_CALLS</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">SENSORS</td>
-<td style="text-align:center"><ul><li>BODY_SENSORS</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">SMS</td>
-<td style="text-align:center"><ul><li>SEND_SMS</li><li>RECEIVE_SMS</li><li> READ_SMS</li><li>RECEIVE_WAP_PUSH</li><li>RECEIVE_MMS</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:center">STORAGE</td>
-<td style="text-align:center"><ul><li>READ_EXTERNAL_STORAGE</li><li> WRITE_EXTERNAL_STORAGE</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="权限检测"><a href="#权限检测" class="headerlink" title="权限检测"></a>权限检测</h3><p>Android的所有版本里，都需要将所需的一般权限和危险权限都声明在App的manifest里。然而这些声明在不同的系统版本和App的target SDK Level会有不同的影响:</p>
-<ul>
-<li><p>如果设备运行在Android 5.1或者更低，或者你的App target SDK是22或者更低：如果你在manifest里声明了危险权限，用户则不得不在安装App时给予授权；如果他们不授权，系统将不会安装此App。</p>
-</li>
-<li><p>如果设备运行在Android 6.0或者更高，或者你的App target SDK是23或者更高：App不仅需要在manifest里声明危险权限，而且App在运行时还需要在每次需要危险权限时发起请求。用户可以接受也可以拒绝权限申请，App也需要在用户拒绝危险权限申请时能长长运行。</p>
-</li>
-</ul>
-<blockquote>
-<p>注意：此处的权限处理只有App的target API level 23或者更高，而且运行在Android 6.0 (API level 23)或者更高的设备上才会如此。如果设备的中App的targetSdkVersion 是 22或者更低，系统则在安装或者更新App时自动授予危险权限。</p>
-</blockquote>
-<p><a href="http://developer.android.com/tools/support-library/index.html" target="_blank" rel="external">The Android Support Library</a>能很好地处理检测、请求和权限。Android 6.0 (API level 23) framework也提供了类似的方法。然而，使用support库能更简单一些，因为你不需要在调用方法之前检测android系统的版本。 </p>
-<h3 id="发起权限申请请求"><a href="#发起权限申请请求" class="headerlink" title="发起权限申请请求"></a>发起权限申请请求</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Here, this Activity is the current activity</span></div><div class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity,</div><div class="line">                Manifest.permission.READ_CONTACTS)</div><div class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Should we show an explanation?</span></div><div class="line">    <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</div><div class="line">            Manifest.permission.READ_CONTACTS)) &#123;</div><div class="line"></div><div class="line">        <span class="comment">// Show an expanation to the user *asynchronously* -- don't block</span></div><div class="line">        <span class="comment">// this thread waiting for the user's response! After the user</span></div><div class="line">        <span class="comment">// sees the explanation, try again to request the permission.</span></div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        <span class="comment">// No explanation needed, we can request the permission.</span></div><div class="line"></div><div class="line">        ActivityCompat.requestPermissions(thisActivity,</div><div class="line">                <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</div><div class="line">                MY_PERMISSIONS_REQUEST_READ_CONTACTS);</div><div class="line"></div><div class="line">        <span class="comment">// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an</span></div><div class="line">        <span class="comment">// app-defined int constant. The callback method gets the</span></div><div class="line">        <span class="comment">// result of the request.</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="处理权限请求结果"><a href="#处理权限请求结果" class="headerlink" title="处理权限请求结果"></a>处理权限请求结果</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></div><div class="line">        String permissions[], <span class="keyword">int</span>[] grantResults) &#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</div><div class="line">            <span class="comment">// If request is cancelled, the result arrays are empty.</span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></div><div class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">                <span class="comment">// permission was granted, yay! Do the</span></div><div class="line">                <span class="comment">// contacts-related task you need to do.</span></div><div class="line"></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">                <span class="comment">// permission denied, boo! Disable the</span></div><div class="line">                <span class="comment">// functionality that depends on this permission.</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// other 'case' lines to check for other</span></div><div class="line">        <span class="comment">// permissions this app might request</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：每次需要权限时，都需要显示请求调用，即使你已经获得的同权限组的其他权限。另外，权限分组处理的机制在将来的Android发型版本中有可能更改。因此你的App不应该依赖所需的权限在或者不在同一个权限组里。</p>
-</blockquote>
-<p>参考：</p>
-<ul>
-<li><a href="http://developer.android.com/training/permissions/requesting.html" target="_blank" rel="external">Requesting Permissions at Run Time</a></li>
-<li><a href="http://developer.android.com/training/permissions/best-practices.html" target="_blank" rel="external">Permissions Best Practices</a></li>
-</ul>
-<p>##Swift Access Control - 潘君<br>(未完待续)</p>
-<ul>
-<li><p>三个级别</p>
-<ul>
-<li>Public</li>
-<li>Internal</li>
-<li><p>Private</p>
-<p>大部分默认是internal</p>
-</li>
-</ul>
-</li>
-<li><p>可应用于</p>
-<ul>
-<li>Module<ul>
-<li>application</li>
-<li>framework</li>
-</ul>
-</li>
-<li>source file<ul>
-<li>properties</li>
-<li>types</li>
-<li>functions</li>
-<li>and so on（苹果文档这个太二了）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>准则</p>
-<ul>
-<li>public变量不能定义为internal或者private的类型</li>
-<li>函数的访问权限不能高于参数和返回值</li>
-</ul>
-</li>
-<li><p>应用场景</p>
-<ul>
-<li>Single-Target Apps    Internal</li>
-<li>Frameworks  Public</li>
-<li>Unit Test Targets      @testable<img src="./1446175520419.png" alt="Alt text"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>会级联影响 例如修饰了type 同时也会影响type的members</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SomePublicClass</span> </span>&#123;          <span class="comment">// explicitly public class</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> somePublicProperty = <span class="number">0</span>    <span class="comment">// explicitly public class member</span></div><div class="line">    <span class="keyword">var</span> someInternalProperty = <span class="number">0</span>         <span class="comment">// implicitly internal class member</span></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;  <span class="comment">// explicitly private class member</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeInternalClass</span> </span>&#123;               <span class="comment">// implicitly internal class</span></div><div class="line">    <span class="keyword">var</span> someInternalProperty = <span class="number">0</span>         <span class="comment">// implicitly internal class member</span></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;  <span class="comment">// explicitly private class member</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SomePrivateClass</span> </span>&#123;        <span class="comment">// explicitly private class</span></div><div class="line">    <span class="keyword">var</span> somePrivateProperty = <span class="number">0</span>          <span class="comment">// implicitly private class member</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">somePrivateMethod</span><span class="params">()</span></span> &#123;&#125;          <span class="comment">// implicitly private class member</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Function</p>
-</li>
-<li><p>Tuple</p>
-<ul>
-<li>取元素中访问level最小的为准</li>
-<li>例如 （PrivateClass, InternalClass） 则取private</li>
-</ul>
-</li>
-<li><p>Enumeration </p>
-<ul>
-<li>一样</li>
-</ul>
-</li>
-<li><p>class</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span> &#123;&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span>: <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">internal</span> <span class="function"><span class="keyword">func</span> <span class="title">someMethod</span><span class="params">()</span></span> &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -2113,14 +1905,14 @@ func onButtonTap() {
                 2016-2018 Wilson
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -2129,7 +1921,7 @@ func onButtonTap() {
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -2162,9 +1954,9 @@ func onButtonTap() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window

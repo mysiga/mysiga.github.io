@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Wilson" />
+
+
+
+<meta name="description" content="本文章你能知道的内容：  Java内存模型 Java堆 对象什么时候回收 垃圾回收算法 垃圾回收器###Java内存模型要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图  程序计数器  Java 虚拟机栈   局部变量表：是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我所知道的-Java垃圾回收机制">
+<meta property="og:url" content="mysiga.cn/2018/07/12/Java垃圾回收机制/index.html">
+<meta property="og:site_name" content="Wilson">
+<meta property="og:description" content="本文章你能知道的内容：  Java内存模型 Java堆 对象什么时候回收 垃圾回收算法 垃圾回收器###Java内存模型要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图  程序计数器  Java 虚拟机栈   局部变量表：是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 re">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-a4831eb7feafd902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-062a3348d8286a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-982627fe64dfa349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-a9dda2d42cd749cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-43bc311c23427d67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-9bf508a2e534d864.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-4b6066a7e03fb403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-df6da09763c72d95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1534431-e50e3a7a84da379d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-07-16T11:05:17.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我所知道的-Java垃圾回收机制">
+<meta name="twitter:description" content="本文章你能知道的内容：  Java内存模型 Java堆 对象什么时候回收 垃圾回收算法 垃圾回收器###Java内存模型要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图  程序计数器  Java 虚拟机栈   局部变量表：是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 re">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1534431-a4831eb7feafd902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>我所知道的-Java垃圾回收机制 | Wilson</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Wilson</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">爱折腾的技术男</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/mysiga" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zhipingyang.github.io/">zhipingyang</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.tomatopeter.com/">阿潘</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/d6f6c875ad03">zvving</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/ac4f127d5150">xpleemoon</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/iNXuJG/timeline">冰雪八哥</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.jinwong001.com/">Jinwong</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wangsheng.github.io/">Victor</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://origheart.com/">Origheart</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://ckjava.com/">ck</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://prettychaoyao.github.io/">prettychaoyao</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">爱折腾的技术男</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/mysiga" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Java垃圾回收机制" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/12/Java垃圾回收机制/" class="article-date">
+      <time datetime="2018-07-12T11:11:00.000Z" itemprop="datePublished">2018-07-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      我所知道的-Java垃圾回收机制
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="https://upload-images.jianshu.io/upload_images/1534431-a4831eb7feafd902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java垃圾回收机制"></p>
+<p>本文章你能知道的内容：</p>
+<ul>
+<li>Java内存模型</li>
+<li>Java堆</li>
+<li>对象什么时候回收</li>
+<li>垃圾回收算法</li>
+<li><p>垃圾回收器<br>###Java内存模型<br>要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图<br><img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存模型"></p>
+</li>
+<li><p>程序计数器</p>
+</li>
+<li>Java 虚拟机栈</li>
+</ul>
+<ol>
+<li>局部变量表：是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型(它指向了一条字节码指令的地址)。</li>
+<li>操作数栈：又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</li>
+<li>动态连接：每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</li>
+<li>方法返回地址：当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</li>
+</ol>
+<ul>
+<li>本地方法栈:该区域与虚拟机栈所发挥的作用非常相似，只是虚拟机栈为虚拟机执行 Java 方法服务，而本地方法栈则为使用到的本地操作系统（Native）方法服务。</li>
+<li>方法区<br>方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</li>
+<li>Java 堆:一般new的对象实例和数组都是在堆中的，而GC主要回收的内存也是这块堆内存，后面单独领出来来讲。</li>
+<li>直接内存<br>不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。<br>###Java 堆<br>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。<blockquote>
+<p>Java 堆内存由垃圾回收器的自动内存管理系统管理。<br>堆内存分为两大部分：新生代和老年代，默认比例为1：2，可修改。<br>老年代主要存放应用程序中生命周期长的存活对象。<br>新生代又分为三个部分：一个Eden区和两个Survivor区，默认比例为8：1：1，可修改。<br>Eden区存放新生的对象。<br>Survivor存放每次垃圾回收后存活的对象。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-062a3348d8286a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="堆内存"></p>
+</blockquote>
+</li>
+</ul>
+<p>###为什么？</p>
+<ul>
+<li>为什么要分新生代和老年代？</li>
+<li>新生代为什么分一个Eden区和两个Survivor区?</li>
+</ul>
+<p>带着这些疑问，我们就要先了解堆相关的垃圾回收算法和采用的垃圾回收器。在讲算法前先了解怎么判断对象是否回收。</p>
+<p>###对象什么时候回收？<br>判断对象是否回收主要有以下两种算法</p>
+<ul>
+<li>引用计数算法<br>给对象中添加一个引用计数器，每当有一个地方引用它时，计数器值就加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-982627fe64dfa349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用计数算法"></li>
+<li>优点：简单，高效，Objective-c用的就是这种算法。</li>
+<li>缺点：很难处理循环引用，比如图中相互引用的两个对象则无法释放。但是也有解决办法，想知道自行搜索。</li>
+<li>可达性分析算法（根搜索算法）<br>为了解决上面的循环引用问题，Java采用了一种新的算法：可达性分析算法。<br>从GC Roots（每种具体实现对GC Roots有不同的定义）作为起点，向下搜索它们引用的对象，可以生成一棵引用树，树的节点视为可达对象，反之视为不可达。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-a9dda2d42cd749cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可达性分析算法"><blockquote>
+<p>Java定义的GC Roots对象:<br>虚拟机栈（帧栈中的本地变量表）中引用的对象。<br>方法区中静态属性引用的对象。<br>方法区中常量引用的对象。<br>本地方法栈中JNI引用的对象。</p>
+</blockquote>
+</li>
+</ul>
+<p>如果出现循环引用了，只要没有被GC Roots引用了就会被回收，完美解决！</p>
+<p>###垃圾回收算法<br>知道了什么时候回收对象，那我们再看具体垃圾回收器有哪些垃圾回收算法。</p>
+<ul>
+<li>标记清除法<br>标记-清除法分为两个阶段：标记阶段和清除阶段。标记阶段的任务是标记出所有需要被回收的对象，清除阶段就是回收被标记的对象所占用的空间。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-43bc311c23427d67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记清除法"></li>
+<li>优点：是简单，容易实现。</li>
+<li>缺点：容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</li>
+<li><p>复制算法<br>复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-9bf508a2e534d864.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="复制算法"></p>
+</li>
+<li><p>优点：实现简单，运行高效且不容易产生内存碎片，适用于存活对象很少。回收对象多</p>
+</li>
+<li>缺点：内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半，如果存活对象很多，那么Copying算法的效率将会大大降低。</li>
+<li>标记整理算法<br>该算法标记阶段和标记清除法一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-4b6066a7e03fb403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记整理算法"></li>
+<li>优点：不会出现内存碎片问题，适用于存活对象多，回收对象少的情况使用</li>
+<li>缺点：整理时间长，容易导致卡顿。</li>
+<li>分代回收算法<br>分代回收算法其实不算一种新的算法，而是根据复制算法和标记整理算法的使用场景综合使用。<blockquote>
+<p>复制算法：适用于存活对象很少。回收对象多<br>标记整理算法: 适用用于存活对象多，回收对象少</p>
+</blockquote>
+</li>
+</ul>
+<p>分代算法就是根据对象存活的生命周期将内存划分为若干个不同的区域。一般情况下将堆区划分为老年代（Old Generation）和新生代（Young Generation），老年代的特点是每次垃圾收集时只有少量对象需要被回收所以采用标记整理法。而新生代的特点是每次垃圾回收时都有大量的对象需要被回收所以采用复制算法（改良的复制算法，不是按1：1分配）。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1534431-df6da09763c72d95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分代回收算法"></p>
+<ul>
+<li><p>Eden空间和两块Survivor空间的工作流程</p>
+<blockquote>
+<p>// 分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区满了，只能GC(新生代GC：Minor GC)了<br>把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区<br>// …<br>// 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区<br>// 有的对象太大，超过了Eden区，直接被分配在Old区<br>// 有的存活对象，放不下Survivor区，也被分配到Old区<br>// …<br>// 在某次Minor GC的过程中突然发现：<br>// 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)<br>Old区慢慢的整理一番，空间又够了<br>// 继续Minor GC<br>// …<br>// …<br>在回答上面提出的问题？<br>为什么要分新生代和老年代？<br>综合使用算法，最优采用分代算法所以分为新生代和老年代两块区域。具体为什么1：2？应该是根据实践测试得出的结果，也可以调整。</p>
+</blockquote>
+</li>
+<li><p>回答第二个问题<a href="https://blog.csdn.net/antony9118/article/details/51425581" target="_blank" rel="external">为什么新生代内存需要有两个Survivor区</a>，这里讲的比较详细</p>
+</li>
+<li><p>什么时候触发GC？</p>
+<blockquote>
+<p>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。<br>GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。<br>GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。<br>GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。<br>###垃圾回收器<br>在GC机制中，起重要作用的是垃圾收集器，垃圾收集器是GC的具体实现，Java虚拟机规范中对于垃圾收集器没有任何规定，所以不同厂商实现的垃圾 收集器各不相同，HotSpot 1.6版使用的垃圾收集器如下图（图来源于《深入理解Java虚拟机：JVM高级特效与最佳实现》，图中两个收集器之间有连线，说明它们可以配合使用）<br><img src="https://upload-images.jianshu.io/upload_images/1534431-e50e3a7a84da379d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收器"></p>
+</blockquote>
+</li>
+<li><p>Serial收集器</p>
+</li>
+<li>ParNew收集器</li>
+<li>Parallel Scavenge收集器</li>
+<li>CMS收集器（应用非常广泛）</li>
+<li>G1收集器（面向服务端应用）<br>###参考文章</li>
+<li><a href="https://juejin.im/post/5909c7ef570c3500583bf433" target="_blank" rel="external">Android GC 那点事</a></li>
+<li><a href="http://jayfeng.com/2016/03/11/%E7%90%86%E8%A7%A3Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/?from=singlemessage&amp;isappinstalled=0" target="_blank" rel="external">理解Java垃圾回收机制</a></li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7517213" target="_blank" rel="external">Java类生命周期</a></li>
+<li><a href="http://blog.csdn.net/zhengzhb/article/details/7331354" target="_blank" rel="external">单例模式讨论篇：单例模式与垃圾回收</a></li>
+<li><a href="http://www.importnew.com/26383.html" target="_blank" rel="external">JVM 垃圾回收算法及回收器详解</a></li>
+<li><a href="https://blog.csdn.net/antony9118/article/details/51425581" target="_blank" rel="external">为什么新生代内存需要有两个Survivor区</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/07/12/Java垃圾回收机制/">我所知道的-Java垃圾回收机制</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Wilson</a></p>
+        <p><span>发布时间:</span>2018-07-12, 11:11:00</p>
+        <p><span>最后更新:</span>2018-07-16, 19:05:17</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/12/Java垃圾回收机制/" title="我所知道的-Java垃圾回收机制">mysiga.cn/2018/07/12/Java垃圾回收机制/</a>
+            <span class="copy-path" data-clipboard-text="原文: mysiga.cn/2018/07/12/Java垃圾回收机制/　　作者: Wilson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/07/17/Java异常/">
+                    Java异常
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/06/20/Java基础/">
+                    Java - Java基础
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"我所知道的-Java垃圾回收机制　| Wilson　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/07/17/Java异常/" title="上一篇: Java异常">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/06/20/Java基础/" title="下一篇: Java - Java基础">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/17/Java异常/">Java异常</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/12/Java垃圾回收机制/">我所知道的-Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/20/Java基础/">Java - Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/Android各个版本新特性/">Android各个版本新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/08/2017-技术篇/">2017-技术篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/13/Android兼容包调用/">Android兼容包调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/long-long用什么保存数据/">long-long用什么保存数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Jenkins配置Android深坑/">Jenkins配置Android深坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/20/Android使用枚举正确姿态/">Android使用枚举正确姿态</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/11/推荐博文/">推荐博文</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/24/Android面试/">Android面试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/单元测试/">单元测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/Android-mvp/">Android-mvp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Andoid最近搜索记录/">Andoid最近搜索记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/29/tablayout方法setupWithViewPager-坑/">tablayout方法setupWithViewPager()坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!-曾铭</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/11/前端入门（2）/">前端入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/前端入门（1）/">前端入门（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/动画/">动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/Swift入门专题/">Swift入门专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/英语/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/25/单位和度量/">单位和度量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/31/网络信息安全/">网络信息安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/10/微信公众号开发/">微信公众号开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/08/知其所以然/">知其所以然(10分钟解释一个和开发相关的原理)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/线程并发和同步/">扯扯线程并发和同步的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/20/代码效率/">代码开发效率提升方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/13/开源/">开源</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/06/博客分享/">博客分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/23/Android-Studio分享/">Android Studio分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/Android-emoji表情分享/">Android emoji表情分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/09/Axure工具分享/">Axure工具分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/18/Android多国语言适配/">Android多国语言适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 Wilson
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
