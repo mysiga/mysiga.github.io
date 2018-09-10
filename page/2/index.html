@@ -263,6 +263,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java7-Switch-String" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/25/Java7-Switch-String/" class="article-date">
+      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">2017-01-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>Switch string<ul>
+<li>Java 7新特性，原来switch只能支持int，byte。short，char,枚举</li>
+</ul>
+</li>
+<li>那具体性能如何了？看下code</li>
+</ul>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wilson.test;</div><div class="line"><span class="keyword">public</span> class SwitchTest &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_ONE = <span class="string">"1"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_TWO = <span class="string">"2"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_THREE = <span class="string">"3"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FOUR = <span class="string">"4"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FIVE = <span class="string">"5"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SIX = <span class="string">"6"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SEVEN = <span class="string">"7"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_EIGHT = <span class="string">"8"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"1-&gt;switchTime:"</span>+switchOutput(<span class="string">"1"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"1"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"2-&gt;switchTime:"</span>+switchOutput(<span class="string">"2"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"2"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"3-&gt;switchTime:"</span>+switchOutput(<span class="string">"3"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"3"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"4-&gt;switchTime:"</span>+switchOutput(<span class="string">"4"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"4"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"5-&gt;switchTime:"</span>+switchOutput(<span class="string">"5"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"5"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"6-&gt;switchTime:"</span>+switchOutput(<span class="string">"6"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"6"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"7-&gt;switchTime:"</span>+switchOutput(<span class="string">"7"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"7"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"8-&gt;switchTime:"</span>+switchOutput(<span class="string">"8"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"8"</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> switchOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">if</span> (num == <span class="keyword">null</span> || num.equals(<span class="string">""</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">switch</span> (num) &#123;</div><div class="line">                <span class="keyword">case</span> NUM_ONE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_TWO:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_THREE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FOUR:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FIVE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SIX:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SEVEN:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_EIGHT:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> ifElseOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (num.equals(NUM_ONE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_TWO)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_THREE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FOUR)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FIVE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SIX)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SEVEN)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_EIGHT)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>开始想当然switch速度更快，那实际输出了?</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">1-&gt;</span><span class="bash">switchTime:1868,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">2-&gt;</span><span class="bash">switchTime:2381,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">3-&gt;</span><span class="bash">switchTime:985,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">4-&gt;</span><span class="bash">switchTime:1002,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">5-&gt;</span><span class="bash">switchTime:486,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">6-&gt;</span><span class="bash">switchTime:662,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">7-&gt;</span><span class="bash">switchTime:652,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">8-&gt;</span><span class="bash">switchTime:661,<span class="keyword">if</span>Else:0</span></div></pre></td></tr></table></figure>
+<p>结果大出我所希望的。用”if-if-else”几乎完胜switch String，那为什么了？<br><a href="http://it.deepinmind.com/java/2014/05/08/how-string-in-switch-works-in-java-7.html" target="_blank" rel="external">可以看下这篇文章</a>,主要switch string，是通过equal和hashcode实现的。String先通过hashcode转换为int，在通过switch int，然后子case里面在if equal String。</p>
+<ul>
+<li>看来还是回来老路，只是添加一个新的支持特性而效率没有提高。对应String还是用if-if-else吧</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Android面试" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1370,148 +1443,9 @@
 
 
   
-    <article id="post-Activity的启动四种模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/06/Activity的启动四种模式/" class="article-date">
-      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">2016-03-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="Activity的启动四种模式"><a href="#Activity的启动四种模式" class="headerlink" title="Activity的启动四种模式"></a>Activity的启动四种模式</h4><ul>
-<li>standard(默认)<ul>
-<li>每次使用startActivity方法启动Activity时<br>都会创建该Activity的新实例<ul>
-<li>Activity的多个实例可以位于同一个task中<br>也可以分布在不同的task里</li>
-<li>在当前task中使用startActivity方法启动Activity<br>也在当前task中创建和运行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>singleTop：栈顶复用模式<ul>
-<li>当设置为singleTop模式Activity，未处于栈顶时<br>其运行特点与标准模式下一致</li>
-<li>当其位于栈顶时，如果使用startActivity方法<br>再次启动该Activity，则不会创建该Activity的新实例<br>而是直接使用栈顶的实例响应启动操作.并且调用该实例<br>的onNewIntent方法，将本次启动的intent传入到实例中</li>
-</ul>
-</li>
-<li><p>singleTask：栈内复用模式</p>
-<ul>
-<li>设置singleTask的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
-<li>当使用startActivity方法启动设置为singleTask的Activity时<br>如果该Activity的实例尚不存在，则创建该实例<br>否则，不会重复创建实例，而是将已经存在的实例重新带回到栈顶<br>如果在该实例上存在其他实例，则销毁这些实例后，将该实例重新<br>带回栈顶<ul>
-<li>在创建该Activity的实例时，<br>如果当前任务的taskAffinity值与该Activity的taskAffinity值相同，<br>则在当前任务中创建实例，<br>否则，在一个新的任务中创建实例</li>
-<li>具有clearTop的效果，如果再次启动具有实例的singleTask的Acitivity会清除它上面的Activity出栈</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>singleInstance</p>
-<ul>
-<li>设置singleInstance的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
-<li>当使用startActivity方法启动该Activity的实例时<br>如果该Activity的实例尚不存在，则直接在新的任务<br>中创建该实例。<br>如果该实例已经存在，则直接显示该实例</li>
-<li>该Activity的实例，不与其他activity的实例共存于一个<br>任务中,所以通过该实例启动的其他Activity的实例，只能<br>被创建在其他的task里，如果已经存在于新创建的activity实例<br>taskAffinity值相同的task，则直接在该task中创建实例，否则<br>就在一个新的任务中创建实例</li>
-</ul>
-</li>
-<li><p>Acitivity启动模式优先级</p>
-<ul>
-<li>第一种</li>
-</ul>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">           android:name=<span class="string">".launchmode.SingleTopActivity"</span></div><div class="line">           android:<span class="keyword">label</span><span class="bash">=<span class="string">"@string/title_activity_single_top"</span></span></div><div class="line">           android:launchMode=<span class="string">"singleTop"</span></div><div class="line">           android:theme=<span class="string">"@style/AppTheme"</span> /&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>第二种</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Intent</span> <span class="keyword">intent</span>=new <span class="keyword">Intent</span>(this,SingleTopActivity.<span class="keyword">class</span>);</div><div class="line">              <span class="keyword">intent</span>.addFlags(<span class="keyword">Intent</span>.FLAG_ACTIVITY_SINGLE_TOP);</div><div class="line">              startActivity(<span class="keyword">intent</span>);</div></pre></td></tr></table></figure>
-<p>第二种优先第一种，如果同时存在则以第二种方式为准</p>
-</li>
-</ul>
-</li>
-<li><p>Activity的Flags(标记位)    </p>
-<ul>
-<li>FLAG_ACTIVITY_SINGLE_TOP:Activity的SingleTop    启动模式 </li>
-<li>FLAG_ACTIVITY_NEW_TASK:Activity的SingleTask    启动模式 </li>
-<li>FLAG_ACTIVITY_CLEAR_TOP:同一个任务栈中所有位于它上面的Activity都要出栈，一般和FLAG_ACTIVITY_NEW_TASK一起使用，如果被启动的activity为standard模式则先连同启动的acivity一起出栈，在创建新的acticity实例放入栈顶</li>
-<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:等同android:excludeFromRecents=”true”</li>
-</ul>
-</li>
-</ul>
-<h4 id="任务栈属性"><a href="#任务栈属性" class="headerlink" title="任务栈属性:"></a>任务栈属性:</h4><ul>
-<li>分类<ul>
-<li>前台任务栈：</li>
-<li>后台任务栈：Acitivity位于暂停状态，用户可以通过切换将后台任务栈再次调到前台</li>
-</ul>
-</li>
-<li><p>属性</p>
-<ul>
-<li>TaskAffinity:任务栈名字，Activity和application默认为应用包名</li>
-<li><p>allowTaskReparenting(与字面理解相同，本属性允许activity重新指定Task。默认值是false)</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;application</div><div class="line">      android:allowBackup=<span class="string">"true"</span></div><div class="line">      android:icon=<span class="string">"@mipmap/ic_launcher"</span></div><div class="line">      android:<span class="keyword">label</span><span class="bash">=<span class="string">"@string/app_name"</span></span></div><div class="line">      android:supportsRtl=<span class="string">"true"</span></div><div class="line">      android:taskAffinity=<span class="string">""</span></div><div class="line">      android:allowTaskReparenting=<span class="string">""</span></div><div class="line">      android:theme=<span class="string">"@style/AppTheme"</span>&gt;</div><div class="line">      &lt;activity android:name=<span class="string">".MainActivity"</span>&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> 		<span class="attr">android:name</span>=<span class="string">".defaultsearch.DefaultSearchSuggestionActivity"</span></span></div><div class="line">           <span class="attr">android:taskAffinity</span>=<span class="string">""</span></div><div class="line">           <span class="attr">android:allowTaskReparenting</span>=<span class="string">""</span>&gt;</div><div class="line">           <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">               <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.SEARCH"</span> /&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Activity的IntentFilter"><a href="#Activity的IntentFilter" class="headerlink" title="Activity的IntentFilter"></a>Activity的IntentFilter</h4></li>
-<li>activity可以多个intentFilter</li>
-<li>action:一个intentFilter可以多个action，多个action只要匹配一个action就算匹配action成功。</li>
-<li>category：一个intentFilter可以多个category</li>
-<li>data：一个intentFilter可以多个data</li>
-</ul>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">data</span> android:scheme=<span class="string">"string"</span></div><div class="line">          android:host=<span class="string">"string"</span></div><div class="line">          android:port=<span class="string">"string"</span></div><div class="line">          android:<span class="built_in">path</span>=<span class="string">"string"</span></div><div class="line">          android:pathPattern=<span class="string">"string"</span></div><div class="line">          android:pathPrefix=<span class="string">"string"</span></div><div class="line">          android:mimeType=<span class="string">"string"</span>/&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>mimeType:指媒体类型，如:image/jpeg,audio/mpeg4-generic和video/*</li>
-<li>URI:<scheme>://<host>:<post>/[<path></path>/<pathprefix>/<pathpattern>]</pathpattern></pathprefix></post></host></scheme></li>
-</ul>
-<ul>
-<li><a href="https://github.com/milin411/TestProject" target="_blank" rel="external">demo代码</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
