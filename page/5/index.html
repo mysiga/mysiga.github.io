@@ -263,155 +263,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-微信公众号开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/10/微信公众号开发/" class="article-date">
-      <time datetime="2015-07-10T15:51:00.000Z" itemprop="datePublished">2015-07-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/10/微信公众号开发/">微信公众号开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="对于微信公众号开发的疑问"><a href="#对于微信公众号开发的疑问" class="headerlink" title="对于微信公众号开发的疑问"></a>对于微信公众号开发的疑问</h2><ul>
-<li>微信公众点与自己服务器配对流程</li>
-<li>本地如何调试</li>
-<li>微信整体流程中用到的一些特殊协议?</li>
-<li>openId/unionId 哪里查看</li>
-<li>access_token 为什么要有时间限制 为什么是2小时</li>
-<li>网页授权如何做的?能取到哪些信息?</li>
-<li>参加活动不关注 能拿到多少信息</li>
-<li>菜单type类型</li>
-<li>有哪些好的第三方开发工具包</li>
-<li>所有的活动行为全部调一个url 有没有好的分发解决方案</li>
-</ul>
-<h2 id="公众号查询通讯录的实现-曾铭"><a href="#公众号查询通讯录的实现-曾铭" class="headerlink" title="公众号查询通讯录的实现 - 曾铭"></a>公众号查询通讯录的实现 - 曾铭</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>通讯录表 -&gt; 后台数据库</li>
-<li>用户关注公众号</li>
-<li>用户发消息（姓名）给公众号</li>
-<li>微信后台转发此消息给网站后台 post XML</li>
-<li>后台根据此消息（姓名）查询数据库，得到此人具体数据，组合 XML 返回给微信后台</li>
-<li>微信后台把具体数据展示给用户</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
-<li>通讯录表 xls -&gt; csv -&gt; 导入到 LeanCloud 数据库</li>
-<li>基于 express (node.js web 框架)，建立 51offer_wechat.avosapps.com/contact_bot 站点；</li>
-<li>微信公众号后台配置开发者后台 URL，处理后台网址 get 请求，完成微信对开发者后台的验证</li>
-<li>处理网址 post 请求，完成接受消息，查询数据库，返回用户信息工作。具体参考：<a href="https://github.com/51offer/wechat_bot/commit/25d457c7430d88167d62b053a5d072d588c9c95b" target="_blank" rel="external">这里</a></li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>node.js (express) 处理网络请求的确精简方便</li>
-<li>微信公众号的所有信息都转发到一个接口，后续处理类型多时要设计合理的分发机制</li>
-<li>微信接口为什么用 XML 而不是 json 啊，这点不熟悉占用不少时间</li>
-<li>做这个很有意思，推荐大家多玩玩~</li>
-</ul>
-<h2 id="商户端APP集成微信扫描支付-王胜"><a href="#商户端APP集成微信扫描支付-王胜" class="headerlink" title="商户端APP集成微信扫描支付 - 王胜"></a>商户端APP集成微信扫描支付 - 王胜</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
-<li>APP端微信支付SDK<br><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419317784&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">[Android]</a> | <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419317782&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">[iOS]</a></li>
-<li>服务端微信支付SDK<br><a href="https://pay.weixin.qq.com/wiki/doc/api/download/wxpay_scanpay_java_sdk_proj-master.zip" target="_blank" rel="external">[JAVA]</a> |<br><a href="https://pay.weixin.qq.com/wiki/doc/api/download/WxpayAPI_php_v3.zip" target="_blank" rel="external">[PHP]</a></li>
-<li>服务端暴露notify接口</li>
-<li>push通道</li>
-</ul>
-<h3 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h3><ol>
-<li>用户在APP端浏览商品</li>
-<li>加入购物车</li>
-<li>结算</li>
-<li>调用提交订单接口</li>
-<li>提交订单接口返回预支付链接(<strong>预支付链接可根据服务端微信支付sdk生成</strong>)</li>
-<li>APP根据链接生成二维码</li>
-<li>用户拿起手机扫描支付</li>
-<li>微信调用第三方开发者服务端暴露的notify接口</li>
-<li>第三方服务端在收到notify接口调用时，更新订单库里订单状态，同时调用push通道告诉APP支付成功</li>
-<li>APP收到push命令后进行页面跳转</li>
-</ol>
-<h2 id="微信分享-吴明"><a href="#微信分享-吴明" class="headerlink" title="微信分享 - 吴明"></a>微信分享 - 吴明</h2><ul>
-<li>微信工作原理<ul>
-<li><img src="http://img.blog.csdn.net/20140823103621745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR29vZFNob3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></li>
-</ul>
-</li>
-<li>接口：<ul>
-<li>你需要触发什么事件</li>
-<li>微信事件触发会回调哪里接口</li>
-</ul>
-</li>
-<li>微信服务：<ul>
-<li>订阅号：</li>
-<li><a href="https://mp.weixin.qq.com" target="_blank" rel="external">服务号</a><ul>
-<li><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">微信公众测试账号</a></li>
-<li><a href="http://mp.weixin.qq.com/debug" target="_blank" rel="external">微信公众平台接口调试工具</a></li>
-</ul>
-</li>
-<li>企业号<ul>
-<li><a href="https://qy.weixin.qq.com" target="_blank" rel="external">微信企业号</a></li>
-<li><a href="https://qy.weixin.qq.com/try" target="_blank" rel="external">微信企业号申请体验号</a></li>
-<li><a href="http://www.iwork365.com/experience" target="_blank" rel="external">iwork365企业号体验</a></li>
-</ul>
-</li>
-<li>微购物</li>
-<li>微信公众号自定义菜单开发<ul>
-<li>接口文档<pre><code>- [获取access token](http://mp.weixin.qq.com/wiki/11/0e4b294685f817b95cbed85ba5e82b8f.html)
-- [自定义菜单创建接口](http://mp.weixin.qq.com/wiki/13/43de8269be54a0a6f64413e4dfa94f39.html)
-- 以下操作都是在[微信公众平台接口调试工具](http://mp.weixin.qq.com/debug)调试方法
-</code></pre></li>
-<li>步骤1：调用“获取access token”接口,传入你申请的测试微信公众号的appid和secret获取access_token</li>
-<li>步骤2：调用“自定义菜单创建接口”，传入上面生成的access_token和“自定义菜单json数据”如下</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"button"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"51offer"</span>,</div><div class="line">            <span class="attr">"url"</span>: <span class="string">"http://www.51offer.com/"</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"移动"</span>,</div><div class="line">            <span class="attr">"sub_button"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">                    <span class="attr">"name"</span>: <span class="string">"blog"</span>,</div><div class="line">                    <span class="attr">"url"</span>: <span class="string">"http://51offer.github.io/"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"view"</span>,</div><div class="line">                    <span class="attr">"name"</span>: <span class="string">"github"</span>,</div><div class="line">                    <span class="attr">"url"</span>: <span class="string">"https://github.com/51offer/public-docs/wiki"</span></div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"type"</span>: <span class="string">"click"</span>,</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"我"</span>,</div><div class="line">            <span class="attr">"key"</span>: <span class="string">"me"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>推荐：公众号：招商信用卡</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-知其所以然" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -2437,9 +2288,154 @@
 
 
   
+    <article id="post-优秀APP推荐" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/28/优秀APP推荐/" class="article-date">
+      <time datetime="2015-03-27T23:04:29.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/28/优秀APP推荐/">优秀APP推荐</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="APP分享-张超耀"><a href="#APP分享-张超耀" class="headerlink" title="APP分享 - 张超耀"></a>APP分享 - 张超耀</h4><ul>
+<li><p><a href="http://music.163.com/#/download" target="_blank" rel="external">网易云音乐</a></p>
+<ul>
+<li>播放界面的毛玻璃效果值得借鉴。</li>
+<li>网易云音乐是一款专注于发现与分享的音乐产品,依托专业音乐人、DJ、好友推荐及社交功能,为用户打造全新的音乐生活。</li>
+</ul>
+</li>
+<li><p><a href="http://yiwen.fm" target="_blank" rel="external">一问</a></p>
+<ul>
+<li>「一问」会坚持每天介绍一家创业公司，包括该创业公司的一开始的想法和思路，想创业的童靴可以参考下。</li>
+</ul>
+</li>
+<li><p><a href="https://itunes.apple.com/tw/app/forest-bao-chi-zhuan-zhu-ju/id866450515?l=zh&amp;mt=8" target="_blank" rel="external">forest</a></p>
+<ul>
+<li>「Forest」是一个帮助您专心于生活中每个重要时刻的APP。</li>
+<li>Forest能帮助您远离智慧型手机的诱惑。每当您想要专注时，种下种籽吧！在接下来的30分钟内，它将成长成为一棵大树。</li>
+</ul>
+</li>
+<li><p><a href="https://500px.com" target="_blank" rel="external">500px</a></p>
+<ul>
+<li>「500px」是一个致力于来自世界各地的摄影师的摄影分享、发现、售卖的专业平台。</li>
+<li>APP的loading不错，小创意值得学习。</li>
+</ul>
+</li>
+<li><p><a href="http://www.any.do" target="_blank" rel="external">any.do</a></p>
+<ul>
+<li>无论从UI设计、易用性、实用性来讲，Any.Do 都在上流水准！Any.Do凭借简洁大方的界面设计和便捷直观的操作收获了大量用户，并通过云技术将日程安排等数据自动同步，帮助用户随时随地更系统更方便地管理自己的日程安排，让它来管理的你的日常生活再好不过了。</li>
+</ul>
+</li>
+</ul>
+<h4 id="App-分享-王胜"><a href="#App-分享-王胜" class="headerlink" title="App 分享 - 王胜"></a>App 分享 - 王胜</h4><ul>
+<li><a href="http://www.iciba.com" target="_blank" rel="external">金山词霸</a><ul>
+<li>本地、在线翻译功能</li>
+<li>每日一句很有文艺范</li>
+<li>最大亮点拍照翻译功能，支持自动取词、点击取词、长句拍译。以后再看到不会输入的日韩文字，一拍照，轻松搞定</li>
+</ul>
+</li>
+<li><a href="http://xbox.m.baidu.com/wuxian" target="_blank" rel="external">手机百度</a><ul>
+<li>搜索功能</li>
+<li>最大亮点拍照搜索，以后参观植物园、动物园再也不用担心不知道这个是什么花，那个是什么动物了</li>
+</ul>
+</li>
+</ul>
+<h4 id="App-分享-曾铭"><a href="#App-分享-曾铭" class="headerlink" title="App 分享 - 曾铭"></a>App 分享 - 曾铭</h4><ul>
+<li><a href="https://slack.com/" target="_blank" rel="external">Slack</a><ul>
+<li>坐上火箭的公司<a href="http://www.36kr.com/p/219324.html" target="_blank" rel="external">36Kr</a></li>
+<li>交流：（人员:channels、信息流 integration）</li>
+<li>重视用户反馈</li>
+</ul>
+</li>
+<li><a href="http://tapbots.com/tweetbot/" target="_blank" rel="external">Tweetbot</a><ul>
+<li>无数神细节</li>
+<li>发布@#以及草稿</li>
+<li>一个@的产品设计</li>
+</ul>
+</li>
+<li><a href="http://www.gba4iosapp.com/" target="_blank" rel="external">GBA4iOS</a><ul>
+<li>一个模拟器该有的样子</li>
+<li>开源</li>
+</ul>
+</li>
+<li><a href="http://zh-hans.fogofworld.com/" target="_blank" rel="external">世界迷雾</a><ul>
+<li>一个应用（游戏）的世界观</li>
+<li>使用一生的应用</li>
+</ul>
+</li>
+<li><a href="http://www.perigee.se/seven.php" target="_blank" rel="external">Seven</a><ul>
+<li>7分钟，坚持七个月 5%%</li>
+<li>成就+❤，进度+回顾</li>
+<li>收费</li>
+</ul>
+</li>
+</ul>
+<h3 id="App-分享-吴明"><a href="#App-分享-吴明" class="headerlink" title="App 分享 - 吴明"></a>App 分享 - 吴明</h3><ul>
+<li><a href="http://www.kuaidi100.com/" target="_blank" rel="external">快递100</a><ul>
+<li>方便查询附近快递员电话</li>
+<li>扫描快递单号跟踪快递信息</li>
+</ul>
+</li>
+<li><a href="http://rj.baidu.com/soft/detail/15574.html?ald" target="_blank" rel="external">Axure RP原型设计</a><ul>
+<li>Axure RP是一个专业的快速原型设计工具</li>
+<li>Axure RP生成的原型文件是网页版，跨平台支持</li>
+<li>Axure RP工具操作。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/移动组周分享/">移动组周分享</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
     </nav>
   
 </div>

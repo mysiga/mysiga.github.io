@@ -868,89 +868,6 @@
 
 
   
-    <article id="post-2017-技术篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/02/08/2017-技术篇/" class="article-date">
-      <time datetime="2018-02-08T08:11:05.066Z" itemprop="datePublished">2018-02-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>###2017技术篇</p>
-<p>今天第一篇—技术篇，</p>
-<p>今年主要做的项目是Android系统定制，BSS，云掌柜等，那就主要说下从项目学到哪些东西</p>
-<p>####<a href="https://www.jianshu.com/p/ed9b6b299f5a" target="_blank" rel="external">git命令</a></p>
-<ul>
-<li>Android系统开发需要下载Android源码(附录提供在线源码地址)用到各种命令编译，首先是git命令，原来都是通过soucetree搞定，可是系统git相关验证有限制。然后就缝缝补补总结了自己常用到<a href="https://www.jianshu.com/p/ed9b6b299f5a" target="_blank" rel="external">git命令</a>。</li>
-</ul>
-<p>####<a href="https://www.jianshu.com/p/b4ef67b30d5e" target="_blank" rel="external">自定义控件</a></p>
-<p>Android系统定制主要是做汽车定制化的东西！自定义控件，比较多以前都是能用系统控件优先考虑用系统控件（主要系统控件在不同的系统兼容性好点），实在不行再使用自定义的控件。</p>
-<p>####<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a></p>
-<p>用起来很爽，主要是方便线程切换，也避免一些代码经常使用Handler内存泄漏问题。解决网络请求没有在Activity,Fragment生命周期没有结束后回收问题。</p>
-<p>####使用RxJava+OkHttp+Retrofit+ButterKnife+MVP爽爆了</p>
-<p>####单元测试</p>
-<p>模仿<a href="https://github.com/googlesamples/android-architecture/blob/todo-mvp-rxjava/todoapp/app/src/test/java/com/example/android/architecture/blueprints/todoapp/statistics/StatisticsPresenterTest.java" target="_blank" rel="external">Google MVP单元测试</a>+mock方式最新代码单元测试。（写了单元测试就可以很明显的看出自己代码结构是否设计合理。可是如果代码之前已经成形你现在是维护，并不建议过多的单元测试而测试或者也可以是用Robolectric）</p>
-<p>####<a href="https://www.jianshu.com/p/db7af03a4311" target="_blank" rel="external">自动化Android发版</a></p>
-<p>主要采用Jenkins+shell脚本调接口方式实现自动化脚本，原来都是用Jenkins打包脚本比较简单，然后自动化上传apk到官网就需要调用shell脚本网络请求，原来这块不会写琢磨了很久才成功。后面公司有皮皮虾就把我这个用在qa环境的自动化忽略了。</p>
-<p>####蓝牙打印<br>主要方式APP接受的到相应服务端信息，根据相关信息发送指令给蓝牙打印机，然后蓝牙打印完成。整个过程这样实际开发中就要考虑各种问题，通过两个星期的梳理才理解透相关逻辑，实际开发蓝牙也总结了一些问题</p>
-<ul>
-<li>推送和App socket通信</li>
-<li>推送和socket保活</li>
-<li>推送和App socket的，去重，线程安全问题</li>
-<li>app打印信息在不同的打印机上的展示问题</li>
-<li>app与蓝牙打印连接问题，连接蓝牙成功，打印没有反应，蓝牙打印回斥问题。</li>
-</ul>
-<p>####<a href="https://github.com/alibaba/ARouter" target="_blank" rel="external">阿里路由框架，项目模块化</a><br>当项目大了，人多开发的时候。总会遇到代码冲突。除了合代码前review代码外还需要解决开发效率。首先是模块化开发，互不依赖。然后就有了路由，考虑大公司维护好最后采用了ARouter。（如果项目不大和人员不是很多暂时不建议使用路由）</p>
-<p>####Kotlin<br>Kotlin为Android 官方支持语言，自己写了一些代码，主要体现简化代码，非空认证优势。其他还没有发现太多。实际项目开发没有用到。</p>
-<p>####AI: Python<br>今年的AI很火，然后自己就找视频自学Python，自学两个星期，中间公司比较忙后面懒了没有完成。2018一定要补上。</p>
-<p>####微信小程序<br>自己一直想开发一个共享卡包类的工具。开始想做成app,觉得还是太大了，最后还是使用微信小程序的方式，使用微信小程序主要的好处：一是利用微信的群体，另外人人都有微信的时代使用小程序比较轻便。用微信小程序就需要node.js+后台开发。基本要从零开始，然后一直模式，目前只做成一个demo形式。2018年一定要做完这个。</p>
-<p>####其他<br>2017也写了可怜几篇技术文章</p>
-<ul>
-<li><a href="https://www.jianshu.com/p/d827a0610fd5" target="_blank" rel="external">Android使用枚举正确姿态</a></li>
-<li><a href="https://www.jianshu.com/p/8a66806588bc" target="_blank" rel="external">Android各个版本新特性</a></li>
-<li><a href="https://www.jianshu.com/p/dd3fd85d3299" target="_blank" rel="external">Java面试—排序算法总结</a></li>
-<li><a href="https://www.jianshu.com/p/0070763a5558" target="_blank" rel="external">Switch String</a></li>
-</ul>
-<p>####附录</p>
-<ul>
-<li><a href="http://androidxref.com/" target="_blank" rel="external">在线Android系统源码地址</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Android兼容包调用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1363,9 +1280,82 @@
 
 
   
+    <article id="post-Java7-Switch-String" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/25/Java7-Switch-String/" class="article-date">
+      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">2017-01-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>Switch string<ul>
+<li>Java 7新特性，原来switch只能支持int，byte。short，char,枚举</li>
+</ul>
+</li>
+<li>那具体性能如何了？看下code</li>
+</ul>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wilson.test;</div><div class="line"><span class="keyword">public</span> class SwitchTest &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_ONE = <span class="string">"1"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_TWO = <span class="string">"2"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_THREE = <span class="string">"3"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FOUR = <span class="string">"4"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FIVE = <span class="string">"5"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SIX = <span class="string">"6"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SEVEN = <span class="string">"7"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_EIGHT = <span class="string">"8"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"1-&gt;switchTime:"</span>+switchOutput(<span class="string">"1"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"1"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"2-&gt;switchTime:"</span>+switchOutput(<span class="string">"2"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"2"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"3-&gt;switchTime:"</span>+switchOutput(<span class="string">"3"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"3"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"4-&gt;switchTime:"</span>+switchOutput(<span class="string">"4"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"4"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"5-&gt;switchTime:"</span>+switchOutput(<span class="string">"5"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"5"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"6-&gt;switchTime:"</span>+switchOutput(<span class="string">"6"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"6"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"7-&gt;switchTime:"</span>+switchOutput(<span class="string">"7"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"7"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"8-&gt;switchTime:"</span>+switchOutput(<span class="string">"8"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"8"</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> switchOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">if</span> (num == <span class="keyword">null</span> || num.equals(<span class="string">""</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">switch</span> (num) &#123;</div><div class="line">                <span class="keyword">case</span> NUM_ONE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_TWO:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_THREE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FOUR:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FIVE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SIX:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SEVEN:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_EIGHT:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> ifElseOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (num.equals(NUM_ONE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_TWO)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_THREE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FOUR)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FIVE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SIX)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SEVEN)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_EIGHT)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>开始想当然switch速度更快，那实际输出了?</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">1-&gt;</span><span class="bash">switchTime:1868,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">2-&gt;</span><span class="bash">switchTime:2381,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">3-&gt;</span><span class="bash">switchTime:985,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">4-&gt;</span><span class="bash">switchTime:1002,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">5-&gt;</span><span class="bash">switchTime:486,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">6-&gt;</span><span class="bash">switchTime:662,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">7-&gt;</span><span class="bash">switchTime:652,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">8-&gt;</span><span class="bash">switchTime:661,<span class="keyword">if</span>Else:0</span></div></pre></td></tr></table></figure>
+<p>结果大出我所希望的。用”if-if-else”几乎完胜switch String，那为什么了？<br><a href="http://it.deepinmind.com/java/2014/05/08/how-string-in-switch-works-in-java-7.html" target="_blank" rel="external">可以看下这篇文章</a>,主要switch string，是通过equal和hashcode实现的。String先通过hashcode转换为int，在通过switch int，然后子case里面在if equal String。</p>
+<ul>
+<li>看来还是回来老路，只是添加一个新的支持特性而效率没有提高。对应String还是用if-if-else吧</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
