@@ -18,23 +18,11 @@
 <p>全局搜索指定关键字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span>+<span class="built_in">shift</span>+F</div></pre></td></tr></table></figure></p>
 <p>指定类搜索关键字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span>+<span class="built_in">shift</span>+F</div></pre></td></tr></table></figure></p>
 <p>提取代码块生成方法<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">command</span>+<span class="title">option</span>+<span class="title">M</span></div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>查找方法调用处</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">option</span> + <span class="built_in">F7</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>查看该类所有变量和方法</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">command</span>+<span class="title">F12</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>查看继承该类的所有类</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="section">control</span>+H</div></pre></td></tr></table></figure>
-</li>
-<li><p>选中一部分代码块被if/elseif，try/catch包装起来快捷键</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">command</span>+<span class="title">option</span>+<span class="title">T</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>替换字符串</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span>+<span class="built_in">shift</span>+R</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>查找方法调用处<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">option</span> + <span class="built_in">F7</span></div></pre></td></tr></table></figure></p>
+<p>查看该类所有变量和方法<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">command</span>+<span class="title">F12</span></div></pre></td></tr></table></figure></p>
+<p>查看继承该类的所有类<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="section">control</span>+H</div></pre></td></tr></table></figure></p>
+<p>选中一部分代码块被if/elseif，try/catch包装起来快捷键<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">command</span>+<span class="title">option</span>+<span class="title">T</span></div></pre></td></tr></table></figure></p>
+<p>替换字符串<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span>+<span class="built_in">shift</span>+R</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
