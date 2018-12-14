@@ -4,7 +4,7 @@
 
 # Site
 title: Wilson
-subtitle: 爱折腾的技术男
+subtitle: 自强不息 厚德载物
 description: 每周分享博客
 author: Wilson
 language: cn
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yelee
+theme: casper
 
 
 # Deployment

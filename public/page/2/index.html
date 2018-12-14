@@ -1,1539 +1,394 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html>
+
 <head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Wilson" />
+  <meta name="generator" content="Wilson">
 
+  
+  
+  
 
-    
-    
-
-
-<meta name="description" content="每周分享博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wilson">
-<meta property="og:url" content="mysiga.cn/page/2/index.html">
-<meta property="og:site_name" content="Wilson">
-<meta property="og:description" content="每周分享博客">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wilson">
-<meta name="twitter:description" content="每周分享博客">
-
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-    <style> .article { opacity: 0;} </style>
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Wilson</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
+  
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Wilson</a></h1>
-        </hgroup>
-
-        
-        <p class="header-subtitle">爱折腾的技术男</p>
-        
-
-        
 
 
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                    </ul>
-                </div>
-            </div>
-        
+<body class="home-template">
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" href="https://github.com/mysiga" title="GitHub"></a>
-                            
-                                <a class="fa 简书" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://zhipingyang.github.io/">zhipingyang</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.tomatopeter.com/">阿潘</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/d6f6c875ad03">zvving</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/ac4f127d5150">xpleemoon</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/iNXuJG/timeline">冰雪八哥</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jinwong001.com/">Jinwong</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://wangsheng.github.io/">Victor</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://origheart.com/">Origheart</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://ckjava.com/">ck</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://prettychaoyao.github.io/">prettychaoyao</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-            </div>
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="../img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
-    </header>                
-</div>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">爱折腾的技术男</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" target="_blank" href="https://github.com/mysiga" title="GitHub"></a>
-                            
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap">
+</header>
   
-    <article id="post-Java7-Switch-String" class="article article-type-post" itemscope itemprop="blogPost">
+<main class="content" role="main">
   
-    <div class="article-meta">
-      <a href="/2017/01/25/Java7-Switch-String/" class="article-date">
-      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">2017-01-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">
+          2017-01-25
+      </time>
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+</span>
+      <h2 class="post-title"><a href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
+Switch string
+Java 7新特性，原来switch只能支持int，byte。short，char,枚举
+
+
+那具体性能如何了？看下code
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475
+      
+      </p>
+      
+      <p>
+          <a href="/2017/01/25/Java7-Switch-String/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a>
-    </h1>
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-08-24T15:47:29.000Z" itemprop="datePublished">
+          2016-08-24
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/08/24/Android面试/">Android面试</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        面试问题总结
+##Android
+####Handler机制
+
+Handler机制详解
+Android-异步通信Handler机制画图更清晰
+Android异步消息处理机制完全解析，带你从源码的角度彻底理解
+
+自定义View先总的分类:自绘控件、组合控件、继承控件
+
+Android自定义View的实现方法，带你一步步深入了解View(四)
+
+在回头看View绘制源码
+
+Android LayoutInflater原理分析，带你一步步深入
+      
+      </p>
+      
+      <p>
+          <a href="/2016/08/24/Android面试/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
-
-      </header>
-      
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-07-31T14:50:29.000Z" itemprop="datePublished">
+          2016-07-31
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
+</span>
+      <h2 class="post-title"><a href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
       
-          
-        <ul>
-<li>Switch string<ul>
-<li>Java 7新特性，原来switch只能支持int，byte。short，char,枚举</li>
-</ul>
-</li>
-<li>那具体性能如何了？看下code</li>
-</ul>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wilson.test;</div><div class="line"><span class="keyword">public</span> class SwitchTest &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_ONE = <span class="string">"1"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_TWO = <span class="string">"2"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_THREE = <span class="string">"3"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FOUR = <span class="string">"4"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_FIVE = <span class="string">"5"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SIX = <span class="string">"6"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_SEVEN = <span class="string">"7"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NUM_EIGHT = <span class="string">"8"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"1-&gt;switchTime:"</span>+switchOutput(<span class="string">"1"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"1"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"2-&gt;switchTime:"</span>+switchOutput(<span class="string">"2"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"2"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"3-&gt;switchTime:"</span>+switchOutput(<span class="string">"3"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"3"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"4-&gt;switchTime:"</span>+switchOutput(<span class="string">"4"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"4"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"5-&gt;switchTime:"</span>+switchOutput(<span class="string">"5"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"5"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"6-&gt;switchTime:"</span>+switchOutput(<span class="string">"6"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"6"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"7-&gt;switchTime:"</span>+switchOutput(<span class="string">"7"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"7"</span>));</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"8-&gt;switchTime:"</span>+switchOutput(<span class="string">"8"</span>)+<span class="string">",ifElse:"</span>+ifElseOutput(<span class="string">"8"</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> switchOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">if</span> (num == <span class="keyword">null</span> || num.equals(<span class="string">""</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">switch</span> (num) &#123;</div><div class="line">                <span class="keyword">case</span> NUM_ONE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_TWO:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_THREE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FOUR:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_FIVE:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SIX:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_SEVEN:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> NUM_EIGHT:</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> ifElseOutput(<span class="keyword">String</span> num) &#123;</div><div class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (num.equals(NUM_ONE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_TWO)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_THREE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FOUR)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_FIVE)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SIX)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_SEVEN)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num.equals(NUM_EIGHT)) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</div><div class="line">        <span class="keyword">return</span> end - start;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>开始想当然switch速度更快，那实际输出了?</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">1-&gt;</span><span class="bash">switchTime:1868,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">2-&gt;</span><span class="bash">switchTime:2381,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">3-&gt;</span><span class="bash">switchTime:985,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">4-&gt;</span><span class="bash">switchTime:1002,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">5-&gt;</span><span class="bash">switchTime:486,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">6-&gt;</span><span class="bash">switchTime:662,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">7-&gt;</span><span class="bash">switchTime:652,<span class="keyword">if</span>Else:0</span></div><div class="line"><span class="meta">8-&gt;</span><span class="bash">switchTime:661,<span class="keyword">if</span>Else:0</span></div></pre></td></tr></table></figure>
-<p>结果大出我所希望的。用”if-if-else”几乎完胜switch String，那为什么了？<br><a href="http://it.deepinmind.com/java/2014/05/08/how-string-in-switch-works-in-java-7.html" target="_blank" rel="external">可以看下这篇文章</a>,主要switch string，是通过equal和hashcode实现的。String先通过hashcode转换为int，在通过switch int，然后子case里面在if equal String。</p>
-<ul>
-<li>看来还是回来老路，只是添加一个新的支持特性而效率没有提高。对应String还是用if-if-else吧</li>
-</ul>
+        
+原文来自
+Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况
 
+Java异常架构图 
+
+
+Throwable Throwable是 Java 语言中所有错误或异常的超类。 Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。 Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信
       
-    </div>
+      </p>
+      
+      <p>
+          <a href="/2016/07/31/Excption与Error包结构/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-07-15T15:30:00.000Z" itemprop="datePublished">
+          2016-07-15
+      </time>
     
-    <div class="article-info article-info-index">
+</span>
+      <h2 class="post-title"><a href="/2016/07/15/单元测试/">单元测试</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
       
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
+        
+注：基于小创分享的总结
 
+明确概念
+单元测试 or 集成测试：
+单元测试在维基百科是这样定义的
 
+1单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+集成测试在维基百科的定义1集成测试,整
       
+      </p>
       
-      <div class="clearfix"></div>
-    </div>
+      <p>
+          <a href="/2016/07/15/单元测试/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-06-30T09:29:29.000Z" itemprop="datePublished">
+          2016-06-30
+      </time>
     
+</span>
+      <h2 class="post-title"><a href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Print.java
+12345public class Print &#123; public Print (String print) &#123;  System.out.println(print); &#125;&#125;
+
+Person.java
+1234567891011121314151617public class Person &#123; private static Print printLog = new 
+      
+      </p>
+      
+      <p>
+          <a href="/2016/06/30/Java类初始化顺序/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-06-17T10:30:00.000Z" itemprop="datePublished">
+          2016-06-17
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+先看异常信息:
+
+123456789101112131415161718192021222324E/StrictMode: null              java.lang.Throwable: file:// Uri exposed through Intent.getData()                  at android.os.StrictMode.onFileUriExposed(StrictMode.jav
+      
+      </p>
+      
+      <p>
+          <a href="/2016/06/17/App共享文件权限/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+懒汉式:线程安全，开销大
+
+123456789public class Singleton&#123; private static final Singleton singleton; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123; 	 singleton=new Singleton(); 	&#125
+      
+      </p>
+      
+      <p>
+          <a href="/2016/05/28/Java单例模式/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference）
+强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：
+1Object o=new Object();   //  强引用
+当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱化
+      
+      </p>
+      
+      <p>
+          <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">
+          2016-04-01
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/04/01/Android-mvp/">Android-mvp</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+mvc与mvp对比
+mvp
+
+model:依然是业务逻辑和实体模型
+view:对应于Activity，负责View的绘制以及与用户交互
+presenter:负责完成View于Model间的交互
+关系图
+
+
+View定义定义包括：Activity,xml,Fragment，adapter
+
+Google定义MVP
+
+
+ Google-MVP-demo
+
+      
+      </p>
+      
+      <p>
+          <a href="/2016/04/01/Android-mvp/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">
+          2016-03-18
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Android单元测试
+在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。  
+
+
+框架比较
+JUnit
+原生单元测试
+不能让Activity执行到resume的状态
+@王进已讲
+
+
+AndroidTest
+运行在Android环境
+
+
+Instrumentation
+运行在模拟器上
+
+
+Rob
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/18/Android单元测试框架/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <nav class="pagination" role="pagination">
+    <a class="newer-posts" href="/">← Newer Posts</a>
+    <span class="page-number">Page 2 of 6</span>
+    <a class="older-posts" href="/page/3/">Older Posts →</a>
+  </nav>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android面试" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/24/Android面试/" class="article-date">
-      <time datetime="2016-08-24T15:47:29.000Z" itemprop="datePublished">2016-08-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/24/Android面试/">Android面试</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>面试问题总结</p>
-<p>##Android</p>
-<p>####Handler机制</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/a04cbabaec83" target="_blank" rel="external">Handler机制详解</a></li>
-<li><a href="http://www.jianshu.com/p/041fff5acdcf" target="_blank" rel="external">Android-异步通信Handler机制</a>画图更清晰</li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/9991569" target="_blank" rel="external">Android异步消息处理机制完全解析，带你从源码的角度彻底理解</a></li>
-</ul>
-<h4 id="自定义View"><a href="#自定义View" class="headerlink" title="自定义View"></a>自定义View</h4><p>先总的分类:自绘控件、组合控件、继承控件</p>
-<ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/17357967" target="_blank" rel="external">Android自定义View的实现方法，带你一步步深入了解View(四)</a></li>
-</ul>
-<p>在回头看View绘制源码</p>
-<ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/12921889" target="_blank" rel="external">Android LayoutInflater原理分析，带你一步步深入了解View(一)</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/16330267" target="_blank" rel="external">Android视图绘制流程完全解析，带你一步步深入了解View(二)</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/17045157" target="_blank" rel="external">Android视图状态及重绘流程分析，带你一步步深入了解View(三)</a><br>注：除了自绘控件需要搞清楚三个方法(onMeasure, onLayout, onDraw)外其他两个自定义相对比较简单。</li>
-</ul>
-<h4 id="事件分发机制"><a href="#事件分发机制" class="headerlink" title="事件分发机制"></a>事件分发机制</h4><ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/9097463" target="_blank" rel="external">Android事件分发机制完全解析，带你从源码的角度彻底理解(上)</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/9153747" target="_blank" rel="external">Android事件分发机制完全解析，带你从源码的角度彻底理解(下)</a></li>
-<li><a href="http://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="external">图解 Android 事件分发机制</a><br>注:三个重要方法:<ul>
-<li>dispatchTouchEvent事件分发</li>
-<li>onInterceptTouchEvent 事件拦截</li>
-<li>onTouchEvent() 事件处理</li>
-</ul>
-</li>
-</ul>
-<h4 id="跨进程通信IPC"><a href="#跨进程通信IPC" class="headerlink" title="跨进程通信IPC"></a>跨进程通信IPC</h4><ul>
-<li>序列化<ul>
-<li>Serializable：对象序列化到存储设备或者将对象序列化通过网络传输优先选择</li>
-<li>Parcelable:Android首选</li>
-</ul>
-</li>
-<li>Bindler</li>
-<li><p>IPC方式</p>
-<ul>
-<li>Bundle</li>
-<li>文件共享</li>
-<li>Messenger(不是handler的Message)</li>
-</ul>
-</li>
-<li><p>AIDL</p>
-<ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/11952435" target="_blank" rel="external">Android Service完全解析，关于服务你所需知道的一切(上)</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/9797169" target="_blank" rel="external">Android Service完全解析，关于服务你所需知道的一切(下)</a></li>
-</ul>
-</li>
-</ul>
-<h4 id="Android适配"><a href="#Android适配" class="headerlink" title="Android适配"></a>Android适配</h4><ul>
-<li><a href="http://www.jianshu.com/p/ec5a1a30694b" target="_blank" rel="external">Android开发：最全面、最易懂的Android屏幕适配解决方案</a></li>
-<li><a href="http://www.ui.cn/detail/79573.html" target="_blank" rel="external">Android切图</a><ul>
-<li>1套标注dp图</li>
-<li>三套切图(hdpi,xhpi,xxhdpi)</li>
-</ul>
-</li>
-</ul>
-<h4 id="Android动画"><a href="#Android动画" class="headerlink" title="Android动画"></a>Android动画</h4><ul>
-<li>Frame Animation(帧动画)：按顺序播放事先做好的图像</li>
-<li>Tween Animation(补间动画):只能对View进行平移，缩放，渐变，旋转</li>
-<li>Property Animation(属性动画):API11开始引入，基于Object进行属性改变而<br>达到动画效果</li>
-<li>使用动画场景<ul>
-<li>转场动画</li>
-<li>加载动画</li>
-<li>其他动画</li>
-</ul>
-</li>
-</ul>
-<p>##Java基础</p>
-<ul>
-<li><a href="http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html" target="_blank" rel="external">“==”和equals区别</a><br>“==”是比较的内存地址，equals比较的是值。</li>
-<li><p><a href="http://wiki.jikexueyuan.com/project/java-vm/storage.html" target="_blank" rel="external">Java内存</a><br>  <img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存区域"></p>
-<ul>
-<li>程序计数器</li>
-<li><p>Java 虚拟机栈</p>
-<ol>
-<li><p>局部变量表</p>
-<blockquote>
-<p>局部变量表是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型（它指向了一条字节码指令的地址）.</p>
-</blockquote>
-</li>
-<li><p>操作数栈</p>
-<blockquote>
-<p>操作数栈又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</p>
-</blockquote>
-</li>
-<li>动态连接<blockquote>
-<p>每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</p>
-</blockquote>
-</li>
-<li>方法返回地址<blockquote>
-<p>当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>本地方法栈<br>该区域与虚拟机栈所发挥的作用非常相似，只是虚拟机栈为虚拟机执行 Java 方法服务，而本地方法栈则为使用到的本地操作系统（Native）方法服务。</li>
-<li>Java 堆<br>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。Java Heap 是垃圾收集器管理的主要区域，因此很多时候也被称为“GC堆”。</li>
-<li>方法区<br>方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</li>
-<li>直接内存<br> 不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。<blockquote>
-<p>在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I/O 方式，可以使用Native函数库直接分配堆外内存，然后通过存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
-</blockquote>
-</li>
-<li><p>参考文章</p>
-<ul>
-<li><a href="http://blog.csdn.net/zhengzhb/article/details/7517213" target="_blank" rel="external">Java类生命周期</a></li>
-<li><a href="http://blog.csdn.net/zhengzhb/article/details/7331354" target="_blank" rel="external">单例模式讨论篇：单例模式与垃圾回收</a></li>
-</ul>
-</li>
-<li><p>int-char-long各占多少字节数</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">位数</th>
-<th style="text-align:left">字节</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">byte</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">char</td>
-<td style="text-align:left">16</td>
-<td style="text-align:left">2</td>
-</tr>
-<tr>
-<td style="text-align:left">short</td>
-<td style="text-align:left">16</td>
-<td style="text-align:left">2</td>
-</tr>
-<tr>
-<td style="text-align:left">int</td>
-<td style="text-align:left">32</td>
-<td style="text-align:left">4</td>
-</tr>
-<tr>
-<td style="text-align:left">long</td>
-<td style="text-align:left">64</td>
-<td style="text-align:left">8</td>
-</tr>
-<tr>
-<td style="text-align:left">float</td>
-<td style="text-align:left">32</td>
-<td style="text-align:left">4</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td style="text-align:left">64</td>
-<td style="text-align:left">8</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">Java 23种设计模式</a><ul>
-<li>单例模式</li>
-<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">工厂模式</a><ol>
-<li><a href="http://www.cnblogs.com/lcw/p/3802790.html" target="_blank" rel="external">静态工厂模式</a></li>
-<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/factory-pattern.html" target="_blank" rel="external">工厂方法模式</a></li>
-<li><a href="http://wiki.jikexueyuan.com/project/java-design-pattern/abstract-factory-pattern.html" target="_blank" rel="external">抽象工厂模式</a></li>
-<li>区别：<blockquote>
-<p>静态工厂模式:用静态方法获取指定产品<br>   工厂方法模式:定义工厂接口,一个方法,让不同的子类工厂生产指定产品<br>   抽象工厂模式:同工厂方法模式类似,只是工厂接口有多个方法</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li>建造者模式</li>
-<li>代理模式</li>
-<li>策略模式</li>
-<li>模板模式</li>
-<li>观察者模式</li>
-</ul>
-</li>
-</ul>
-<h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><ul>
-<li><a href="http://blog.csdn.net/bjyfb/article/details/6682913" target="_blank" rel="external">HTTP,TCP,Socket关系</a><ul>
-<li><a href="http://mp.weixin.qq.com/s?__biz=MzA4MzQxMzg5MA==&amp;mid=2649830415&amp;idx=2&amp;sn=760da2138f07c96ef25d451d745c4c72&amp;scene=0#wechat_redirect" target="_blank" rel="external">TCP和UDP区别？TCP几次握手，几次断开？</a></li>
-</ul>
-</li>
-</ul>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li><a href="http://www.diycode.cc/wiki/androidinterview" target="_blank" rel="external">Android 开发工程师面试指南</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Excption与Error包结构" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/31/Excption与Error包结构/" class="article-date">
-      <time datetime="2016-07-31T14:50:29.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md" target="_blank" rel="external">原文来自</a></li>
-<li><p><a href="http://www.cnblogs.com/yumo/p/4909617.html" target="_blank" rel="external">Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况</a></p>
-<ul>
-<li>Java异常架构图<br><img src="https://camo.githubusercontent.com/2248cdf95b8f2569ee0e58aac3d8ed179c89f190/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3637393930342f3230313531302f3637393930342d32303135313032353231303831333938392d3932313932373931362e6a7067" alt="Java异常架构图"> </li>
-</ul>
-<ol>
-<li>Throwable Throwable是 Java 语言中所有错误或异常的超类。 Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。 Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信息。</li>
-<li>Exception Exception及其子类是 Throwable 的一种形式，它指出了合理的应用程序想要捕获的条件。</li>
-<li>RuntimeException RuntimeException是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。 编译器不会检查RuntimeException异常。 例如，除数为零时，抛出ArithmeticException异常。RuntimeException是ArithmeticException的超类。当代码发生除数为零的情况时，倘若既”没有通过throws声明抛出ArithmeticException异常”，也”没有通过try…catch…处理该异常”，也能通过编译。这就是我们所说的”编译器不会检查RuntimeException异常”！ 如果代码会产生RuntimeException异常，则需要通过修改代码进行避免。 例如，若会发生除数为零的情况，则需要通过代码避免该情况的发生</li>
-<li><p>Error 和Exception一样， Error也是Throwable的子类。 它用于指示合理的应用程序不应该试图捕获的严重问题，大多数这样的错误都是异常条件。 和RuntimeException一样， 编译器也不会检查Error。</p>
-<p>Java将可抛出(Throwable)的结构分为三种类型： 被检查的异常(Checked Exception)，运行时异常(RuntimeException)和错误(Error)。</p>
-</li>
-</ol>
-<ul>
-<li><p>(01) 运行时异常 定义 : RuntimeException及其子类都被称为运行时异常。 特点 : Java编译器不会检查它。 也就是说，当程序中可能出现这类异常时，倘若既”没有通过throws声明抛出它”，也”没有用try-catch语句捕获它”，还是会编译通过。例如，除数为零时产生的ArithmeticException异常，数组越界时产生的IndexOutOfBoundsException异常，fail-fail机制产生的ConcurrentModificationException异常等，都属于运行时异常。 虽然Java编译器不会检查运行时异常，但是我们也可以通过throws进行声明抛出，也可以通过try-catch对它进行捕获处理。 如果产生运行时异常，则需要通过修改代码来进行避免。 例如，若会发生除数为零的情况，则需要通过代码避免该情况的发生！</p>
-</li>
-<li><p>(02) 被检查的异常 定义 : Exception类本身，以及Exception的子类中除了”运行时异常”之外的其它子类都属于被检查异常。 特点 : Java编译器会检查它。 此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处理，否则不能通过编译。例如，CloneNotSupportedException就属于被检查异常。当通过clone()接口去克隆一个对象，而该对象对应的类没有实现Cloneable接口，就会抛出CloneNotSupportedException异常。 被检查异常通常都是可以恢复的。</p>
-</li>
-<li><p>(03) 错误 定义 : Error类及其子类。 特点 : 和运行时异常一样，编译器也不会对错误进行检查。 当资源不足、约束失败、或是其它程序无法继续运行的条件发生时，就产生错误。程序本身无法修复这些错误的。例如，VirtualMachineError就属于错误。 按照Java惯例，我们是不应该是实现任何新的Error子类的！</p>
-<p>对于上面的3种结构，我们在抛出异常或错误时，到底该哪一种？《Effective Java》中给出的建议是： 对于可以恢复的条件使用被检查异常，对于程序错误使用运行时异常。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-单元测试" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/15/单元测试/" class="article-date">
-      <time datetime="2016-07-15T15:30:00.000Z" itemprop="datePublished">2016-07-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/15/单元测试/">单元测试</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>注：基于<a href="http://chriszou.com/" target="_blank" rel="external">小创</a>分享的总结</li>
-</ul>
-<h4 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h4><ul>
-<li>单元测试 or 集成测试：</li>
-<li>单元测试在<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95" target="_blank" rel="external">维基百科</a>是这样定义的</li>
-</ul>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">单元测试（英语：<span class="keyword">Unit</span> Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。</div></pre></td></tr></table></figure>
-<p>集成测试在<a href="https://zh.wikipedia.org/wiki/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95" target="_blank" rel="external">维基百科</a>的定义<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">集成测试,整合测试又称组装测试，即对程序模块采用一次性或增殖方式组装起来，对系统的接口进行正确性检验的测试工作。整合测试一般在单元测试之后、系统测试之前进行。实践表明，有时模块虽然可以单独工作，但是并不能保证组装起来也可以同时工作</div></pre></td></tr></table></figure></p>
-<p>有没有理解?那我们在借鉴下《单元测试的艺术》对单元测试和集成测试的定义：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个单元测试时一段自动化的代码，这段代码调用被测试的工作单元，之后对这个单元的单个最终结果的某些假设进行检验。单元测试几乎都是用单元测试框架编写。单元测试容易编写，能快速运行。单元测试可靠，可读，并且可维护。只要产品代码不发生变化，单元测试的结果是稳定的。</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">集成测试是对一个工作单元进行的测试，这个测试对被测试的工作单元没有完全控制，并使用该单元的一个或者多个真实依赖物，例如时间，网络，数据库，线程或随机数产生器等。</div></pre></td></tr></table></figure>
-<p>现在应该了解吧，没有了解不要紧，我们再通过他们关系比对<br> 那单元测试和集成测试的关系是怎么样了？<br> <img src="http://7xod3k.com1.z0.glb.clouddn.com/qtijqabixtlihxsuujkwnlzelrqnwqnz" alt="单元测试和集成测试"><br> <a href="http://chriszou.com/2016/04/13/android-unit-testing-start-from-what.html" target="_blank" rel="external">链接</a></p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>保证代码质量，防止bug或尽早发现bug的作用</li>
-<li>改善代码的设计，节约开发调试时间</li>
-<li>大大减少重构中手动验证正确性的时间。</li>
-<li><p>在写单元测试的时候也能发现方法乃至系统结构设计的不合理</p>
-</li>
-<li><p>前面都是官方文字，现在讲点实在的。单元测试就是测试方法，方法我们又分为两种</p>
-<ul>
-<li>有返回值方法</li>
-<li>无返回值方法</li>
-</ul>
-</li>
-<li><p>有返回值方法，我们测试这个方法直接通过测试这个方法返回的值是否跟你预期一样。我们就以一个登陆的demo来解析吧</p>
-<ul>
-<li><p>环境</p>
-<ul>
-<li>IDE:Android Studio</li>
-<li><p>Java测试库:junit，在build.gradle配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">test</span>Compile <span class="string">'junit:junit:4.12'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-784a1cb7911ccafa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleUnitTest</span> </span>&#123;</div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addition_isCorrect</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        assertEquals(<span class="number">4</span>, <span class="number">2</span> + <span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个是新近一个Android新建的项目，生成的单元测试，直接通过点击方法的运行就能看的结果了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6287758ce0be0d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-82ee776821842f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行结果"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-d33f48cff28cc3a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-a0b2da8b0c4418b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误运行结果"><br>实际开发中我们也是通过get()获取指定值比较这个应该比较容易理解。重点就是第二个了</p>
-<ul>
-<li>无返回值方法，我们只能通过方法内某个对象的方法是否被调用并且调用参数一样。这里就要用到mock，mock其实就是虚拟一个对象，然后根据这个对象方法判断是否被调用，mock目前比较成熟的框架是Mockito，所有我们这里要引用Mockito框架</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;    </div><div class="line"><span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])    </div><div class="line">androidTestCompile(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, </div><div class="line">&#123;        </div><div class="line">  <span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.android.support'</span>, module: <span class="string">'support-annotations'</span>    &#125;)</div><div class="line">   </div><div class="line"> <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:23.4.0'</span>    </div><div class="line"><span class="keyword">compile</span> <span class="string">'com.android.support.constraint:constraint-layout:1.0.0-alpha4'</span>    </div><div class="line"><span class="comment">//以下测试框架    </span></div><div class="line">testCompile <span class="string">"junit:junit:4.12"</span>    </div><div class="line"><span class="comment">//mockito    </span></div><div class="line">testCompile <span class="string">"org.mockito:mockito-core:1.+"</span>&#125;</div></pre></td></tr></table></figure>
-<p>先看代码这个是一个简单的login代码<br>Activity</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span>, <span class="title">ILoginView</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> EditText mUserNameView;</div><div class="line">    <span class="keyword">private</span> EditText mPassWordView;</div><div class="line">    <span class="keyword">private</span> LoginPresenter mPresenter;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        findViewById(R.id.login).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        mUserNameView = (EditText) findViewById(R.id.username);</div><div class="line">        mPassWordView = (EditText) findViewById(R.id.password);</div><div class="line">        mPresenter = <span class="keyword">new</span> LoginPresenter(<span class="keyword">this</span>, HttpClient.getInstance());</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.login:</div><div class="line">                String username = mUserNameView.getText().toString();</div><div class="line">                String password = mPassWordView.getText().toString();</div><div class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(username)) &#123;</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"用户名不能为空"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (TextUtils.isEmpty(password)) &#123;</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>, <span class="string">"密码不能为空"</span>, Toast.LENGTH_LONG).show();</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                mPresenter.login(username, password);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startHomeView</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"跳转主页"</span>, Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, <span class="string">"密码错误"</span>, Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ILoginView接口</p>
- <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ILoginView</span> &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 跳转主页</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">startHomeView</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 错误</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onError</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>HttpClient</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpClient</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HttpClient mClient;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpClient <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mClient == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (HttpClient.class) &#123;</div><div class="line">                <span class="keyword">if</span> (mClient == <span class="keyword">null</span>) &#123;</div><div class="line">                    mClient = <span class="keyword">new</span> HttpClient();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mClient;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callback</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(String phone)</span></span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(String error)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password, Callback callback)</span> </span>&#123;</div><div class="line">        <span class="comment">//为了简单,没有实际操作网络请求只是简单判断返回结果</span></div><div class="line">        <span class="keyword">if</span> (username.length() &lt; <span class="number">5</span>) &#123;</div><div class="line">            callback.onError(<span class="string">"用户名太短"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            callback.onSuccess(<span class="string">"110110"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>LoginPresenter</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> LoginPresenter &#123;</div><div class="line">    <span class="keyword">private</span> ILoginView mLoginView;</div><div class="line">    <span class="keyword">private</span> HttpClient mClient;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> LoginPresenter(<span class="meta">@NonNull</span> ILoginView mLoginView,<span class="meta">@NonNull</span> HttpClient client) &#123;</div><div class="line">        <span class="keyword">this</span>.mLoginView = mLoginView;</div><div class="line">        <span class="keyword">this</span>.mClient = client;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="built_in">void</span> login(<span class="built_in">String</span> username, <span class="built_in">String</span> password) &#123;</div><div class="line">        mClient.login(username, password, <span class="keyword">new</span> HttpClient.Callback() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="built_in">void</span> onSuccess(<span class="built_in">String</span> phone) &#123;</div><div class="line">                mLoginView.startHomeView();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> <span class="built_in">void</span> onError(<span class="built_in">String</span> error) &#123;</div><div class="line">                mLoginView.onError();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="built_in">String</span> getDevice() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"nexus6p"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>单元测试，mock出来的对象一定要set到这个LoginPresenter对象中，要不然报错org.mockito.exceptions.misusing.NotAMockException</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginPresenterTest</span> </span>&#123;    </div><div class="line"><span class="keyword">private</span> LoginPresenter mPresenter;    </div><div class="line"><span class="keyword">private</span> ILoginView mLoginView;    </div><div class="line"><span class="keyword">private</span> HttpClient mClient;    </div><div class="line"><span class="comment">//初始化,每测试一个方法都会掉这个    </span></div><div class="line"><span class="meta">@Before</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line">mLoginView = Mockito.mock(ILoginView.class);        </div><div class="line">mClient = Mockito.mock(HttpClient.class);        </div><div class="line">mPresenter = <span class="keyword">new</span> LoginPresenter(mLoginView, mClient);   </div><div class="line"> &#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//无返回值方法        </span></div><div class="line">mPresenter.login(<span class="string">"123456"</span>, <span class="string">"123456"</span>);   </div><div class="line">     Mockito.verify(mClient).login(<span class="string">"123456"</span>, <span class="string">"123456"</span>, <span class="keyword">null</span>);    </div><div class="line">&#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loginTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//无返回值方法        </span></div><div class="line">mPresenter.loginTest(<span class="string">"123456"</span>, <span class="string">"123456"</span>);        </div><div class="line">Mockito.verify(mClient).login(<span class="string">"123456"</span>, <span class="string">"123456"</span>, <span class="keyword">null</span>);    </div><div class="line">&#125;    </div><div class="line"><span class="meta">@Test</span>    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getDevice</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;        </div><div class="line"><span class="comment">//有返回值方法"        </span></div><div class="line">Assert.assertEquals(mPresenter.getDevice(), <span class="string">"nexus6p"</span>);    </div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行看结果</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6e66d663c451a176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"><br>可以看出login方法有问题，这个错误是正常的，就是我要的结果，可是loginTest方法运行正常，最主要的是他们callback为null，login方法执行的callback不是null，所有login方法执行的时候验证出来就是不一致的。</p>
-<ul>
-<li>资料<ul>
-<li><a href="">Demo地址</a></li>
-<li><a href="http://chriszou.com/" target="_blank" rel="external">小创</a></li>
-<li><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a></li>
-<li><a href="http://www.ituring.com.cn/book/1336" target="_blank" rel="external">单元测试的艺术</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/单元测试/">单元测试</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java类初始化顺序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/30/Java类初始化顺序/" class="article-date">
-      <time datetime="2016-06-30T09:29:29.000Z" itemprop="datePublished">2016-06-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li><p>Print.java</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="built_in">Print</span> &#123;</div><div class="line"> <span class="keyword">public</span> <span class="built_in">Print</span> (String <span class="built_in">print</span>) &#123;</div><div class="line">  System.<span class="keyword">out</span>.println(<span class="built_in">print</span>);</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Person.java</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Person &#123;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类静态实例1--&gt;"</span>);</div><div class="line"> <span class="keyword">private</span> <span class="keyword">Print</span> log = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类实例--&gt;"</span>);</div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">  <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类静态块--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> <span class="keyword">print</span> = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类静态实例2--&gt;"</span>);</div><div class="line"> <span class="keyword">public</span> Person()&#123;</div><div class="line">  <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类构造方法--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="keyword">print</span>() &#123;</div><div class="line">  <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类静态方法--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> printLog3 = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"父类静态实例3--&gt;"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Child.java</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Child <span class="keyword">extends</span> Person &#123;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类静态实例1--&gt;"</span>);</div><div class="line"> <span class="keyword">private</span> <span class="keyword">Print</span> log = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类实例--&gt;"</span>);</div><div class="line"> <span class="keyword">static</span> &#123;</div><div class="line">  <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类静态块--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> <span class="keyword">print</span> = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类静态实例2--&gt;"</span>);</div><div class="line"></div><div class="line"> <span class="keyword">public</span> Child() &#123;</div><div class="line">  <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类构造方法--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="keyword">print</span>() &#123;</div><div class="line">  <span class="keyword">Print</span> printLog = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类静态方法--&gt;"</span>);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Print</span> printLog3 = <span class="keyword">new</span> <span class="keyword">Print</span>(<span class="string">"子类静态实例3--&gt;"</span>);</div><div class="line"></div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</div><div class="line">  <span class="keyword">new</span> Child();</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>输出结果</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">父类静态实例<span class="number">1</span><span class="comment">--&gt;</span></div><div class="line">父类静态块<span class="comment">--&gt;</span></div><div class="line">父类静态实例<span class="number">2</span><span class="comment">--&gt;</span></div><div class="line">父类静态实例<span class="number">3</span><span class="comment">--&gt;</span></div><div class="line">子类静态实例<span class="number">1</span><span class="comment">--&gt;</span></div><div class="line">子类静态块<span class="comment">--&gt;</span></div><div class="line">子类静态实例<span class="number">2</span><span class="comment">--&gt;</span></div><div class="line">子类静态实例<span class="number">3</span><span class="comment">--&gt;</span></div><div class="line">父类实例<span class="comment">--&gt;</span></div><div class="line">父类构造方法<span class="comment">--&gt;</span></div><div class="line">子类实例<span class="comment">--&gt;</span></div><div class="line">子类构造方法<span class="comment">--&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>-&gt;很显然，子类初始化的过程：</p>
-<ul>
-<li>父类静态实例或者父类静态代码块，代码的放置先后顺序，决定它们执行先后<ul>
-<li>子类静态实例或者子类静态代码块</li>
-<li>父类实例</li>
-<li>父类构造方法</li>
-<li>子类实例</li>
-<li>子类构造方法</li>
-<li>那为什么了？后面研究下再跟进</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-App共享文件权限" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/17/App共享文件权限/" class="article-date">
-      <time datetime="2016-06-17T10:30:00.000Z" itemprop="datePublished">2016-06-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>先看异常信息:</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">E/StrictMode: null</div><div class="line">              java<span class="selector-class">.lang</span><span class="selector-class">.Throwable</span>: file:<span class="comment">// Uri exposed through Intent.getData()</span></div><div class="line">                  at android<span class="selector-class">.os</span><span class="selector-class">.StrictMode</span><span class="selector-class">.onFileUriExposed</span>(StrictMode<span class="selector-class">.java</span>:<span class="number">1757</span>)</div><div class="line">                  at android<span class="selector-class">.net</span><span class="selector-class">.Uri</span><span class="selector-class">.checkFileUriExposed</span>(Uri<span class="selector-class">.java</span>:<span class="number">2346</span>)</div><div class="line">                  at android<span class="selector-class">.content</span><span class="selector-class">.Intent</span><span class="selector-class">.prepareToLeaveProcess</span>(Intent<span class="selector-class">.java</span>:<span class="number">8045</span>)</div><div class="line">                  at android<span class="selector-class">.app</span><span class="selector-class">.Instrumentation</span><span class="selector-class">.execStartActivity</span>(Instrumentation<span class="selector-class">.java</span>:<span class="number">1506</span>)</div><div class="line">                  at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.startActivityForResult</span>(Activity<span class="selector-class">.java</span>:<span class="number">3930</span>)</div><div class="line">                  at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.startActivityForResult</span>(Activity<span class="selector-class">.java</span>:<span class="number">3890</span>)</div><div class="line">                  at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentActivity</span><span class="selector-class">.startActivityForResult</span>(FragmentActivity<span class="selector-class">.java</span>:<span class="number">843</span>)</div><div class="line">                  at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.startActivity</span>(Activity<span class="selector-class">.java</span>:<span class="number">4213</span>)</div><div class="line">                  at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.ActivityCompatJB</span><span class="selector-class">.startActivity</span>(ActivityCompatJB<span class="selector-class">.java</span>:<span class="number">26</span>)</div><div class="line">                  at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.ActivityCompat</span><span class="selector-class">.startActivity</span>(ActivityCompat<span class="selector-class">.java</span>:<span class="number">133</span>)</div><div class="line">                  at com<span class="selector-class">.horizon</span><span class="selector-class">.offer</span><span class="selector-class">.mail</span><span class="selector-class">.maildetail</span><span class="selector-class">.impl</span><span class="selector-class">.ImageAnnexWrapper</span><span class="selector-class">.openFile</span>(ImageAnnexWrapper<span class="selector-class">.java</span>:<span class="number">26</span>)</div><div class="line">                  at com<span class="selector-class">.horizon</span><span class="selector-class">.offer</span><span class="selector-class">.mail</span><span class="selector-class">.maildetail</span><span class="selector-class">.MailDetailActivity</span><span class="selector-class">.openAnnexFile</span>(MailDetailActivity<span class="selector-class">.java</span>:<span class="number">184</span>)</div><div class="line">                  at com<span class="selector-class">.horizon</span><span class="selector-class">.offer</span><span class="selector-class">.mail</span><span class="selector-class">.maildetail</span><span class="selector-class">.adapter</span><span class="selector-class">.MailAnnexAdapter</span><span class="variable">$MailAnnexViewHolder</span>$<span class="number">1</span>.onClick(MailAnnexAdapter<span class="selector-class">.java</span>:<span class="number">75</span>)</div><div class="line">                  at android<span class="selector-class">.view</span><span class="selector-class">.View</span><span class="selector-class">.performClick</span>(View<span class="selector-class">.java</span>:<span class="number">5204</span>)</div><div class="line">                  at android<span class="selector-class">.view</span><span class="selector-class">.View</span><span class="variable">$PerformClick</span>.run(View<span class="selector-class">.java</span>:<span class="number">21153</span>)</div><div class="line">                  at android<span class="selector-class">.os</span><span class="selector-class">.Handler</span><span class="selector-class">.handleCallback</span>(Handler<span class="selector-class">.java</span>:<span class="number">739</span>)</div><div class="line">                  at android<span class="selector-class">.os</span><span class="selector-class">.Handler</span><span class="selector-class">.dispatchMessage</span>(Handler<span class="selector-class">.java</span>:<span class="number">95</span>)</div><div class="line">                  at android<span class="selector-class">.os</span><span class="selector-class">.Looper</span><span class="selector-class">.loop</span>(Looper<span class="selector-class">.java</span>:<span class="number">148</span>)</div><div class="line">                  at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.main</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">5417</span>)</div><div class="line">                  at java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.Method</span><span class="selector-class">.invoke</span>(Native Method)</div><div class="line">                  at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="variable">$MethodAndArgsCaller</span>.run(ZygoteInit<span class="selector-class">.java</span>:<span class="number">726</span>)</div><div class="line">                  at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="selector-class">.main</span>(ZygoteInit<span class="selector-class">.java</span>:<span class="number">616</span>)</div></pre></td></tr></table></figure>
-<p>在StrictMode(严格)模式下，App之间共享资源报的异常。</p>
-<ul>
-<li>出现这个异常的代码</li>
-</ul>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">void</span> openFile(<span class="meta">@NonNull</span> Activity activity, <span class="meta">@NonNull</span> File file) &#123;</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</div><div class="line">        intent.addCategory(Intent.CATEGORY_DEFAULT);</div><div class="line">        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">        <span class="comment"><span class="markdown">/<span class="strong">**异常这行代码**</span>/</span></span></div><div class="line">        intent.setDataAndType(<span class="built_in">Uri</span>.fromFile(file), <span class="string">"image/*"</span>);</div><div class="line">        ActivityCompat.startActivity(activity, intent, <span class="keyword">null</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>打印</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uri.fromFile(<span class="built_in">file</span>)</div></pre></td></tr></table></figure>
-<p>输出信息</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uri uri=file:<span class="regexp">//</span><span class="regexp">/storage/</span>emulated<span class="regexp">/0/</span>download<span class="regexp">/9text.jpg</span></div></pre></td></tr></table></figure>
-<ul>
-<li>各方说明<ul>
-<li><a href="https://developer.android.com/preview/behavior-changes.html#sharing-files" target="_blank" rel="external">Android N中说明Uri不能以file://的原因</a><ul>
-<li>传递软件包网域外的 file:// URI 可能给接收器留下无法访问的路径。</li>
-<li>访问权限控制 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="https://developer.android.com/preview/behavior-changes.html#sharing-files" target="_blank" rel="external">解决办法</a><ul>
-<li><a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html" target="_blank" rel="external">FileProvider</a></li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><p>开始搜索Uri.fromFile(file)并分析源码</p>
- <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * Creates a Uri from a file. The URI has the form</div><div class="line">  * "file://&lt;absolute path&gt;". Encodes path characters with the exception of</div><div class="line">  * '/'.</div><div class="line">  *</div><div class="line">  * &lt;p&gt;Example: "file:///tmp/android.txt"</div><div class="line">  *</div><div class="line">  * @throws NullPointerException if file is null</div><div class="line">  * @return a Uri for the given file</div><div class="line">  */</div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> Uri fromFile(<span class="keyword">File</span> <span class="keyword">file</span>) &#123;</div><div class="line">     <span class="keyword">if</span> (<span class="keyword">file</span> == <span class="keyword">null</span>) &#123;</div><div class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"file"</span>);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     PathPart path = PathPart.fromDecoded(<span class="keyword">file</span>.getAbsolutePath());</div><div class="line">     <span class="keyword">return</span> <span class="keyword">new</span> HierarchicalUri(</div><div class="line">             <span class="string">"file"</span>, Part.EMPTY, path, Part.<span class="keyword">NULL</span>, Part.<span class="keyword">NULL</span>);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p> 没有找到相关解决方案。</p>
-</li>
-<li><a href="https://developer.android.com/reference/android/os/StrictMode.VmPolicy.Builder.html#detectFileUriExposure(" target="_blank" rel="external">StrictMode的FileUriExposedException异常检测</a>)中有提到FileProvider的使用</li>
-<li>我写的一个<a href="https://github.com/milin411/FileIntentDemo.git" target="_blank" rel="external">demo</a></li>
-<li>给以后提醒app之间共享数据传Uri不能传file://</li>
-</ul>
-</li>
-<li><p>参考资料</p>
-<ul>
-<li><a href="https://developer.android.com/reference/android/os/StrictMode.html" target="_blank" rel="external">StrictMode</a> </li>
-<li><a href="http://www.jianshu.com/p/5572b42fc63f" target="_blank" rel="external">Android Uri和Java URI的区别</a></li>
-<li><a href="http://blog.csdn.net/dlutbrucezhang/article/details/8917303" target="_blank" rel="external">Android的Uri</a> </li>
-<li><a href="http://blog.csdn.net/harvic880925/article/details/44679239" target="_blank" rel="external">Uri详解之——Uri结构与代码提取</a></li>
-<li><a href="http://blog.csdn.net/zhangyingli/article/details/37902367" target="_blank" rel="external">根据 Android Training课程写的FileProvider小例子</a></li>
-<li><a href="https://developer.android.com/preview/behavior-changes.html#sharing-files" target="_blank" rel="external">FileUriExposedException 异常</a></li>
-<li><a href="https://developer.android.com/reference/android/support/v4/content/FileProvider.html" target="_blank" rel="external">FileProvider</a></li>
-<li><a href="http://blog.csdn.net/zhangyingli/article/details/37902367" target="_blank" rel="external">FileProvider使用</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java单例模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/28/Java单例模式/" class="article-date">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>懒汉式:线程安全，开销大</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> 	<span class="keyword">if</span>(singleton==<span class="keyword">null</span>)&#123;</div><div class="line"> 	 singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>双重检查锁：线程安全，根据需求使用</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton getInstance()&#123;</div><div class="line">  	<span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	  <span class="keyword">synchronized</span>(Singleton.<span class="keyword">class</span>)&#123;</div><div class="line">  	    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</div><div class="line">  	    singleton=<span class="keyword">new</span> Singleton();</div><div class="line">  	    &#125;</div><div class="line">  	  &#125;</div><div class="line">  	&#125;</div><div class="line">   <span class="keyword">return</span> singleton;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>静态内部类锁：线程安全，比较推荐</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="keyword">return</span> Holder.singleton;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>饿汗式：线程安全，但没有实现懒加载</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton=<span class="keyword">new</span> Singleton();</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line"> <span class="keyword">return</span> singleton;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>枚举:线程安全，但比较少人用</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></div><div class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">EasySingleton</span>&#123;</span></div><div class="line">    INSTANCE;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>参考文章<ul>
-<li><a href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization" target="_blank" rel="external">具体JVM机制</a></li>
-<li><a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">具体代码讲解</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java7之强引用-弱引用-软引用-虚引用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="article-date">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="转载-Java-7之基础-强引用、弱引用、软引用、虚引用"><a href="#转载-Java-7之基础-强引用、弱引用、软引用、虚引用" class="headerlink" title="(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用"></a>(转载)<a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h3><p>1、强引用（StrongReference）</p>
-<p>强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">//  强引用</span></div></pre></td></tr></table></figure>
-<p>当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱化引用，如下：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">o</span>=null<span class="comment">;     // 帮助垃圾收集器回收此对象</span></div></pre></td></tr></table></figure>
-<p>显式地设置o为null，或超出对象的生命周期范围，则gc认为该对象不存在引用，这时就可以回收这个对象。具体什么时候收集这要取决于gc的算法。<br>举例：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> test()&#123;  </div><div class="line">    <span class="keyword">Object</span> o=<span class="keyword">new</span> <span class="keyword">Object</span>();  </div><div class="line">    <span class="comment">// 省略其他操作  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在一个方法的内部有一个强引用，这个引用保存在栈中，而真正的引用内容（Object）保存在堆中。当这个方法运行完成后就会退出方法栈，则引用内容的引用不存在，这个Object会被回收。<br>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。<br>强引用在实际中有非常重要的用处，举个ArrayList的实现源代码：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">Object</span>[] elementData;  </div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="built_in">clear</span>() &#123;  </div><div class="line">        modCount++;  </div><div class="line">        <span class="comment">// Let gc do its work  </span></div><div class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)  </div><div class="line">            elementData[i] = <span class="keyword">null</span>;  </div><div class="line">        <span class="built_in">size</span> = <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在ArrayList类中定义了一个私有的变量elementData数组，在调用方法清空数组时可以看到为每个数组内容赋值为null。不同于elementData=null，强引用仍然存在，避免在后续调用 add()等方法添加元素时进行重新的内存分配。使用如clear()方法中释放内存的方法对数组中存放的引用类型特别适用，这样就可以及时释放内存。</p>
-<p>2、软引用（SoftReference）</p>
-<p>如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。 </p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);                                     <span class="comment">// 强引用  </span></div><div class="line">SoftReference&lt;<span class="keyword">String</span>&gt; softRef=<span class="keyword">new</span> SoftReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);     <span class="comment">// 软引用</span></div></pre></td></tr></table></figure>
-<p>当内存不足时，等价于：</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">If</span>(JVM.内存不足()) &#123;  </div><div class="line">   str = <span class="built_in">null</span>;  <span class="comment">// 转换为软引用  </span></div><div class="line">   <span class="keyword">System</span>.gc(); <span class="comment">// 垃圾回收器进行回收  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>软引用在实际中有重要的应用，例如浏览器的后退按钮。按后退时，这个后退时显示的网页内容是重新进行请求还是从缓存中取出呢？这就要看具体的实现策略了。</p>
-<ul>
-<li>如果一个网页在浏览结束时就进行内容的回收，则按后退查看前面浏览过的页面时，需要重新构建</li>
-<li>如果将浏览过的网页存储到内存中会造成内存的大量浪费，甚至会造成内存溢出<br>这时候就可以使用软引用</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Browser prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 获取页面进行浏览  </span></div><div class="line">SoftReference sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev); <span class="comment">// 浏览完毕后置为软引用         </span></div><div class="line">&lt;br&gt;<span class="keyword">if</span>(sr.<span class="keyword">get</span>()!=<span class="literal">null</span>) &#123;&lt;br&gt;&#125;&lt;br&gt;  </div><div class="line">    rev = (Browser) sr.<span class="keyword">get</span>();           <span class="comment">// 还没有被回收器回收，直接获取  </span></div><div class="line">&#125;<span class="keyword">else</span>&#123;  </div><div class="line">    prev = <span class="keyword">new</span> <span class="type">Browser</span>();               <span class="comment">// 由于内存吃紧，所以对软引用的对象回收了  </span></div><div class="line">    sr = <span class="keyword">new</span> <span class="type">SoftReference</span>(prev);       <span class="comment">// 重新构建  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样就很好的解决了实际的问题。<br>       软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。</p>
-<p>3、弱引用（WeakReference）</p>
-<p>   弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。</p>
- <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">String</span> <span class="built_in">str</span>=<span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"abc"</span>);      </div><div class="line">WeakReference&lt;<span class="keyword">String</span>&gt; abcWeakRef = <span class="keyword">new</span> WeakReference&lt;<span class="keyword">String</span>&gt;(<span class="built_in">str</span>);  </div><div class="line"><span class="built_in">str</span>=<span class="keyword">null</span>;</div></pre></td></tr></table></figure>
-<p> 当垃圾回收器进行扫描回收时等价于：</p>
- <figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> str = null<span class="comment">;  </span></div><div class="line">System.gc()<span class="comment">;</span></div></pre></td></tr></table></figure>
-<p> 如果这个对象是偶尔的使用，并且希望在使用时随时就能获取到，但又不想影响此对象的垃圾收集，那么你应该用 Weak Reference 来记住此对象。<br>   下面的代码会让str再次变为一个强引用：</p>
-   <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span>  abc = abcWeakRef.<span class="built_in">get</span>();</div></pre></td></tr></table></figure>
-<p>   弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。<br>当你想引用一个对象，但是这个对象有自己的生命周期，你不想介入这个对象的生命周期，这时候你就是用弱引用。</p>
-<p>这个引用不会在对象的垃圾回收判断中产生任何附加的影响。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">[java] view plain copy print?<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceTest</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReferenceQueue&lt;VeryBig&gt; rq = <span class="keyword">new</span> ReferenceQueue&lt;VeryBig&gt;();  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkQueue</span><span class="params">()</span> </span>&#123;  </div><div class="line">        Reference&lt;? extends VeryBig&gt; ref = <span class="keyword">null</span>;  </div><div class="line">        <span class="keyword">while</span> ((ref = rq.poll()) != <span class="keyword">null</span>) &#123;  </div><div class="line">            <span class="keyword">if</span> (ref != <span class="keyword">null</span>) &#123;  </div><div class="line">                System.out.println(<span class="string">"In queue: "</span> + ((VeryBigWeakReference) (ref)).id);  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> size = <span class="number">3</span>;  </div><div class="line">        LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt; weakList = <span class="keyword">new</span> LinkedList&lt;WeakReference&lt;VeryBig&gt;&gt;();  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;  </div><div class="line">            weakList.add(<span class="keyword">new</span> VeryBigWeakReference(<span class="keyword">new</span> VeryBig(<span class="string">"Weak "</span> + i), rq));  </div><div class="line">            System.out.println(<span class="string">"Just created weak: "</span> + weakList.getLast());  </div><div class="line">  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        System.gc();   </div><div class="line">        <span class="keyword">try</span> &#123; <span class="comment">// 下面休息几分钟，让上面的垃圾回收线程运行完成  </span></div><div class="line">            Thread.currentThread().sleep(<span class="number">6000</span>);  </div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">        checkQueue();  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBig</span> </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">    <span class="comment">// 占用空间,让线程进行回收  </span></div><div class="line">    <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span> * <span class="number">1024</span>];  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBig</span><span class="params">(String id)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.id = id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBig "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VeryBigWeakReference</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">VeryBig</span>&gt; </span>&#123;  </div><div class="line">    <span class="keyword">public</span> String id;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">VeryBigWeakReference</span><span class="params">(VeryBig big, ReferenceQueue&lt;VeryBig&gt; rq)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>(big, rq);  </div><div class="line">        <span class="keyword">this</span>.id = big.id;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"Finalizing VeryBigWeakReference "</span> + id);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后的输出结果为：</p>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">1641</span>c0  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">136</span>ab79  </div><div class="line">Just created <span class="keyword">weak</span>: com.javabase.reference.VeryBigWeakReference@<span class="number">33</span>c1aa  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line">Finalizing VeryBig <span class="keyword">Weak</span> <span class="number">0</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">1</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">2</span>  </div><div class="line"><span class="keyword">In</span> queue: <span class="keyword">Weak</span> <span class="number">0</span></div></pre></td></tr></table></figure>
-<p>4、虚引用（PhantomReference）</p>
-<p> “虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。</p>
-<p>  虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中</p>
-<p>5、总结</p>
-<p>Java4种引用的级别由高到低依次为：</p>
-<p>强引用  &gt;  软引用  &gt;  弱引用  &gt;  虚引用</p>
-<p>通过图来看一下他们之间在垃圾回收时的区别：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6fd93a3a77688946?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收关系图"></p>
-<p>当垃圾回收器回收时，某些对象会被回收，某些不会被回收。垃圾回收器会从根对象Object来标记存活的对象，然后将某些不可达的对象和一些引用的对象进行回收，如果对这方面不是很了解，可以参考如下的文章：<a href="http://blog.csdn.net/mazhimazh/article/category/1907599" target="_blank" rel="external">Java内存管理</a></p>
-<p>通过表格来说明一下，如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">引用类型</th>
-<th style="text-align:center">被垃圾回收时间</th>
-<th style="text-align:right">用途</th>
-<th style="text-align:right">生存时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">强引用</td>
-<td style="text-align:center">从来不会</td>
-<td style="text-align:right">对象的一般状态</td>
-<td style="text-align:right">JVM停止运行时终止</td>
-</tr>
-<tr>
-<td style="text-align:left">软引用</td>
-<td style="text-align:center">在内存不足时</td>
-<td style="text-align:right">对象缓存</td>
-<td style="text-align:right">内存不足时终止</td>
-</tr>
-<tr>
-<td style="text-align:left">弱引用</td>
-<td style="text-align:center">在垃圾回收时</td>
-<td style="text-align:right">对象缓存</td>
-<td style="text-align:right">gc运行后终止</td>
-</tr>
-<tr>
-<td style="text-align:left">虚引用</td>
-<td style="text-align:center">Unknown</td>
-<td style="text-align:right">Unknown</td>
-<td style="text-align:right">Unknown</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android-mvp" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/01/Android-mvp/" class="article-date">
-      <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">2016-04-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/01/Android-mvp/">Android-mvp</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li><a href="http://www.cnblogs.com/end/archive/2011/06/02/2068512.html" target="_blank" rel="external">mvc与mvp对比</a></li>
-<li><p>mvp</p>
-<ul>
-<li>model:依然是业务逻辑和实体模型</li>
-<li>view:对应于Activity，负责View的绘制以及与用户交互</li>
-<li>presenter:负责完成View于Model间的交互</li>
-<li>关系图<br><img src="http://www.jcodecraeer.com/uploads/20150227/1424969040503730.png" alt="mvp关系图"></li>
-</ul>
-</li>
-<li><p>View定义定义包括：Activity,xml,Fragment，adapter</p>
-</li>
-<li>Google定义MVP</li>
-</ul>
-<p><img src="https://github.com/googlesamples/android-architecture/wiki/images/mvp.png" alt="Google-mvp"></p>
-<p> <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp/todoapp" target="_blank" rel="external">Google-MVP-demo</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android单元测试框架" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/18/Android单元测试框架/" class="article-date">
-      <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">2016-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ul>
-<li>Android单元测试<ul>
-<li>在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。  </li>
-</ul>
-</li>
-<li>框架比较<ul>
-<li>JUnit<ul>
-<li>原生单元测试</li>
-<li>不能让Activity执行到resume的状态</li>
-<li>@王进已讲</li>
-</ul>
-</li>
-<li>AndroidTest<ul>
-<li>运行在Android环境</li>
-</ul>
-</li>
-<li>Instrumentation<ul>
-<li>运行在模拟器上</li>
-</ul>
-</li>
-<li>Robotium<ul>
-<li>类似于Selenium的测试框架</li>
-<li>运行在模拟器上</li>
-<li>通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
-</ul>
-</li>
-<li>Robolectric+Mock(Mockito)<ul>
-<li>运行在JVM上速度快</li>
-<li>Jenkins周期性执行</li>
-<li>无需准备Android环境</li>
-<li>实现了Android中对XML的解析，模拟了View，Layout，以及资源的加载</li>
-<li>一些测试对象依赖度较高而需要解除依赖的场景(如网络)使用Mock框架</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a href="http://robolectric.org/getting-started/" target="_blank" rel="external">Robolectric</a></p>
-<ul>
-<li><p>Android Studio配置</p>
-<ul>
-<li><p>build.gradle添加库</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">testCompile</span> "<span class="selector-tag">org</span><span class="selector-class">.robolectric</span><span class="selector-pseudo">:robolectric</span><span class="selector-pseudo">:3.0"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>Build Variants设置<br><img src="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png" alt="Unit Tests"></p>
-</li>
-<li>Linux和Mac平台的需要配置下才能运行:在Android Studio中run边上有一个app选择，这里选择”Edit Configurations” 出现编辑界面<br><img src="" alt="Run/Debug Configurations"><br>在左边中新建JUnit，Default-&gt;JUnit</li>
-<li>测试代码</li>
-<li>中间出现问题<ul>
-<li>Android SDK目前只支持到22，5.1</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>单元测试的目标函数主要有三种：</p>
-<ol>
-<li>有明确的返回值，如上图的dosomething(Boolean param)，做单元测试时，只需调用这个函数，然后验证函数的返回值是否符合预期结果。</li>
-<li>这个函数只改变其对象内部的一些属性或者状态，函数本身没有返回值，就验证它所改变的属性和状态。</li>
-<li>一些函数没有返回值，也没有直接改变哪个值的状态，这就需要验证其行为，比如点击事件。 </li>
-</ol>
-<ul>
-<li>既没有返回值，也没有改变状态，又没有触发行为的函数是不可测试的，在项目中不应该存在。当存在同时具备上述多种特性时，本文建议采用多个case来真对每一种特性逐一验证，或者采用一个case，逐一执行目标函数并验证其影响。</li>
-<li>构造用例的原则是测试用例与函数一对一，实现条件覆盖与路径覆盖。Java单元测试中，良好的单元测试是需要保证所有函数执行正确的，即所有边界条件都验证过，一个用例只测一个函数，便于维护。在Android单元测试中，并不要求对所有函数都覆盖到，像Android SDK中的函数回调则不用测试。</li>
-</ul>
-</li>
-<li><p>测试用例</p>
-<ul>
-<li><p>组件</p>
-<ul>
-<li><p>Activity测试</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">		@Test</div><div class="line">    public void testLifecycle() &#123;</div><div class="line">        ActivityController&lt;MainActivity&gt; activityController = Robolectric.buildActivity(MainActivity.class).create().start();</div><div class="line">        Activity activity = activityController.get();</div><div class="line">        Button action_next = (Button) activity.findViewById(R.id.next);</div><div class="line">        Assert.assertEquals("next", action_next.getText().toString());</div><div class="line"><span class="comment">//        error</span></div><div class="line"><span class="comment">//        Assert.assertEquals("testLifecycle", action_next.getText().toString());</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">		````  </div><div class="line">		-<span class="ruby"> Service</span></div><div class="line">		-<span class="ruby"> BroadcastReceiver</span></div><div class="line">		-<span class="ruby"> Fragment </span></div><div class="line">	-<span class="ruby"> 控件行为</span></div><div class="line">		-<span class="ruby"> 跳转</span></div><div class="line">	-<span class="ruby"> 界面元素</span></div><div class="line">		-<span class="ruby"> Toast</span></div></pre></td></tr></table></figure>
-<p>@Test<br>public void testToast() {<br>Button action_toast = (Button) mActivity.findViewById(R.id.action_toast);<br>action_toast.performClick();<br>Assert.assertEquals(“hello”, ShadowToast.getTextOfLatestToast());<br>}</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> Dialog</span></div><div class="line">-<span class="ruby"> UI控件</span></div></pre></td></tr></table></figure>
-<p>@Test<br>public void testStartEndActivity() {<br>Button action_next = (Button) mActivity.findViewById(R.id.next);<br>action_next.performClick();</p>
-<p>Intent intent = new Intent(mActivity, EndActivity.class);</p>
-<p>Intent actionIntent = ShadowApplication.getInstance().getNextStartedActivity();<br>Assert.assertEquals(intent, actionIntent);<br>}<br>````</p>
-</li>
-</ul>
-</li>
-<li>自定义函数</li>
-<li>网络请求</li>
-</ul>
-</li>
-<li>assertJ-android断言库</li>
-<li>资料<ul>
-<li><a href="https://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/0-introduction.html" target="_blank" rel="external">参考1</a></li>
-<li><a href="http://tech.meituan.com/Android_unit_test.html" target="_blank" rel="external">美团Android单元测试</a></li>
-<li><a href="http://www.jianshu.com/p/9d988a2f8ff7" target="_blank" rel="external">测试用例</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/单元测试/">单元测试</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-  
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2018 Wilson
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
 </footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
 
 
 
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
 </body>
 </html>

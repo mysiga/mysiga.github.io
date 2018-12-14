@@ -1,681 +1,312 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html>
+
 <head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Category: Java | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Wilson" />
+  <meta name="generator" content="Wilson">
 
+  
+  
+  
 
-
-<meta name="description" content="每周分享博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wilson">
-<meta property="og:url" content="mysiga.cn/categories/Java/index.html">
-<meta property="og:site_name" content="Wilson">
-<meta property="og:description" content="每周分享博客">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wilson">
-<meta name="twitter:description" content="每周分享博客">
-
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternate" href="/atom.xml" title="Wilson" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Category: Java | Wilson</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: true,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
+  
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Wilson</a></h1>
-        </hgroup>
 
+
+<body class="home-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="../img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+<main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">
+          2018-08-02
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/08/03/Java线程/">深入Java线程</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。
+创建线程方式
+继承Thread
+
+12public class ThreadImpl extends Thread &#123; 
+      
+      </p>
+      
+      <p>
+          <a href="/2018/08/03/Java线程/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-07-16T18:30:00.000Z" itemprop="datePublished">
+          2018-07-16
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/07/17/Java异常/">Java异常</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Java异常
+
+对比Exception和Error 
+运行异常与一般异常区别
+ClassNotFoundException和NoClassDefFoundError有什么区别
+throw和throws
+异常处理几点建议
+自定义异常###对比Exception和Error。Exception和Error都继承Throwable,
+Exception是程序可以处理的异常，正常JVM运行外的异常。
+Error一般是JVM相关异常错误，不可恢复
+      
+      </p>
+      
+      <p>
+          <a href="/2018/07/17/Java异常/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-07-12T11:11:00.000Z" itemprop="datePublished">
+          2018-07-12
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/07/12/Java垃圾回收机制/">我所知道的-Java垃圾回收机制</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
-        <p class="header-subtitle">爱折腾的技术男</p>
+本文章你能知道的内容：
+
+Java内存模型
+Java堆
+对象什么时候回收
+垃圾回收算法
+垃圾回收器Java内存模型要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图
+程序计数器
+Java 虚拟机栈
+方法区：方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
+
+
+运行时常量池
+Java 堆:一般new的对象实例和数组都是在堆中的，而GC主要回收的内存也是
+      
+      </p>
+      
+      <p>
+          <a href="/2018/07/12/Java垃圾回收机制/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">
+          2017-01-25
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
+Switch string
+Java 7新特性，原来switch只能支持int，byte。short，char,枚举
 
+
+那具体性能如何了？看下code
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475
+      
+      </p>
+      
+      <p>
+          <a href="/2017/01/25/Java7-Switch-String/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-07-31T14:50:29.000Z" itemprop="datePublished">
+          2016-07-31
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
+原文来自
+Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况
+
+Java异常架构图 
 
 
+Throwable Throwable是 Java 语言中所有错误或异常的超类。 Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。 Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据等信
+      
+      </p>
+      
+      <p>
+          <a href="/2016/07/31/Excption与Error包结构/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-06-30T09:29:29.000Z" itemprop="datePublished">
+          2016-06-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                    </ul>
-                </div>
-            </div>
+Print.java
+12345public class Print &#123; public Print (String print) &#123;  System.out.println(print); &#125;&#125;
+
+Person.java
+1234567891011121314151617public class Person &#123; private static Print printLog = new 
+      
+      </p>
+      
+      <p>
+          <a href="/2016/06/30/Java类初始化顺序/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
         
+懒汉式:线程安全，开销大
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" href="https://github.com/mysiga" title="GitHub"></a>
-                            
-                                <a class="fa 简书" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tablayout/">tablayout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/同步异步/">同步异步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/研发杂谈/">研发杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动组周分享/">移动组周分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://zhipingyang.github.io/">zhipingyang</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.tomatopeter.com/">阿潘</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/d6f6c875ad03">zvving</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/u/ac4f127d5150">xpleemoon</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/iNXuJG/timeline">冰雪八哥</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://www.jinwong001.com/">Jinwong</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://wangsheng.github.io/">Victor</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://origheart.com/">Origheart</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://ckjava.com/">ck</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://prettychaoyao.github.io/">prettychaoyao</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Wilson</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Wilson</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">爱折腾的技术男</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" target="_blank" href="https://github.com/mysiga" title="GitHub"></a>
-                            
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/5fccc924116b" title="简书"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap">
-  
-  
-    
-    
+123456789public class Singleton&#123; private static final Singleton singleton; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123; 	 singleton=new Singleton(); 	&#125
       
+      </p>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/08/03/Java线程/" class="archive-article-date">
-      <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">08-02</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/03/Java线程/">深入Java线程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/07/17/Java异常/" class="archive-article-date">
-      <time datetime="2018-07-16T18:30:00.000Z" itemprop="datePublished">07-16</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/Java异常/">Java异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/07/12/Java垃圾回收机制/" class="archive-article-date">
-      <time datetime="2018-07-12T11:11:00.000Z" itemprop="datePublished">07-12</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/12/Java垃圾回收机制/">我所知道的-Java垃圾回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/06/20/Java基础/" class="archive-article-date">
-      <time datetime="2018-06-20T11:30:00.000Z" itemprop="datePublished">06-20</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/20/Java基础/">Java - Java基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      <p>
+          <a href="/2016/05/28/Java单例模式/" class="excerpt-link">Read More...</a>
+      </p>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/01/25/Java7-Switch-String/" class="archive-article-date">
-      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">01-25</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h2>
     </header>
-  </div>
-</article>
-  
-    
-    
+    <section class="post-excerpt">
+      <p>
       
-        </div></section>
+        (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference）
+强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：
+1Object o=new Object();   //  强引用
+当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱化
       
+      </p>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+      <p>
+          <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <nav class="pagination" role="pagination">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/07/31/Excption与Error包结构/" class="archive-article-date">
-      <time datetime="2016-07-31T14:50:29.000Z" itemprop="datePublished">07-31</time>
-</a>
+    <span class="page-number">Page 1 of 1</span>
+    
+  </nav>
+</main>
 
 
-        </div>
-         
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a>
-    </h1>
+<footer class="site-footer">
   
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/06/30/Java类初始化顺序/" class="archive-article-date">
-      <time datetime="2016-06-30T09:29:29.000Z" itemprop="datePublished">06-30</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/05/28/Java单例模式/" class="archive-article-date">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">05-28</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="archive-article-date">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">05-28</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2018 Wilson
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
 </footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
 
 
 
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
 </body>
 </html>
