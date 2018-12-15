@@ -51,9 +51,7 @@
       <p>
       
         面试问题总结
-##Android
-####Handler机制
-
+AndroidHandler机制
 Handler机制详解
 Android-异步通信Handler机制画图更清晰
 Android异步消息处理机制完全解析，带你从源码的角度彻底理解
@@ -64,7 +62,7 @@ Android自定义View的实现方法，带你一步步深入了解View(四)
 
 在回头看View绘制源码
 
-Android LayoutInflater原理分析，带你一步步深入
+Android LayoutInflater原理分析，带你一步步深入了解View(一
       
       </p>
       
@@ -210,7 +208,7 @@ Person.java
         
 懒汉式:线程安全，开销大
 
-123456789public class Singleton&#123; private static final Singleton singleton; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123; 	 singleton=new Singleton(); 	&#125
+1234567891011public class Singleton&#123; private static final Singleton singleton;private Singleton()&#123;  &#125; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123
       
       </p>
       
@@ -243,46 +241,6 @@ Person.java
       
       <p>
           <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">
-          2016-04-01
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/04/01/Android-mvp/">Android-mvp</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-mvc与mvp对比
-mvp
-
-model:依然是业务逻辑和实体模型
-view:对应于Activity，负责View的绘制以及与用户交互
-presenter:负责完成View于Model间的交互
-关系图
-
-
-View定义定义包括：Activity,xml,Fragment，adapter
-
-Google定义MVP
-
-
- Google-MVP-demo
-
-      
-      </p>
-      
-      <p>
-          <a href="/2016/04/01/Android-mvp/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -361,6 +319,69 @@ singleTop：栈顶复用模式
       
       <p>
           <a href="/2016/03/06/Activity的启动四种模式/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">
+          2016-03-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+前奏
+美版
+第一连接需要连接Android手机
+需要翻墙
+
+
+应用
+Android  Wear
+WearADay
+
+
+iPhone支持
+无需越狱，连接应用WearADay
+
+
+
+
+
+
+
+包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示
+
+
+
+
+
+
+
+
+
+
+Android支持
+微信:表情回复，语音回复，文字回复
+QQ:未测
+
+
+缺陷
+分辨率不高
+目前
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/04/Moto-360-Sport初体验/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>

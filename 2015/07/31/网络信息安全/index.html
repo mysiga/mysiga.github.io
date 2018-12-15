@@ -107,12 +107,10 @@
 <li>一种 API 加密方式（根本问题是：API 如何判断这个请求是可信的客户端发来的）</li>
 </ul>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">客户端 - 网络传输 - API</div><div class="line"><span class="built_in">key</span>, 加密（签名）算法 <span class="built_in">sign</span>=md5(<span class="built_in">key</span>+url_path+<span class="built_in">time</span>)</div></pre></td></tr></table></figure>
-<p>##RSA -李仙鹏<br>在公钥系统中，我们采用公钥加密，私钥解密的方式，使得报文能够比较安全的传输。</p>
+<h2 id="RSA-李仙鹏"><a href="#RSA-李仙鹏" class="headerlink" title="RSA -李仙鹏"></a>RSA -李仙鹏</h2><p>在公钥系统中，我们采用公钥加密，私钥解密的方式，使得报文能够比较安全的传输。</p>
 <p>假设A和B通信，但他们之间不通过对称密钥，B有一个公钥$K_B^+$和一个私钥$K_B^-$。为了与B实现通信，A首先需要获得B的公钥$K_B^+$对报文m进行加密，即$K_B^+(m)$；B收到A的加密报文后用私钥$K_B^-$进行解密，即$K_B^-(K_B^+(m))=m$。其中的加解密算法通常使用RSA（RSA取创始人Ron Rivest, Adi Shamir, Leonard Adleman的姓氏首字母）。</p>
-<p>###RSA工作方式</p>
-<p>加密时，首先把报文m做e次的幂运算，然后做模n的算数运算，即$m^e\%n$；解密则先把上述密文值做d次幂，再做模n运算，即$(m^e)^d\%n=m^\left(ed\right)\%n$。</p>
-<p>###RSA工作原理推导</p>
-<p>为了解开RSA工作原理的神秘面纱，需要使用数论中的一个神奇结论：如果<strong><em>p和q是素数</em></strong>，且有$n=pq$，则$x^y\%n$与$x^\left(y\%\left(p-1\right)\left(q-1\right)\right)\%n$相等。应用这个结论，那我们的私钥解密为：$$(m^e)^d\%n=m^\left(ed\%\left(p-1\right)\left(q-1\right)\right)\%n$$</p>
+<h3 id="RSA工作方式"><a href="#RSA工作方式" class="headerlink" title="RSA工作方式"></a>RSA工作方式</h3><p>加密时，首先把报文m做e次的幂运算，然后做模n的算数运算，即$m^e\%n$；解密则先把上述密文值做d次幂，再做模n运算，即$(m^e)^d\%n=m^\left(ed\right)\%n$。</p>
+<h3 id="RSA工作原理推导"><a href="#RSA工作原理推导" class="headerlink" title="RSA工作原理推导"></a>RSA工作原理推导</h3><p>为了解开RSA工作原理的神秘面纱，需要使用数论中的一个神奇结论：如果<strong><em>p和q是素数</em></strong>，且有$n=pq$，则$x^y\%n$与$x^\left(y\%\left(p-1\right)\left(q-1\right)\right)\%n$相等。应用这个结论，那我们的私钥解密为：$$(m^e)^d\%n=m^\left(ed\%\left(p-1\right)\left(q-1\right)\right)\%n$$</p>
 <p>注意，$m&lt;n$，并且我们是这样选择e和d的：$ed-1$能被$\left(p-1\right)\left(q-1\right)$整除，等价地说$ed\%\left(p-1\right)\left(q-1\right)=1$，由此可得：$$(m^e)^d\%n=m^1\%n=m\qquad m&lt;n，n=pq,ed\%\left(p-1\right)\left(q-1\right)=1,p和q是素数$$</p>
 <p>于是乎，就得到了我们希望的结果：先对m做e次幂（加密）再做d次幂（解密），然后做模n的算数运算，就可得到原始报文m。另外通过颠倒上述公式的加解密次序，一样能得到原来的m。<br>$$(m^e)^d\%n=m=(m^d)^e\%n\Rightarrow K_B^-(K_B^+(m))=m=K_B^+(K_B^-(m))$$</p>
 <p>因此B对外公开的公钥$K_B^+$为二元组$(n,e)$，私钥$K_B^-$为二元组$(n,d)$</p>
@@ -129,8 +127,7 @@
 <li><p>解密，$(m^e\%n)^d\%n=33^5\%35=3=m$，因此对RSA加密后的密文解密得到的就是原始的明文</p>
 </li>
 </ul>
-<p>##iOS 越狱应用安全-潘君</p>
-<ul>
+<h2 id="iOS-越狱应用安全-潘君"><a href="#iOS-越狱应用安全-潘君" class="headerlink" title="iOS 越狱应用安全-潘君"></a>iOS 越狱应用安全-潘君</h2><ul>
 <li>对ipa砸壳</li>
 <li>class-dump 导出头文件</li>
 <li>头文件导入project方便查看</li>
@@ -140,8 +137,7 @@
 </ul>
 </li>
 </ul>
-<p>###参考资料</p>
-<ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://security.ios-wiki.com/" target="_blank" rel="external">iOS Security</a></li>
 <li><a href="http://iosre.com/c/development-discussion" target="_blank" rel="external">iOSRE</a></li>
 </ul>
@@ -222,7 +218,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>自强不息 厚德载物</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>
