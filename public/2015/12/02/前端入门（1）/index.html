@@ -80,10 +80,9 @@
 <ul>
 <li><a href="http://guides.rubyonrails.org/command_line.html" target="_blank" rel="external">rubyonrails.org</a></li>
 </ul>
-<h2 id="矢量图在Android-上应用-王进"><a href="#矢量图在Android-上应用-王进" class="headerlink" title="矢量图在Android 上应用 - 王进"></a>矢量图在Android 上应用 - 王进</h2><p>###VectorDrawable<br>示例：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="tag">&lt;<span class="name">vector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">        &lt;!<span class="attr">--</span>  <span class="attr">intrinsic</span>  <span class="attr">size</span>  <span class="attr">of</span>  <span class="attr">the</span>  <span class="attr">drawable</span>  <span class="attr">--</span>&gt;</div><div class="line">        android:height="300dp"</div><div class="line">        android:width="300dp"</div><div class="line">        <span class="comment">&lt;!-- size of the virtual canvas --&gt;</span></div><div class="line">        android:viewportHeight="40"</div><div class="line">        android:viewportWidth="40"</div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">path</span> <span class="attr">android:fillColor</span>=<span class="string">"#ff00ff"</span></span></div><div class="line">                <span class="attr">android:pathData</span>=<span class="string">"M20.5,9.5</span></div><div class="line">                        c-1.955,0,-3.83,1.268,-4.5,3</div><div class="line">                        c-0.67,-1.732,-2.547,-3,-4.5,-3</div><div class="line">                        C8.957,9.5,7,11.432,7,14</div><div class="line">                        c0,3.53,3.793,6.257,9,11.5</div><div class="line">                        c5.207,-5.242,9,-7.97,9,-11.5</div><div class="line">                        C25,11.432,23.043,9.5,20.5,9.5z"</div><div class="line">                /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">vector</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>###SVG→Vector<br>Android并不原生支持读取常见的向量文件格式，如ＳＶＧ<br>（主要是缺少ｃｓｓ支持），但是支持相同路径数据语法，<br>所以ＳＶＧ资源需要经过一定的转换；</p>
-<p>###使用SVG Path Data </p>
-<ul>
+<h2 id="矢量图在Android-上应用-王进"><a href="#矢量图在Android-上应用-王进" class="headerlink" title="矢量图在Android 上应用 - 王进"></a>矢量图在Android 上应用 - 王进</h2><h3 id="VectorDrawable"><a href="#VectorDrawable" class="headerlink" title="VectorDrawable"></a>VectorDrawable</h3><p>示例：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span></div><div class="line"><span class="tag">&lt;<span class="name">vector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">        &lt;!<span class="attr">--</span>  <span class="attr">intrinsic</span>  <span class="attr">size</span>  <span class="attr">of</span>  <span class="attr">the</span>  <span class="attr">drawable</span>  <span class="attr">--</span>&gt;</div><div class="line">        android:height="300dp"</div><div class="line">        android:width="300dp"</div><div class="line">        <span class="comment">&lt;!-- size of the virtual canvas --&gt;</span></div><div class="line">        android:viewportHeight="40"</div><div class="line">        android:viewportWidth="40"</div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">path</span> <span class="attr">android:fillColor</span>=<span class="string">"#ff00ff"</span></span></div><div class="line">                <span class="attr">android:pathData</span>=<span class="string">"M20.5,9.5</span></div><div class="line">                        c-1.955,0,-3.83,1.268,-4.5,3</div><div class="line">                        c-0.67,-1.732,-2.547,-3,-4.5,-3</div><div class="line">                        C8.957,9.5,7,11.432,7,14</div><div class="line">                        c0,3.53,3.793,6.257,9,11.5</div><div class="line">                        c5.207,-5.242,9,-7.97,9,-11.5</div><div class="line">                        C25,11.432,23.043,9.5,20.5,9.5z"</div><div class="line">                /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">vector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="SVG→Vector"><a href="#SVG→Vector" class="headerlink" title="SVG→Vector"></a>SVG→Vector</h3><p>Android并不原生支持读取常见的向量文件格式，如ＳＶＧ<br>（主要是缺少ｃｓｓ支持），但是支持相同路径数据语法，<br>所以ＳＶＧ资源需要经过一定的转换；</p>
+<h3 id="使用SVG-Path-Data"><a href="#使用SVG-Path-Data" class="headerlink" title="使用SVG Path Data"></a>使用SVG Path Data</h3><ul>
 <li>M： move to 移动绘制点</li>
 <li>L：line to 直线</li>
 <li>Z：close 闭合</li>
@@ -110,7 +109,7 @@
 </li>
 </ul>
 <p>详细参考：<a href="http://www.w3.org/TR/SVG11/paths.html#PathData" target="_blank" rel="external">http://www.w3.org/TR/SVG11/paths.html#PathData</a></p>
-<p>###Icon Font<br>解决矢量图低版本不兼容问题</p>
+<h3 id="Icon-Font"><a href="#Icon-Font" class="headerlink" title="Icon Font"></a>Icon Font</h3><p>解决矢量图低版本不兼容问题</p>
 <p>详细参考：<br>1,<a href="http://blog.csdn.net/a345017062/article/details/46455745" target="_blank" rel="external">http://blog.csdn.net/a345017062/article/details/46455745</a><br>2,<a href="http://blog.csdn.net/goodlixueyong/article/details/41448483" target="_blank" rel="external">http://blog.csdn.net/goodlixueyong/article/details/41448483</a></p>
 <h2 id="WordPress快速建站-–杨俊构"><a href="#WordPress快速建站-–杨俊构" class="headerlink" title="WordPress快速建站 –杨俊构"></a>WordPress快速建站 –杨俊构</h2><h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
 <li><p>服务器php套件（ Nginx+PHP7.0）： <a href="http://www.upupw.net/" target="_blank" rel="external">UPUPW绿色服务器</a></p>
@@ -242,7 +241,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>自强不息 厚德载物</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>
@@ -269,7 +268,7 @@
     
     <span class="page-number">•</span>
     
-    <a class="older-posts" href="/2015/11/18/动画/">
+    <a class="older-posts" href="/2015/11/18/Android动画/">
         动画 →
     </a>
     

@@ -6,8 +6,8 @@ categories: Android
 
 
 面试问题总结
-##Android
-####Handler机制
+## Android
+#### Handler机制
 - [Handler机制详解](http://www.jianshu.com/p/a04cbabaec83)
 - [Android-异步通信Handler机制](http://www.jianshu.com/p/041fff5acdcf)画图更清晰
 - [Android异步消息处理机制完全解析，带你从源码的角度彻底理解](http://blog.csdn.net/guolin_blog/article/details/9991569)
@@ -61,7 +61,7 @@ categories: Android
     - 加载动画
     - 其他动画
 
-##Java基础
+## Java基础
 - ["=="和equals区别](http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html)
   "=="是比较的内存地址，equals比较的是值。
 - [Java内存](http://wiki.jikexueyuan.com/project/java-vm/storage.html)

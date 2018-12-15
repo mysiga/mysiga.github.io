@@ -152,9 +152,7 @@ Android 8.0
       <p>
       
         面试问题总结
-##Android
-####Handler机制
-
+AndroidHandler机制
 Handler机制详解
 Android-异步通信Handler机制画图更清晰
 Android异步消息处理机制完全解析，带你从源码的角度彻底理解
@@ -165,7 +163,7 @@ Android自定义View的实现方法，带你一步步深入了解View(四)
 
 在回头看View绘制源码
 
-Android LayoutInflater原理分析，带你一步步深入
+Android LayoutInflater原理分析，带你一步步深入了解View(一
       
       </p>
       
@@ -198,46 +196,6 @@ Android LayoutInflater原理分析，带你一步步深入
       
       <p>
           <a href="/2016/06/17/App共享文件权限/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">
-          2016-04-01
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/04/01/Android-mvp/">Android-mvp</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-mvc与mvp对比
-mvp
-
-model:依然是业务逻辑和实体模型
-view:对应于Activity，负责View的绘制以及与用户交互
-presenter:负责完成View于Model间的交互
-关系图
-
-
-View定义定义包括：Activity,xml,Fragment，adapter
-
-Google定义MVP
-
-
- Google-MVP-demo
-
-      
-      </p>
-      
-      <p>
-          <a href="/2016/04/01/Android-mvp/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -404,15 +362,44 @@ SearchView+ListPopupWindow+SQLite
     <section class="post-excerpt">
       <p>
       
-        
-tallayout平常使用setupWithViewPager()
-
-1234ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contain);viewPager.setAdatper(new Fragmen
+        为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)先看TabLayout平常怎么使用setupWithViewPager()
+1234ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_con
       
       </p>
       
       <p>
           <a href="/2016/01/29/tablayout方法setupWithViewPager-坑/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-01-15T10:30:00.000Z" itemprop="datePublished">
+          2016-01-15
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+主要原理：监听微信APP,如果发送[微信红包]相关通知,则通过Android辅助类服务AccessibilityService实现抢红包点击一系列动作
+
+通过AccessibilityService服务监听微信
+
+主要监听配置如下:
+
+1234567891011121314监听动作类型android:accessibilityEventTypes="typeNotificationStateChanged|typeWindowStat
+      
+      </p>
+      
+      <p>
+          <a href="/2016/01/15/Android微信抢红包/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>

@@ -40,103 +40,6 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
-      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">
-          2016-03-05
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Activity的启动四种模式
-standard(默认)
-每次使用startActivity方法启动Activity时都会创建该Activity的新实例
-Activity的多个实例可以位于同一个task中也可以分布在不同的task里
-在当前task中使用startActivity方法启动Activity也在当前task中创建和运行
-
-
-
-
-singleTop：栈顶复用模式
-当设置为singleTop模式Activity，未处于栈顶时其运
-      
-      </p>
-      
-      <p>
-          <a href="/2016/03/06/Activity的启动四种模式/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">
-          2016-03-04
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-前奏
-美版
-第一连接需要连接Android手机
-需要翻墙
-
-
-应用
-Android  Wear
-WearADay
-
-
-iPhone支持
-无需越狱，连接应用WearADay
-
-
-
-
-
-
-
-包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示
-
-
-
-
-
-
-
-
-
-
-Android支持
-微信:表情回复，语音回复，文字回复
-QQ:未测
-
-
-缺陷
-分辨率不高
-目前
-      
-      </p>
-      
-      <p>
-          <a href="/2016/03/04/Moto-360-Sport初体验/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
       <time datetime="2016-02-26T15:42:29.000Z" itemprop="datePublished">
           2016-02-26
       </time>
@@ -198,10 +101,8 @@ SearchView+ListPopupWindow+SQLite
     <section class="post-excerpt">
       <p>
       
-        
-tallayout平常使用setupWithViewPager()
-
-1234ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contain);viewPager.setAdatper(new Fragmen
+        为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)先看TabLayout平常怎么使用setupWithViewPager()
+1234ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_con
       
       </p>
       
@@ -306,14 +207,11 @@ Git + SourceTree + Gitlab 的使用演示
     <section class="post-excerpt">
       <p>
       
-        ###博客地址
-##Swift柯里化 Curring 学习
-###什么是Curring
-
+        博客地址Swift柯里化 Curring 学习什么是Curring
 维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 
 概念看上去还是有点抽象，直接看代码
-例子注：所有swift代码都可以放到playgroun中运行查看输出1234567891011121
+例子注：所有swift代码都可以放到playgroun中运行查看输出1234567891011121314151617im
       
       </p>
       
@@ -363,7 +261,7 @@ Git + SourceTree + Gitlab 的使用演示
       </time>
     
 </span>
-      <h2 class="post-title"><a href="/2015/11/18/动画/">动画</a></h2>
+      <h2 class="post-title"><a href="/2015/11/18/Android动画/">动画</a></h2>
     </header>
     <section class="post-excerpt">
       <p>
@@ -390,7 +288,7 @@ fade：调整透明度产生渐变效果
       </p>
       
       <p>
-          <a href="/2015/11/18/动画/" class="excerpt-link">Read More...</a>
+          <a href="/2015/11/18/Android动画/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -420,9 +318,80 @@ fade：调整透明度产生渐变效果
     </section>
   </article>
   
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">
+          2015-11-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Android 单元测试  吴明
+Android单元测试支持
+Android studio 1.2 beta3版本，原生支持单元测试
+
+
+环境搭建 
+配置环境命令：./gradlew build connectedCheck  
+
+
+测试示例    
+
+
+
+
+123456789101112131415161718public class MyFirstTestActivityTest extends ActivityInstrument
+      
+      </p>
+      
+      <p>
+          <a href="/2015/11/04/装逼指南二期/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">
+          2015-10-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        『图像和滤镜』@(Share)[UIImage]
+[toc]
+图像常见的图像格式
+png（Portable Network Graphic）便携式网络图形格式
+tiff、tif（Tagged Image File Format）标记图像文件格式
+jpg、jpeg（Joint Photographic Experts Group）联合摄影专家组
+gif（Graphic Interchange Format）图形交换格式
+
+图像实例化
+im
+      
+      </p>
+      
+      <p>
+          <a href="/2015/10/30/程序员装逼指南/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
   <nav class="pagination" role="pagination">
     <a class="newer-posts" href="/archives/page/2/">← Newer Posts</a>
-    <span class="page-number">Page 3 of 6</span>
+    <span class="page-number">Page 3 of 5</span>
     <a class="older-posts" href="/archives/page/4/">Older Posts →</a>
   </nav>
 </main>

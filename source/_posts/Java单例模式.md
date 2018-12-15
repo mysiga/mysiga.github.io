@@ -9,6 +9,8 @@ categories: Java
 ````
 public class Singleton{
  private static final Singleton singleton;
+private Singleton(){
+  }
  public static final synchronized Singleton getInstance(){
  	if(singleton==null){
  	 singleton=new Singleton();
@@ -22,6 +24,8 @@ public class Singleton{
 ````
 public class Singleton{
   private volatile static Singleton singleton;
+  private Singleton(){
+  }
   public static final Singleton getInstance(){
   	if(singleton==null){
   	  synchronized(Singleton.class){
@@ -39,6 +43,8 @@ public class Singleton{
 
 ````
 public class Singleton{
+private Singleton(){
+  }
 private static class Holder{
 public static final Singleton singleton=new Singleton();
 }
@@ -52,6 +58,8 @@ return Holder.singleton;
 ````
 public class Singleton{
  private static final Singleton singleton=new Singleton();
+private Singleton(){
+  }
  public static final Singleton getInstance(){
  return singleton;
  }

@@ -53,7 +53,7 @@
         
 懒汉式:线程安全，开销大
 
-123456789public class Singleton&#123; private static final Singleton singleton; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123; 	 singleton=new Singleton(); 	&#125
+1234567891011public class Singleton&#123; private static final Singleton singleton;private Singleton()&#123;  &#125; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123
       
       </p>
       

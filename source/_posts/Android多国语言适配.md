@@ -4,7 +4,7 @@ tags:
 categories: Android
 ---
 
-##[Android多国语言适配](http://blog.csdn.net/dyllove98/article/details/8831908)
+## [Android多国语言适配](http://blog.csdn.net/dyllove98/article/details/8831908)
  - android语言信息都是读取strings.xml(项目/res/values/strings.xml)文件指定key的索引值。
 
  - android语言适配需要在-项目/res下新建不同的语言目录(文件命名规范:values-zh(国家)-rTW(r+区域))如:

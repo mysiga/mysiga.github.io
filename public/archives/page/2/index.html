@@ -40,37 +40,6 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
-      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">
-          2017-01-25
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2017/01/25/Java7-Switch-String/">Java7 switch String</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-Switch string
-Java 7新特性，原来switch只能支持int，byte。short，char,枚举
-
-
-那具体性能如何了？看下code
-
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475
-      
-      </p>
-      
-      <p>
-          <a href="/2017/01/25/Java7-Switch-String/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
       <time datetime="2016-08-24T15:47:29.000Z" itemprop="datePublished">
           2016-08-24
       </time>
@@ -82,9 +51,7 @@ Java 7新特性，原来switch只能支持int，byte。short，char,枚举
       <p>
       
         面试问题总结
-##Android
-####Handler机制
-
+AndroidHandler机制
 Handler机制详解
 Android-异步通信Handler机制画图更清晰
 Android异步消息处理机制完全解析，带你从源码的角度彻底理解
@@ -95,7 +62,7 @@ Android自定义View的实现方法，带你一步步深入了解View(四)
 
 在回头看View绘制源码
 
-Android LayoutInflater原理分析，带你一步步深入
+Android LayoutInflater原理分析，带你一步步深入了解View(一
       
       </p>
       
@@ -241,7 +208,7 @@ Person.java
         
 懒汉式:线程安全，开销大
 
-123456789public class Singleton&#123; private static final Singleton singleton; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123; 	 singleton=new Singleton(); 	&#125
+1234567891011public class Singleton&#123; private static final Singleton singleton;private Singleton()&#123;  &#125; public static final synchronized Singleton getInstance()&#123; 	if(singleton==null)&#123
       
       </p>
       
@@ -274,46 +241,6 @@ Person.java
       
       <p>
           <a href="/2016/05/28/Java7之强引用-弱引用-软引用-虚引用/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-04-01T10:30:00.000Z" itemprop="datePublished">
-          2016-04-01
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/04/01/Android-mvp/">Android-mvp</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-mvc与mvp对比
-mvp
-
-model:依然是业务逻辑和实体模型
-view:对应于Activity，负责View的绘制以及与用户交互
-presenter:负责完成View于Model间的交互
-关系图
-
-
-View定义定义包括：Activity,xml,Fragment，adapter
-
-Google定义MVP
-
-
- Google-MVP-demo
-
-      
-      </p>
-      
-      <p>
-          <a href="/2016/04/01/Android-mvp/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -363,9 +290,106 @@ Rob
     </section>
   </article>
   
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">
+          2016-03-05
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Activity的启动四种模式
+standard(默认)
+每次使用startActivity方法启动Activity时都会创建该Activity的新实例
+Activity的多个实例可以位于同一个task中也可以分布在不同的task里
+在当前task中使用startActivity方法启动Activity也在当前task中创建和运行
+
+
+
+
+singleTop：栈顶复用模式
+当设置为singleTop模式Activity，未处于栈顶时其运
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/06/Activity的启动四种模式/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">
+          2016-03-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/04/Moto-360-Sport初体验/">Moto 360 Sport初体验</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+前奏
+美版
+第一连接需要连接Android手机
+需要翻墙
+
+
+应用
+Android  Wear
+WearADay
+
+
+iPhone支持
+无需越狱，连接应用WearADay
+
+
+
+
+
+
+
+包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示
+
+
+
+
+
+
+
+
+
+
+Android支持
+微信:表情回复，语音回复，文字回复
+QQ:未测
+
+
+缺陷
+分辨率不高
+目前
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/04/Moto-360-Sport初体验/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
   <nav class="pagination" role="pagination">
     <a class="newer-posts" href="/archives/">← Newer Posts</a>
-    <span class="page-number">Page 2 of 6</span>
+    <span class="page-number">Page 2 of 5</span>
     <a class="older-posts" href="/archives/page/3/">Older Posts →</a>
   </nav>
 </main>

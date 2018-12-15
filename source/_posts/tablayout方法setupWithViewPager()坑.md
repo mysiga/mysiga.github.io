@@ -10,7 +10,8 @@ categories: Android
 
 
 
-- tallayout平常使用setupWithViewPager()
+为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)
+先看TabLayout平常怎么使用setupWithViewPager()
 
 ````
 ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);
@@ -18,7 +19,8 @@ TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_co
 viewPager.setAdatper(new FragmentStatePagerAdapter(FragmentManager,fragments));
 tabContainView. setupWithViewPager(viewPager);
 ````
-- 查看setupWithViewPager()方法源码
+运行没有什么问题，但是深入看代码的你就会发现一些问题。
+查看setupWithViewPager()方法源码
 
 ````
  public void setupWithViewPager(@NonNull ViewPager viewPager) {
@@ -45,35 +47,44 @@ tabContainView. setupWithViewPager(viewPager);
         }
     }
 ````
-- 就会发现这里有三个坑
-	- setTabsFromPagerAdapter
-	
-	````
-	public void setTabsFromPagerAdapter(@NonNull PagerAdapter adapter) {
+获取ViewPager的Adapter后使用了三个方法
+```
+setTabsFromPagerAdapter(adapter);
+setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager));
+//这个处理逻辑我们简单理解放在一个方法处理
+if (adapter.getCount() > 0) {
+            final int curItem = viewPager.getCurrentItem();
+            if (getSelectedTabPosition() != curItem) {
+                selectTab(getTabAt(curItem));
+            }
+        }
+```
+###setTabsFromPagerAdapter
+首先看第一个方法实现
+````
+public void setTabsFromPagerAdapter(@NonNull PagerAdapter adapter) {
         removeAllTabs();
         for (int i = 0, count = adapter.getCount(); i < count; i++) {
             addTab(newTab().setText(adapter.getPageTitle(i)));
         }
     }
-    
-	````
-	removeAllTabs()这个就是说把前面所有tablayout添加的view都删掉。也就是说在之前不管怎么处理view都被干掉。然后设置为PagerAdapter返回的title
+````
+removeAllTabs()这个就是说把前面所有TabLayout添加的view都删掉,并都设置view的title。
+>我觉的有问题：1.从逻辑来讲前面都是通过判断adapter为空在进行下一步操作，那就是说adapter必须先不为null才能执行逻辑代码。可是我们已经为ViewPager初始化设置了adapter那还有必要这里重复需要初始化adapter？
+
+###setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager));
 	
-	- setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager));
-	
-		````
+````
 		public static class ViewPagerOnTabSelectedListener implements TabLayout.OnTabSelectedListener {
         private final ViewPager mViewPager;
 
         public ViewPagerOnTabSelectedListener(ViewPager viewPager) {
             mViewPager = viewPager;
         }
-
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             mViewPager.setCurrentItem(tab.getPosition());
         }
-
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {
             // No-op
@@ -84,18 +95,20 @@ tabContainView. setupWithViewPager(viewPager);
             // No-op
         }
     }
-		````
-		这里主要不算不算太坑，最主要的是设置了点击tablayot默认是viewpager是滚动的，自己可以设置这个时间监听。重写他的方法
-	- selectTab(getTabAt(curItem));
-	
-	````
+  ````
+> 这里本身没有太多问题，就是如果已经设置了 监听，点击tab不是滚动的，这里重新设置就会设置为滚动了
+### selectTab(getTabAt(curItem));
+````
 	if (adapter.getCount() > 0) {
             final int curItem = viewPager.getCurrentItem();
             if (getSelectedTabPosition() != curItem) {
                 selectTab(getTabAt(curItem));
             }
         }
-	````
-	这里最主要是第一次默认选中第一个。相对应一些viewpager第一次就选中的不是第一个，这个就是一个很大的一个问题就是相当于viewpager点击了两次。
-	- 分享这个坑主要是给大家提前填。以后还是不能偷懒就为了省代码而忘了看封装的方法的代码是不是有问题。
+````
+>前面方法setTabsFromPagerAdapter都初始化清空了，肯定getCurrentItem()=0啊，这里还需要设置吗？难道还考虑多线程？
+###总结
+总结TabLayout.setupWithViewPager（）设计很不合理。
+
+ps：其实主要的是提醒自己以后不要光api调用而不去研究具体api做了什么。
 	

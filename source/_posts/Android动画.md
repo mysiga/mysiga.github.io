@@ -27,8 +27,8 @@ categories: 移动组周分享
 ![Markdown preferences pane](http://7xn0ue.com1.z0.glb.clouddn.com/Untitled123.gif)
 
 
-##objectorAnimator 动画  王进
-###动画类型
+## objectorAnimator 动画  王进
+### 动画类型
 *   View Animation(Tween Animation 补间动画)
     只能支持简单的缩放、平移、旋转、透明度等基本的动画，且有一定的局限性
     动画时View的真正的View的属性保持不变，实际位置未改变
@@ -37,7 +37,7 @@ categories: 移动组周分享
 *   Property Animation(属性动画)
 它更改的是对象的实际属性，
 
-###Property Animation属性
+### Property Animation属性
 *   Duration：动画的持续时间
 *   TimeInterpolation：属性值的计算方式，如先快后慢
 *   TypeEvaluator：根据属性的开始、结束值与TimeInterpolation计算出的因子计算出当前时间的属性值
@@ -45,10 +45,10 @@ categories: 移动组周分享
 *   Animation sets：动画集合，即可以同时对一个对象应用几个动画，这些动画可以同时播放也可以对不同动画设置不同开始偏移
 *   Frame refreash delay：多少时间刷新一次，即每隔多少时间计算一次属性值，默认为10ms，最终刷新时间还受系统进程调度与硬件的影响
 
-###Property Animation 动画流程
+### Property Animation 动画流程
 ![](http://pic002.cnblogs.com/images/2011/168097/2011120119191590.png)
 
-###ValueAnimator 
+### ValueAnimator 
 ValueAnimator包含Property Animation动画的所有核心功能，如动画时间，开始、结束属性值，相应时间属性值计算方法等。应用Property Animation有两个步聚：
 
 1.  计算属性值
@@ -67,7 +67,7 @@ animation.setInterpolator(new CycleInterpolator(3));
 animation.start();
 ```
 
-###ObjectAnimator
+### ObjectAnimator
 ObjectAnimator继承自ValueAnimator，要指定一个对象及该对象的一个属性,例如
 - 常用方法有ofFloat()，ofInt()，ofObject()，ofArgb()，ofPropertyValuesHolder()。
 - 属性动画可用的属性
@@ -94,7 +94,7 @@ ObjectAnimator继承自ValueAnimator，要指定一个对象及该对象的一�
 ```
 > 根据应用动画的对象或属性的不同，可能需要在onAnimationUpdate函数中调用invalidate()函数刷新视图。
 
-###组合动画
+### 组合动画
  - **组合动画1–AnimatorSet的使用**
 这个类提供了一个play()方法，如果我们向这个方法中传入一个Animator对象(ValueAnimator或ObjectAnimator)将会返回一个AnimatorSet.Builder的实例，AnimatorSet.Builder中包括以下四个方法：
    - after(Animator anim) 将现有动画插入到传入的动画之后执行
@@ -155,7 +155,7 @@ animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
         });
 ```
 
-###Keyframes 
+### Keyframes 
 keyFrame是一个 时间/值 对，通过它可以定义一个在特定时间的特定状态，即关键帧，而且在两个keyFrame之间可以定义不同的Interpolator，就好像多个动画的拼接，第一个动画的结束点是第二个动画的开始点。KeyFrame是抽象类，要通过ofInt(),ofFloat(),ofObject()获得适当的KeyFrame，然后通过PropertyValuesHolder.ofKeyframe获得PropertyValuesHolder对象，如以下例子：
 ```
 /*
