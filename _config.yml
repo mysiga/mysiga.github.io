@@ -38,11 +38,18 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: true
-  tab_replace:
-
+  enable: false
+  auto_detect: false
+  line_number: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: false
+  tab_replace: ''
+  
 # Category & Tag
 default_category: uncategorized
 category_map:

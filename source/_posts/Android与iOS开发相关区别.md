@@ -1,0 +1,15 @@
+title: Android与iOS开发相关区别
+date: 2017-06-19 18:30:29
+tags:
+categories: Android
+
+---
+## Android与iOS开发相关区别
+### 时间搓
+- Java取时间戳为13位
+- iOS取时间戳10位
+- 解决方案：统一用13位，后台Java写的，其他平台调用都是以13位取
+### 下拉刷新
+- Android下拉刷新View没有偏移
+- iOS下拉刷新有偏移
+- 解决方案:下拉有偏移体验更好，Android重新写view，根据移动偏移计算偏移位置，github有很多成型的项目
