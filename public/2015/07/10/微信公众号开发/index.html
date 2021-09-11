@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>微信公众号开发 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-07-10T15:51:00.000Z" itemprop="datePublished">
+          2015-07-10
+      </time>
+    
+</span>
+    <h1 class="post-title">微信公众号开发</h1>
+    <section class="post-content">
+      <h2 id="对于微信公众号开发的疑问"><a href="#对于微信公众号开发的疑问" class="headerlink" title="对于微信公众号开发的疑问"></a>对于微信公众号开发的疑问</h2><ul>
+<li>微信公众点与自己服务器配对流程</li>
+<li>本地如何调试</li>
+<li>微信整体流程中用到的一些特殊协议?</li>
+<li>openId/unionId 哪里查看</li>
+<li>access_token 为什么要有时间限制 为什么是2小时</li>
+<li>网页授权如何做的?能取到哪些信息?</li>
+<li>参加活动不关注 能拿到多少信息</li>
+<li>菜单type类型</li>
+<li>有哪些好的第三方开发工具包</li>
+<li>所有的活动行为全部调一个url 有没有好的分发解决方案</li>
+</ul>
+<h2 id="公众号查询通讯录的实现-曾铭"><a href="#公众号查询通讯录的实现-曾铭" class="headerlink" title="公众号查询通讯录的实现 - 曾铭"></a>公众号查询通讯录的实现 - 曾铭</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>通讯录表 -&gt; 后台数据库</li>
+<li>用户关注公众号</li>
+<li>用户发消息（姓名）给公众号</li>
+<li>微信后台转发此消息给网站后台 post XML</li>
+<li>后台根据此消息（姓名）查询数据库，得到此人具体数据，组合 XML 返回给微信后台</li>
+<li>微信后台把具体数据展示给用户</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>通讯录表 xls -&gt; csv -&gt; 导入到 LeanCloud 数据库</li>
+<li>基于 express (node.js web 框架)，建立 51offer_wechat.avosapps.com/contact_bot 站点；</li>
+<li>微信公众号后台配置开发者后台 URL，处理后台网址 get 请求，完成微信对开发者后台的验证</li>
+<li>处理网址 post 请求，完成接受消息，查询数据库，返回用户信息工作。具体参考：<a target="_blank" rel="noopener" href="https://github.com/51offer/wechat_bot/commit/25d457c7430d88167d62b053a5d072d588c9c95b">这里</a></li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>node.js (express) 处理网络请求的确精简方便</li>
+<li>微信公众号的所有信息都转发到一个接口，后续处理类型多时要设计合理的分发机制</li>
+<li>微信接口为什么用 XML 而不是 json 啊，这点不熟悉占用不少时间</li>
+<li>做这个很有意思，推荐大家多玩玩~</li>
+</ul>
+<h2 id="商户端APP集成微信扫描支付-王胜"><a href="#商户端APP集成微信扫描支付-王胜" class="headerlink" title="商户端APP集成微信扫描支付 - 王胜"></a>商户端APP集成微信扫描支付 - 王胜</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>APP端微信支付SDK<br><a target="_blank" rel="noopener" href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317784&token=&lang=zh_CN">[Android]</a> | <a target="_blank" rel="noopener" href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317782&token=&lang=zh_CN">[iOS]</a></li>
+<li>服务端微信支付SDK<br><a target="_blank" rel="noopener" href="https://pay.weixin.qq.com/wiki/doc/api/download/wxpay_scanpay_java_sdk_proj-master.zip">[JAVA]</a> |<br><a target="_blank" rel="noopener" href="https://pay.weixin.qq.com/wiki/doc/api/download/WxpayAPI_php_v3.zip">[PHP]</a></li>
+<li>服务端暴露notify接口</li>
+<li>push通道</li>
+</ul>
+<h3 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h3><ol>
+<li>用户在APP端浏览商品</li>
+<li>加入购物车</li>
+<li>结算</li>
+<li>调用提交订单接口</li>
+<li>提交订单接口返回预支付链接(<strong>预支付链接可根据服务端微信支付sdk生成</strong>)</li>
+<li>APP根据链接生成二维码</li>
+<li>用户拿起手机扫描支付</li>
+<li>微信调用第三方开发者服务端暴露的notify接口</li>
+<li>第三方服务端在收到notify接口调用时，更新订单库里订单状态，同时调用push通道告诉APP支付成功</li>
+<li>APP收到push命令后进行页面跳转</li>
+</ol>
+<h2 id="微信分享-吴明"><a href="#微信分享-吴明" class="headerlink" title="微信分享 - 吴明"></a>微信分享 - 吴明</h2><ul>
+<li>微信工作原理<ul>
+<li><img src="http://img.blog.csdn.net/20140823103621745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR29vZFNob3Q=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></li>
+</ul>
+</li>
+<li>接口：<ul>
+<li>你需要触发什么事件</li>
+<li>微信事件触发会回调哪里接口</li>
+</ul>
+</li>
+<li>微信服务：<ul>
+<li>订阅号：</li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">服务号</a><ul>
+<li><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login">微信公众测试账号</a></li>
+<li><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug">微信公众平台接口调试工具</a></li>
+</ul>
+</li>
+<li>企业号<ul>
+<li><a target="_blank" rel="noopener" href="https://qy.weixin.qq.com/">微信企业号</a></li>
+<li><a target="_blank" rel="noopener" href="https://qy.weixin.qq.com/try">微信企业号申请体验号</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.iwork365.com/experience">iwork365企业号体验</a></li>
+</ul>
+</li>
+<li>微购物</li>
+</ul>
+</li>
+<li>微信公众号自定义菜单开发<ul>
+<li>接口文档<pre><code>- [获取access token](http://mp.weixin.qq.com/wiki/11/0e4b294685f817b95cbed85ba5e82b8f.html)
+- [自定义菜单创建接口](http://mp.weixin.qq.com/wiki/13/43de8269be54a0a6f64413e4dfa94f39.html)
+- 以下操作都是在[微信公众平台接口调试工具](http://mp.weixin.qq.com/debug)调试方法
+</code></pre>
+</li>
+<li>步骤1：调用“获取access token”接口,传入你申请的测试微信公众号的appid和secret获取access_token</li>
+<li>步骤2：调用“自定义菜单创建接口”，传入上面生成的access_token和“自定义菜单json数据”如下</li>
+</ul>
+</li>
+</ul>
+<pre><code>&#123;
+    &quot;button&quot;: [
+        &#123;
+            &quot;type&quot;: &quot;view&quot;,
+            &quot;name&quot;: &quot;51offer&quot;,
+            &quot;url&quot;: &quot;http://www.51offer.com/&quot;
+        &#125;,
+        &#123;
+            &quot;name&quot;: &quot;移动&quot;,
+            &quot;sub_button&quot;: [
+                &#123;
+                    &quot;type&quot;: &quot;view&quot;,
+                    &quot;name&quot;: &quot;blog&quot;,
+                    &quot;url&quot;: &quot;http://51offer.github.io/&quot;
+                &#125;,
+                &#123;
+                    &quot;type&quot;: &quot;view&quot;,
+                    &quot;name&quot;: &quot;github&quot;,
+                    &quot;url&quot;: &quot;https://github.com/51offer/public-docs/wiki&quot;
+                &#125;
+            ]
+        &#125;,
+        &#123;
+            &quot;type&quot;: &quot;click&quot;,
+            &quot;name&quot;: &quot;我&quot;,
+            &quot;key&quot;: &quot;me&quot;
+        &#125;
+    ]
+&#125;
+</code></pre>
+<ul>
+<li>推荐：公众号：招商信用卡</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/07/10/微信公众号开发/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/07/10/微信公众号开发/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/07/10/微信公众号开发/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/07/17/%E7%A0%94%E5%8F%91%E8%B7%AF%E4%B8%8A%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+        ← 研发路上的那些事儿
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/07/08/%E7%9F%A5%E5%85%B6%E6%89%80%E4%BB%A5%E7%84%B6/">
+        知其所以然(10分钟解释一个和开发相关的原理) →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

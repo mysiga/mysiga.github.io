@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>前端入门（2） | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-12-11T10:30:00.000Z" itemprop="datePublished">
+          2015-12-11
+      </time>
+    
+</span>
+    <h1 class="post-title">前端入门（2）</h1>
+    <section class="post-content">
+      <h3 id="博客地址"><a href="#博客地址" class="headerlink" title="博客地址"></a><a href="">博客地址</a></h3><h2 id="Swift柯里化-Curring-学习"><a href="#Swift柯里化-Curring-学习" class="headerlink" title="Swift柯里化 Curring 学习"></a>Swift柯里化 Curring 学习</h2><h3 id="什么是Curring"><a href="#什么是Curring" class="headerlink" title="什么是Curring"></a>什么是Curring</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9F%AF%E9%87%8C%E5%8C%96">维基百科解释</a><br>在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+</blockquote>
+<p>概念看上去还是有点抽象，直接看代码</p>
+<p><strong>例子</strong><br>注：所有swift代码都可以放到playgroun中运行查看输出</p>
+<pre><code>import UIKit
+
+// 一个普通求sum函数
+func add(a: Int, b: Int, c: Int) -&gt; Int&#123;
+    print(&quot;\(a) + \(b) + \(c) = \(a + b + c)&quot;)
+    return a + b + c
+&#125;
+
+add(1, b: 2,c: 3) // 打印1 + 2 + 3 = 6
+
+// 柯里化版本的求sum函数
+func addCur(a: Int)(b: Int)(c: Int) -&gt; Int&#123;
+    print(&quot;\(a) + \(b) + \(c) = \(a + b + c)&quot;)
+    return a + b + c
+&#125;
+
+addCur(1)(b: 2)(c: 3) // 打印1 + 2 + 3 = 6
+</code></pre>
+<p>你也许觉得Curring只是用一个特殊的写法<br>其他与普通函数无异<br>那么换一种curring的调用方式</p>
+<pre><code>// curring 另类调用方式
+let funcWithA = addCur(1)
+print(&quot;funcWithA type : \(funcWithA.dynamicType)&quot;)
+let funcWithAB = funcWithA(b: 2)
+print(&quot;funcWithAB type : \(funcWithAB.dynamicType)&quot;)
+let resultCurring = funcWithAB(c: 3)
+print(&quot;resultCurring type : \(resultCurring.dynamicType)&quot;)
+</code></pre>
+<p>此时你还是会觉得这只是把一个函数拆开来调用了 那么我们打印一下 每个调用步骤中变量的类型</p>
+<pre><code>let funcWithA = addCur(1)
+print(&quot;funcWithA type : \(funcWithA.dynamicType)&quot;) //
+let funcWithAB = funcWithA(b: 2)
+print(&quot;funcWithAB type : \(funcWithAB.dynamicType)&quot;)
+let resultCurring = funcWithAB(c: 3)
+print(&quot;resultCurring type : \(resultCurring.dynamicType)&quot;)
+</code></pre>
+<p>打印结果为</p>
+<pre><code>1 + 2 + 3 = 6
+funcWithA type : Int -&gt; Int -&gt; Int
+funcWithAB type : Int -&gt; Int
+1 + 2 + 3 = 6
+resultCurring type : Int
+</code></pre>
+<p>可以看到 变量funcWithA 为 Int -&gt; Int -&gt; Int 类型<br>funcWithAB 为Int -&gt; Int</p>
+<p>这说明 curring函数在绑定最后一个参数之前 每个步骤返回的值都是一个函数</p>
+<h3 id="Curring实现原理"><a href="#Curring实现原理" class="headerlink" title="Curring实现原理"></a>Curring实现原理</h3><p>Swift实现Curring的基础有两个</p>
+<ul>
+<li>函数是一级公民</li>
+<li>闭包</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/6eaacadafa1a">啊崢的Swift Curring文章</a>代码例子解释的已经很清楚了</p>
+<pre><code>class Currying
+&#123;
+    /*** uncurried:普通函数 ***/
+    // 接收多个参数的函数
+    func add(a: Int, b: Int, c: Int) -&gt; Int&#123;
+        println(&quot;\(a) + \(b) + \(c)&quot;)
+        return a + b + c
+    &#125;
+
+    /*** 手动实现柯里化函数 ***/
+    // 把上面的函数转换为柯里化函数，首先转成接收第一个参数a，并且返回接收余下第一个参数b的新函数（采用闭包）
+    // 为了让大家都能看懂,我帮你们拆解来看下
+    // (a: Int) : 参数
+    // (b:Int) -&gt; (c: Int) -&gt; Int : 函数返回值（一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数)
+
+    // 定义一个接收参数a,并且返回一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数
+    func add(a: Int) -&gt; (b:Int) -&gt; (c: Int) -&gt; Int&#123;
+
+        // 一个接收参数b的函数,并且这个函数又返回一个接收参数c,返回值为Int类型的函数
+        return &#123; (b:Int) -&gt; (c: Int) -&gt; Int in
+
+            // 返回一个接收余下第一个参数c，并且有返回结果为Int类型的函数
+            return &#123; (c: Int) -&gt; Int in
+
+                return a + b + c;
+
+     注解： 这里为什么能使用参数a,b,c?
+           利用闭包的值捕获特性，即使这些值作用域不在了，也可以捕获到他们的值。
+           闭包会自动判断捕获的值是值拷贝还是值引用，如果修改了，就是值引用，否则值拷贝。
+
+           注意只有在闭包中才可以，a,b,c都在闭包中。
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+
+    /*** curried: 系统自带的柯里化函数 ***/
+    func addCur(a: Int)(b: Int)(c: Int) -&gt; Int&#123;
+        println(&quot;\(a) + \(b) + \(c)&quot;)
+        return a + b + c
+    &#125;
+
+
+&#125;
+</code></pre>
+<h3 id="OC版的Curring"><a href="#OC版的Curring" class="headerlink" title="OC版的Curring"></a>OC版的Curring</h3><p>大部分的iOS程序员都还是习惯写OC 找了一个<a target="_blank" rel="noopener" href="https://gist.github.com/lukhnos/1771842">OC版本的Curring</a>实现 我们可以理解的更深刻</p>
+<pre><code>#include &lt;stdio.h&gt;
+int f(int x, int y)
+&#123;
+    return x + y;
+&#125;
+
+int main()
+&#123;
+    // 闭包1 绑定第一个参数
+    typedef int (^int_to_int_t)(int);
+    // 闭包2 绑定第二个参数
+    typedef int_to_int_t (^int_to_int_to_int_t)(int);
+
+    int_to_int_to_int_t h = ^(int x) &#123;
+        int_to_int_t g = ^(int y) &#123;
+            // 将两个闭包持有的参数做处理 返回结果
+            return f(x, y);  
+        &#125;;
+
+        return g;        
+    &#125;;
+    
+    // 第一个闭包持有 5
+    int_to_int_t g = h(5);
+    
+    int z;
+    // 第二个闭包持有10 并返回结果
+    z = g(10);
+    printf(&quot;%d\n&quot;, z);
+&#125;
+</code></pre>
+<h3 id="什么？你觉得然并卵！"><a href="#什么？你觉得然并卵！" class="headerlink" title="什么？你觉得然并卵！"></a>什么？你觉得然并卵！</h3><p>你一定觉得这是一个然并卵的东西</p>
+<p>好吧 我第一个看到的时候 只是觉得有趣 其实也没有想到较好的应用场景 </p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/jcouyang/b56a830cd55bd230049f">为什么要柯里化</a>这篇文章提供的例子给了很多启发</p>
+<p>用Swift重新实现了一遍 又加了一点打印 豁然开朗</p>
+<p>上代码</p>
+<pre><code>// 拼接字符
+func concat(chars: Array&lt;String&gt;) &#123;
+    var resultString = &quot;&quot;
+    for char in chars &#123;
+        resultString += char
+    &#125;
+    print(resultString)
+&#125;
+
+concat([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])
+print(&quot;**************&quot;)
+
+// 每个字符代表的数字 + 1 后再拼接
+func concatAdd(chars: Array&lt;String&gt;, addNum: Int) &#123;
+    var resultString = &quot;&quot;
+    for char in chars &#123;
+        var num = Int(char)!
+        num = num + addNum
+        let newChar = String(num)
+        resultString += newChar
+    &#125;
+    print(resultString)
+&#125;
+
+concatAdd([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], addNum: 1)
+concatAdd([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], addNum: 2)
+concatAdd([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], addNum: 3)
+
+print(&quot;**************&quot;)
+// 每个字符代表的数字 *10 后再拼接
+func concatMultiply(chars: Array&lt;String&gt;, multiplyNum: Int) &#123;
+    var resultString = &quot;&quot;
+    for char in chars &#123;
+        var num = Int(char)!
+        num = num * multiplyNum
+        let newChar = String(num)
+        resultString += newChar
+    &#125;
+    print(resultString)
+&#125;
+
+concatMultiply([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], multiplyNum: 1)
+concatMultiply([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], multiplyNum: 2)
+concatMultiply([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], multiplyNum: 3)
+
+print(&quot;**************&quot;)
+/****
+让我们使用柯里化吧
+*****/
+func add(a: Int)(b: Int) -&gt; Int&#123;
+    return a + b
+&#125;
+
+func multiply(a: Int)(b: Int) -&gt; Int&#123;
+    return a * b
+&#125;
+
+func concatByCurring(chars: Array&lt;String&gt;)(caculateFunc: (Int)-&gt;Int) &#123;
+    var resultString = &quot;&quot;
+    for char in chars &#123;
+        var num = Int(char)!
+        var newNum = caculateFunc(num)
+        let newChar = String(newNum)
+        resultString += newChar
+    &#125;
+    print(resultString)
+&#125;
+
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: add(1))
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: add(2))
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: add(3))
+
+print(&quot;**************&quot;)
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: multiply(1))
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: multiply(2))
+concatByCurring([&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])(caculateFunc: multiply(3))
+</code></pre>
+<p>以上的代码用普通的函数 和 Curring函数 处理了同一个功能</p>
+<p>Curring优势明显</p>
+<ul>
+<li>重用了拼接代码</li>
+<li>支持更为灵活的算法替换</li>
+<li>写功能扩展的人不用怎么关心老代码的实现</li>
+</ul>
+<p>###iOS开发中可以应用的场景</p>
+<p><strong>使用Curring处理selector</strong><br>这个例子是我在看<a target="_blank" rel="noopener" href="https://selfstore.io/~onevcat">王巍的Swifter</a>时候看到的一个例子</p>
+<p>不废话 直接上代码</p>
+<pre><code>// 打印func类型
+class People: NSObject &#123;
+    func speak()&#123;
+        print(&quot;hello&quot;)
+    &#125;
+    
+    func printSpeak() &#123;
+        print(&quot;People func speak  : \(People.speak.dynamicType)&quot;)
+    &#125;
+
+&#125;
+
+People().printSpeak() 
+// 打印结果为 People func speak  : People -&gt; () -&gt; ()
+// 可见实例的方法就是一个Curring结构
+</code></pre>
+<p> 下面是<a target="_blank" rel="noopener" href="http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/?utm_campaign=iOS_Dev_Weekly_Issue_157&utm_medium=email&utm_source=iOS+Dev+Weekly">Instance Methods are Curried Functions in Swift</a>中的例子 很开脑洞</p>
+<pre><code>//Selector demo
+protocol TargetAction &#123;
+    func performAction()
+&#125;
+
+struct TargetActionWrapper&lt;T: AnyObject&gt; : TargetAction &#123;
+    weak var target: T?
+    
+    // 此处的action类型是不是和我上面代码中打印的结构一致
+    let action: (T) -&gt; () -&gt; ()
+    
+    func performAction() -&gt; () &#123;
+        if let t = target &#123;
+            // Curring调用
+            action(t)()
+        &#125;
+    &#125;
+&#125;
+
+enum ControlEvent &#123;
+    case TouchUpInside
+    case ValueChanged
+&#125;
+
+class Control &#123;
+    var actions = [ControlEvent: TargetAction]()
+    
+    func setTarget&lt;T: AnyObject&gt;(target: T, action: (T) -&gt; () -&gt; (), controlEvent: ControlEvent) &#123;
+        actions[controlEvent] = TargetActionWrapper(target: target, action: action)
+    &#125;
+    
+    func removeTargetForControlEvent(controlEvent: ControlEvent) &#123;
+        actions[controlEvent] = nil
+    &#125;
+    
+    func performActionForControlEvent(controlEvent: ControlEvent) &#123;
+        actions[controlEvent]?.performAction()
+    &#125;
+&#125;
+
+class MyViewController &#123;
+    let button = Control()
+    
+    func viewDidLoad() &#123;
+        button.setTarget(self, action: MyViewController.onButtonTap, controlEvent: .TouchUpInside)
+    &#125;
+    
+    func onButtonTap() &#123;
+        print(&quot;Button was tapped&quot;)
+    &#125;
+&#125;
+
+// 调用
+MyViewController().onButtonTap()
+</code></pre>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>Curring让计算过程更清晰 函数式编程的有点初见端倪</li>
+<li>Curring让计算过程更独立 可重用</li>
+<li>Curring让计算功能扩展更方便</li>
+<li>Curring让Swift中Selector的重构可以实现</li>
+</ul>
+<h2 id="Umeng分享遇到的小坑-–-张超耀"><a href="#Umeng分享遇到的小坑-–-张超耀" class="headerlink" title="Umeng分享遇到的小坑 – 张超耀"></a>Umeng分享遇到的小坑 – 张超耀</h2><h3 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h3><ul>
+<li>在iOS9下，系统默认会拦截对http协议接口的访问，因此无法获取http协议接口的数据。对Umeng来说，具体表现可能是，无法授权、分享、获取用户信息等。</li>
+<li>iOS9新建项目默认需要支持bitcode，而不支持bitcode的SDK会导致无法编译运行。<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html#//apple_ref/doc/uid/TP40012582-CH35">App Thining</a>）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://dev.umeng.com/social/ios/ios9">Umeng适配iOS9</a></p>
+<h3 id="针对iOS9的Https特性，解决方案"><a href="#针对iOS9的Https特性，解决方案" class="headerlink" title="针对iOS9的Https特性，解决方案"></a>针对iOS9的Https特性，解决方案</h3><ul>
+<li>Plan A: 暂时退回到http协议:</li>
+</ul>
+<blockquote>
+<p><strong>1</strong>、在项目的info.plist中添加一个Key：NSAppTransportSecurity，类型为字典类型。<br><strong>2</strong>、然后给它添加一个Key：NSAllowsArbitraryLoads，类型为Boolean类型，值为YES；</p>
+</blockquote>
+<ul>
+<li>Plan B：设置域。可以简单理解成，把不支持https协议的接口设置成http的接口</li>
+</ul>
+<blockquote>
+<p><strong>1</strong>、在项目的info.plist中添加一个Key：NSAppTransportSecurity，类型为字典类型。</p>
+</blockquote>
+<blockquote>
+<p><strong>2</strong>、然后给它添加一个NSExceptionDomains，类型为字典类型；</p>
+</blockquote>
+<blockquote>
+<p><strong>3</strong>、把需要的支持的域添加給NSExceptionDomains。其中域作为Key，类型为字典类型。</p>
+</blockquote>
+<blockquote>
+<p><strong>4</strong>、每个域下面需要设置3个属性：NSIncludesSubdomains、        NSExceptionRequiresForwardSecrecy、        NSExceptionAllowsInsecureHTTPLoads。<br>    均为Boolean类型，值分别为YES、NO、YES。</p>
+</blockquote>
+<h3 id="针对App-Thinning"><a href="#针对App-Thinning" class="headerlink" title="针对App Thinning"></a>针对App Thinning</h3><h3 id="添加Scheme白名单实现应用跳转（SSO等）"><a href="#添加Scheme白名单实现应用跳转（SSO等）" class="headerlink" title="添加Scheme白名单实现应用跳转（SSO等）"></a>添加Scheme白名单实现应用跳转（SSO等）</h3><ul>
+<li>问题描述：在iOS 9下涉及到平台客户端跳转，系统会自动到项目info.plist下检测是否设置平台Scheme。对于需要配置的平台，如果没有配置，就无法正常跳转平台客户端。因此要支持客户端的分享和授权等，需要配置Scheme名单。</li>
+<li>解决方案：</li>
+</ul>
+<p>具体方法：</p>
+<blockquote>
+<p>1、在项目的info.plist中添加一LSApplicationQueriesSchemes，类型为Array。</p>
+</blockquote>
+<blockquote>
+<p>2、然后给它添加一个需要支持的项目，类型为字符串类型</p>
+</blockquote>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>由于苹果审核政策需求，需要对未安装客户端平台进行隐藏，在设置QQ、微信AppID之后调用下面的方法，</li>
+</ul>
+<pre><code>[UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
+</code></pre>
+<ul>
+<li>but  这个接口只对默认分享面板平台有隐藏功能，自定义分享面板或登录按钮需要自己处理</li>
+<li>对于自定义分享面板处理：<ul>
+<li>UmengSDK已经嵌入相关API，直接用就好</li>
+</ul>
+</li>
+</ul>
+<h3 id="只要按照官方文档来，基本上就能马到成功（）"><a href="#只要按照官方文档来，基本上就能马到成功（）" class="headerlink" title="只要按照官方文档来，基本上就能马到成功（）"></a>只要按照官方文档来，基本上就能马到成功（）</h3><h2 id="MarkDown-的-CSS-实现配置-杨志平"><a href="#MarkDown-的-CSS-实现配置-杨志平" class="headerlink" title="MarkDown 的 CSS 实现配置 - 杨志平"></a>MarkDown 的 CSS 实现配置 - 杨志平</h2><h4 id="题目灵感来源"><a href="#题目灵感来源" class="headerlink" title="题目灵感来源"></a>题目灵感来源</h4><blockquote>
+<p>起源于我们现有的博客引擎主题交互很不错，但是排版烂的要死 ，我水平有限这里只是浅显介绍实现修改我们的markdown编译器的一些排版样式</p>
+</blockquote>
+<h4 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h4><blockquote>
+<p>自定义一个非标准化，有其他多元素的MarkDown解析器 如下几点:</p>
+</blockquote>
+<ul>
+<li>可选框<br><code>- [ ] </code></li>
+<li>本地图片索引，可控制对齐及大小<br><code>![Alt text](http://path/to/img.jpg &quot;optional title&quot; 100x200)</code><br><code>![Alt text](./1449756974449.png)</code></li>
+<li>标签功能<br><code>@(Share)[css, Markdown]</code></li>
+<li>代码高亮（不同语言）</li>
+</ul>
+<p><code>swift</code></p>
+<pre><code class="swift">    private var majorModel = PickMajorModel()
+    private var subjectModel = OFFKeyNameModel()
+    required init?(coder aDecoder: NSCoder) &#123;
+        super.init(coder: aDecoder)
+    &#125;
+</code></pre>
+<p><code>objectivec</code></p>
+<pre><code class="objectivec">    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH)];
+    scrollView.showsVerticalScrollIndicator = NO;
+    [scrollView addSubview:self.downMainView];
+</code></pre>
+<p><strong>有一种惨不忍睹的即视感</strong><br><img src="./1449756974449.png" alt="Alt text"></p>
+<h3 id="MarkDown来源及实现"><a href="#MarkDown来源及实现" class="headerlink" title="MarkDown来源及实现"></a>MarkDown来源及实现</h3><blockquote>
+<p>Markdown is a plain text format for writing structured documents, based on conventions used for indicating formatting in email and usenet posts. It was developed in 2004 by John Gruber, who wrote the first markdown-to-html converter in Perl, and it soon became widely used in websites. By 2014 there were dozens of implementations in many languages.</p>
+</blockquote>
+<p><code>见知乎上回答</code><br><a target="_blank" rel="noopener" href="http://www.zhihu.com/question/28756456">实现一个markdown解析器需要具备那些知识</a></p>
+<h3 id="如何简单的改善文字编排的效果"><a href="#如何简单的改善文字编排的效果" class="headerlink" title="如何简单的改善文字编排的效果"></a>如何简单的改善文字编排的效果</h3><h5 id="更换博客主题（简单粗暴）"><a href="#更换博客主题（简单粗暴）" class="headerlink" title="更换博客主题（简单粗暴）"></a>更换博客主题（简单粗暴）</h5><blockquote>
+<p>我们使用的博客引擎Hexo来举例，列举下面三个主题</p>
+</blockquote>
+<ul>
+<li>landscape</li>
+<li>hexo-theme-vno-master</li>
+<li>hexo-theme-yilia-master</li>
+</ul>
+<h5 id="更换MarkDown编译器的主题"><a href="#更换MarkDown编译器的主题" class="headerlink" title="更换MarkDown编译器的主题"></a>更换MarkDown编译器的主题</h5><blockquote>
+<p>以 <em><strong>Mou</strong></em> 举例子，它提供了多套markdown语法下的排版样式<br>手动新创建一个CSS文本布局配置 <em><strong>Blog</strong></em><br><img src="./1449768288128.png" alt="Alt text"></p>
+</blockquote>
+<h4 id="CSS配置文件修改"><a href="#CSS配置文件修改" class="headerlink" title="CSS配置文件修改"></a>CSS配置文件修改</h4><p>详细配置参数如下：</p>
+<pre><code>html &#123; font-size: 62.5%; &#125;
+html, body &#123; height: 100%; &#125;
+
+body &#123;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 150%;
+  line-height: 1.3;
+  color: #f6e6cc;
+  width: 700px;
+  margin: auto;
+  background: #27221a;
+  position: relative;
+  padding: 0 30px;
+&#125;
+</code></pre>
+<p>多级标题配置</p>
+<pre><code>h1 &#123;
+  font-size: 28px;
+  color: black; &#125;
+
+h2 &#123;
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; &#125;
+
+h3 &#123;
+  font-size: 18px; &#125;
+
+h4 &#123;
+  font-size: 16px; &#125;
+
+h5 &#123;
+  font-size: 14px; &#125;
+
+h6 &#123;
+  color: #777777;
+  font-size: 14px; &#125;
+</code></pre>
+<p>表格</p>
+<pre><code>table &#123;
+  padding: 0;border-collapse: collapse; &#125;
+  table tr &#123;
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; &#125;
+    table tr:nth-child(2n) &#123;
+      background-color: #f8f8f8; &#125;
+    table tr th &#123;
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; &#125;
+    table tr td &#123;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; &#125;
+    table tr th :first-child, table tr td :first-child &#123;
+      margin-top: 0; &#125;
+    table tr th :last-child, table tr td :last-child &#123;
+      margin-bottom: 0; &#125;
+</code></pre>
+<p>代码高亮</p>
+<pre><code>code, tt &#123;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; &#125;
+
+ code &#123;
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  background: transparent; &#125;
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/12/11/前端入门（2）/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/12/11/前端入门（2）/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/12/11/前端入门（2）/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2016/01/07/Why-Git-Learn-It/">
+        ← Why Git? Learn It!-曾铭
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/12/02/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%EF%BC%881%EF%BC%89/">
+        前端入门（1） →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

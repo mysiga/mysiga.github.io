@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>简单谈谈计算机网络 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-07-24T09:46:13.000Z" itemprop="datePublished">
+          2015-07-24
+      </time>
+    
+</span>
+    <h1 class="post-title">简单谈谈计算机网络</h1>
+    <section class="post-content">
+      <h2 id="RESTful-API-设计介绍-曾铭"><a href="#RESTful-API-设计介绍-曾铭" class="headerlink" title="RESTful API 设计介绍 - 曾铭"></a>RESTful API 设计介绍 - 曾铭</h2><h3 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h3><ul>
+<li>API 概念</li>
+<li>其它方案 SOAP 等</li>
+<li>HTTP 无状态</li>
+<li>RESTful 概念 REpresentational State Transfer 表征性状态传输</li>
+<li>复用 HTTP 本身的协议定义</li>
+<li>带来的好处：通用，动词，code，缓存，安全</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>BAD
+/getProduct
+/addProduct
+/deleteProduct
+/listProducts
+/productShop?productId=1
+</code></pre>
+<ul>
+<li>对单一实体的重复</li>
+<li>多个实体对操作的重复</li>
+<li>实体之间逻辑接口的重复定义</li>
+</ul>
+<pre><code>GOOD
+GET /products : will return the list of all products
+GET /products/4 : will retrieve product #4
+POST /products : will add a product to the collection
+PUT /products/4 : will update product #4
+DELETE /products/4 : will delete product #4
+
+GET /products/4/shop
+GET /users/3/favorite_schools
+POST /users/3/favorite_schools
+PUT /users/3/favorite_schools/5
+</code></pre>
+<ul>
+<li>好的 API 定义清晰，可预期。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>重复的实现或设计，嗅嗅不好的味道</li>
+<li>重复制造轮子，而不是重复发明轮子 （如用户授权，加密，缓存等）</li>
+<li>RESTful 不仅仅适用于 APP，重点是 C/S</li>
+<li>各端实现：<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/28557115/answer/48094438">参考覃超的知乎回答</a></li>
+</ul>
+<hr>
+<h2 id="IP网段划分-王胜"><a href="#IP网段划分-王胜" class="headerlink" title="IP网段划分 - 王胜"></a>IP网段划分 - 王胜</h2><h3 id="三大类IP段"><a href="#三大类IP段" class="headerlink" title="三大类IP段"></a>三大类IP段</h3><ul>
+<li><p>A类地址</p>
+<ul>
+<li>第1字节为<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/547479.htm">网络地址</a>，其他3个字节为主机地址。另外，第1个字节的最高位固定为0。</li>
+<li>地址范围：1.0.0.0到126.255.255.255。</li>
+<li>默认子网掩码：255.0.0.0，一个子网最多可以容纳1677万多台电脑。</li>
+<li>保留地址：127.0.0.0到127.255.255.255是保留地址，用做循环测试用。</li>
+<li>私有地址：10.0.0.0到10.255.255.255。【0000 1010】</li>
+</ul>
+</li>
+<li><p>B类地址</p>
+<ul>
+<li>第1字节和第2字节为网络地址，其他2个字节为主机地址。另外1个字节的前2位固定为10。</li>
+<li>地址范围：128.0.0.0到191.255.255.255。</li>
+<li>默认子网掩码：255.255.0.0　一个子网最多可以容纳6万台电脑。</li>
+<li>保留地址：169.254.0.0到169.254.255.255是保留地址。如果你的IP地址是自动获取IP地址，而你在网络上又没有找到可用的DHCP服务器，这时你将会从169.254.0.1到169.254.255.254中临时获得一个IP地址。</li>
+<li>私有地址：在B类地址中，172.16.0.0到172.31.255.255是私有地址。</li>
+</ul>
+</li>
+<li><p>C类地址</p>
+<ul>
+<li>第1字节、第2字节和第3个字节为网络地址，第4个字节为主机地址。另外第1个字节的前三位固定为110。</li>
+<li>地址范围：192.0.0.0到223.255.255.255。</li>
+<li>默认子网掩码　255.255.255.0　一个子网最多可以容纳254台电脑。</li>
+<li>私有地址：192.168.0.0到192.168.255.255是私有地址。</li>
+</ul>
+</li>
+</ul>
+<h3 id="两个特殊地址"><a href="#两个特殊地址" class="headerlink" title="两个特殊地址"></a>两个特殊地址</h3><ul>
+<li>0.0.0.0 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/hnrainll/archive/2011/10/13/2210101.html">全网地址</a>，三界之外的收容器</li>
+<li>255.255.255.255 广播地址</li>
+</ul>
+<hr>
+<h2 id="OSI七层模型详解-吴明"><a href="#OSI七层模型详解-吴明" class="headerlink" title="OSI七层模型详解 - 吴明"></a>OSI七层模型详解 - 吴明</h2><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/yaopeng_2005/article/details/7064869">OSI七层模型详解</a></p>
+<ul>
+<li>物理层：<ul>
+<li>相关协议：IEEE802.2,Ethernet v.2,Internetwork</li>
+</ul>
+</li>
+<li>数据链路层<ul>
+<li>相关协议：MPLS，XTP,DCAP</li>
+</ul>
+</li>
+<li>网络层</li>
+<li>传输层<ul>
+<li>相关协议：EGP,NHRP</li>
+</ul>
+</li>
+<li>会话层：</li>
+<li>表示层：</li>
+<li>应用层:</li>
+</ul>
+<hr>
+<h2 id="网络分层协议模型-张超耀"><a href="#网络分层协议模型-张超耀" class="headerlink" title="网络分层协议模型 - 张超耀"></a>网络分层协议模型 - 张超耀</h2><p>###网络分层协议模型</p>
+<ul>
+<li><p>根据 TCP/IP协议簇的协议来命名</p>
+<ul>
+<li>应用层　　数据         　 泛指应用层使用的</li>
+<li>传输层　　数据段　　　　　传输层</li>
+<li>网络层　　数据包　　　　　网络层</li>
+<li>链路层　　帧　　　　　　　网络接入层</li>
+<li>物理层　　比特(位)　　　 通过介质实际传输数据时使用的</li>
+</ul>
+</li>
+<li><p>OSI七成协议模型</p>
+<ul>
+<li>应用层:例如HTTP、SMTP、SNMP、FTP、Telnet、SIP、SSH、NFS、RTSP、XMPP、Whois、ENRP</li>
+<li>表示层:例如XDR、ASN.1、SMB、AFP、NCP</li>
+<li>会话层:例如ASAP、TLS、SSH、ISO 8327 / CCITT X.225、RPC、NetBIOS、ASP、Winsock、BSD sockets</li>
+<li>传输层:例如TCP、UDP、RTP、SCTP、SPX、ATP、IL</li>
+<li>网络层:例如IP、ICMP、IGMP、IPX、BGP、OSPF、RIP、IGRP、EIGRP、ARP、RARP、X.25</li>
+<li>数据链路层:例如以太网、令牌环、HDLC、帧中继、ISDN、ATM、IEEE 802.11、FDDI、PPP</li>
+<li>物理层:例如线路、无线电、光纤</li>
+</ul>
+</li>
+<li><p>分层的好处:</p>
+<ul>
+<li>各层之间是独立的</li>
+<li>灵活性好</li>
+<li>结构上可分割开</li>
+<li>易于实现和维护</li>
+<li>能促进标准化工作</li>
+</ul>
+</li>
+</ul>
+<h3 id="协议模型"><a href="#协议模型" class="headerlink" title="协议模型:"></a>协议模型:</h3><p><img src="http://pic002.cnblogs.com/images/2012/387401/2012070810010373.jpg"></p>
+<h3 id="包装数据包的过程"><a href="#包装数据包的过程" class="headerlink" title="包装数据包的过程"></a>包装数据包的过程</h3><ul>
+<li>TCP传给IP的数据单元称作TCP报文段或简称为TCP段(TCP segment)，传给网络接口层的数据单元称作IP数据报(IPdatagram).通过以太网传输的比特流称作帧(Frame)<br><img src="http://hiphotos.baidu.com/exp/pic/item/90cebeec08fa513dd74179353f6d55fbb3fbd937.jpg"></li>
+</ul>
+<h3 id="分用即解包的过程"><a href="#分用即解包的过程" class="headerlink" title="分用即解包的过程"></a>分用即解包的过程</h3><p><img src="http://pic002.cnblogs.com/images/2012/387401/2012072116365656.png"></p>
+<h3 id="不同层直接协议关系"><a href="#不同层直接协议关系" class="headerlink" title="不同层直接协议关系"></a>不同层直接协议关系</h3><p><img src="http://pic002.cnblogs.com/images/2012/387401/2012072116311034.png"></p>
+<hr>
+<h2 id="TCP-IP三次握手与四次挥手-李仙鹏"><a href="#TCP-IP三次握手与四次挥手-李仙鹏" class="headerlink" title="TCP/IP三次握手与四次挥手 - 李仙鹏"></a>TCP/IP三次握手与四次挥手 - 李仙鹏</h2><p><img src="http://mmbiz.qpic.cn/mmbiz/NVvB3l3e9aESeCKMfdLmzic5mS9DReZ3ecGqraIDhDam4NmtRiceSzXCpICsu2keyhg1pMwxZVJBWTIvnwpkL6CA/640?wxfrom=5" alt="TCP/IP三次握手与四次挥手"></p>
+<blockquote>
+<p>引用自<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzA3MDMyMjkzNg==&mid=210133499&idx=1&sn=d56455712de557b74ce17997fe29c06f&scene=1&key=0acd51d81cb052bc42a5850a900340ace87cb6cc26440e97233d7fab5311d8b5021ca25b901ab1d0434b3a23ead87ef2&ascene=0&uin=MTg4NDcxOTMyMQ==&devicetype=iMac+MacBookPro12,1+OSX+OSX+10.10.4+build(14E46)&version=11020012&pass_ticket=Mh3kdFcxrCoIa0yIg1d7eLqJGuQkBQLzt2YIYx5poC+LzaWWMRZ5D1Vl6Pobd8ui">图解 TCP/IP 协议</a></p>
+</blockquote>
+<hr>
+<h2 id="计算机网络安全-杨志平"><a href="#计算机网络安全-杨志平" class="headerlink" title="计算机网络安全 - 杨志平"></a>计算机网络安全 - 杨志平</h2><h3 id="2015网络安全事件"><a href="#2015网络安全事件" class="headerlink" title="2015网络安全事件"></a>2015网络安全事件</h3><ul>
+<li>携程网内部员工误删除代码 网站整体宕机12小时</li>
+<li>支付宝机房电缆被挖断 部分区域服务中断</li>
+<li>网易骨干网遭攻击 百万用户无法打游戏</li>
+<li>海康威视被黑客植入代码 导致被远程监控</li>
+</ul>
+<h3 id="敏感数据（账号、密码等）"><a href="#敏感数据（账号、密码等）" class="headerlink" title="敏感数据（账号、密码等）"></a>敏感数据（账号、密码等）</h3><ul>
+<li>账号密码（post明文显示）</li>
+<li>重要资源数据（防爬虫）</li>
+<li>多重账号威胁（网络账号通用）</li>
+<li>通讯协议破解（iMessage）</li>
+</ul>
+<h3 id="网络传输加密"><a href="#网络传输加密" class="headerlink" title="网络传输加密"></a>网络传输加密</h3><ul>
+<li><p>数据加密算法</p>
+<ul>
+<li><p>对称式加密技术    (加密-解密)</p>
+<ul>
+<li>DES（Data Encryption Standard）<blockquote>
+<p>数据加密标准，速度较快，适用于加密大量数据的场合。</p>
+</blockquote>
+</li>
+<li>3DES（Triple DES）<blockquote>
+<p>是基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高。</p>
+</blockquote>
+</li>
+<li>AES（Advanced Encryption Standard）<blockquote>
+<p>高级加密标准，是下一代的加密算法标准，速度快，安全级别高；</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>非对称式加密技术（公钥-私钥）</p>
+<ul>
+<li>RSA<blockquote>
+<p>是一个支持变长密钥的公共密钥算法，需要加密的文件块的长度也是可变的；</p>
+</blockquote>
+</li>
+<li>DSA（Digital Signature Algorithm）<blockquote>
+<p>数字签名算法，是一种标准的 DSS（数字签名标准）；</p>
+</blockquote>
+</li>
+<li>ECC（Elliptic Curves Cryptography）<blockquote>
+<p>椭圆曲线密码编码学。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>散列算法 （不可逆）</p>
+<ul>
+<li>MD5（Message Digest Algorithm 5）<blockquote>
+<p>是RSA数据安全公司开发的一种单向散列算法，非可逆，相同的明文产生相同的密文。</p>
+</blockquote>
+</li>
+<li>SHA（Secure Hash Algorithm）<blockquote>
+<p>可以对任意长度的数据运算生成一个160位的数值；</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.iplaysoft.com/encrypt-arithmetic.html">3个著名加密算法(MD5、RSA、DES)的解析</a></p>
+<h3 id="简单加密演示"><a href="#简单加密演示" class="headerlink" title="简单加密演示"></a>简单加密演示</h3><ul>
+<li>简单位移式加密（经典：凯撒加密）</li>
+</ul>
+<pre><code>“恺撒密码”据传是古罗马恺撒大帝用来保护重要军情的加密系统。它是一种替代密码，通过将字母按顺序推后起3位起到加密作用，
+如将字母A换作字母D，将字母B换作字母E。据说恺撒是率先使用加密函的古代将领之一，因此这种加密方法被称为恺撒密码。
+假如有这样一条指令：
+RETURN TO ROME
+用恺撒密码加密后就成为：
+UHWXUA WR URPH
+</code></pre>
+<ul>
+<li>置换加密</li>
+</ul>
+<pre><code>令明文m=m1,m2,...mL。令置换矩阵所决定的置换为pi，则加密置换c=Ek(m)=(c1,c2,...cL)=mpi(1),mpi(2),...,mpi(L)
+解密置换
+d=Dk(c)=(cn^-1(1),cn^-1(2),...cn^-1(L))
+例，置换密码。给定明文为the simplest possible transposition ciphers,
+将明文分成长为L=5的段，
+m1=thesi, m2=mples m3=tposs m4=iblet,
+m5=ransp, m6=ositi m7=oncip m8=hersx
+最后一段长不足5，加添一个字母x。将隔断的字母序号按下述置换矩阵进行换位：
+Ek= 0 1 2 3 4
+3 0 4 2 1
+得到密文如下
+STIEH EMSLP STSOP EITLB SRPNA TOIIS IOPCN SHXRE
+</code></pre>
+<hr>
+<h2 id="Alamofire文档阅读-潘君"><a href="#Alamofire文档阅读-潘君" class="headerlink" title="Alamofire文档阅读 - 潘君"></a>Alamofire文档阅读 - 潘君</h2><p><code>AFNetworking的继承者</code></p>
+<p>摘录自<a target="_blank" rel="noopener" href="https://github.com/Alamofire/Alamofire">Alamofire 官方文档</a></p>
+<h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ul>
+<li>Chainable Request / Response methods<br>  链式 request / response<br>   Complete Documentation</li>
+</ul>
+<pre><code>// Response handlers can even be chained:
+Alamofire.request(.GET, &quot;http://httpbin.org/get&quot;)
+         .responseString &#123; _, _, string, _ in
+             println(string)
+         &#125;
+         .responseJSON &#123; _, _, JSON, _ in
+             println(JSON)
+         &#125;
+</code></pre>
+<ul>
+<li><p>URL / JSON / plist Parameter Encoding<br>  除了以上几种 还可以自定义<br>  Alamofire provides built-in response serialization for strings, JSON, and property lists, but others can be added in extensions on Alamofire.Request.</p>
+</li>
+<li><p>Upload File / Data / Stream / MultipartFormData<br>  多种文件上传方式</p>
+</li>
+<li><p>Download using Request or Resume data</p>
+</li>
+<li><p> Authentication with NSURLCredential</p>
+</li>
+<li><p> HTTP Response Validation</p>
+</li>
+<li><p> Progress Closure &amp; NSProgress</p>
+</li>
+<li><p> cURL Debug Output</p>
+</li>
+<li><p>Comprehensive Unit Test Coverage</p>
+</li>
+</ul>
+<h3 id="某些点"><a href="#某些点" class="headerlink" title="某些点"></a>某些点</h3><ul>
+<li>url编码<br>GET<pre><code>GET Request With URL-Encoded Parameters
+Alamofire.request(.GET, &quot;http://httpbin.org/get&quot;, parameters: [&quot;foo&quot;: &quot;bar&quot;])
+// http://httpbin.org/get?foo=bar
+</code></pre>
+</li>
+</ul>
+<p>POST</p>
+<pre><code>let parameters = [
+    &quot;foo&quot;: &quot;bar&quot;,
+    &quot;baz&quot;: [&quot;a&quot;, 1],
+    &quot;qux&quot;: [
+        &quot;x&quot;: 1,
+        &quot;y&quot;: 2,
+        &quot;z&quot;: 3
+    ]
+]
+
+Alamofire.request(.POST, &quot;http://httpbin.org/post&quot;, parameters: parameters)
+// HTTP body: foo=bar&amp;baz[]=a&amp;baz[]=1&amp;qux[x]=1&amp;qux[y]=2&amp;qux[z]=3
+</code></pre>
+<ul>
+<li><p>转object<br>Generic Response Object Serialization</p>
+</li>
+<li><p>校验<br>```<br>Manual Validation</p>
+</li>
+</ul>
+<p>Alamofire.request(.GET, “<a target="_blank" rel="noopener" href="http://httpbin.org/get&quot;">http://httpbin.org/get&quot;</a>, parameters: [“foo”: “bar”])<br>         .validate(statusCode: 200..&lt;300)<br>         .validate(contentType: [“application/json”])<br>         .response { _, _, _, error in<br>                  println(error)<br>         }<br>Automatic Validation</p>
+<p>Automatically validates status code within 200…299 range, and that the Content-Type header of the response matches the Accept header of the request, if one is provided.</p>
+<p>Alamofire.request(.GET, “<a target="_blank" rel="noopener" href="http://httpbin.org/get&quot;">http://httpbin.org/get&quot;</a>, parameters: [“foo”: “bar”])<br>         .validate()<br>         .response { _, _, _, error in<br>             println(error)<br>         }</p>
+<pre><code>
+- 方便打印
+Printable
+</code></pre>
+<p>let request = Alamofire.request(.GET, “<a target="_blank" rel="noopener" href="http://httpbin.org/ip&quot;">http://httpbin.org/ip&quot;</a>)</p>
+<p>println(request)</p>
+<p>// GET <a target="_blank" rel="noopener" href="http://httpbin.org/ip">http://httpbin.org/ip</a> (200)</p>
+<pre><code>
+DebugPrintable
+</code></pre>
+<pre><code>let request = Alamofire.request(.GET, &quot;http://httpbin.org/get&quot;, parameters: [&quot;foo&quot;: &quot;bar&quot;])
+
+debugPrintln(request)
+</code></pre>
+<pre><code>
+- 支持暂停/恢复/取消
+1. suspend(): Suspends the underlying task and dispatch queue
+2. resume(): Resumes the underlying task and dispatch queue. If the owning manager does not have startRequestsImmediately set to true, the request must call resume() in order to start.
+3. cancel(): Cancels the underlying task, producing an error that is passed to any registered response handlers.
+
+- 自定义response serializer
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/07/24/简单谈谈计算机网络/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/07/24/简单谈谈计算机网络/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/07/24/简单谈谈计算机网络/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/07/31/%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">
+        ← 网络信息安全
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/07/17/%E7%A0%94%E5%8F%91%E8%B7%AF%E4%B8%8A%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+        研发路上的那些事儿 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

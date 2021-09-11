@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>单元测试 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-07-15T15:30:00.000Z" itemprop="datePublished">
+          2016-07-15
+      </time>
+    
+</span>
+    <h1 class="post-title">单元测试</h1>
+    <section class="post-content">
+      <ul>
+<li>注：基于<a target="_blank" rel="noopener" href="http://chriszou.com/">小创</a>分享的总结</li>
+</ul>
+<h4 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h4><ul>
+<li>单元测试 or 集成测试：</li>
+<li>单元测试在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95">维基百科</a>是这样定义的</li>
+</ul>
+<pre><code>单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+</code></pre>
+<p>集成测试在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95">维基百科</a>的定义</p>
+<pre><code>集成测试,整合测试又称组装测试，即对程序模块采用一次性或增殖方式组装起来，对系统的接口进行正确性检验的测试工作。整合测试一般在单元测试之后、系统测试之前进行。实践表明，有时模块虽然可以单独工作，但是并不能保证组装起来也可以同时工作
+</code></pre>
+<p>有没有理解?那我们在借鉴下《单元测试的艺术》对单元测试和集成测试的定义：</p>
+<pre><code>一个单元测试时一段自动化的代码，这段代码调用被测试的工作单元，之后对这个单元的单个最终结果的某些假设进行检验。单元测试几乎都是用单元测试框架编写。单元测试容易编写，能快速运行。单元测试可靠，可读，并且可维护。只要产品代码不发生变化，单元测试的结果是稳定的。
+</code></pre>
+<pre><code>集成测试是对一个工作单元进行的测试，这个测试对被测试的工作单元没有完全控制，并使用该单元的一个或者多个真实依赖物，例如时间，网络，数据库，线程或随机数产生器等。
+</code></pre>
+<p>现在应该了解吧，没有了解不要紧，我们再通过他们关系比对<br> 那单元测试和集成测试的关系是怎么样了？<br> <img src="http://7xod3k.com1.z0.glb.clouddn.com/qtijqabixtlihxsuujkwnlzelrqnwqnz" alt="单元测试和集成测试"><br> <a target="_blank" rel="noopener" href="http://chriszou.com/2016/04/13/android-unit-testing-start-from-what.html">链接</a></p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><p>保证代码质量，防止bug或尽早发现bug的作用</p>
+</li>
+<li><p>改善代码的设计，节约开发调试时间</p>
+</li>
+<li><p>大大减少重构中手动验证正确性的时间。</p>
+</li>
+<li><p>在写单元测试的时候也能发现方法乃至系统结构设计的不合理</p>
+</li>
+<li><p>前面都是官方文字，现在讲点实在的。单元测试就是测试方法，方法我们又分为两种</p>
+<ul>
+<li>有返回值方法</li>
+<li>无返回值方法</li>
+</ul>
+</li>
+<li><p>有返回值方法，我们测试这个方法直接通过测试这个方法返回的值是否跟你预期一样。我们就以一个登陆的demo来解析吧</p>
+<ul>
+<li>环境<ul>
+<li>IDE:Android Studio</li>
+<li>Java测试库:junit，在build.gradle配置</li>
+</ul>
+<pre><code>testCompile &#39;junit:junit:4.12&#39;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-784a1cb7911ccafa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构"></p>
+<pre><code>  public class ExampleUnitTest &#123;
+    @Test
+    public void addition_isCorrect() throws Exception &#123;
+        assertEquals(4, 2 + 2);
+    &#125;
+&#125;
+</code></pre>
+<p>这个是新近一个Android新建的项目，生成的单元测试，直接通过点击方法的运行就能看的结果了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6287758ce0be0d42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-82ee776821842f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行结果"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-d33f48cff28cc3a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-a0b2da8b0c4418b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误运行结果"><br>实际开发中我们也是通过get()获取指定值比较这个应该比较容易理解。重点就是第二个了</p>
+<ul>
+<li>无返回值方法，我们只能通过方法内某个对象的方法是否被调用并且调用参数一样。这里就要用到mock，mock其实就是虚拟一个对象，然后根据这个对象方法判断是否被调用，mock目前比较成熟的框架是Mockito，所有我们这里要引用Mockito框架</li>
+</ul>
+<pre><code>dependencies &#123;    
+compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])    
+androidTestCompile(&#39;com.android.support.test.espresso:espresso-core:2.2.2&#39;, 
+&#123;        
+  exclude group: &#39;com.android.support&#39;, module: &#39;support-annotations&#39;    &#125;)
+   
+ compile &#39;com.android.support:appcompat-v7:23.4.0&#39;    
+compile &#39;com.android.support.constraint:constraint-layout:1.0.0-alpha4&#39;    
+//以下测试框架    
+testCompile &quot;junit:junit:4.12&quot;    
+//mockito    
+testCompile &quot;org.mockito:mockito-core:1.+&quot;&#125;
+</code></pre>
+<p>先看代码这个是一个简单的login代码<br>Activity</p>
+<pre><code>public class MainActivity extends AppCompatActivity implements View.OnClickListener, ILoginView &#123;
+
+   private EditText mUserNameView;
+   private EditText mPassWordView;
+   private LoginPresenter mPresenter;
+   @Override
+   protected void onCreate(Bundle savedInstanceState) &#123;
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       findViewById(R.id.login).setOnClickListener(this);
+       mUserNameView = (EditText) findViewById(R.id.username);
+       mPassWordView = (EditText) findViewById(R.id.password);
+       mPresenter = new LoginPresenter(this, HttpClient.getInstance());
+   &#125;
+   @Override
+   public void onClick(View v) &#123;
+       switch (v.getId()) &#123;
+           case R.id.login:
+               String username = mUserNameView.getText().toString();
+               String password = mPassWordView.getText().toString();
+               if (TextUtils.isEmpty(username)) &#123;
+                   Toast.makeText(this, &quot;用户名不能为空&quot;, Toast.LENGTH_LONG).show();
+                   return;
+               &#125; else if (TextUtils.isEmpty(password)) &#123;
+                   Toast.makeText(this, &quot;密码不能为空&quot;, Toast.LENGTH_LONG).show();
+                   return;
+               &#125;
+               mPresenter.login(username, password);
+               break;
+       &#125;
+   &#125;
+
+   @Override
+   public void startHomeView() &#123;
+       Toast.makeText(this, &quot;跳转主页&quot;, Toast.LENGTH_LONG).show();
+   &#125;
+
+   @Override
+   public void onError() &#123;
+       Toast.makeText(this, &quot;密码错误&quot;, Toast.LENGTH_LONG).show();
+   &#125;
+&#125;
+</code></pre>
+<p>ILoginView接口</p>
+<pre><code>public interface ILoginView &#123;
+   /**
+    * 跳转主页
+    */
+   void startHomeView();
+
+   /**
+    * 错误
+    */
+   void onError();
+&#125;
+</code></pre>
+<p>HttpClient</p>
+<pre><code>public class HttpClient &#123;
+    public static HttpClient mClient;
+
+    public static HttpClient getInstance() &#123;
+        if (mClient == null) &#123;
+            synchronized (HttpClient.class) &#123;
+                if (mClient == null) &#123;
+                    mClient = new HttpClient();
+                &#125;
+            &#125;
+        &#125;
+        return mClient;
+    &#125;
+
+    public interface Callback &#123;
+        void onSuccess(String phone);
+
+        void onError(String error);
+    &#125;
+
+    public void login(String username, String password, Callback callback) &#123;
+        //为了简单,没有实际操作网络请求只是简单判断返回结果
+        if (username.length() &lt; 5) &#123;
+            callback.onError(&quot;用户名太短&quot;);
+        &#125; else &#123;
+            callback.onSuccess(&quot;110110&quot;);
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<p>LoginPresenter</p>
+<pre><code>public class LoginPresenter &#123;
+    private ILoginView mLoginView;
+    private HttpClient mClient;
+
+    public LoginPresenter(@NonNull ILoginView mLoginView,@NonNull HttpClient client) &#123;
+        this.mLoginView = mLoginView;
+        this.mClient = client;
+    &#125;
+
+    public void login(String username, String password) &#123;
+        mClient.login(username, password, new HttpClient.Callback() &#123;
+            @Override
+            public void onSuccess(String phone) &#123;
+                mLoginView.startHomeView();
+            &#125;
+
+            @Override
+            public void onError(String error) &#123;
+                mLoginView.onError();
+            &#125;
+        &#125;);
+    &#125;
+
+    public String getDevice() &#123;
+        return &quot;nexus6p&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>单元测试，mock出来的对象一定要set到这个LoginPresenter对象中，要不然报错org.mockito.exceptions.misusing.NotAMockException</p>
+<pre><code>public class LoginPresenterTest &#123;    
+private LoginPresenter mPresenter;    
+private ILoginView mLoginView;    
+private HttpClient mClient;    
+//初始化,每测试一个方法都会掉这个    
+@Before    
+public void setUp() throws Exception &#123;        
+mLoginView = Mockito.mock(ILoginView.class);        
+mClient = Mockito.mock(HttpClient.class);        
+mPresenter = new LoginPresenter(mLoginView, mClient);   
+ &#125;    
+@Test    
+public void login() throws Exception &#123;        
+//无返回值方法        
+mPresenter.login(&quot;123456&quot;, &quot;123456&quot;);   
+     Mockito.verify(mClient).login(&quot;123456&quot;, &quot;123456&quot;, null);    
+&#125;    
+@Test    
+public void loginTest() throws Exception &#123;        
+//无返回值方法        
+mPresenter.loginTest(&quot;123456&quot;, &quot;123456&quot;);        
+Mockito.verify(mClient).login(&quot;123456&quot;, &quot;123456&quot;, null);    
+&#125;    
+@Test    
+public void getDevice() throws Exception &#123;        
+//有返回值方法&quot;        
+Assert.assertEquals(mPresenter.getDevice(), &quot;nexus6p&quot;);    
+&#125;
+&#125;
+</code></pre>
+<p>运行看结果</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1534431-6e66d663c451a176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"><br>可以看出login方法有问题，这个错误是正常的，就是我要的结果，可是loginTest方法运行正常，最主要的是他们callback为null，login方法执行的callback不是null，所有login方法执行的时候验证出来就是不一致的。</p>
+<ul>
+<li>资料<ul>
+<li><a href="">Demo地址</a></li>
+<li><a target="_blank" rel="noopener" href="http://chriszou.com/">小创</a></li>
+<li><a target="_blank" rel="noopener" href="http://tech.meituan.com/">美团点评技术团队</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ituring.com.cn/book/1336">单元测试的艺术</a></li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2016/07/15/单元测试/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2016/07/15/单元测试/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2016/07/15/单元测试/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2016/07/31/Excption%E4%B8%8EError%E5%8C%85%E7%BB%93%E6%9E%84/">
+        ← Excption与Error包结构
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/06/30/Java%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F/">
+        Java类初始化顺序 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

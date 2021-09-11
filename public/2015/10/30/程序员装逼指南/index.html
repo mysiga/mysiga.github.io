@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>周精益分享 - 程序员装逼指南 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">
+          2015-10-30
+      </time>
+    
+</span>
+    <h1 class="post-title">周精益分享 - 程序员装逼指南</h1>
+    <section class="post-content">
+      <h2 id="『图像和滤镜』"><a href="#『图像和滤镜』" class="headerlink" title="『图像和滤镜』"></a>『图像和滤镜』</h2><p>@(Share)[UIImage]</p>
+<p>[toc]</p>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><h4 id="常见的图像格式"><a href="#常见的图像格式" class="headerlink" title="常见的图像格式"></a>常见的图像格式</h4><ul>
+<li>png（Portable Network Graphic）便携式网络图形格式</li>
+<li>tiff、tif（Tagged Image File Format）标记图像文件格式</li>
+<li>jpg、jpeg（Joint Photographic Experts Group）联合摄影专家组</li>
+<li>gif（Graphic Interchange Format）图形交换格式</li>
+</ul>
+<h4 id="图像实例化"><a href="#图像实例化" class="headerlink" title="图像实例化"></a>图像实例化</h4><ul>
+<li><p>imageNamed:</p>
+<blockquote>
+<p>使用频率高，内存缓存优化</p>
+</blockquote>
+</li>
+<li><p>imageWithContentsOfFile:</p>
+<blockquote>
+<p>单次使用，暂时不清楚如何支持ImageAssert下的图片路径</p>
+</blockquote>
+</li>
+<li><p>imageWithData:</p>
+<blockquote>
+<p>本地或网络的文件数据加载</p>
+</blockquote>
+</li>
+<li><p>imageWithCGImage:</p>
+<blockquote>
+<p>绘制生成图，代码如下</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>    // 旧图局部裁剪
+    CGImageRef myImageRef = [oldImage CGImageRef];
+    CGRect subRect = CGRectMake(20, 20, 100, 100);
+    CGImageRef cgCrop = CGImageCreateWithImageInRect(myImageRef, subRect);
+    UIImage *imageCrop = [UIImage imageWithCGImage:cgCrop];
+</code></pre>
+<h4 id="显示图像"><a href="#显示图像" class="headerlink" title="显示图像"></a>显示图像</h4><blockquote>
+<p>屏幕的缩放因子，导致我们需要@2x及@3x图，对视图截图操作也同样需要针对Retina及plus优化</p>
+</blockquote>
+<pre><code>- (UIImage*)screenShotBy:(UIImageView*)imagView
+&#123;
+//  UIGraphicsBeginImageContext(imagView.bounds.size);
+// 2表示Retina，3表示plus分辨率，1正常，0则是当前设备的缩放因子
+// YES 表示不包含图像的alpha通道
+    UIGraphicsBeginImageContextWithOptions((imagView.bounds.size), YES, 2);
+    [imagView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+&#125;
+</code></pre>
+<h5 id="contentModel"><a href="#contentModel" class="headerlink" title="contentModel"></a>contentModel</h5><p><em>图像内容展现方式</em></p>
+<ul>
+<li>UIViewContentModelScaleToFill（默认）</li>
+<li>UIViewContentModelScaleAspectFill（下拉放大）</li>
+<li>UIViewContentModelScaleAspectFit</li>
+<li>UIViewContentModelCenter （一些停靠模式）</li>
+<li>UIViewContentModelTop/Bottom</li>
+<li>UIViewContentModelLeft/Right</li>
+</ul>
+<h5 id="拉伸属性"><a href="#拉伸属性" class="headerlink" title="拉伸属性"></a>拉伸属性</h5><p><code>代码</code></p>
+<pre><code>// 方法一
+image=[oldIconImage stretchableImageWithLeftCapWidth:10 topCapHeight:12];
+
+// 方法二
+image = [oldIconImage resizableImageWithCapInsets:UIEdgeInsetsMake(17, 17, 17, 25)];
+</code></pre>
+<p><code>ImageAssert</code></p>
+<p><img src="./1446137205500.png" alt="Alt text"><br>使用slicing，小变大无视差<br><img src="./1446137161636.png" alt="Alt text"></p>
+<hr>
+<h3 id="图像选择器"><a href="#图像选择器" class="headerlink" title="图像选择器"></a>图像选择器</h3><h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><hr>
+<h3 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h3><h3 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h3><h2 id="聊聊-QCon2015-曾铭"><a href="#聊聊-QCon2015-曾铭" class="headerlink" title="聊聊 QCon2015 - 曾铭"></a>聊聊 QCon2015 - 曾铭</h2><h3 id="pure-native-移动跨平台架构设计与实战"><a href="#pure-native-移动跨平台架构设计与实战" class="headerlink" title="pure-native 移动跨平台架构设计与实战"></a>pure-native 移动跨平台架构设计与实战</h3><p>by 赵世婚</p>
+<h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
+<li>重复逻辑：网络层、账户逻辑</li>
+<li>性能（网络压缩、打破内存限制）</li>
+<li>多一层封装应对业务变动</li>
+</ul>
+<h4 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h4><ul>
+<li>跨平台开发代码生成</li>
+<li>调试：异常捕获</li>
+</ul>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>学不来：人员构成决定技术选型，技术选型决定依赖人员 {:&amp;.rollIn}</li>
+<li>分层来应对业务变动（横向分层和纵向分层）</li>
+</ul>
+<h3 id="JavaScript-The-World’s-Best-Programming-Language"><a href="#JavaScript-The-World’s-Best-Programming-Language" class="headerlink" title="JavaScript - The World’s Best Programming Language"></a>JavaScript - The World’s Best Programming Language</h3><p>by Hax</p>
+<h4 id="JavaScript-最好-？"><a href="#JavaScript-最好-？" class="headerlink" title="JavaScript 最好 ？"></a>JavaScript 最好 ？</h4><ul>
+<li>语言简陋：弱类型、标准库、面向对象、模块、异步 {:&amp;.rollIn}</li>
+<li>编程时注意：好的范式、不好的范式</li>
+</ul>
+<h4 id="不过"><a href="#不过" class="headerlink" title="不过"></a>不过</h4><ul>
+<li>npm 飞速发展的 packages 数量 {:&amp;.rollIn}</li>
+<li>ECMAScript 6，语言特性问题完美解决 (c)</li>
+<li>Babel 6to5 (python)<ul>
+<li>most hard to upgrade -&gt; always use latest feature!</li>
+</ul>
+</li>
+<li>最快的动态语言，还会更快 (ruby)</li>
+<li>JS as a Platform：中间语言 (c#, java）</li>
+<li>生态系统：浏览器、node.js、公司、社区</li>
+</ul>
+<h4 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>js 是现阶段发展最快的语言 {:&amp;.rollIn}</li>
+<li>前端前途无量！</li>
+</ul>
+<h3 id="react"><a href="#react" class="headerlink" title="react"></a>react</h3><h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><ul>
+<li>DOM 操作</li>
+<li>组件散乱，社区力量难以聚合</li>
+</ul>
+<h4 id="AngularJS"><a href="#AngularJS" class="headerlink" title="AngularJS"></a>AngularJS</h4><ul>
+<li>绑定 数据与数据、数据与视图之间的关系</li>
+<li>npm</li>
+</ul>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ul>
+<li>用 js 写界面……（似乎是一种倒退）</li>
+<li>还整个 JSX 让界面好写一点</li>
+<li>React Native</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>前端风起云涌 {:&amp;.rollIn}</li>
+<li>小扎灭我客户端之心不死</li>
+</ul>
+<h3 id="总的总结"><a href="#总的总结" class="headerlink" title="总的总结"></a>总的总结</h3><ul>
+<li>拥抱变化</li>
+<li>最差也可以变最好，关键要敢于拥抱变化</li>
+<li>技术紧迫感：勇于尝试新东西</li>
+<li>业务紧迫感：技术改变留学</li>
+</ul>
+<h3 id="推荐："><a href="#推荐：" class="headerlink" title="推荐："></a>推荐：</h3><ul>
+<li>JavaScript - The World’s Best Programming Language</li>
+<li>pure-native移动跨平台架构设计与实战</li>
+<li>注重实效的性能</li>
+<li>ReactJS 实战</li>
+<li>ELE.ME是如何运行的</li>
+</ul>
+<h2 id="Android-6-0运行权限-王胜"><a href="#Android-6-0运行权限-王胜" class="headerlink" title="Android 6.0运行权限 - 王胜"></a>Android 6.0运行权限 - 王胜</h2><h3 id="一般权限和危险权限"><a href="#一般权限和危险权限" class="headerlink" title="一般权限和危险权限"></a>一般权限和危险权限</h3><p>Android 6.0以前，所有的权限在应用安装或者更新时自动完成授权。如果用户想安装这个App，必需接受所有的权限申请。为了保护用户的隐私，Android M特意调整了Android的授权架构。将应用权限分为一般(Normal)和危险(Dangerous)两种级别的权限:</p>
+<ul>
+<li><p>一般权限不会直接危害用户的隐私。如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。</p>
+</li>
+<li><p>危险权限可以访问用户的隐私数据。 如果你的App在manifest列出一般权限，那么系统会自动授予这些权限。如果列出危险权限，需要通过用户显示交互通过你的应用权限申请。</p>
+</li>
+</ul>
+<h3 id="权限组"><a href="#权限组" class="headerlink" title="权限组"></a>权限组</h3><p>Anroid系统里所有的危险权限都拥有所归属的权限组。如果设备运行在Android6.0(API level 23)，并且App的targetSdkVersion是23或者更高，当App请求危险权限时将会有以下表现：</p>
+<ul>
+<li><p>如果App请求manifest里声明的危险权限，并且App当前还没有获取任何权限组里的权限，系统将弹出一个描述App想要访问权限的对话框。但是对话框不会描述该权限属于哪个权限组。例如：App请求权限 <strong>READ_CONTACTS</strong>  ，系统对话框只显示App需要访问设备的联系人。如果用户授权通过，系统仅仅给App需要的权限。</p>
+</li>
+<li><p>如果App请求manifest里声明的危险权限，并且App已经用户该危险权限所在的权限组的权限，系统则直接授予此次请求的权限，而不需要用户手动交互。例如：如果App已经有先前的 <strong>READ_CONTACTS</strong> 权限，那么再请求 <strong>WRITE_CONTACTS</strong> 权限，系统则直接授予。</p>
+</li>
+</ul>
+<blockquote>
+<p>任何权限都有所归属的权限组，包括一般权限和App自定义的权限。然而，权限组只影响那些危险权限相关的用户体验。你可以忽略一般权限的权限组。</p>
+</blockquote>
+<p><strong>危险权限和权限组</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">权限组</th>
+<th align="center">权限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CALENDAR</td>
+<td align="center"><ul><li>READ_CALENDAR</li><li>WRITE_CALENDAR</li></ul></td>
+</tr>
+<tr>
+<td align="center">CAMERA</td>
+<td align="center"><ul><li>CAMERA</li></ul></td>
+</tr>
+<tr>
+<td align="center">CONTACTS</td>
+<td align="center"><ul><li>READ_CONTACTS</li><li> WRITE_CONTACTS</li><li>GET_ACCOUNTS</li></ui></td>
+</tr>
+<tr>
+<td align="center">LOCATION</td>
+<td align="center"><ul><li>ACCESS_FINE_LOCATION</li><li> ACCESS_COARSE_LOCATION</li></ul></td>
+</tr>
+<tr>
+<td align="center">MICROPHONE</td>
+<td align="center"><ul><li>RECORD_AUDIO</li></ul></td>
+</tr>
+<tr>
+<td align="center">PHONE</td>
+<td align="center"><ul><li>READ_PHONE_STATE</li><li>CALL_PHONE</li><li>READ_CALL_LOG</li><li>WRITE_CALL_LOG</li><li> ADD_VOICEMAIL</li><li>USE_SIP</li><li> PROCESS_OUTGOING_CALLS</li></ul></td>
+</tr>
+<tr>
+<td align="center">SENSORS</td>
+<td align="center"><ul><li>BODY_SENSORS</li></ul></td>
+</tr>
+<tr>
+<td align="center">SMS</td>
+<td align="center"><ul><li>SEND_SMS</li><li>RECEIVE_SMS</li><li> READ_SMS</li><li>RECEIVE_WAP_PUSH</li><li>RECEIVE_MMS</li></ul></td>
+</tr>
+<tr>
+<td align="center">STORAGE</td>
+<td align="center"><ul><li>READ_EXTERNAL_STORAGE</li><li> WRITE_EXTERNAL_STORAGE</li></ul></td>
+</tr>
+</tbody></table>
+<h3 id="权限检测"><a href="#权限检测" class="headerlink" title="权限检测"></a>权限检测</h3><p>Android的所有版本里，都需要将所需的一般权限和危险权限都声明在App的manifest里。然而这些声明在不同的系统版本和App的target SDK Level会有不同的影响:</p>
+<ul>
+<li><p>如果设备运行在Android 5.1或者更低，或者你的App target SDK是22或者更低：如果你在manifest里声明了危险权限，用户则不得不在安装App时给予授权；如果他们不授权，系统将不会安装此App。</p>
+</li>
+<li><p>如果设备运行在Android 6.0或者更高，或者你的App target SDK是23或者更高：App不仅需要在manifest里声明危险权限，而且App在运行时还需要在每次需要危险权限时发起请求。用户可以接受也可以拒绝权限申请，App也需要在用户拒绝危险权限申请时能长长运行。</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：此处的权限处理只有App的target API level 23或者更高，而且运行在Android 6.0 (API level 23)或者更高的设备上才会如此。如果设备的中App的targetSdkVersion 是 22或者更低，系统则在安装或者更新App时自动授予危险权限。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://developer.android.com/tools/support-library/index.html">The Android Support Library</a>能很好地处理检测、请求和权限。Android 6.0 (API level 23) framework也提供了类似的方法。然而，使用support库能更简单一些，因为你不需要在调用方法之前检测android系统的版本。 </p>
+<h3 id="发起权限申请请求"><a href="#发起权限申请请求" class="headerlink" title="发起权限申请请求"></a>发起权限申请请求</h3><pre><code class="Java">// Here, this Activity is the current activity
+if (ContextCompat.checkSelfPermission(thisActivity,
+                Manifest.permission.READ_CONTACTS)
+        != PackageManager.PERMISSION_GRANTED) &#123;
+
+    // Should we show an explanation?
+    if (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,
+            Manifest.permission.READ_CONTACTS)) &#123;
+
+        // Show an expanation to the user *asynchronously* -- don&#39;t block
+        // this thread waiting for the user&#39;s response! After the user
+        // sees the explanation, try again to request the permission.
+
+    &#125; else &#123;
+
+        // No explanation needed, we can request the permission.
+
+        ActivityCompat.requestPermissions(thisActivity,
+                new String[]&#123;Manifest.permission.READ_CONTACTS&#125;,
+                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+        // app-defined int constant. The callback method gets the
+        // result of the request.
+    &#125;
+&#125;
+</code></pre>
+<h3 id="处理权限请求结果"><a href="#处理权限请求结果" class="headerlink" title="处理权限请求结果"></a>处理权限请求结果</h3><pre><code class="Java">@Override
+public void onRequestPermissionsResult(int requestCode,
+        String permissions[], int[] grantResults) &#123;
+    switch (requestCode) &#123;
+        case MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;
+            // If request is cancelled, the result arrays are empty.
+            if (grantResults.length &gt; 0
+                &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;
+
+                // permission was granted, yay! Do the
+                // contacts-related task you need to do.
+
+            &#125; else &#123;
+
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+            &#125;
+            return;
+        &#125;
+
+        // other &#39;case&#39; lines to check for other
+        // permissions this app might request
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>注意：每次需要权限时，都需要显示请求调用，即使你已经获得的同权限组的其他权限。另外，权限分组处理的机制在将来的Android发型版本中有可能更改。因此你的App不应该依赖所需的权限在或者不在同一个权限组里。</p>
+</blockquote>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://developer.android.com/training/permissions/requesting.html">Requesting Permissions at Run Time</a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.android.com/training/permissions/best-practices.html">Permissions Best Practices</a></li>
+</ul>
+<p>##Swift Access Control - 潘君<br>(未完待续)</p>
+<ul>
+<li><p>三个级别</p>
+<ul>
+<li>Public</li>
+<li>Internal</li>
+<li>Private</li>
+</ul>
+<p>  大部分默认是internal</p>
+</li>
+<li><p>可应用于</p>
+<ul>
+<li>Module<ul>
+<li>application</li>
+<li>framework</li>
+</ul>
+</li>
+<li>source file<ul>
+<li>properties</li>
+<li>types</li>
+<li>functions</li>
+<li>and so on（苹果文档这个太二了）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>准则</p>
+<ul>
+<li>public变量不能定义为internal或者private的类型</li>
+<li>函数的访问权限不能高于参数和返回值</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<ul>
+<li>Single-Target Apps    Internal</li>
+<li>Frameworks  Public</li>
+<li>Unit Test Targets      @testable<img src="./1446175520419.png" alt="Alt text"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>会级联影响 例如修饰了type 同时也会影响type的members<br>```<br>public class SomePublicClass {          // explicitly public class<br>  public var somePublicProperty = 0    // explicitly public class member<br>  var someInternalProperty = 0         // implicitly internal class member<br>  private func somePrivateMethod() {}  // explicitly private class member<br>}</li>
+</ul>
+<p>class SomeInternalClass {               // implicitly internal class<br>    var someInternalProperty = 0         // implicitly internal class member<br>    private func somePrivateMethod() {}  // explicitly private class member<br>}</p>
+<p>private class SomePrivateClass {        // explicitly private class<br>    var somePrivateProperty = 0          // implicitly private class member<br>    func somePrivateMethod() {}          // implicitly private class member<br>}</p>
+<pre><code>
+- Function
+    
+- Tuple
+    - 取元素中访问level最小的为准
+    - 例如 （PrivateClass, InternalClass） 则取private
+
+- Enumeration 
+    - 一样
+
+- class
+</code></pre>
+<p>public class A {<br>    private func someMethod() {}<br>}</p>
+<p>internal class B: A {<br>    override internal func someMethod() {}<br>}</p>
+<pre><code>
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/10/30/程序员装逼指南/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/10/30/程序员装逼指南/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/10/30/程序员装逼指南/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/11/04/%E8%A3%85%E9%80%BC%E6%8C%87%E5%8D%97%E4%BA%8C%E6%9C%9F/">
+        ← 周精益分享 - 程序员装逼指南二期
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/10/23/%E8%8B%B1%E8%AF%AD/">
+        英语 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
