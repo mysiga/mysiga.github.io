@@ -62,5 +62,5 @@ ignore: null
 theme: casper
 deploy:
   type: git
-  repo: git@github.com:mysiga/mysiga.github.io.git
+  repo: https://github.com/mysiga/mysiga.github.io.git
   branch: master
