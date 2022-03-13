@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -394,8 +394,10 @@ MyViewController().onButtonTap()
 <pre><code>[UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline]];
 </code></pre>
 <ul>
-<li>but  这个接口只对默认分享面板平台有隐藏功能，自定义分享面板或登录按钮需要自己处理</li>
-<li>对于自定义分享面板处理：<ul>
+<li><p>but  这个接口只对默认分享面板平台有隐藏功能，自定义分享面板或登录按钮需要自己处理</p>
+</li>
+<li><p>对于自定义分享面板处理：</p>
+<ul>
 <li>UmengSDK已经嵌入相关API，直接用就好</li>
 </ul>
 </li>
@@ -407,7 +409,7 @@ MyViewController().onButtonTap()
 <p>自定义一个非标准化，有其他多元素的MarkDown解析器 如下几点:</p>
 </blockquote>
 <ul>
-<li>可选框<br><code>- [ ] </code></li>
+<li>可选框<br> <code>- [ ] </code></li>
 <li>本地图片索引，可控制对齐及大小<br><code>![Alt text](http://path/to/img.jpg &quot;optional title&quot; 100x200)</code><br><code>![Alt text](./1449756974449.png)</code></li>
 <li>标签功能<br><code>@(Share)[css, Markdown]</code></li>
 <li>代码高亮（不同语言）</li>
@@ -424,7 +426,7 @@ MyViewController().onButtonTap()
     scrollView.showsVerticalScrollIndicator = NO;
     [scrollView addSubview:self.downMainView];
 </code></pre>
-<p><strong>有一种惨不忍睹的即视感</strong><br><img src="./1449756974449.png" alt="Alt text"></p>
+<p><strong>有一种惨不忍睹的即视感</strong><br><img src="/./1449756974449.png" alt="Alt text"></p>
 <h3 id="MarkDown来源及实现"><a href="#MarkDown来源及实现" class="headerlink" title="MarkDown来源及实现"></a>MarkDown来源及实现</h3><blockquote>
 <p>Markdown is a plain text format for writing structured documents, based on conventions used for indicating formatting in email and usenet posts. It was developed in 2004 by John Gruber, who wrote the first markdown-to-html converter in Perl, and it soon became widely used in websites. By 2014 there were dozens of implementations in many languages.</p>
 </blockquote>
@@ -438,7 +440,7 @@ MyViewController().onButtonTap()
 <li>hexo-theme-yilia-master</li>
 </ul>
 <h5 id="更换MarkDown编译器的主题"><a href="#更换MarkDown编译器的主题" class="headerlink" title="更换MarkDown编译器的主题"></a>更换MarkDown编译器的主题</h5><blockquote>
-<p>以 <em><strong>Mou</strong></em> 举例子，它提供了多套markdown语法下的排版样式<br>手动新创建一个CSS文本布局配置 <em><strong>Blog</strong></em><br><img src="./1449768288128.png" alt="Alt text"></p>
+<p>以 <em><strong>Mou</strong></em> 举例子，它提供了多套markdown语法下的排版样式<br>手动新创建一个CSS文本布局配置 <em><strong>Blog</strong></em><br><img src="/./1449768288128.png" alt="Alt text"></p>
 </blockquote>
 <h4 id="CSS配置文件修改"><a href="#CSS配置文件修改" class="headerlink" title="CSS配置文件修改"></a>CSS配置文件修改</h4><p>详细配置参数如下：</p>
 <pre><code>html &#123; font-size: 62.5%; &#125;
@@ -524,7 +526,7 @@ h6 &#123;
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

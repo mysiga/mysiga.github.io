@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -103,8 +103,8 @@
 <li>UIViewContentModelScaleAspectFill（下拉放大）</li>
 <li>UIViewContentModelScaleAspectFit</li>
 <li>UIViewContentModelCenter （一些停靠模式）</li>
-<li>UIViewContentModelTop/Bottom</li>
-<li>UIViewContentModelLeft/Right</li>
+<li>UIViewContentModelTop&#x2F;Bottom</li>
+<li>UIViewContentModelLeft&#x2F;Right</li>
 </ul>
 <h5 id="拉伸属性"><a href="#拉伸属性" class="headerlink" title="拉伸属性"></a>拉伸属性</h5><p><code>代码</code></p>
 <pre><code>// 方法一
@@ -114,7 +114,7 @@ image=[oldIconImage stretchableImageWithLeftCapWidth:10 topCapHeight:12];
 image = [oldIconImage resizableImageWithCapInsets:UIEdgeInsetsMake(17, 17, 17, 25)];
 </code></pre>
 <p><code>ImageAssert</code></p>
-<p><img src="./1446137205500.png" alt="Alt text"><br>使用slicing，小变大无视差<br><img src="./1446137161636.png" alt="Alt text"></p>
+<p><img src="/./1446137205500.png" alt="Alt text"><br>使用slicing，小变大无视差<br><img src="/./1446137161636.png" alt="Alt text"></p>
 <hr>
 <h3 id="图像选择器"><a href="#图像选择器" class="headerlink" title="图像选择器"></a>图像选择器</h3><h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><hr>
 <h3 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h3><h3 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h3><h2 id="聊聊-QCon2015-曾铭"><a href="#聊聊-QCon2015-曾铭" class="headerlink" title="聊聊 QCon2015 - 曾铭"></a>聊聊 QCon2015 - 曾铭</h2><h3 id="pure-native-移动跨平台架构设计与实战"><a href="#pure-native-移动跨平台架构设计与实战" class="headerlink" title="pure-native 移动跨平台架构设计与实战"></a>pure-native 移动跨平台架构设计与实战</h3><p>by 赵世婚</p>
@@ -350,15 +350,14 @@ public void onRequestPermissionsResult(int requestCode,
 <ul>
 <li>Single-Target Apps    Internal</li>
 <li>Frameworks  Public</li>
-<li>Unit Test Targets      @testable<img src="./1446175520419.png" alt="Alt text"></li>
+<li>Unit Test Targets      @testable<img src="/./1446175520419.png" alt="Alt text"></li>
 </ul>
 </li>
+<li><p>会级联影响 例如修饰了type 同时也会影响type的members<br>&#96;&#96;&#96;<br>public class SomePublicClass {          &#x2F;&#x2F; explicitly public class<br>  public var somePublicProperty &#x3D; 0    &#x2F;&#x2F; explicitly public class member<br>  var someInternalProperty &#x3D; 0         &#x2F;&#x2F; implicitly internal class member<br>  private func somePrivateMethod() {}  &#x2F;&#x2F; explicitly private class member<br>}</p>
+</li>
 </ul>
-<ul>
-<li>会级联影响 例如修饰了type 同时也会影响type的members<br>```<br>public class SomePublicClass {          // explicitly public class<br>  public var somePublicProperty = 0    // explicitly public class member<br>  var someInternalProperty = 0         // implicitly internal class member<br>  private func somePrivateMethod() {}  // explicitly private class member<br>}</li>
-</ul>
-<p>class SomeInternalClass {               // implicitly internal class<br>    var someInternalProperty = 0         // implicitly internal class member<br>    private func somePrivateMethod() {}  // explicitly private class member<br>}</p>
-<p>private class SomePrivateClass {        // explicitly private class<br>    var somePrivateProperty = 0          // implicitly private class member<br>    func somePrivateMethod() {}          // implicitly private class member<br>}</p>
+<p>class SomeInternalClass {               &#x2F;&#x2F; implicitly internal class<br>    var someInternalProperty &#x3D; 0         &#x2F;&#x2F; implicitly internal class member<br>    private func somePrivateMethod() {}  &#x2F;&#x2F; explicitly private class member<br>}</p>
+<p>private class SomePrivateClass {        &#x2F;&#x2F; explicitly private class<br>    var somePrivateProperty &#x3D; 0          &#x2F;&#x2F; implicitly private class member<br>    func somePrivateMethod() {}          &#x2F;&#x2F; implicitly private class member<br>}</p>
 <pre><code>
 - Function
     
@@ -380,7 +379,7 @@ public void onRequestPermissionsResult(int requestCode,
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

@@ -25,10 +25,10 @@
 
 <body class="home-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -36,6 +36,39 @@
 </header>
   
 <main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">
+          2015-10-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/10/30/程序员装逼指南/">周精益分享 - 程序员装逼指南</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        『图像和滤镜』@(Share)[UIImage]
+[toc]
+图像常见的图像格式
+png（Portable Network Graphic）便携式网络图形格式
+tiff、tif（Tagged Image File Format）标记图像文件格式
+jpg、jpeg（Joint Photographic Experts Group）联合摄影专家组
+gif（Graphic Interchange Format）图形交换格式
+
+图像实例化
+im
+      
+      </p>
+      
+      <p>
+          <a href="/2015/10/30/程序员装逼指南/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
   <article class="post">
     <header class="post-header">
@@ -98,7 +131,7 @@ MOOC 上手 - 曾铭Mas
 伺机合伙创业
 自己作为技术的Partner
 需求靠谱的产品经理合伙创业
-如果有靠谱的市场/资方人事的合伙人就更完美了
+如果有靠谱的市场&#x2F;资方人事的合伙人就更完美了
 
 
 财富自由和时间自由后
@@ -118,8 +151,7 @@ MOOC 上手 - 曾铭Mas
 换行业
 
 
-第二职业
-除工
+第二
       
       </p>
       
@@ -150,15 +182,17 @@ MOOC 上手 - 曾铭Mas
       
         Android基本单位规范单位和度量
 像素密度
+
 每英寸的像素数被称为“像素密度”。
-DPI =屏幕宽度（或高度）像素/屏幕宽度（或高度）英寸
+DPI &#x3D;屏幕宽度（或高度）像素&#x2F;屏幕宽度（或高度）英寸
 mdpi-160dpi,hdpi-480x800-240dpi,xhdpi-720x1280-320dpi,xxhdpi-1080x1920-480dpi
 mipmap-hdpi,  drawable-hdpi区别:用mipmap会缩放图片并优化性能。
 
 
 
 密度独立像素
-“密度独立”是指在屏幕上
+
+
       
       </p>
       
@@ -258,8 +292,8 @@ MD5签名，请求和接收数据均需要校验签名，详见
 安全规范
 签名算法
 
-设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串stringA。
-在stringA最后拼接上key得
+设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1&#x3D;value1&amp;key2&#x3D;value2…）拼接成字符串stringA。
+在string
       
       </p>
       
@@ -365,7 +399,7 @@ RESTful 概念 REpresentational State Transfer 表征性状态传输
 微信公众点与自己服务器配对流程
 本地如何调试
 微信整体流程中用到的一些特殊协议?
-openId/unionId 哪里查看
+openId&#x2F;unionId 哪里查看
 access_token 为什么要有时间限制 为什么是2小时
 网页授权如何做的?能取到哪些信息?
 参加活动不关注 能拿到多少信息
@@ -374,49 +408,12 @@ access_token 为什么要有时间限制 为什么是2小时
 所有的活动行为全部调一个url 有没有好的分发解决方案
 
 公众号查询通讯录的实现 - 曾铭思路
-通讯录表 -&gt;
+通讯录表 
       
       </p>
       
       <p>
           <a href="/2015/07/10/微信公众号开发/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-07-07T23:04:29.000Z" itemprop="datePublished">
-          2015-07-07
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/07/08/知其所以然/">知其所以然(10分钟解释一个和开发相关的原理)</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        WEB 登录『原理』 - 曾铭Session &amp; cookie
-HTTP 是无状态协议
-Session 服务器端简单存储
-cookie 客户端简单存储（注意：在请求头中）
-
-密码如何存储
-明文存储
-md5 碰撞库破解  md5(pwd)
-md5+salt   md5(pwd+salt)  salt  pwd
-sha1……都能用，千万不要自己实现散列算法
-
-一个登录的过程
-明文密码
-session_id, access_token
-      
-      </p>
-      
-      <p>
-          <a href="/2015/07/08/知其所以然/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>

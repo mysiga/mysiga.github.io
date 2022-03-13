@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -48,28 +48,28 @@
     <section class="post-content">
       <ul>
 <li>Print.java<pre><code>public class Print &#123;
-public Print (String print) &#123;
+ public Print (String print) &#123;
 System.out.println(print);
-&#125;
+ &#125;
 &#125;
 </code></pre>
 </li>
-<li>Person.java<br>````<br>public class Person {</li>
+<li>Person.java<br>&#96;&#96;&#96;&#96;<br>public class Person {</li>
 </ul>
-<p> private static Print printLog = new Print(“父类静态实例1–&gt;”);<br> private Print log = new Print(“父类实例–&gt;”);<br> static {<br>  Print printLog = new Print(“父类静态块–&gt;”);<br> }<br> private static Print print = new Print(“父类静态实例2–&gt;”);<br> public Person(){<br>  new Print(“父类构造方法–&gt;”);<br> }</p>
-<p> public static void print() {<br>  Print printLog = new Print(“父类静态方法–&gt;”);<br> }<br> private static Print printLog3 = new Print(“父类静态实例3–&gt;”);<br>}</p>
+<p> private static Print printLog &#x3D; new Print(“父类静态实例1–&gt;”);<br> private Print log &#x3D; new Print(“父类实例–&gt;”);<br> static {<br>  Print printLog &#x3D; new Print(“父类静态块–&gt;”);<br> }<br> private static Print print &#x3D; new Print(“父类静态实例2–&gt;”);<br> public Person(){<br>  new Print(“父类构造方法–&gt;”);<br> }</p>
+<p> public static void print() {<br>  Print printLog &#x3D; new Print(“父类静态方法–&gt;”);<br> }<br> private static Print printLog3 &#x3D; new Print(“父类静态实例3–&gt;”);<br>}</p>
 <pre><code>- Child.java
 </code></pre>
 <p>public class Child extends Person {</p>
-<p> private static Print printLog = new Print(“子类静态实例1–&gt;”);<br> private Print log = new Print(“子类实例–&gt;”);<br> static {<br>  Print printLog = new Print(“子类静态块–&gt;”);<br> }<br> private static Print print = new Print(“子类静态实例2–&gt;”);</p>
+<p> private static Print printLog &#x3D; new Print(“子类静态实例1–&gt;”);<br> private Print log &#x3D; new Print(“子类实例–&gt;”);<br> static {<br>  Print printLog &#x3D; new Print(“子类静态块–&gt;”);<br> }<br> private static Print print &#x3D; new Print(“子类静态实例2–&gt;”);</p>
 <p> public Child() {<br>  new Print(“子类构造方法–&gt;”);<br> }</p>
-<p> public static void print() {<br>  Print printLog = new Print(“子类静态方法–&gt;”);<br> }</p>
-<p> private static Print printLog3 = new Print(“子类静态实例3–&gt;”);</p>
+<p> public static void print() {<br>  Print printLog &#x3D; new Print(“子类静态方法–&gt;”);<br> }</p>
+<p> private static Print printLog3 &#x3D; new Print(“子类静态实例3–&gt;”);</p>
 <p> public static void main(String[] args) {<br>  new Child();<br> }<br>}</p>
 <pre><code>- 输出结果
 </code></pre>
 <p>父类静态实例1–&gt;<br>父类静态块–&gt;<br>父类静态实例2–&gt;<br>父类静态实例3–&gt;<br>子类静态实例1–&gt;<br>子类静态块–&gt;<br>子类静态实例2–&gt;<br>子类静态实例3–&gt;<br>父类实例–&gt;<br>父类构造方法–&gt;<br>子类实例–&gt;<br>子类构造方法–&gt;</p>
-<p>````<br>-&gt;很显然，子类初始化的过程：</p>
+<p>&#96;&#96;&#96;&#96;<br>-&gt;很显然，子类初始化的过程：</p>
 <ul>
 <li>父类静态实例或者父类静态代码块，代码的放置先后顺序，决定它们执行先后</li>
 <li>子类静态实例或者子类静态代码块</li>
@@ -84,7 +84,7 @@ System.out.println(print);
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -103,7 +103,7 @@ System.out.println(&quot;12344&quot;);
 &#125;
 </code></pre>
 <h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3>一般根据项目需要自定义异常，特别是服务端处理业务的时候。一般自定义异常继承Exception，Throwable（因为Error一般用于JVM的异常错误，不常用自定义），因为异常已实现相关方法，只需重写构造方法就可以。代码如下：</li>
-<li> 继承Exception<br>```<br>public class CustomException extends Exception {<br>public CustomException() {<br>}</li>
+<li>继承Exception<br>&#96;&#96;&#96;<br>public class CustomException extends Exception {<br>public CustomException() {<br>}</li>
 </ul>
 <p>public CustomException(String message) {<br>super(message);<br>}</p>
 <p>public CustomException(String message, Throwable cause) {<br>super(message, cause);<br>}</p>
@@ -111,7 +111,7 @@ System.out.println(&quot;12344&quot;);
 <p>public CustomException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {<br>super(message, cause, enableSuppression, writableStackTrace);<br>}<br>}</p>
 <pre><code>
 </code></pre>
-<p>public class TestException {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomException e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomException{<br>throw new CustomException(“抛出CustormException”);<br>}<br>public static void main(String[] args) {<br>TestException testException=new TestException();<br>testException.testMethod();<br>}<br>}</p>
+<p>public class TestException {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomException e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomException{<br>throw new CustomException(“抛出CustormException”);<br>}<br>public static void main(String[] args) {<br>TestException testException&#x3D;new TestException();<br>testException.testMethod();<br>}<br>}</p>
 <pre><code>输出
 </code></pre>
 <p>com.mysiga.learn.throwable.CustomException: 抛出CustormException<br>at com.mysiga.learn.throwable.TestException.custormException(TestException.java:15)<br>at com.mysiga.learn.throwable.TestException.testMethod(TestException.java:9)<br>at com.mysiga.learn.throwable.TestException.main(TestException.java:19)</p>
@@ -124,7 +124,7 @@ System.out.println(&quot;12344&quot;);
 <p>public CustomThrowable(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {<br>super(message, cause, enableSuppression, writableStackTrace);<br>}<br>}</p>
 <pre><code>
 </code></pre>
-<p>public class TestThrowable {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomThrowable e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomThrowable{<br>throw new CustomThrowable(“抛出CustomThrowable”);<br>}<br>public static void main(String[] args) {<br>TestThrowable testThrowable=new TestThrowable();<br>testThrowable.testMethod();<br>}<br>}</p>
+<p>public class TestThrowable {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomThrowable e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomThrowable{<br>throw new CustomThrowable(“抛出CustomThrowable”);<br>}<br>public static void main(String[] args) {<br>TestThrowable testThrowable&#x3D;new TestThrowable();<br>testThrowable.testMethod();<br>}<br>}</p>
 <pre><code>输出
 </code></pre>
 <p>com.mysiga.learn.throwable.CustomThrowable: 抛出CustomThrowable<br>at com.mysiga.learn.throwable.TestThrowable.custormException(TestThrowable.java:15)<br>at com.mysiga.learn.throwable.TestThrowable.testMethod(TestThrowable.java:9)<br>at com.mysiga.learn.throwable.TestThrowable.main(TestThrowable.java:19)</p>
@@ -135,7 +135,7 @@ System.out.println(&quot;12344&quot;);
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

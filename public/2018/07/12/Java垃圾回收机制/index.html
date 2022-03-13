@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -116,7 +116,7 @@
 <ul>
 <li><p>Eden空间和两块Survivor空间的工作流程</p>
 <blockquote>
-<p>// 分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区满了，只能GC(新生代GC：Minor GC)了<br>把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区<br>// 又分配了一个又一个对象<br>放到Eden区<br>// 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区<br>// …<br>// 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区<br>// 有的对象太大，超过了Eden区，直接被分配在Old区<br>// 有的存活对象，放不下Survivor区，也被分配到Old区<br>// …<br>// 在某次Minor GC的过程中突然发现：<br>// 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)<br>Old区慢慢的整理一番，空间又够了<br>// 继续Minor GC<br>// …<br>// …<br>在回答上面提出的问题？<br>为什么要分新生代和老年代？<br>综合使用算法，最优采用分代算法所以分为新生代和老年代两块区域。具体为什么1：2？应该是根据实践测试得出的结果，也可以调整。</p>
+<p>&#x2F;&#x2F; 分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区满了，只能GC(新生代GC：Minor GC)了<br>把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）<br>&#x2F;&#x2F; 又分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区<br>&#x2F;&#x2F; 又分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区<br>&#x2F;&#x2F; 有的对象太大，超过了Eden区，直接被分配在Old区<br>&#x2F;&#x2F; 有的存活对象，放不下Survivor区，也被分配到Old区<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; 在某次Minor GC的过程中突然发现：<br>&#x2F;&#x2F; 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)<br>Old区慢慢的整理一番，空间又够了<br>&#x2F;&#x2F; 继续Minor GC<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; …<br>在回答上面提出的问题？<br>为什么要分新生代和老年代？<br>综合使用算法，最优采用分代算法所以分为新生代和老年代两块区域。具体为什么1：2？应该是根据实践测试得出的结果，也可以调整。</p>
 </blockquote>
 </li>
 <li><p>回答第二个问题<a target="_blank" rel="noopener" href="https://blog.csdn.net/antony9118/article/details/51425581">为什么新生代内存需要有两个Survivor区</a>，这里讲的比较详细</p>
@@ -161,7 +161,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

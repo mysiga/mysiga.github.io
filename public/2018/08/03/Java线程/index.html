@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -123,7 +123,7 @@
 &#125;
 </code></pre>
 <h3 id="常用锁处理"><a href="#常用锁处理" class="headerlink" title="常用锁处理"></a>常用锁处理</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d53bf830fa09">synchronized</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d53bf830fa09">synchronized</a></li>
 </ul>
 <pre><code>public class LockThread implements Runnable &#123;    
   private Integer key = 0;      
@@ -259,7 +259,7 @@ public static void main(String[] args) &#123;
 <tr>
 <td>时间</td>
 <td>指定时间后唤醒</td>
-<td>只有等notify()/notifyAll()通知有才能唤醒</td>
+<td>只有等notify()&#x2F;notifyAll()通知有才能唤醒</td>
 </tr>
 </tbody></table>
 <h3 id="并发高效类"><a href="#并发高效类" class="headerlink" title="并发高效类"></a>并发高效类</h3><p>实际开发中Java封装了一些解决高并发的类包（java.util.concurrent包），常用的如下：</p>
@@ -357,18 +357,18 @@ public static void main(String[] args) &#123;
 </code></pre>
 <ol>
 <li>corePoolSize : 该线程池中核心线程数最大值<br>核心线程：线程池新建线程的时候，如果当前线程总数小于 corePoolSize ，则新建的是核心线程；如果超过corePoolSize，则新建的是非核心线程。核心线程默认情况下会一直存活在线程池中，即使这个核心线程啥也不干(闲置状态)。如果指定ThreadPoolExecutor的 allowCoreThreadTimeOut 这个属性为true，那么核心线程如果不干活(闲置状态)的话，超过一定时间( keepAliveTime)，就会被销毁掉.</li>
-<li>maximumPoolSize ：该线程池中线程总数的最大值<br>线程总数计算公式 = 核心线程数 + 非核心线程数。</li>
-<li>keepAliveTime  ：该线程池中非核心线程闲置超时时长<br>注意：一个非核心线程，如果不干活(闲置状态)的时长，超过这个参数所设定的时长，就会被销毁掉。但是，如果设置了  allowCoreThreadTimeOut = true，则会作用于核心线程。</li>
+<li>maximumPoolSize ：该线程池中线程总数的最大值<br>线程总数计算公式 &#x3D; 核心线程数 + 非核心线程数。</li>
+<li>keepAliveTime  ：该线程池中非核心线程闲置超时时长<br>注意：一个非核心线程，如果不干活(闲置状态)的时长，超过这个参数所设定的时长，就会被销毁掉。但是，如果设置了  allowCoreThreadTimeOut &#x3D; true，则会作用于核心线程。</li>
 <li>unit ：（时间单位）<br>首先，TimeUnit是一个枚举类型，翻译过来就是时间单位，我们最常用的时间单位包括：<br>MILLISECONDS ： 1毫秒 、SECONDS ： 秒、MINUTES ： 分、HOURS ： 小时、DAYS ： 天</li>
 <li>BlockingQueue<Runnable> workQueue ：( Blocking：阻塞的，queue：队列)，主要有四种队列<ul>
-<li> SynchronousQueue：（同步队列）这个队列接收到任务的时候，会直接提交给线程处理，而不保留它（名字定义为 同步队列），所有该队列跟设置的corePoolSize无效。但有一种情况，假设所有线程都在工作怎么办？这种情况下，SynchronousQueue就会新建一个线程来处理这个任务。所以为了保证不出现（线程数达到了maximumPoolSize而不能新建线程）的错误，使用这个类型队列的时候，maximumPoolSize一般指定成Integer.MAX_VALUE，即无限大，去规避这个使用风险。</li>
+<li>SynchronousQueue：（同步队列）这个队列接收到任务的时候，会直接提交给线程处理，而不保留它（名字定义为 同步队列），所有该队列跟设置的corePoolSize无效。但有一种情况，假设所有线程都在工作怎么办？这种情况下，SynchronousQueue就会新建一个线程来处理这个任务。所以为了保证不出现（线程数达到了maximumPoolSize而不能新建线程）的错误，使用这个类型队列的时候，maximumPoolSize一般指定成Integer.MAX_VALUE，即无限大，去规避这个使用风险。</li>
 <li>LinkedBlockingQueue（链表阻塞队列）：这个队列接收到任务的时候，如果当前线程数小于核心线程数，则新建线程(核心线程)处理任务；如果当前线程数等于核心线程数，则进入队列等待。由于这个队列没有最大值限制，即所有超过核心线程数的任务都将被添加到队列中，这也就导致了maximumPoolSize的设定失效，因为总线程数永远不会超过corePoolSize</li>
 <li>ArrayBlockingQueue（数组阻塞队列）：可以限定队列的长度（既然是数组，那么就限定了大小），接收到任务的时候，如果没有达到corePoolSize的值，则新建线程(核心线程)执行任务，如果达到了，则入队等候，如果队列已满，则新建线程(非核心线程)执行任务，又如果总线程数到了maximumPoolSize，并且队列也满了，则发生错误</li>
 <li>DelayQueue（延迟队列）：队列内元素必须实现Delayed接口，这就意味着你传进去的任务必须先实现Delayed接口。这个队列接收到任务时，首先先入队，只有达到了指定的延时时间，才会执行任务</li>
 </ul>
 </li>
-<li>ThreadFactory threadFactory = &gt; 创建线程的方式，这是一个接口，new它的时候需要实现他的Thread newThread(Runnable r)方法</li>
-<li>RejectedExecutionHandler handler = &gt; 这个主要是用来抛异常的<br>当线程无法执行新任务时（一般是由于线程池中的线程数量已经达到最大数或者线程池关闭导致的），默认情况下，当线程池无法处理新线程时，会抛出一个RejectedExecutionException。</li>
+<li>ThreadFactory threadFactory &#x3D; &gt; 创建线程的方式，这是一个接口，new它的时候需要实现他的Thread newThread(Runnable r)方法</li>
+<li>RejectedExecutionHandler handler &#x3D; &gt; 这个主要是用来抛异常的<br>当线程无法执行新任务时（一般是由于线程池中的线程数量已经达到最大数或者线程池关闭导致的），默认情况下，当线程池无法处理新线程时，会抛出一个RejectedExecutionException。</li>
 </ol>
 <p>以 LinkedBlockingQueue、ArrayBlockingQueue 和 SynchronousQueue 为例，我们一起来分析一下，根据需求可以从很多方面考量：</p>
 <h3 id="ArrayBlockingQueue-LinkedBlockingQueue-SynchronousQueue"><a href="#ArrayBlockingQueue-LinkedBlockingQueue-SynchronousQueue" class="headerlink" title="ArrayBlockingQueue ,LinkedBlockingQueue ,SynchronousQueue"></a>ArrayBlockingQueue ,LinkedBlockingQueue ,SynchronousQueue</h3><ul>
@@ -442,7 +442,7 @@ public static void main(String[] args) &#123;
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

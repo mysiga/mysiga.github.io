@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -157,9 +157,8 @@
 </li>
 </ul>
 </li>
-</ul>
+<li><p>自用较多的开源软件</p>
 <ul>
-<li>自用较多的开源软件<ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/insidegui/WWDC">WWDC app for OS X</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/monoclesociety/eggscellent">eggscellent</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/kovidgoyal/calibre">calibre</a></li>
@@ -197,19 +196,19 @@
 <h5 id="HTTP2-0"><a href="#HTTP2-0" class="headerlink" title="HTTP2.0"></a>HTTP2.0</h5><p>HTTP也是基于TCP的应用层协议，大家熟知的为：</p>
 <ul>
 <li>HTTP 0.9，只有基本的文本 GET 功能。</li>
-<li>HTTP 1.0，完善的请求/响应模型，并将协议补充完整。</li>
+<li>HTTP 1.0，完善的请求&#x2F;响应模型，并将协议补充完整。</li>
 <li>HTTP 1.1，在 1.0 基础上进行更新，增加了如 长久连接 keep-alive 与 chunked 等功能。</li>
 </ul>
 <p>HTTP 2.0在2013年8月推出，基于Google的SPDY开发。</p>
 <h5 id="OkHTTP"><a href="#OkHTTP" class="headerlink" title="OkHTTP"></a>OkHTTP</h5><p><a target="_blank" rel="noopener" href="http://square.github.io/okhttp/">OKHTTP</a>is an HTTP client that’s efficient by default:</p>
 <ul>
-<li>HTTP/2 and SPDY support allows all requests to the same host to share a socket.</li>
+<li>HTTP&#x2F;2 and SPDY support allows all requests to the same host to share a socket.</li>
 <li>Connection pooling reduces request latency (if SPDY isn’t available).</li>
 <li>Transparent GZIP shrinks download sizes.</li>
 <li>Response caching avoids the network completely for repeat requests.</li>
 </ul>
 <blockquote>
-<p>OkHttp supports Android 2.3 and above. For Java, the minimum requirement is 1.7.<br>You’ll also need Okio, which OkHttp uses for fast I/O and resizable buffers.</p>
+<p>OkHttp supports Android 2.3 and above. For Java, the minimum requirement is 1.7.<br>You’ll also need Okio, which OkHttp uses for fast I&#x2F;O and resizable buffers.</p>
 </blockquote>
 <h4 id="如何推广自己的开源项目-github获取更多的star-杨志平"><a href="#如何推广自己的开源项目-github获取更多的star-杨志平" class="headerlink" title="如何推广自己的开源项目(github获取更多的star) - 杨志平"></a>如何推广自己的开源项目(github获取更多的star) - 杨志平</h4><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p><code>你可能花费几天甚至几个月时间开源一个你写的代码，但是没有人去使用它，靠运气的话可能可以推广. 现在我讲讲如何让人们关注我们的作品。该要点是打破下面的图片的循环</code></p>
 <p><img src="https://d262ilb51hltx0.cloudfront.net/max/727/1*xBernzyrTjSbfMMQWdE0qQ.png" alt="图片一"></p>
@@ -236,8 +235,8 @@
 <li><p>BSD开源协议：满足三个条件</p>
 <ul>
 <li>如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议</li>
-<li>如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议</li>
-<li>不可以用开源代码的作者/机构名字和原来产品的名字做市场推广</li>
+<li>如果再发布的只是二进制类库&#x2F;软件，则需要在类库&#x2F;软件的文档和版权声明中包含原来代码中的BSD协议</li>
+<li>不可以用开源代码的作者&#x2F;机构名字和原来产品的名字做市场推广</li>
 </ul>
 </li>
 <li><p>Apache Licence 2.0：(关心软件的专利问题，但同样希望宽松，选择这个协议)</p>
@@ -251,8 +250,8 @@
 <li><p>GPL：(Linux)(希望代码使用者同样能把他们的贡献分享出来，那就选择GPL)</p>
 <ul>
 <li>GPL协议和BSD, Apache Licence等鼓励代码重用的许可很不一样</li>
-<li>代码的开源/免费使用和引用/修改/衍生代码的开源/免费使用，但不允许修改后和衍生的代码做为闭源的商业软件发布和销售</li>
-<li>由于GPL严格要求使用了GPL类库的软件产品必须使用GPL协议，对于使用GPL协议的开源代码，商业软件或者对代码有保密要求的部门就不适合集成/采用作为类库和二次开发的基础。</li>
+<li>代码的开源&#x2F;免费使用和引用&#x2F;修改&#x2F;衍生代码的开源&#x2F;免费使用，但不允许修改后和衍生的代码做为闭源的商业软件发布和销售</li>
+<li>由于GPL严格要求使用了GPL类库的软件产品必须使用GPL协议，对于使用GPL协议的开源代码，商业软件或者对代码有保密要求的部门就不适合集成&#x2F;采用作为类库和二次开发的基础。</li>
 </ul>
 </li>
 <li><p>MIT：(简单、宽松，”为所欲为”,选择这个协议)</p>
@@ -264,7 +263,7 @@
 </li>
 <li><p>LGPL</p>
 <ul>
-<li>LGPL是GPL的一个为主要为类库使用设计的开源协议。和GPL要求任何使用/修改/衍生之GPL类库的的软件必须采用GPL协议不同。LGPL允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。这使得采用LGPL协议的开源代码可以被商业软件作为类库引用并发布和销售。</li>
+<li>LGPL是GPL的一个为主要为类库使用设计的开源协议。和GPL要求任何使用&#x2F;修改&#x2F;衍生之GPL类库的的软件必须采用GPL协议不同。LGPL允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。这使得采用LGPL协议的开源代码可以被商业软件作为类库引用并发布和销售。</li>
 </ul>
 </li>
 <li><p>说了这么多最后一个<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html">开源协议的选择</a></p>
@@ -284,7 +283,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

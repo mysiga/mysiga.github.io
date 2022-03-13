@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -140,7 +140,7 @@
 &#125;
 </code></pre>
 <ul>
-<li><p>instance = new Singleton()这句，并非是一个原子操作，事实上在 JVM 中这句话大概做了下面 3 件事情  </p>
+<li><p>instance &#x3D; new Singleton()这句，并非是一个原子操作，事实上在 JVM 中这句话大概做了下面 3 件事情  </p>
 <blockquote>
 <p>1.给 instance 分配内存<br>2.调用 Singleton 的构造函数来初始化成员变量<br>3.将instance对象指向分配的内存空间（执行完这步 instance 就为非 null 了）  </p>
 </blockquote>
@@ -588,7 +588,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&
 </ul>
 <h5 id="Thread-Safe-Classes-and-Functions"><a href="#Thread-Safe-Classes-and-Functions" class="headerlink" title="Thread-Safe Classes and Functions"></a>Thread-Safe Classes and Functions</h5><p>The following classes and functions are generally considered to be thread-safe. You can use the same instance from multiple threads without first acquiring a lock.</p>
 <blockquote>
-<p>NSArray<br>NSAssertionHandler<br>NSAttributedString<br>NSCalendarDate<br>NSCharacterSet<br>NSConditionLock<br>NSConnection<br>NSData<br>NSDate<br>NSDecimal functions<br>NSDecimalNumber<br>NSDecimalNumberHandler<br>NSDeserializer<br>NSDictionary<br>NSDistantObject<br>NSDistributedLock<br>NSDistributedNotificationCenter<br>NSException<br>NSFileManager (in OS X v10.5 and later)<br>NSHost<br>NSLock<br>NSLog/NSLogv<br>NSMethodSignature<br>NSNotification<br>NSNotificationCenter<br>NSNumber<br>NSObject<br>NSPortCoder<br>NSPortMessage<br>NSPortNameServer<br>NSProtocolChecker<br>NSProxy<br>NSRecursiveLock<br>NSSet<br>NSString<br>NSThread<br>NSTimer<br>NSTimeZone<br>NSUserDefaults<br>NSValue</p>
+<p>NSArray<br>NSAssertionHandler<br>NSAttributedString<br>NSCalendarDate<br>NSCharacterSet<br>NSConditionLock<br>NSConnection<br>NSData<br>NSDate<br>NSDecimal functions<br>NSDecimalNumber<br>NSDecimalNumberHandler<br>NSDeserializer<br>NSDictionary<br>NSDistantObject<br>NSDistributedLock<br>NSDistributedNotificationCenter<br>NSException<br>NSFileManager (in OS X v10.5 and later)<br>NSHost<br>NSLock<br>NSLog&#x2F;NSLogv<br>NSMethodSignature<br>NSNotification<br>NSNotificationCenter<br>NSNumber<br>NSObject<br>NSPortCoder<br>NSPortMessage<br>NSPortNameServer<br>NSProtocolChecker<br>NSProxy<br>NSRecursiveLock<br>NSSet<br>NSString<br>NSThread<br>NSTimer<br>NSTimeZone<br>NSUserDefaults<br>NSValue</p>
 </blockquote>
 <h5 id="Thread-Unsafe-Classes"><a href="#Thread-Unsafe-Classes" class="headerlink" title="Thread-Unsafe Classes"></a>Thread-Unsafe Classes</h5><p>The following classes and functions are generally not thread-safe. In most cases, you can use these classes from any thread as long as you use them from only one thread at a time.</p>
 <blockquote>
@@ -725,7 +725,7 @@ Target [id=10, type=group, count=1]
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

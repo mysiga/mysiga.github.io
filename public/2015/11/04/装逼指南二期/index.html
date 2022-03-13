@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -52,11 +52,11 @@
 </ul>
 </li>
 <li>环境搭建 <ul>
-<li>配置环境命令：./gradlew build connectedCheck  </li>
+<li>配置环境命令：.&#x2F;gradlew build connectedCheck</li>
 </ul>
 </li>
 <li>测试示例    <ul>
-<li> <img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
 </ul>
 </li>
 </ul>
@@ -89,12 +89,12 @@
 <li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html">Building Effective Unit Tests</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/testing/performance.html">Testing Display  Performance</a></li>
 <li>问题：<ul>
-<li> 运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
-<li> 测试的编写和维护较为困难</li>
+<li>运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+<li>测试的编写和维护较为困难</li>
 </ul>
 </li>
 </ul>
-<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 /home/img_temp 目录，处理权限问题后搞定</p>
+<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 &#x2F;home&#x2F;img_temp 目录，处理权限问题后搞定</p>
 <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>user, group, others</p>
 <pre><code>[dev1@apps-51offer ~]$ ll
 total 16
@@ -135,8 +135,6 @@ drwxr-xr-x 2 dev1 dev  4096 Nov  6 09:30 test3
 <p> 例如：adb shell monkey -v 500 ——–产生500次随机事件，</p>
 </blockquote>
 </li>
-</ul>
-<ul>
 <li><p>四大类—— 常用选项 、 事件选项 、 约束选项 、 调试选项</p>
 <blockquote>
 <p>-v：指定打印信息的详细级别，一个 -v增加一个级别 ， 默认级别为 0 。</p>
@@ -160,7 +158,7 @@ drwxr-xr-x 2 dev1 dev  4096 Nov  6 09:30 test3
 <ul>
 <li><p>monkeyrunner工具提供了一个API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片。</p>
 </li>
-<li><p>monkeyrunner工具的主要设计目的是用于测试功能/框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
+<li><p>monkeyrunner工具的主要设计目的是用于测试功能&#x2F;框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
 </li>
 </ul>
 <h4 id="二、monkeyrunner工具同Monkey工具的差别"><a href="#二、monkeyrunner工具同Monkey工具的差别" class="headerlink" title="二、monkeyrunner工具同Monkey工具的差别"></a>二、monkeyrunner工具同Monkey工具的差别</h4><ul>
@@ -183,10 +181,13 @@ print &quot;end&quot;
 </code></pre>
 <p>##人脸识别技术简单介绍- 王进</p>
 <h4 id="Android自带的API-FaceDetector"><a href="#Android自带的API-FaceDetector" class="headerlink" title="Android自带的API:FaceDetector"></a>Android自带的API:FaceDetector</h4><ul>
-<li>Step 1: 读取bitmap图片（API 只接受Bitmap）<pre><code>Bitmap sampleBmp=BitmapFactory.decodeResource(getResources(), R.drawable.sample1);
+<li><p>Step 1: 读取bitmap图片（API 只接受Bitmap）</p>
+<pre><code>Bitmap sampleBmp=BitmapFactory.decodeResource(getResources(), R.drawable.sample1);
 </code></pre>
-(拍照或者从相册中也可以)</li>
-<li>Step 2: 通过FaceDetector API进行人脸识别<pre><code>//FaceDetecor只能读取RGB 565格式的Bitmap
+<p>  (拍照或者从相册中也可以)</p>
+</li>
+<li><p>Step 2: 通过FaceDetector API进行人脸识别</p>
+<pre><code>//FaceDetecor只能读取RGB 565格式的Bitmap
 Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, true);
 //新建FaceDetector 实例，
 FaceDetector faceDet = new FaceDetector(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);//MAX_FACES 搜索人脸个数
@@ -195,11 +196,13 @@ FaceDetector.Face[] faceList = new FaceDetector.Face[MAX_FACES];
 faceDet.findFaces(tmpBmp, faceList);
 </code></pre>
 <blockquote>
-<p>找人脸的原理是：找眼睛。<br>它返回的人脸数据face中，<br>通过调用public float eyesDistance ()，得到眼距<br>public void getMidPoint (PointF point)，得到两眼中心点位置。<br>public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
+<p>找人脸的原理是：找眼睛。<br>  它返回的人脸数据face中，<br>  通过调用public float eyesDistance ()，得到眼距<br>  public void getMidPoint (PointF point)，得到两眼中心点位置。<br>  public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
 </blockquote>
 </li>
-<li>Step3:对原图进行缩放，并在图上显示人脸框</li>
-<li>吐槽：<br>A，只能接受Bitmap 格式的数据；<br>B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br>C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</li>
+<li><p>Step3:对原图进行缩放，并在图上显示人脸框</p>
+</li>
+<li><p>吐槽：<br> A，只能接受Bitmap 格式的数据；<br> B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br> C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</p>
+</li>
 </ul>
 <p>###第三方Face++</p>
 <ul>
@@ -212,7 +215,7 @@ faceDet.findFaces(tmpBmp, faceList);
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

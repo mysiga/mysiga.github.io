@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -54,7 +54,7 @@
     <h1 class="post-title">代码开发效率提升方法</h1>
     <section class="post-content">
       <h2 id="2015-06-19-技术分享，主题”代码开发效率提升方法”"><a href="#2015-06-19-技术分享，主题”代码开发效率提升方法”" class="headerlink" title="2015.06.19 - 技术分享，主题”代码开发效率提升方法”"></a>2015.06.19 - 技术分享，主题”代码开发效率提升方法”</h2><h4 id="snippet的制作与使用-杨志平"><a href="#snippet的制作与使用-杨志平" class="headerlink" title="snippet的制作与使用 - 杨志平"></a>snippet的制作与使用 - 杨志平</h4><h5 id="备份路径"><a href="#备份路径" class="headerlink" title="备份路径"></a>备份路径</h5><blockquote>
-<p>~/Library/Developer/Xcode/UserData/CodeSnippets/</p>
+<p>~&#x2F;Library&#x2F;Developer&#x2F;Xcode&#x2F;UserData&#x2F;CodeSnippets&#x2F;</p>
 </blockquote>
 <h5 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h5><p><img src="http://static.oschina.net/uploads/space/2014/0306/145357_xj9O_868062.png" alt="image"></p>
 <h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><h6 id="1-系统自带"><a href="#1-系统自带" class="headerlink" title="1.系统自带"></a>1.系统自带</h6><p>很多我们的代码提示都是snippet系统已经有的代码块如：<br>block变量定义</p>
@@ -265,15 +265,15 @@
 <li>( ：移动光标到上一个句子</li>
 </ul>
 <h5 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h5><ul>
-<li>:s/hello/world 替换当前行中第一个hello为world</li>
-<li>:%s/hello/world 替换每一行中第一个hello为world</li>
-<li>:s/hello/world/g 替换当前行中所有的hello为world</li>
-<li>:%s/hello/world/g 替换每一行中所有的hello为world</li>
-<li>:%s/hello/world/gc 找到当前文件中所有的hello，并逐一询问用户是否要替换</li>
+<li>:s&#x2F;hello&#x2F;world 替换当前行中第一个hello为world</li>
+<li>:%s&#x2F;hello&#x2F;world 替换每一行中第一个hello为world</li>
+<li>:s&#x2F;hello&#x2F;world&#x2F;g 替换当前行中所有的hello为world</li>
+<li>:%s&#x2F;hello&#x2F;world&#x2F;g 替换每一行中所有的hello为world</li>
+<li>:%s&#x2F;hello&#x2F;world&#x2F;gc 找到当前文件中所有的hello，并逐一询问用户是否要替换</li>
 </ul>
 <h5 id="内容提取"><a href="#内容提取" class="headerlink" title="内容提取"></a>内容提取</h5><ul>
 <li>:r !date 将当前时间插入到当前文件</li>
-<li>:r /path/to/src.file 将src.file里的内容输出到当前文件</li>
+<li>:r &#x2F;path&#x2F;to&#x2F;src.file 将src.file里的内容输出到当前文件</li>
 </ul>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>VIM的命令甚多，组合也很多，记忆是不能长时间记住的。唯一的捷径就是多多使用，用的多了，使用这些命令时就像手拿筷子一样，变成了本能。</p>
 <h4 id="Xcode插件管理-张超耀"><a href="#Xcode插件管理-张超耀" class="headerlink" title="Xcode插件管理 - 张超耀"></a>Xcode插件管理 - 张超耀</h4><ul>
@@ -288,12 +288,12 @@
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/onevcat/VVDocumenter-Xcode">VVDocumenter</a>规范注释生成器</p>
 <ul>
-<li>很多时候，为了快速开发，很多的技术文档都是能省则省，这个时候注释就变得异常重要，再配合Doxygen这种注释自动生成文档的，就完美了。但是每次都要手动输入规范化的注释，着实也麻烦，但有了VVDocumenter，规范化的注释，主需要输入三个斜线“///”，就OK啦！</li>
+<li>很多时候，为了快速开发，很多的技术文档都是能省则省，这个时候注释就变得异常重要，再配合Doxygen这种注释自动生成文档的，就完美了。但是每次都要手动输入规范化的注释，着实也麻烦，但有了VVDocumenter，规范化的注释，主需要输入三个斜线“&#x2F;&#x2F;&#x2F;”，就OK啦！</li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/qfish/XAlign">XAlign</a>代码整理</p>
 <ul>
-<li>XAlign是一款专门用于代码整理的Xcode插件，其作者为来自Geek Zoo Studio的开发者QFish。XAlign能够对开发者的代码非常快速地进行对齐优化，有“=”、宏定义、属性三种对齐模式。当然，如果默认的对齐风格不是自己喜欢的，开发者还可以自定义或提出issues。</li>
+<li>XAlign是一款专门用于代码整理的Xcode插件，其作者为来自Geek Zoo Studio的开发者QFish。XAlign能够对开发者的代码非常快速地进行对齐优化，有“&#x3D;”、宏定义、属性三种对齐模式。当然，如果默认的对齐风格不是自己喜欢的，开发者还可以自定义或提出issues。</li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin">FuzzyAutocompletePlugin</a>代码自动补全插件</p>
@@ -303,7 +303,7 @@
 </li>
 <li><p>XcodeBoost</p>
 <ul>
-<li>XcodeBoost是一款可以让开发者轻而易举地检查和修改Objective-C代码的插件。XcodeBoost能够自动进行一些繁琐的操作，比如方法的定义与声明、添加基于命令行的代码处理（剪切/复制/粘贴/重复/删除行）、持续高亮等。</li>
+<li>XcodeBoost是一款可以让开发者轻而易举地检查和修改Objective-C代码的插件。XcodeBoost能够自动进行一些繁琐的操作，比如方法的定义与声明、添加基于命令行的代码处理（剪切&#x2F;复制&#x2F;粘贴&#x2F;重复&#x2F;删除行）、持续高亮等。</li>
 </ul>
 </li>
 </ul>
@@ -312,7 +312,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

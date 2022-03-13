@@ -19,7 +19,7 @@ npm install hexo-deployer-git --save
 
 #### 文章发布
 - 编写好的markown文件放到source/_posts下面
-- 生成静态网页
+- 生成静态网页(需要跳转到hexo初始化文件目录下)
 
 ```
 hexo generate

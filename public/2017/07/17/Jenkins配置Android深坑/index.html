@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -138,10 +138,10 @@ wget http://7xn0ue.com1.z0.glb.clouddn.com/android-sdk-license
 <h1 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h1><p>tar -xvf glibc-2.15.tar.gz</p>
 <h1 id="依赖库-glibc-ports-2-15-tar-gz"><a href="#依赖库-glibc-ports-2-15-tar-gz" class="headerlink" title="依赖库(glibc-ports-2.15.tar.gz)"></a>依赖库(glibc-ports-2.15.tar.gz)</h1><p>wget <a target="_blank" rel="noopener" href="http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz">http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz</a></p>
 <h1 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h1><p>tar -xvf glibc-ports-2.15.tar.gz</p>
-<h1 id="依赖库解压目录移到到主目录中"><a href="#依赖库解压目录移到到主目录中" class="headerlink" title="依赖库解压目录移到到主目录中"></a>依赖库解压目录移到到主目录中</h1><p>mv glibc-ports-2.15 glibc-2.15/ports</p>
+<h1 id="依赖库解压目录移到到主目录中"><a href="#依赖库解压目录移到到主目录中" class="headerlink" title="依赖库解压目录移到到主目录中"></a>依赖库解压目录移到到主目录中</h1><p>mv glibc-ports-2.15 glibc-2.15&#x2F;ports</p>
 <h1 id="创建编译目录"><a href="#创建编译目录" class="headerlink" title="创建编译目录"></a>创建编译目录</h1><p>mkdir glibc-build<br>cd glibc-build</p>
-<h1 id="运行以下命令编译及安装"><a href="#运行以下命令编译及安装" class="headerlink" title="运行以下命令编译及安装"></a>运行以下命令编译及安装</h1><p>../glibc-2.15/configure –prefix=/usr –disable-profile –enable-add-ons –with-headers=/usr/include –with-binutils=/usr/bin<br>make<br>make install</p>
-<p>```<br>配置如下<br><img src="http://upload-images.jianshu.io/upload_images/1534431-f5153e0d9295fde4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="运行以下命令编译及安装"><a href="#运行以下命令编译及安装" class="headerlink" title="运行以下命令编译及安装"></a>运行以下命令编译及安装</h1><p>..&#x2F;glibc-2.15&#x2F;configure –prefix&#x3D;&#x2F;usr –disable-profile –enable-add-ons –with-headers&#x3D;&#x2F;usr&#x2F;include –with-binutils&#x3D;&#x2F;usr&#x2F;bin<br>make<br>make install</p>
+<p>&#96;&#96;&#96;<br>配置如下<br><img src="http://upload-images.jianshu.io/upload_images/1534431-f5153e0d9295fde4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>以上是我遇到的所有问题，希望这些坑可以对你有帮助。<br>那看下最后成功输出log和配置：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1534431-5a7844d2a0ded788.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="log"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1534431-1e5e1234553f21e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JDK"></p>
@@ -153,7 +153,7 @@ wget http://7xn0ue.com1.z0.glb.clouddn.com/android-sdk-license
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

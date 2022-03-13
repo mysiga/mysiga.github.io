@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -55,7 +55,7 @@
 <h3 id="安全规范"><a href="#安全规范" class="headerlink" title="安全规范"></a>安全规范</h3><ul>
 <li><p>签名算法</p>
 <ol>
-<li>设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串stringA。</li>
+<li>设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1&#x3D;value1&amp;key2&#x3D;value2…）拼接成字符串stringA。</li>
 <li>在stringA最后拼接上key得到stringSignTemp字符串，并对stringSignTemp进行MD5运算，再将得到的字符串所有字符转换为大写，得到sign值signValue</li>
 </ol>
 </li>
@@ -64,12 +64,15 @@
 </li>
 <li><p>商户证书</p>
 <ul>
-<li>获取商户证书<blockquote>
+<li><p>获取商户证书</p>
+<blockquote>
 <p>微信支付接口中，涉及资金回滚的接口会使用到商户证书，包括退款、撤销接口。</p>
 </blockquote>
 </li>
-<li>使用商户证书</li>
-<li>商户证书安全</li>
+<li><p>使用商户证书</p>
+</li>
+<li><p>商户证书安全</p>
+</li>
 </ul>
 </li>
 <li><p>商户回调API安全</p>
@@ -109,23 +112,23 @@
 key, 加密（签名）算法 sign=md5(key+url_path+time)
 </code></pre>
 <h2 id="RSA-李仙鹏"><a href="#RSA-李仙鹏" class="headerlink" title="RSA -李仙鹏"></a>RSA -李仙鹏</h2><p>在公钥系统中，我们采用公钥加密，私钥解密的方式，使得报文能够比较安全的传输。</p>
-<p>假设A和B通信，但他们之间不通过对称密钥，B有一个公钥$K_B^+$和一个私钥$K_B^-$。为了与B实现通信，A首先需要获得B的公钥$K_B^+$对报文m进行加密，即$K_B^+(m)$；B收到A的加密报文后用私钥$K_B^-$进行解密，即$K_B^-(K_B^+(m))=m$。其中的加解密算法通常使用RSA（RSA取创始人Ron Rivest, Adi Shamir, Leonard Adleman的姓氏首字母）。</p>
-<h3 id="RSA工作方式"><a href="#RSA工作方式" class="headerlink" title="RSA工作方式"></a>RSA工作方式</h3><p>加密时，首先把报文m做e次的幂运算，然后做模n的算数运算，即$m^e%n$；解密则先把上述密文值做d次幂，再做模n运算，即$(m^e)^d%n=m^\left(ed\right)%n$。</p>
-<h3 id="RSA工作原理推导"><a href="#RSA工作原理推导" class="headerlink" title="RSA工作原理推导"></a>RSA工作原理推导</h3><p>为了解开RSA工作原理的神秘面纱，需要使用数论中的一个神奇结论：如果<em><strong>p和q是素数</strong></em>，且有$n=pq$，则$x^y%n$与$x^\left(y%\left(p-1\right)\left(q-1\right)\right)%n$相等。应用这个结论，那我们的私钥解密为：$$(m^e)^d%n=m^\left(ed%\left(p-1\right)\left(q-1\right)\right)%n$$</p>
-<p>注意，$m&lt;n$，并且我们是这样选择e和d的：$ed-1$能被$\left(p-1\right)\left(q-1\right)$整除，等价地说$ed%\left(p-1\right)\left(q-1\right)=1$，由此可得：$$(m^e)^d%n=m^1%n=m\qquad m&lt;n，n=pq,ed%\left(p-1\right)\left(q-1\right)=1,p和q是素数$$</p>
-<p>于是乎，就得到了我们希望的结果：先对m做e次幂（加密）再做d次幂（解密），然后做模n的算数运算，就可得到原始报文m。另外通过颠倒上述公式的加解密次序，一样能得到原来的m。<br>$$(m^e)^d%n=m=(m^d)^e%n\Rightarrow K_B^-(K_B^+(m))=m=K_B^+(K_B^-(m))$$</p>
+<p>假设A和B通信，但他们之间不通过对称密钥，B有一个公钥$K_B^+$和一个私钥$K_B^-$。为了与B实现通信，A首先需要获得B的公钥$K_B^+$对报文m进行加密，即$K_B^+(m)$；B收到A的加密报文后用私钥$K_B^-$进行解密，即$K_B^-(K_B^+(m))&#x3D;m$。其中的加解密算法通常使用RSA（RSA取创始人Ron Rivest, Adi Shamir, Leonard Adleman的姓氏首字母）。</p>
+<h3 id="RSA工作方式"><a href="#RSA工作方式" class="headerlink" title="RSA工作方式"></a>RSA工作方式</h3><p>加密时，首先把报文m做e次的幂运算，然后做模n的算数运算，即$m^e%n$；解密则先把上述密文值做d次幂，再做模n运算，即$(m^e)^d%n&#x3D;m^\left(ed\right)%n$。</p>
+<h3 id="RSA工作原理推导"><a href="#RSA工作原理推导" class="headerlink" title="RSA工作原理推导"></a>RSA工作原理推导</h3><p>为了解开RSA工作原理的神秘面纱，需要使用数论中的一个神奇结论：如果<em><strong>p和q是素数</strong></em>，且有$n&#x3D;pq$，则$x^y%n$与$x^\left(y%\left(p-1\right)\left(q-1\right)\right)%n$相等。应用这个结论，那我们的私钥解密为：$$(m^e)^d%n&#x3D;m^\left(ed%\left(p-1\right)\left(q-1\right)\right)%n$$</p>
+<p>注意，$m&lt;n$，并且我们是这样选择e和d的：$ed-1$能被$\left(p-1\right)\left(q-1\right)$整除，等价地说$ed%\left(p-1\right)\left(q-1\right)&#x3D;1$，由此可得：$$(m^e)^d%n&#x3D;m^1%n&#x3D;m\qquad m&lt;n，n&#x3D;pq,ed%\left(p-1\right)\left(q-1\right)&#x3D;1,p和q是素数$$</p>
+<p>于是乎，就得到了我们希望的结果：先对m做e次幂（加密）再做d次幂（解密），然后做模n的算数运算，就可得到原始报文m。另外通过颠倒上述公式的加解密次序，一样能得到原来的m。<br>$$(m^e)^d%n&#x3D;m&#x3D;(m^d)^e%n\Rightarrow K_B^-(K_B^+(m))&#x3D;m&#x3D;K_B^+(K_B^-(m))$$</p>
 <p>因此B对外公开的公钥$K_B^+$为二元组$(n,e)$，私钥$K_B^-$为二元组$(n,d)$</p>
 <p>####举例验证</p>
-<p>条件：$$m&lt;n，\quad n=pq,\quad ed%\left(p-1\right)\left(q-1\right)=1,\quad p和q是素数$$</p>
-<p>取简单的值：$$p=5,\quad q=7$$</p>
-<p>那么可以推导出：$$n=pq=5*7=35,\quad (ed-1)%(p-1)(q-1)=0\Rightarrow (ed-1)%(5-1)(7-1)=0\Rightarrow (ed-1)%24=0$$</p>
-<p>于是，我们可以简单起见，为了减少计算量，设$ed-1$为$24$的1倍，那么我们可取值$$e=5,\quad d=5$$</p>
-<p>假设传输明文为：$$m=3$$</p>
+<p>条件：$$m&lt;n，\quad n&#x3D;pq,\quad ed%\left(p-1\right)\left(q-1\right)&#x3D;1,\quad p和q是素数$$</p>
+<p>取简单的值：$$p&#x3D;5,\quad q&#x3D;7$$</p>
+<p>那么可以推导出：$$n&#x3D;pq&#x3D;5*7&#x3D;35,\quad (ed-1)%(p-1)(q-1)&#x3D;0\Rightarrow (ed-1)%(5-1)(7-1)&#x3D;0\Rightarrow (ed-1)%24&#x3D;0$$</p>
+<p>于是，我们可以简单起见，为了减少计算量，设$ed-1$为$24$的1倍，那么我们可取值$$e&#x3D;5,\quad d&#x3D;5$$</p>
+<p>假设传输明文为：$$m&#x3D;3$$</p>
 <p>那么综上所述，我们可以得出：</p>
 <ul>
-<li><p>加密，$m^e%n=3^5%35=33$</p>
+<li><p>加密，$m^e%n&#x3D;3^5%35&#x3D;33$</p>
 </li>
-<li><p>解密，$(m^e%n)^d%n=33^5%35=3=m$，因此对RSA加密后的密文解密得到的就是原始的明文</p>
+<li><p>解密，$(m^e%n)^d%n&#x3D;33^5%35&#x3D;3&#x3D;m$，因此对RSA加密后的密文解密得到的就是原始的明文</p>
 </li>
 </ul>
 <h2 id="iOS-越狱应用安全-潘君"><a href="#iOS-越狱应用安全-潘君" class="headerlink" title="iOS 越狱应用安全-潘君"></a>iOS 越狱应用安全-潘君</h2><ul>
@@ -207,7 +210,7 @@ key, 加密（签名）算法 sign=md5(key+url_path+time)
 </li>
 <li>对称性加密示例<ul>
 <li>sig计算<br>sig主要用来做校验，由BaseString和SecretKey通过HMAC-SHA1算法计算得到的。</li>
-<li>BaseString 组成<br>BaseString由以下三部分组成：http方法名、请求url和参数，其中参数需要按照统一的规则进行编码和排序，具体规则如下：<br>根据参数名称将所有请求参数按照参数名字母的先后顺序逐个比较，进行升序排序（参数名注意区分大小写），然后使用=号连接参数名和编码后的参数值，最后使用_下划线连接经过上述处理后的参数，例如：<code>
+<li>BaseString 组成<br> BaseString由以下三部分组成：http方法名、请求url和参数，其中参数需要按照统一的规则进行编码和排序，具体规则如下：<br>根据参数名称将所有请求参数按照参数名字母的先后顺序逐个比较，进行升序排序（参数名注意区分大小写），然后使用&#x3D;号连接参数名和编码后的参数值，最后使用_下划线连接经过上述处理后的参数，例如：<code>
 param1=encode(value1)_param2=encode(value2)_parma3=encode(value3)
 </code>
 注：a、比如参数名：abcdef和abcDef，abc都是一样的，大写D的asi码在小写d的asi码前面，所以：abcDef排在abcdef前面
@@ -246,7 +249,7 @@ http://192.168.6.218:8080/test/jobplan/login?password=7215ee9c7d9dc229d2921a40e8
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

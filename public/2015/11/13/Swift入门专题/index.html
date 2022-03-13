@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -58,7 +58,7 @@ Where you typically used the #define directive to define a primitive constant in
 let kCommonAPI = &quot;http://xxxxxxx&quot;
 </code></pre>
 <h3 id="注释-amp-分号"><a href="#注释-amp-分号" class="headerlink" title="注释 &amp; 分号"></a>注释 &amp; 分号</h3><ul>
-<li>在Swift中，注释跟C/OC语言中的注释很像，但最大的不同点就是在Swift中多行注释可以嵌套</li>
+<li>在Swift中，注释跟C&#x2F;OC语言中的注释很像，但最大的不同点就是在Swift中多行注释可以嵌套</li>
 </ul>
 <pre><code>// 这是单行注释  
   
@@ -75,7 +75,7 @@ let cat = &quot;a cat&quot;; print(cat)// 除了最后一条语句可以不添�
 let catTwo = &quot;two cats&quot;; let name = &quot;Jobs&quot;; print(&quot;\(name) has \(catTwos)&quot;)  
 </code></pre>
 <h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
-<li>Swift不会像C、OC那样自动<strong>隐式转换</strong>类型，所以我们需要手动进行类型转换 </li>
+<li>Swift不会像C、OC那样自动<strong>隐式转换</strong>类型，所以我们需要手动进行类型转换</li>
 </ul>
 <pre><code>let twoThousand: UInt16 = 2000   
 // one是UInt8类型  
@@ -116,9 +116,9 @@ if (strValue != nil) &#123;
 </code></pre>
 <p>##下期预告</p>
 <h3 id="深度理解Swift的”-”和”-”"><a href="#深度理解Swift的”-”和”-”" class="headerlink" title="深度理解Swift的”?”和”!”"></a>深度理解Swift的”?”和”!”</h3><h3 id="Swift之断言"><a href="#Swift之断言" class="headerlink" title="Swift之断言"></a>Swift之断言</h3><h3 id="浅谈Swift的closure"><a href="#浅谈Swift的closure" class="headerlink" title="浅谈Swift的closure"></a>浅谈Swift的closure</h3><h2 id="Dubbo-上手-–-陈奎"><a href="#Dubbo-上手-–-陈奎" class="headerlink" title="Dubbo 上手 – 陈奎"></a>Dubbo 上手 – 陈奎</h2><h2 id="『图像和滤镜』-图像选择器"><a href="#『图像和滤镜』-图像选择器" class="headerlink" title="『图像和滤镜』 - 图像选择器"></a>『图像和滤镜』 - 图像选择器</h2><p><code>我们可以使用以下常规的图像获取方式</code></p>
-<p>![Alt text](./Simulator Screen Shot Nov 12, 2015, 8.11.12 PM.png)</p>
+<p>![Alt text](.&#x2F;Simulator Screen Shot Nov 12, 2015, 8.11.12 PM.png)</p>
 <p><code>图库与相册</code></p>
-<p>![Alt text](./Simulator Screen Shot Nov 12, 2015, 8.16.30 PM.png)</p>
+<p>![Alt text](.&#x2F;Simulator Screen Shot Nov 12, 2015, 8.16.30 PM.png)</p>
 <h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><pre><code class="swift">override func touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) &#123;
     
     let sheet = UIAlertController(title: &quot;图片选择&quot;, message: &quot;简单版的三种选择&quot;, preferredStyle: .ActionSheet)
@@ -185,7 +185,7 @@ UIImagePickerControllerMediaMetadata: NSDictionary
   ▿ [4] : 2 elements
     - .0 : &quot;UIImagePickerControllerEditedImage&quot;
 </code></pre>
-<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p><img src="./1447343597718.png" alt="Alt text"></p>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p><img src="/./1447343597718.png" alt="Alt text"></p>
 <p>遍历相册的所有图片</p>
 <pre><code class="swift">// AssetsLibrary.framework
 // ALAssetsLibrary 的使用,但是它慢慢的被放弃了
@@ -233,7 +233,7 @@ func startChangeLocalImages(var index: Int)&#123;
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

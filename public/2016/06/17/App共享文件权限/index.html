@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -96,9 +96,9 @@
 <ul>
 <li><p>各方说明</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://developer.android.com/preview/behavior-changes.html#sharing-files">Android N中说明Uri不能以file://的原因</a><ul>
-<li>传递软件包网域外的 file:// URI 可能给接收器留下无法访问的路径。</li>
-<li>访问权限控制 </li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/preview/behavior-changes.html#sharing-files">Android N中说明Uri不能以file:&#x2F;&#x2F;的原因</a><ul>
+<li>传递软件包网域外的 file:&#x2F;&#x2F; URI 可能给接收器留下无法访问的路径。</li>
+<li>访问权限控制</li>
 </ul>
 </li>
 </ul>
@@ -110,36 +110,30 @@
 </li>
 <li><p>总结</p>
 <ul>
-<li>开始搜索Uri.fromFile(file)并分析源码  ````<br>   /**</li>
+<li><p>开始搜索Uri.fromFile(file)并分析源码</p>
+<p> &#96;&#96;&#96;&#96;<br>  &#x2F;**</p>
+</li>
 </ul>
 <ul>
-<li><p>Creates a Uri from a file. The URI has the form</p>
-</li>
-<li><p>“file://<absolute path>“. Encodes path characters with the exception of</p>
-</li>
-<li><p>‘/‘.</p>
-</li>
+<li>Creates a Uri from a file. The URI has the form</li>
+<li>“file:&#x2F;&#x2F;<absolute path>“. Encodes path characters with the exception of</li>
+<li>‘&#x2F;‘.</li>
 <li></li>
 <li><p>Example: "file:///tmp/android.txt"</li>
 <li></li>
-<li><p>@throws NullPointerException if file is null</p>
-</li>
-<li><p>@return a Uri for the given file</p>
-</li>
-<li><p>/<br>public static Uri fromFile(File file) {<br>  if (file == null) {</p>
-<pre><code>  throw new NullPointerException(&quot;file&quot;);
-</code></pre>
-<p>  }</p>
-<p>  PathPart path = PathPart.fromDecoded(file.getAbsolutePath());<br>  return new HierarchicalUri(</p>
-<pre><code>      &quot;file&quot;, Part.EMPTY, path, Part.NULL, Part.NULL);
-</code></pre>
-<p>}<br>  ````<br>  没有找到相关解决方案。</p>
-</li>
+<li>@throws NullPointerException if file is null</li>
+<li>@return a Uri for the given file</li>
 </ul>
+<p>   *&#x2F;<br>  public static Uri fromFile(File file) {<br>      if (file &#x3D;&#x3D; null) {<br>          throw new NullPointerException(“file”);<br>      }</p>
+<pre><code>  PathPart path = PathPart.fromDecoded(file.getAbsolutePath());
+  return new HierarchicalUri(
+          &quot;file&quot;, Part.EMPTY, path, Part.NULL, Part.NULL);
+</code></pre>
+<p>  }<br>      &#96;&#96;&#96;&#96;<br>      没有找到相关解决方案。</p>
 <ul>
-<li> <a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/os/StrictMode.VmPolicy.Builder.html#detectFileUriExposure()">StrictMode的FileUriExposedException异常检测</a>中有提到FileProvider的使用</li>
-<li> 我写的一个<a target="_blank" rel="noopener" href="https://github.com/milin411/FileIntentDemo.git">demo</a></li>
-<li>给以后提醒app之间共享数据传Uri不能传file://</li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/os/StrictMode.VmPolicy.Builder.html#detectFileUriExposure()">StrictMode的FileUriExposedException异常检测</a>中有提到FileProvider的使用</li>
+<li>我写的一个<a target="_blank" rel="noopener" href="https://github.com/milin411/FileIntentDemo.git">demo</a></li>
+<li>给以后提醒app之间共享数据传Uri不能传file:&#x2F;&#x2F;</li>
 </ul>
 </li>
 <li><p>参考资料</p>
@@ -160,7 +154,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

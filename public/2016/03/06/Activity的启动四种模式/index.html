@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -49,30 +49,30 @@
       <h4 id="Activity的启动四种模式"><a href="#Activity的启动四种模式" class="headerlink" title="Activity的启动四种模式"></a>Activity的启动四种模式</h4><ul>
 <li><p>standard(默认)</p>
 <ul>
-<li>每次使用startActivity方法启动Activity时<br>都会创建该Activity的新实例</li>
-<li>Activity的多个实例可以位于同一个task中<br>也可以分布在不同的task里</li>
-<li>在当前task中使用startActivity方法启动Activity<br>也在当前task中创建和运行</li>
+<li>每次使用startActivity方法启动Activity时<br> 都会创建该Activity的新实例</li>
+<li>Activity的多个实例可以位于同一个task中<br> 也可以分布在不同的task里</li>
+<li>在当前task中使用startActivity方法启动Activity<br> 也在当前task中创建和运行</li>
 </ul>
 </li>
 <li><p>singleTop：栈顶复用模式</p>
 <ul>
-<li>当设置为singleTop模式Activity，未处于栈顶时<br>其运行特点与标准模式下一致</li>
-<li>当其位于栈顶时，如果使用startActivity方法<br>再次启动该Activity，则不会创建该Activity的新实例<br>而是直接使用栈顶的实例响应启动操作.并且调用该实例<br>的onNewIntent方法，将本次启动的intent传入到实例中</li>
+<li>当设置为singleTop模式Activity，未处于栈顶时<br> 其运行特点与标准模式下一致</li>
+<li>当其位于栈顶时，如果使用startActivity方法<br> 再次启动该Activity，则不会创建该Activity的新实例<br> 而是直接使用栈顶的实例响应启动操作.并且调用该实例<br> 的onNewIntent方法，将本次启动的intent传入到实例中</li>
 </ul>
 </li>
 <li><p>singleTask：栈内复用模式</p>
 <ul>
-<li>设置singleTask的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
+<li>设置singleTask的Activity，具有全局唯一性<br> 即同一时刻在Android系统中只能存在该Activity<br> 的一个实例</li>
 <li>当使用startActivity方法启动设置为singleTask的Activity时<br>如果该Activity的实例尚不存在，则创建该实例<br>否则，不会重复创建实例，而是将已经存在的实例重新带回到栈顶<br>如果在该实例上存在其他实例，则销毁这些实例后，将该实例重新<br>带回栈顶</li>
-<li>在创建该Activity的实例时，<br>如果当前任务的taskAffinity值与该Activity的taskAffinity值相同，<br>则在当前任务中创建实例，<br>否则，在一个新的任务中创建实例</li>
+<li>在创建该Activity的实例时，<br>如果当前任务的taskAffinity值与该Activity的taskAffinity值相同，<br> 则在当前任务中创建实例，<br>否则，在一个新的任务中创建实例</li>
 <li>具有clearTop的效果，如果再次启动具有实例的singleTask的Acitivity会清除它上面的Activity出栈</li>
 </ul>
 </li>
 <li><p>singleInstance</p>
 <ul>
-<li>设置singleInstance的Activity，具有全局唯一性<br>即同一时刻在Android系统中只能存在该Activity<br>的一个实例</li>
-<li>当使用startActivity方法启动该Activity的实例时<br>如果该Activity的实例尚不存在，则直接在新的任务<br>中创建该实例。<br>如果该实例已经存在，则直接显示该实例</li>
-<li>该Activity的实例，不与其他activity的实例共存于一个<br>任务中,所以通过该实例启动的其他Activity的实例，只能<br>被创建在其他的task里，如果已经存在于新创建的activity实例<br>taskAffinity值相同的task，则直接在该task中创建实例，否则<br>就在一个新的任务中创建实例</li>
+<li>设置singleInstance的Activity，具有全局唯一性<br> 即同一时刻在Android系统中只能存在该Activity<br> 的一个实例</li>
+<li>当使用startActivity方法启动该Activity的实例时<br> 如果该Activity的实例尚不存在，则直接在新的任务<br> 中创建该实例。<br> 如果该实例已经存在，则直接显示该实例</li>
+<li>该Activity的实例，不与其他activity的实例共存于一个<br> 任务中,所以通过该实例启动的其他Activity的实例，只能<br> 被创建在其他的task里，如果已经存在于新创建的activity实例<br> taskAffinity值相同的task，则直接在该task中创建实例，否则<br> 就在一个新的任务中创建实例</li>
 </ul>
 </li>
 <li><p>Acitivity启动模式优先级</p>
@@ -102,7 +102,7 @@
 <li>FLAG_ACTIVITY_SINGLE_TOP:Activity的SingleTop    启动模式 </li>
 <li>FLAG_ACTIVITY_NEW_TASK:Activity的SingleTask    启动模式 </li>
 <li>FLAG_ACTIVITY_CLEAR_TOP:同一个任务栈中所有位于它上面的Activity都要出栈，一般和FLAG_ACTIVITY_NEW_TASK一起使用，如果被启动的activity为standard模式则先连同启动的acivity一起出栈，在创建新的acticity实例放入栈顶</li>
-<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:等同android:excludeFromRecents=”true”</li>
+<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:等同android:excludeFromRecents&#x3D;”true”</li>
 </ul>
 </li>
 </ul>
@@ -152,16 +152,19 @@
           android:mimeType=&quot;string&quot;/&gt;
 </code></pre>
 <ul>
-<li>mimeType:指媒体类型，如:image/jpeg,audio/mpeg4-generic和video/*</li>
-<li>URI:<scheme>://<host>:<post>/[<path>/<pathPrefix>/<pathPattern>]</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/milin411/TestProject">demo代码</a></li>
+<li><p>mimeType:指媒体类型，如:image&#x2F;jpeg,audio&#x2F;mpeg4-generic和video&#x2F;*</p>
+</li>
+<li><p>URI:<scheme>:&#x2F;&#x2F;<host>:<post>&#x2F;[<path>&#x2F;<pathPrefix>&#x2F;<pathPattern>]</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/milin411/TestProject">demo代码</a></p>
+</li>
 </ul>
 
     </section>
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -47,31 +47,21 @@
     <h1 class="post-title">Android多国语言适配</h1>
     <section class="post-content">
       <h2 id="Android多国语言适配"><a href="#Android多国语言适配" class="headerlink" title="Android多国语言适配"></a><a target="_blank" rel="noopener" href="http://blog.csdn.net/dyllove98/article/details/8831908">Android多国语言适配</a></h2><ul>
-<li><p>android语言信息都是读取strings.xml(项目/res/values/strings.xml)文件指定key的索引值。</p>
+<li><p>android语言信息都是读取strings.xml(项目&#x2F;res&#x2F;values&#x2F;strings.xml)文件指定key的索引值。</p>
 </li>
-<li><p>android语言适配需要在-项目/res下新建不同的语言目录(文件命名规范:values-zh(国家)-rTW(r+区域))如:</p>
-<pre><code>默认:项目/res/values
-中国台湾:项目/res/values-zh-rTW
-中国简体:项目/resvalues-zh-rCN
-</code></pre>
+<li><p>android语言适配需要在-项目&#x2F;res下新建不同的语言目录(文件命名规范:values-zh(国家)-rTW(r+区域))如:<br>默认:项目&#x2F;res&#x2F;values<br>中国台湾:项目&#x2F;res&#x2F;values-zh-rTW<br>中国简体:项目&#x2F;resvalues-zh-rCN</p>
 </li>
-<li><p>用户启动APP默认读取跟android系统一样的语言文件，如没有配置各国语言则默认读取系统默认语言文件(项目/res/vlues/strings.xml)</p>
+<li><p>用户启动APP默认读取跟android系统一样的语言文件，如没有配置各国语言则默认读取系统默认语言文件(项目&#x2F;res&#x2F;vlues&#x2F;strings.xml)</p>
 </li>
 <li><p>正在使用app怎么切换语言？</p>
  <ol>
  <li>sharePreferences存入设置语言：</li>
  
-<p> Sharences sharedPreferences = getActivity().getSharedPrefeivity().getPackageName(), 0);<br> sharedPreferences.edit().putString(“language”, lanAtr).commit();</p>
+<p> Sharences sharedPreferences &#x3D; getActivity().getSharedPrefeivity().getPackageName(), 0);<br> sharedPreferences.edit().putString(“language”, lanAtr).commit();</p>
  <li>语言更新后，对于之前出现且目前仍旧存活的activity，语言设置是不生效的。可以通过重启对应的activity，让语言及时生效。
  </li>
 
-<p>  private void restart() {</p>
-<pre><code>       Intent it = new Intent(getActivity(), MainActivity.class); //MainActivity是你想要重启的activity
-       it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      getActivity().startActivity(it);
-&#125;
-</code></pre>
+<p>  private void restart() {<br>       Intent it &#x3D; new Intent(getActivity(), MainActivity.class); &#x2F;&#x2F;MainActivity是你想要重启的activity<br>       it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);<br>      it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br>      getActivity().startActivity(it);<br>}</p>
    </ol></li>
 </ul>
 
@@ -79,7 +69,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>

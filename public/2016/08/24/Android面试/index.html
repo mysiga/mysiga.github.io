@@ -25,10 +25,10 @@
 
 <body class="post-template">
 
-  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
     <div class="vertical">
         <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="//https://mysiga.cn/img/avatar.png" alt="Blog Logo"/></a> 
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
             <h1 class="blog-title">Wilson</h1>
             <h2 class="blog-description">自强不息 厚德载物</h2>
         </div>
@@ -115,25 +115,26 @@
 </li>
 </ul>
 <h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html">“==”和equals区别</a><br>“==”是比较的内存地址，equals比较的是值。</p>
+<li><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhxhdean/archive/2011/03/25/1995431.html">“&#x3D;&#x3D;”和equals区别</a><br>“&#x3D;&#x3D;”是比较的内存地址，equals比较的是值。</p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/java-vm/storage.html">Java内存</a><br>  <img src="http://upload-images.jianshu.io/upload_images/1534431-14bf0620b5705bf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存区域"></p>
 <ul>
 <li>程序计数器</li>
 <li>Java 虚拟机栈<ol>
-<li>局部变量表<blockquote>
+<li><p>局部变量表</p>
+<blockquote>
 <p>局部变量表是一组变量值存储空间，用于存放方法参数和方法内部定义的局部变量，其中存放的数据的类型是编译期可知的各种基本数据类型、对象引用（reference）和 returnAddress 类型（它指向了一条字节码指令的地址）.</p>
 </blockquote>
 </li>
-<li>操作数栈<blockquote>
+<li><p>操作数栈</p>
+<blockquote>
 <p>操作数栈又常被称为操作栈，操作数栈的最大深度也是在编译的时候就确定了。</p>
 </blockquote>
 </li>
-<li>动态连接<blockquote>
-<p>每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</p>
-</blockquote>
+<li><p>动态连接<br>&gt; 每个栈帧都包含一个指向运行时常量池（在方法区中，后面介绍）中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。</p>
 </li>
-<li>方法返回地址<blockquote>
+<li><p>方法返回地址</p>
+<blockquote>
 <p>当一个方法被执行后，有两种方式退出该方法：执行引擎遇到了任意一个方法返回的字节码指令或遇到了异常，并且该异常没有在方法体内得到处理。无论采用何种退出方式，在方法退出之后，都需要返回到方法被调用的位置，程序才能继续执行。</p>
 </blockquote>
 </li>
@@ -149,7 +150,7 @@
 </li>
 <li><p>直接内存<br> 不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。</p>
 <blockquote>
-<p>在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I/O 方式，可以使用Native函数库直接分配堆外内存，然后通过存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
+<p>在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I&#x2F;O 方式，可以使用Native函数库直接分配堆外内存，然后通过存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
 </blockquote>
 </li>
 <li><p>参考文章</p>
@@ -238,7 +239,7 @@
     <footer class="post-footer">
       <section class="author">
     <h4>Wilson</h4>
-    <p>A designer, developer and entrepreneur. Spends his time travelling the world with a bag of kites. Likes journalism and publishing platforms.</p>
+    <p>A developer ，Love life</p>
 </section>
       <section class="share">
     <h4>Share this post</h4>
