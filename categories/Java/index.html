@@ -40,26 +40,110 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2021-09-27T13:58:23.000Z" itemprop="datePublished">
+          2021-09-27
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/27/Java线程3/">深入Java线程(三)</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        线程池Executors 目前提供了 5 种不同的线程池创建配置：
+
+newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。
+newFixedThreadPool(
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/27/Java线程3/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-07-04T17:06:23.000Z" itemprop="datePublished">
+          2021-07-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/07/05/JavaAOP/">AOP（一）---什么是AOP</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        要理解AOP我们先要理解其他一些概念：
+
+面向过程编程
+面向对象编程
+面向切面编程面向过程编程OPP 面向过程的编程思想将就是将一个大任务分解为一个一个小的任务,我们通过完成一个一个的小的任务来完成一个大的任务，然后就结束了。常用的编程语言有C语言，它
+优点：符合我们人类的思维,编写起来相对比较简单
+缺点：但是这种方式编写代码的往往只适用于一个功能；如果要在实现别的功能，即使功能相差极小，也往往要重新编写代码，所以它可复用性比较低，并且
+      
+      </p>
+      
+      <p>
+          <a href="/2021/07/05/JavaAOP/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2018-08-21T15:16:00.000Z" itemprop="datePublished">
+          2018-08-21
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/08/21/Java线程2/">深入Java线程(二)</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        为了理解可先看深入Java线程（一）内容在看本篇。###线程生命周期
+关于线程生命周期的不同状态，在 Java 5 以后，线程状态被明确定义在其公共内部枚举类型 java.lang.Thread.State 中，分别是：
+
+新建（NEW），表示线程被创建出来还没真正启动的状态，可以认为它是个 Java 内部状态。
+就绪（RUNNABLE），表示该线程已经在 JVM 中执行，当然由于执行需要计算资源，它可能是正在运行，也可能还在等待系统分
+      
+      </p>
+      
+      <p>
+          <a href="/2018/08/21/Java线程2/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">
           2018-08-02
       </time>
     
 </span>
-      <h2 class="post-title"><a href="/2018/08/03/Java线程/">深入Java线程</a></h2>
+      <h2 class="post-title"><a href="/2018/08/03/Java线程1/">深入Java线程(一)</a></h2>
     </header>
     <section class="post-excerpt">
       <p>
       
-        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。
-创建线程方式
-继承Thread
+        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。###创建线程方式
 
-public class ThreadImpl extends Thread &#123;   
+继承Thread
+public class ThreadImpl extends Thread &#123; 
       
       </p>
       
       <p>
-          <a href="/2018/08/03/Java线程/" class="excerpt-link">Read More...</a>
+          <a href="/2018/08/03/Java线程1/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -267,43 +351,10 @@ Object o=new Object();   //  强引用
     </section>
   </article>
   
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
-          2016-05-28
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-懒汉式:线程安全，开销大
-
-public class Singleton&#123;
- private static final Singleton singleton;
-private Singleton()&#123;
-  &#125;
- public static final synchronized Singleton getInstance()&#123;
-     if(singleton==null)&#123;
-   
-      
-      </p>
-      
-      <p>
-          <a href="/2016/05/28/Java单例模式/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
   <nav class="pagination" role="pagination">
     
-    <span class="page-number">Page 1 of 1</span>
-    
+    <span class="page-number">Page 1 of 2</span>
+    <a class="older-posts" href="/categories/Java/page/2/">Older Posts →</a>
   </nav>
 </main>
 

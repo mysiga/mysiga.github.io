@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Android Handler机制总结 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2021-09-03T19:20:00.000Z" itemprop="datePublished">
+          2021-09-03
+      </time>
+    
+</span>
+    <h1 class="post-title">Android Handler机制总结</h1>
+    <section class="post-content">
+      <h4 id="Handle机制"><a href="#Handle机制" class="headerlink" title="Handle机制"></a>Handle机制</h4><ul>
+<li><p>APP的启动过程中调用ActivityThread类main方法初始化MainLooper</p>
+</li>
+<li><p>Handler创建Message并发送给Looper<br><img src="/images/handler1.png" alt="image.png"></p>
+</li>
+<li><p>Looper循环处理MessageQueue的Message<br><img src="/images/handler2.png" alt="image.png"><br>最后message通过target找到发送消息相对应的handle进行回调处理。</p>
+</li>
+<li><p>子线程创建handle</p>
+<pre><code>Thread &#123;
+              //初始化线程looper对象
+              Looper.prepare()
+              //初始化子线程handler,handler关联子线程looper
+              threadHandler =
+                  Handler(
+                      Looper.myLooper()!!,
+                      Handler.Callback &#123;
+                          Log.i(&quot;milin&quot;, &quot;threadHandler:$&#123;it.what&#125;&quot;)
+                          return@Callback true
+                      &#125;)
+              //调用此方法，消息才会循环处理
+              Looper.loop();
+              //发送消息
+              threadHandler?.sendEmptyMessage(123)
+          &#125;.start()
+</code></pre>
+</li>
+<li><p>主线程Looper.loop()一直死循环，为什么没有卡死？<br>主要死循环中Looper.loop()中</p>
+<pre><code>Message msg = queue.next(); // might block
+</code></pre>
+<p>没有消息Linux底层一直在等待，不占用CPU。<br><img src="/images/nativePollllOnce.png" alt="image.png"><br>具体看<a target="_blank" rel="noopener" href="https://www.kancloud.cn/alex_wsc/android-deep2/413394">nativePollOnce函数分析</a></p>
+</li>
+</ul>
+<h4 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/renhui/p/12857876.html">Android Handler 机制（一）：Handler 运行机制完整梳理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/renhui/p/12852347.html">Android Handler 机制（二）：Handler 机制深入探究问题梳理</a></li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2021/09/04/AndroidHandler机制总结/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2021/09/04/AndroidHandler机制总结/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2021/09/04/AndroidHandler机制总结/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2021/09/08/Android%E8%B7%A8%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">
+        ← Android跨进程通信
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2021/08/31/Android%E5%8A%A8%E7%94%BB2/">
+        Android动画 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

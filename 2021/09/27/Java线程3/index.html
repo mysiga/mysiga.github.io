@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>深入Java线程(三) | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2021-09-27T13:58:23.000Z" itemprop="datePublished">
+          2021-09-27
+      </time>
+    
+</span>
+    <h1 class="post-title">深入Java线程(三)</h1>
+    <section class="post-content">
+      <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eyFVplFcZoN6-4WTMojtMw">线程池</a></h3><p>Executors 目前提供了 5 种不同的线程池创建配置：</p>
+<ul>
+<li>newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。</li>
+<li>newFixedThreadPool(int nThreads)，重用指定数目（nThreads）的线程池，其背后使用的是无界的工作队列，任何时候最多有 nThreads 个工作线程是活动的。这意味着，如果任务数量超过了活动队列数目，将在工作队列中等待空闲线程出现；如果有工作线程退出，将会有新的工作线程被创建，以补足指定的数目 nThreads。</li>
+<li>newSingleThreadExecutor()，它的特点在于工作线程数目被限制为 1，操作一个无界的工作队列，所以它保证了所有任务的都是被顺序执行，最多会有一个任务处于活动状态，并且不允许使用者改动线程池实例，因此可以避免其改变线程数目。</li>
+<li>newSingleThreadScheduledExecutor() 和 newScheduledThreadPool(int corePoolSize)，创建的是个 ScheduledExecutorService，可以进行定时或周期性的工作调度，区别在于单一工作线程还是多个工作线程。</li>
+<li>newWorkStealingPool(int parallelism)，这是一个经常被人忽略的线程池，Java 8 才加入这个创建方法，其内部会构建ForkJoinPool，利用Work-Stealing算法，并行地处理任务，不保证处理顺序。<br><img src="/images/threadpoolexecutor.png" alt="image.png"><br>线程池构造方法几个参数<pre><code>public ThreadPoolExecutor(int corePoolSize,
+                            int maximumPoolSize,
+                            long keepAliveTime,
+                            TimeUnit unit,
+                            BlockingQueue&lt;Runnable&gt; workQueue,
+                            ThreadFactory threadFactory,
+                            RejectedExecutionHandler handler) &#123;
+</code></pre>
+</li>
+</ul>
+<ol>
+<li>corePoolSize : 该线程池中核心线程数最大值<br>核心线程：线程池新建线程的时候，如果当前线程总数小于 corePoolSize ，则新建的是核心线程；如果超过corePoolSize，则新建的是非核心线程。核心线程默认情况下会一直存活在线程池中，即使这个核心线程啥也不干(闲置状态)。如果指定ThreadPoolExecutor的 allowCoreThreadTimeOut 这个属性为true，那么核心线程如果不干活(闲置状态)的话，超过一定时间( keepAliveTime)，就会被销毁掉.</li>
+<li>maximumPoolSize ：该线程池中线程总数的最大值<br>线程总数计算公式 &#x3D; 核心线程数 + 非核心线程数。</li>
+<li>keepAliveTime  ：该线程池中非核心线程闲置超时时长<br>注意：一个非核心线程，如果不干活(闲置状态)的时长，超过这个参数所设定的时长，就会被销毁掉。但是，如果设置了  allowCoreThreadTimeOut &#x3D; true，则会作用于核心线程。</li>
+<li>unit ：（时间单位）<br>首先，TimeUnit是一个枚举类型，翻译过来就是时间单位，我们最常用的时间单位包括：<br>MILLISECONDS ： 1毫秒 、SECONDS ： 秒、MINUTES ： 分、HOURS ： 小时、DAYS ： 天</li>
+<li>BlockingQueue<Runnable> workQueue ：( 阻塞队列)，主要有四种阻塞队列<ul>
+<li>SynchronousQueue：（同步队列）这个队列接收到任务的时候，会直接提交给线程处理，而不保留它（名字定义为 同步队列），所有该队列跟设置的corePoolSize无效。但有一种情况，假设所有线程都在工作怎么办？这种情况下，SynchronousQueue就会新建一个线程来处理这个任务。所以为了保证不出现（线程数达到了maximumPoolSize而不能新建线程）的错误，使用这个类型队列的时候，maximumPoolSize一般指定成Integer.MAX_VALUE，即无限大，去规避这个使用风险。</li>
+<li>LinkedBlockingQueue（链表阻塞队列）：这个队列接收到任务的时候，如果当前线程数小于核心线程数，则新建线程(核心线程)处理任务；如果当前线程数等于核心线程数，则进入队列等待。由于这个队列没有最大值限制，即所有超过核心线程数的任务都将被添加到队列中，这也就导致了maximumPoolSize的设定失效，因为总线程数永远不会超过corePoolSize</li>
+<li>ArrayBlockingQueue（数组阻塞队列）：可以限定队列的长度（既然是数组，那么就限定了大小），接收到任务的时候，如果没有达到corePoolSize的值，则新建线程(核心线程)执行任务，如果达到了，则入队等候，如果队列已满，则新建线程(非核心线程)执行任务，又如果总线程数到了maximumPoolSize，并且队列也满了，则发生错误</li>
+<li>DelayQueue（延迟队列）：队列内元素必须实现Delayed接口，这就意味着你传进去的任务必须先实现Delayed接口。这个队列接收到任务时，首先先入队，只有达到了指定的延时时间，才会执行任务</li>
+</ul>
+</li>
+<li>ThreadFactory threadFactory &#x3D; &gt; 创建线程的方式，这是一个接口，new它的时候需要实现他的Thread newThread(Runnable r)方法</li>
+<li>RejectedExecutionHandler handler &#x3D; &gt; 这个主要是用来抛异常的<br>当线程无法执行新任务时（一般是由于线程池中的线程数量已经达到最大数或者线程池关闭导致的），默认情况下，当线程池无法处理新线程时，会抛出一个RejectedExecutionException。</li>
+</ol>
+<p>以 LinkedBlockingQueue、ArrayBlockingQueue 和 SynchronousQueue 为例，我们一起来分析一下，根据需求可以从很多方面考量：</p>
+<p>###ArrayBlockingQueue ,LinkedBlockingQueue ,SynchronousQueue </p>
+<ul>
+<li>从空间利用角度，数组结构的 ArrayBlockingQueue 要比 LinkedBlockingQueue 紧凑，因为其不需要创建所谓节点，但是其初始分配阶段就需要一段连续的空间，所以初始内存需求更大。</li>
+<li>通用场景中，LinkedBlockingQueue 的吞吐量一般优于 ArrayBlockingQueue，因为它实现了更加细粒度的锁操作。</li>
+<li>ArrayBlockingQueue 实现比较简单，性能更好预测，属于表现稳定的“选手”。</li>
+<li>如果我们需要实现的是两个线程之间接力性（handoff）的场景，按照专栏上一讲的例子，你可能会选择 CountDownLatch，但是SynchronousQueue也是完美符合这种场景的，而且线程间协调和数据传输统一起来，代码更加规范。</li>
+<li>可能令人意外的是，很多时候 SynchronousQueue 的性能表现，往往大大超过其他实现，尤其是在队列元素较小的场景。<br>###重点源码分享<br>okhttp<pre><code> public synchronized ExecutorService executorService() &#123;
+  if (executorService == null) &#123;
+    executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
+        new SynchronousQueue&lt;Runnable&gt;(), Util.threadFactory(&quot;OkHttp Dispatcher&quot;, false));
+  &#125;
+  return executorService;
+&#125;
+</code></pre>
+<pre><code> synchronized void enqueue(AsyncCall call) &#123;
+  if (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) &#123;
+    runningAsyncCalls.add(call);
+    executorService().execute(call);
+  &#125; else &#123;
+    readyAsyncCalls.add(call);
+  &#125;
+&#125;
+</code></pre>
+AsyncTask<pre><code> private static final BlockingQueue&lt;Runnable&gt; sPoolWorkQueue =
+          new LinkedBlockingQueue&lt;Runnable&gt;(128);
+  /**
+   * An &#123;@link Executor&#125; that can be used to execute tasks in parallel.
+   */
+  public static final Executor THREAD_POOL_EXECUTOR;
+  static &#123;
+      ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+              CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_SECONDS, TimeUnit.SECONDS,
+              sPoolWorkQueue, sThreadFactory);
+      threadPoolExecutor.allowCoreThreadTimeOut(true);
+      THREAD_POOL_EXECUTOR = threadPoolExecutor;
+  &#125;
+</code></pre>
+&#96;&#96;&#96;<br>private static class SerialExecutor implements Executor {<br>  final ArrayDeque<Runnable> mTasks &#x3D; new ArrayDeque<Runnable>();<br>  Runnable mActive;<br><br>  public synchronized void execute(final Runnable r) {<br>      mTasks.offer(new Runnable() {<br>          public void run() {<br>              try {<br>                  r.run();<br>              } finally {<br>                  scheduleNext();<br>              }<br>          }<br>      });<br>      if (mActive &#x3D;&#x3D; null) {<br>          scheduleNext();<br>      }<br>  }<br><br>  protected synchronized void scheduleNext() {<br>      if ((mActive &#x3D; mTasks.poll()) !&#x3D; null) {<br>          THREAD_POOL_EXECUTOR.execute(mActive);<br>      }<br>  }<br>  }</li>
+</ul>
+<pre><code>
+
+
+
+
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2021/09/27/Java线程3/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2021/09/27/Java线程3/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2021/09/27/Java线程3/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2021/09/08/AndroidView/">
+        Android View →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

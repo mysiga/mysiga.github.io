@@ -40,6 +40,133 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2021-09-08T10:20:00.000Z" itemprop="datePublished">
+          2021-09-08
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/AndroidView/">Android View</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Window、View、Activity
+
+Android View绘制
+
+Android中慎用View#getViewTreeObserver#addOnGlobalLayoutListener来获取view的高度
+
+源码解析View.post()
+Activity在onCreate（）执行View.post(Runnable)，缓存Runnable
+ViewGroup和View执行完ViewRootImpl.performTrav
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/AndroidView/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-07T19:20:00.000Z" itemprop="datePublished">
+          2021-09-07
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/Android跨进程通信/">Android跨进程通信</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        跨进程通信IPC
+RPC 即 Remote Procedure Call (远程过程调用) 是一种计算机通讯协议，它为我们定义了计算机 C 中的程序如何调用另外一台计算机 S 的程序，让程序员不需要操心底层网络协议，使得开发包括网络分布式多程序在内的应用程序更加容易。IPC 即 Inter-Process Communication (进程间通信)，
+
+Android 为我们提供了以下几种进程通信机制（供开发者使用的进程通信 API）对
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/Android跨进程通信/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-03T19:20:00.000Z" itemprop="datePublished">
+          2021-09-03
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/04/AndroidHandler机制总结/">Android Handler机制总结</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Handle机制
+APP的启动过程中调用ActivityThread类main方法初始化MainLooper
+
+Handler创建Message并发送给Looper
+
+Looper循环处理MessageQueue的Message最后message通过target找到发送消息相对应的handle进行回调处理。
+
+子线程创建handle
+Thread &#123;
+              //初始化线程looper对象
+        
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/04/AndroidHandler机制总结/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-08-30T19:20:00.000Z" itemprop="datePublished">
+          2021-08-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/08/31/Android动画2/">Android动画</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Android动画分类
+Frame Animation(帧动画)：
+使用AnimationDrawable配置XML，按顺序播放事先做好的图像，
+使用AnimatedVectorDrawableCompat在xml中定义一组动画
+
+
+Tween Animation(补间动画):只能对View进行平移，缩放，渐变，旋转
+Property Animation(属性动画):API11开始引入，基于Object进行属性改变而达到动画效果
+
+使用
+      
+      </p>
+      
+      <p>
+          <a href="/2021/08/31/Android动画2/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2018-12-15T11:30:00.000Z" itemprop="datePublished">
           2018-12-15
       </time>
@@ -254,184 +381,6 @@ E/StrictMode: null
       
       <p>
           <a href="/2016/06/17/App共享文件权限/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">
-          2016-03-05
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Activity的启动四种模式
-standard(默认)
-
-每次使用startActivity方法启动Activity时 都会创建该Activity的新实例
-Activity的多个实例可以位于同一个task中 也可以分布在不同的task里
-在当前task中使用startActivity方法启动Activity 也在当前task中创建和运行
-
-
-singleTop：栈顶复用模式
-
-当设置为singleTop模式Activity，未处于栈顶
-      
-      </p>
-      
-      <p>
-          <a href="/2016/03/06/Activity的启动四种模式/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">
-          2016-03-04
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/03/04/Moto 360 Sport初体验/">Moto 360 Sport初体验</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-前奏
-
-美版
-第一连接需要连接Android手机
-需要翻墙
-
-
-应用
-
-Android  Wear
-WearADay
-
-
-iPhone支持
-
-无需越狱，连接应用WearADay
-
-
-
-
-
-
-
-包括来电，信息以及各种应用的通知，包括 QQ，微信等等在 iPhone 和 Moto360 配对成功之后都可以在 Moto360 上显示
-
-
-
-
-
-
-
-
-
-
-Android支持
-
-微信:表情回复，语音回复，文字回复
-QQ:未测
-
-
-缺陷
-
-分辨率
-      
-      </p>
-      
-      <p>
-          <a href="/2016/03/04/Moto 360 Sport初体验/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-02-26T15:42:29.000Z" itemprop="datePublished">
-          2016-02-26
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/02/26/Andoid最近搜索记录/">Andoid最近搜索记录</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Andoid最近搜索记录
-原生搜
-
-Android搜索记录(需翻墙) 
-问题:没有清除历史记录界面
-
-
-APP最近搜索记录
-
-
-
-实现
-SearchView+ListPopupWindow+SQLite
-
-托管代码
-
-
-
-
-      
-      </p>
-      
-      <p>
-          <a href="/2016/02/26/Andoid最近搜索记录/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-01-29T10:30:00.000Z" itemprop="datePublished">
-          2016-01-29
-      </time>
-    
-    
-    | 
-    <a href='/tags/tablayout/'>tablayout</a>,
-    
-    <a href='/tags/Chrome/'>Chrome</a>,
-    
-    <a href='/tags/坑/'>坑</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2016/01/29/tablayout方法setupWithViewPager()坑/">tablayout方法setupWithViewPager()坑</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)先看TabLayout平常怎么使用setupWithViewPager()
-ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);
-TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contai
-      
-      </p>
-      
-      <p>
-          <a href="/2016/01/29/tablayout方法setupWithViewPager()坑/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>

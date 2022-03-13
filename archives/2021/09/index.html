@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Archives: 2021/9 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="home-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+<main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-27T13:58:23.000Z" itemprop="datePublished">
+          2021-09-27
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/27/Java线程3/">深入Java线程(三)</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        线程池Executors 目前提供了 5 种不同的线程池创建配置：
+
+newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。
+newFixedThreadPool(
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/27/Java线程3/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-08T10:20:00.000Z" itemprop="datePublished">
+          2021-09-08
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/AndroidView/">Android View</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Window、View、Activity
+
+Android View绘制
+
+Android中慎用View#getViewTreeObserver#addOnGlobalLayoutListener来获取view的高度
+
+源码解析View.post()
+Activity在onCreate（）执行View.post(Runnable)，缓存Runnable
+ViewGroup和View执行完ViewRootImpl.performTrav
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/AndroidView/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-07T19:20:00.000Z" itemprop="datePublished">
+          2021-09-07
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/Android跨进程通信/">Android跨进程通信</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        跨进程通信IPC
+RPC 即 Remote Procedure Call (远程过程调用) 是一种计算机通讯协议，它为我们定义了计算机 C 中的程序如何调用另外一台计算机 S 的程序，让程序员不需要操心底层网络协议，使得开发包括网络分布式多程序在内的应用程序更加容易。IPC 即 Inter-Process Communication (进程间通信)，
+
+Android 为我们提供了以下几种进程通信机制（供开发者使用的进程通信 API）对
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/Android跨进程通信/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-03T19:20:00.000Z" itemprop="datePublished">
+          2021-09-03
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/04/AndroidHandler机制总结/">Android Handler机制总结</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Handle机制
+APP的启动过程中调用ActivityThread类main方法初始化MainLooper
+
+Handler创建Message并发送给Looper
+
+Looper循环处理MessageQueue的Message最后message通过target找到发送消息相对应的handle进行回调处理。
+
+子线程创建handle
+Thread &#123;
+              //初始化线程looper对象
+        
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/04/AndroidHandler机制总结/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">Page 1 of 1</span>
+    
+  </nav>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

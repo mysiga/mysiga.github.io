@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>深入Java线程(一) | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">
+          2018-08-02
+      </time>
+    
+</span>
+    <h1 class="post-title">深入Java线程(一)</h1>
+    <section class="post-content">
+      <p>线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。<br>###创建线程方式</p>
+<ul>
+<li><p>继承Thread</p>
+<pre><code>public class ThreadImpl extends Thread &#123;   
+&#125;
+</code></pre>
+</li>
+<li><p>实现Runable<br>&#96;&#96;&#96;<br>public class MyThread implements Runnable {<br>private int ticket;<br>private Lock lock &#x3D; new ReentrantLock();</p>
+<p>public MyThread(int ticket) {<br>this.ticket &#x3D; ticket;<br>}</p>
+<p>@Override<br>public void run() {<br>print();<br>}</p>
+<p>public void print() {<br>lock.lock();<br>try {<br>    while (ticket &gt; 0) {<br>        System.out.println(“ticket&#x3D;&#x3D;” + ticket);<br>        ticket–;<br>    }<br>} catch (Exception e) {<br>    System.out.println(“Exception&#x3D;&#x3D;” + e);<br>} finally {<br>    lock.unlock();<br>}<br>}</p>
+<p>public static void main(String[] args) {<br>MyThread myThread &#x3D; new MyThread(5);<br>new Thread(myThread).start();<br>new Thread(myThread).start();<br>}</p>
+</li>
+</ul>
+<p>}</p>
+<pre><code>  - 实现Callable，运行完成后可返回值。
+</code></pre>
+<p>public class CallTask implements Callable {<br>    private int upperBounds;</p>
+<pre><code>public CallTask(int upperBounds) &#123;
+    this.upperBounds = upperBounds;
+&#125;
+
+@Override
+public Integer call() throws Exception &#123;
+    int sum = 0;
+    for (int i = 1; i &lt;= upperBounds; i++) &#123;
+        sum += i;
+    &#125;
+    return sum;
+&#125;
+
+public static void main(String[] args) &#123;
+    ExecutorService service = Executors.newFixedThreadPool(10);
+    try &#123;
+        int sum = (int) service.submit(new CallTask((int) (Math.random() * 100))).get();
+        System.out.println(&quot;sum==&quot; + sum);
+    &#125; catch (InterruptedException e) &#123;
+        e.printStackTrace();
+    &#125; catch (ExecutionException e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<pre><code>- [结束线程的三种方法](https://blog.csdn.net/xu__cg/article/details/52831127)
+  - run()方法执行完正常退出
+  - 调用interrupt()方法
+  - 使用stop方法强行终止线程（不推荐使用，Thread.stop, Thread.suspend, Thread.resume 和Runtime.runFinalizersOnExit 这些终止线程运行的方法已经被废弃，使用它们是极端不安全的！）
+###常用锁处理
+  - [synchronized](https://www.jianshu.com/p/d53bf830fa09)  :
+    - 对象锁：非静态synchronized方法，同个对象相互排斥，不同类对象不互斥
+    - 类锁：静态synchronized方法和synchronized代码块方法, 不同类对象互斥，同个对象也互斥。
+</code></pre>
+<p>public class LockThread implements Runnable {<br>  private Integer key &#x3D; 0;<br>  @Override<br>  public void run() {<br>     synchronized (this) {<br>        key++;<br>     System.out.println(Thread.currentThread().getName() + “:” + key);<br>    try {<br>        Thread.sleep(5);<br>       } catch (InterruptedException e) {<br>        e.printStackTrace();    }<br>      }<br>   }<br>public static void main(String[] args) {<br> LockThread lockThread &#x3D; new LockThread();<br> for (int i &#x3D; 0; i &lt; 100; i++) {<br>        new Thread(lockThread, “thread” + i).start();<br>    }<br>   }<br>}</p>
+<pre><code>  - lock
+</code></pre>
+<p>public class LockThread implements Runnable {<br>  private Integer key &#x3D; 0;<br>  private Lock lock &#x3D; new ReentrantLock();<br>  @Override<br>  public void run() {<br>     lock.lock();  &#x2F;&#x2F;获取锁<br>       try {<br>           key++;<br>          System.out.println(Thread.currentThread().getName() + “:” + key);<br>          Thread.sleep(5);<br>          } catch (Exception e) {<br>        } finally {<br>        lock.unlock();  &#x2F;&#x2F;释放锁<br>       }<br>     }<br>public static void main(String[] args) {<br> LockThread lockThread &#x3D; new LockThread();<br> for (int i &#x3D; 0; i &lt; 100; i++) {<br>       new Thread(lockThread, “thread” + i).start();<br>      }<br>     }<br>}</p>
+<pre><code>  - volatile
+  ###volatile和synchronized的区别
+
+| | volatile | synchronized  | 
+| ----- | ----- | ----- | 
+| 作用域 | 变量 | 方法，代码块 | 
+| 操作性| 仅保证可见性，有序性| 可以保证可见性和原子性  | 
+| 线程堵塞状态| 不会造成线程的阻塞| 可能会造成线程的阻塞  | 
+
+  ###Lock和synchronized的区别
+| | Lock | synchronized  | 
+| ----- | ----- | ----- | 
+| 使用区别 | 类 | 关键字  | 
+| 作用域| 代码块| 代码块，方法 | 
+| 释放锁| 需要finally()方法手动释放锁| 执行完自动释放锁  | 
+| 锁类型| 可重入,可判断,可公平（两者皆可）|可重入,不可中断,非公平| 
+| 依托实现| Java代码控制| JVM执行 | 
+|性能|高竞争场景中表现可能优于synchronized|在低竞争场景中表现可能优于 ReentrantLock|
+###sleep()和wait()的区别
+| | sleep | wait  | 
+| ----- | ----- | ----- | 
+|| 睡眠时，保持对象锁，仍然占有该锁 | 睡眠时，释放对象锁  | 
+| 作用域| 任何地方调用 | 只能在同步方法或同步块中使用| 
+| 时间| 指定时间后唤醒 | 只有等notify()/notifyAll()通知有才能唤醒| 
+###并发高效类
+实际开发中Java封装了一些解决高并发的类包（java.util.concurrent包），常用的如下：
+- AtomicInteger
+提供一种线程安全的加减操作
+- AtomicBoolean
+- AtomicLong
+- AtomicReference
+- AtomicIntegerArray
+- AtomicLongArray
+- AtomicReferenceArray
+
+
+
+
+
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2018/08/03/Java线程1/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2018/08/03/Java线程1/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2018/08/03/Java线程1/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/08/21/Java%E7%BA%BF%E7%A8%8B2/">
+        ← 深入Java线程(二)
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/07/17/Java%E5%BC%82%E5%B8%B8/">
+        Java异常 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

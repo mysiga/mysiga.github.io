@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Android跨进程通信 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2021-09-07T19:20:00.000Z" itemprop="datePublished">
+          2021-09-07
+      </time>
+    
+</span>
+    <h1 class="post-title">Android跨进程通信</h1>
+    <section class="post-content">
+      <h4 id="跨进程通信IPC"><a href="#跨进程通信IPC" class="headerlink" title="跨进程通信IPC"></a>跨进程通信IPC</h4><blockquote>
+<p>RPC 即 Remote Procedure Call (远程过程调用) 是一种计算机通讯协议，它为我们定义了计算机 C 中的程序如何调用另外一台计算机 S 的程序，让程序员不需要操心底层网络协议，使得开发包括网络分布式多程序在内的应用程序更加容易。<br>IPC 即 Inter-Process Communication (进程间通信)，</p>
+</blockquote>
+<p>Android 为我们提供了以下几种进程通信机制（供开发者使用的进程通信 API）对应的文章链接如下：</p>
+<ul>
+<li>intent</li>
+<li>文件<br>通过将数据写入到一个文件中，不同进程可以对这个文件进行读取访问，来达到跨进程通信目的。 不过，多进程同时访问一个文件，存在并发和IO性能低的问题</li>
+<li>AIDL （基于 Binder）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72765136">Android 进阶：进程通信之 AIDL 的使用</a><pre><code>1、定义跨进程Activity
+2、定义默认进程Server
+3、跟进Activity和server需要支持的接口定义AIDL接口
+4、activity和server进行绑定并通过aidl接口进行通信
+</code></pre>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72801425">Android 进阶：进程通信之 Binder 机制浅析</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72825706">Android 进阶：进程通信之 AIDL 解析</a></li>
+<li>Messenger （基于 Binder）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72836178">Android 进阶：进程通信之 Messenger 使用与解析</a></li>
+<li>ContentProvider （基于 Binder）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72848608">Android 进阶：进程通信之 ContentProvider 内容提供者</a></li>
+<li>Socket<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72860483">Android 进阶：进程通信之 Socket （启本地服务进行连接）</a></li>
+</ul>
+<h4 id="通信方式对比"><a href="#通信方式对比" class="headerlink" title="通信方式对比"></a>通信方式对比</h4><table>
+<thead>
+<tr>
+<th>通信方式</th>
+<th>优点</th>
+<th>缺点</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>intent(Bundle)</td>
+<td>简单易用</td>
+<td>只能传输Bundle支持的数据类型</td>
+<td>四大组件的进程通信,Activity,Broadcast</td>
+</tr>
+<tr>
+<td>文件共享</td>
+<td>简单易用</td>
+<td>不适合高并发场景，无法做到进程间的及时通信</td>
+<td>交换简单数据不需要并发</td>
+</tr>
+<tr>
+<td>AIDL</td>
+<td>功能强大，支持一对多的并发通信，支持实时通信</td>
+<td>使用稍复杂，需要处理好线程同步</td>
+<td>一对多通信且有RPC需求</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>功能一般，支持一对多的串行通信，支持一对多并发数据共享</td>
+<td>不能很好处理并发现象，不支持RPC,只能传输Bundle支持的数据类型</td>
+<td>低并发的一对多即时通信，无RPC需求</td>
+</tr>
+<tr>
+<td>ContentProvider</td>
+<td>数据访问方面功能强大，支持一对多并发数据共享</td>
+<td>受约束的AIDL,主要提供数据源的CRUD操作</td>
+<td>一对多的进程间的数据共享</td>
+</tr>
+<tr>
+<td>Socket</td>
+<td>功能强大，可通过网络传输字节流，支持一对多的并发实时通信</td>
+<td>繁琐，不支持直接的RPC</td>
+<td>网络数据交换</td>
+</tr>
+</tbody></table>
+<h4 id="Binder-通信机制"><a href="#Binder-通信机制" class="headerlink" title="Binder 通信机制"></a>Binder 通信机制</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/carson_ho/article/details/73560642">Binder 通信机制</a><br><img src="/images/bindertongxinjizhi.png" alt="image.png"><h4 id="Binder-机制跨进程通信流程"><a href="#Binder-机制跨进程通信流程" class="headerlink" title="Binder 机制跨进程通信流程"></a>Binder 机制跨进程通信流程</h4><img src="/images/binderkuanjinchengtongxin.png" alt="image.png"></li>
+</ul>
+<h4 id="OSI7层模型与TCP-x2F-IP4层模型"><a href="#OSI7层模型与TCP-x2F-IP4层模型" class="headerlink" title="OSI7层模型与TCP&#x2F;IP4层模型"></a>OSI7层模型与TCP&#x2F;IP4层模型</h4><p><img src="/images/osi7cengxieyi.png" alt="image.png"></p>
+<h4 id="TCP-x2F-IP相关协议"><a href="#TCP-x2F-IP相关协议" class="headerlink" title="TCP&#x2F;IP相关协议"></a>TCP&#x2F;IP相关协议</h4><p><img src="/images/tcpipxieyi.png" alt="image.png"></p>
+<h4 id="Socket-作为应用层和传输层之间的桥梁，简单通信流程："><a href="#Socket-作为应用层和传输层之间的桥梁，简单通信流程：" class="headerlink" title="Socket 作为应用层和传输层之间的桥梁，简单通信流程："></a>Socket 作为应用层和传输层之间的桥梁，简单通信流程：</h4><p><img src="/images/socketzuoweiyingyongceng.png" alt="image.png"></p>
+<h4 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h4><p><img src="/images/tcpsanciwoshou.png" alt="image.png"></p>
+<h4 id="TCP的四次挥手"><a href="#TCP的四次挥手" class="headerlink" title="TCP的四次挥手"></a>TCP的四次挥手</h4><p><img src="/images/tcpsicihuishou.png" alt="image.png"></p>
+<h4 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011240877/article/details/72863432">https://blog.csdn.net/u011240877/article/details/72863432</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/guolin_blog/article/details/11952435">Android Service完全解析，关于服务你所需知道的一切(上)</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/guolin_blog/article/details/9797169">Android Service完全解析，关于服务你所需知道的一切(下)</a></li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2021/09/08/Android跨进程通信/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2021/09/08/Android跨进程通信/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2021/09/08/Android跨进程通信/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2021/09/08/AndroidView/">
+        ← Android View
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2021/09/04/AndroidHandler%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93/">
+        Android Handler机制总结 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

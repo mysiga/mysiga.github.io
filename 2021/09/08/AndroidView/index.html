@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Android View | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2021-09-08T10:20:00.000Z" itemprop="datePublished">
+          2021-09-08
+      </time>
+    
+</span>
+    <h1 class="post-title">Android View</h1>
+    <section class="post-content">
+      <ul>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU4NDc1MjI4Mw==&mid=2247484180&idx=1&sn=080cccd32f0c58dd68f743b3c78a7e1f&chksm=fd944ee0cae3c7f67f20b82e7a505808fc424a34c737bd0c944478ee7af1162cd98e78d716f2&scene=21#wechat_redirect">Window、View、Activity</a><br><img src="/images/activityphonewindowdecorview.png" alt="image.png"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1601353">Android View绘制</a><br><img src="/images/viewhuizhi.png" alt="View绘制"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903858511020039">Android中慎用View#getViewTreeObserver#addOnGlobalLayoutListener来获取view的高度</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dasusu/p/8047172.html">源码解析View.post()</a></p>
+<pre><code>Activity在onCreate（）执行View.post(Runnable)，缓存Runnable
+ViewGroup和View执行完ViewRootImpl.performTraversals（measure，layout，draw）后执行Runnable回调
+</code></pre>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/705a6cb6bfee?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin">Android自定义View</a><br><img src="/images/zidingyiview.png" alt="自定义View"></p>
+</li>
+<li><p>invalidate()与postInvalidate(),requestLayout()三者区别？</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">invalidate()</th>
+<th align="left">postInvalidate()</th>
+<th align="left">requestLayout()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">在ui线程执行</td>
+<td align="left">在工作线程执行</td>
+<td align="left">–</td>
+</tr>
+<tr>
+<td align="left">onDraw()</td>
+<td align="left">onDraw()</td>
+<td align="left">onMeause()，onLayout(),onDraw()</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>onMeasure()有几种Mode?</p>
+<blockquote>
+<p>有三种模式：<br>　UNSPECIFIED<br>　　这说明parent没有对child强加任何限制，child可以是它想要的任何尺寸。<br>　EXACTLY<br>　　Parent为child决定了一个绝对尺寸，child将会被赋予这些边界限制，不管child自己想要多大。<br>　AT_MOST<br>　　Child可以是自己任意的大小，但是有个绝对尺寸的上限。</p>
+</blockquote>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/88054f481f17">View生命周期</a></p>
+</li>
+<li><p>View常用方法</p>
+</li>
+<li><p>onAttachedToWindow,onDetachedFromWindow</p>
+</li>
+<li><p>RecyclerView,ListView</p>
+</li>
+<li><p>ViewPager</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/ui">Android 界面指南</a></p>
+</li>
+<li><p>[软件绘制和硬件绘制区别]（<a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/graphics/hardware-accel#software-model%EF%BC%89">https://developer.android.google.cn/guide/topics/graphics/hardware-accel#software-model）</a><br>软件的绘制过程</p>
+<pre><code>软件的绘制过程
+1、对层次结构进行无效化处理
+2、绘制层次结构
+</code></pre>
+<p>缺点：</p>
+<pre><code>1、未视图改变的也会重新绘制  
+2、存在重复绘制同一个视图
+</code></pre>
+<p>硬件加速绘制</p>
+<pre><code>1、对层次结构进行无效化处理
+2、记录并更新显示列表（）
+3、绘制显示列表
+</code></pre>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://source.android.com/devices/graphics/arch-tv?hl=zh-cn">surfaceview vs textureview</a></p>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2021/09/08/AndroidView/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2021/09/08/AndroidView/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2021/09/08/AndroidView/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2021/09/27/Java%E7%BA%BF%E7%A8%8B3/">
+        ← 深入Java线程(三)
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2021/09/08/Android%E8%B7%A8%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">
+        Android跨进程通信 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

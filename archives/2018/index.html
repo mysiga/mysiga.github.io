@@ -91,26 +91,53 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2018-08-21T15:16:00.000Z" itemprop="datePublished">
+          2018-08-21
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2018/08/21/Java线程2/">深入Java线程(二)</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        为了理解可先看深入Java线程（一）内容在看本篇。###线程生命周期
+关于线程生命周期的不同状态，在 Java 5 以后，线程状态被明确定义在其公共内部枚举类型 java.lang.Thread.State 中，分别是：
+
+新建（NEW），表示线程被创建出来还没真正启动的状态，可以认为它是个 Java 内部状态。
+就绪（RUNNABLE），表示该线程已经在 JVM 中执行，当然由于执行需要计算资源，它可能是正在运行，也可能还在等待系统分
+      
+      </p>
+      
+      <p>
+          <a href="/2018/08/21/Java线程2/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">
           2018-08-02
       </time>
     
 </span>
-      <h2 class="post-title"><a href="/2018/08/03/Java线程/">深入Java线程</a></h2>
+      <h2 class="post-title"><a href="/2018/08/03/Java线程1/">深入Java线程(一)</a></h2>
     </header>
     <section class="post-excerpt">
       <p>
       
-        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。
-创建线程方式
-继承Thread
+        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。###创建线程方式
 
-public class ThreadImpl extends Thread &#123;   
+继承Thread
+public class ThreadImpl extends Thread &#123; 
       
       </p>
       
       <p>
-          <a href="/2018/08/03/Java线程/" class="excerpt-link">Read More...</a>
+          <a href="/2018/08/03/Java线程1/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>

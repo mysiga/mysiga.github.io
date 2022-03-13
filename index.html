@@ -40,6 +40,217 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2021-09-27T13:58:23.000Z" itemprop="datePublished">
+          2021-09-27
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/27/Java线程3/">深入Java线程(三)</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        线程池Executors 目前提供了 5 种不同的线程池创建配置：
+
+newCachedThreadPool()，它是一种用来处理大量短时间工作任务的线程池，具有几个鲜明特点：它会试图缓存线程并重用，当无缓存线程可用时，就会创建新的工作线程；如果线程闲置的时间超过 60 秒，则被终止并移出缓存；长时间闲置时，这种线程池，不会消耗什么资源。其内部使用 SynchronousQueue 作为工作队列。
+newFixedThreadPool(
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/27/Java线程3/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-08T10:20:00.000Z" itemprop="datePublished">
+          2021-09-08
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/AndroidView/">Android View</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Window、View、Activity
+
+Android View绘制
+
+Android中慎用View#getViewTreeObserver#addOnGlobalLayoutListener来获取view的高度
+
+源码解析View.post()
+Activity在onCreate（）执行View.post(Runnable)，缓存Runnable
+ViewGroup和View执行完ViewRootImpl.performTrav
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/AndroidView/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-07T19:20:00.000Z" itemprop="datePublished">
+          2021-09-07
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/08/Android跨进程通信/">Android跨进程通信</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        跨进程通信IPC
+RPC 即 Remote Procedure Call (远程过程调用) 是一种计算机通讯协议，它为我们定义了计算机 C 中的程序如何调用另外一台计算机 S 的程序，让程序员不需要操心底层网络协议，使得开发包括网络分布式多程序在内的应用程序更加容易。IPC 即 Inter-Process Communication (进程间通信)，
+
+Android 为我们提供了以下几种进程通信机制（供开发者使用的进程通信 API）对
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/08/Android跨进程通信/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-09-03T19:20:00.000Z" itemprop="datePublished">
+          2021-09-03
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/09/04/AndroidHandler机制总结/">Android Handler机制总结</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Handle机制
+APP的启动过程中调用ActivityThread类main方法初始化MainLooper
+
+Handler创建Message并发送给Looper
+
+Looper循环处理MessageQueue的Message最后message通过target找到发送消息相对应的handle进行回调处理。
+
+子线程创建handle
+Thread &#123;
+              //初始化线程looper对象
+        
+      
+      </p>
+      
+      <p>
+          <a href="/2021/09/04/AndroidHandler机制总结/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-08-30T19:20:00.000Z" itemprop="datePublished">
+          2021-08-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/08/31/Android动画2/">Android动画</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Android动画分类
+Frame Animation(帧动画)：
+使用AnimationDrawable配置XML，按顺序播放事先做好的图像，
+使用AnimatedVectorDrawableCompat在xml中定义一组动画
+
+
+Tween Animation(补间动画):只能对View进行平移，缩放，渐变，旋转
+Property Animation(属性动画):API11开始引入，基于Object进行属性改变而达到动画效果
+
+使用
+      
+      </p>
+      
+      <p>
+          <a href="/2021/08/31/Android动画2/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-07-14T17:06:23.000Z" itemprop="datePublished">
+          2021-07-14
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/07/15/长期有耐心/">拥抱变化《长期有耐心》</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+最近在看美团成长史的书《长期有耐心》，在结合当前公司所面临的环境-在线教育改革，探索新业务。比较应景的文章吧，从这本书也想获取到一些新意的想法和美团发现的一些抉择。今天已经把这本书读完了，跟以前把书中经典语录和独特观点记录，指引以后人生道路。
+
+王兴认为，在传统行业，创业好比登山，在互联网行业，创业好比冲浪。错过了一波浪潮，就错过了一次机会。所以，要抓住时机踏上浪头，如果这个浪头过去了，就不要去追逐它，而应勇敢迎接挑战，敏锐捕捉下一个
+      
+      </p>
+      
+      <p>
+          <a href="/2021/07/15/长期有耐心/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2021-07-04T17:06:23.000Z" itemprop="datePublished">
+          2021-07-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2021/07/05/JavaAOP/">AOP（一）---什么是AOP</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        要理解AOP我们先要理解其他一些概念：
+
+面向过程编程
+面向对象编程
+面向切面编程面向过程编程OPP 面向过程的编程思想将就是将一个大任务分解为一个一个小的任务,我们通过完成一个一个的小的任务来完成一个大的任务，然后就结束了。常用的编程语言有C语言，它
+优点：符合我们人类的思维,编写起来相对比较简单
+缺点：但是这种方式编写代码的往往只适用于一个功能；如果要在实现别的功能，即使功能相差极小，也往往要重新编写代码，所以它可复用性比较低，并且
+      
+      </p>
+      
+      <p>
+          <a href="/2021/07/05/JavaAOP/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2020-11-25T00:19:09.000Z" itemprop="datePublished">
           2020-11-25
       </time>
@@ -115,263 +326,26 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
-      <time datetime="2018-08-02T18:30:00.000Z" itemprop="datePublished">
-          2018-08-02
+      <time datetime="2018-08-21T15:16:00.000Z" itemprop="datePublished">
+          2018-08-21
       </time>
     
 </span>
-      <h2 class="post-title"><a href="/2018/08/03/Java线程/">深入Java线程</a></h2>
+      <h2 class="post-title"><a href="/2018/08/21/Java线程2/">深入Java线程(二)</a></h2>
     </header>
     <section class="post-excerpt">
       <p>
       
-        线程是系统调度的最小单元，一个进程可以包含多个线程，作为任务的真正运作者，有自己的栈（Stack）、寄存器（Register）、本地存储（Thread Local）等，但是会和进程内其他线程共享文件描述符、虚拟地址空间等。在具体实现中，线程还分为内核线程、用户线程，Java 的线程实现其实是与虚拟机相关的。
-创建线程方式
-继承Thread
+        为了理解可先看深入Java线程（一）内容在看本篇。###线程生命周期
+关于线程生命周期的不同状态，在 Java 5 以后，线程状态被明确定义在其公共内部枚举类型 java.lang.Thread.State 中，分别是：
 
-public class ThreadImpl extends Thread &#123;   
+新建（NEW），表示线程被创建出来还没真正启动的状态，可以认为它是个 Java 内部状态。
+就绪（RUNNABLE），表示该线程已经在 JVM 中执行，当然由于执行需要计算资源，它可能是正在运行，也可能还在等待系统分
       
       </p>
       
       <p>
-          <a href="/2018/08/03/Java线程/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2018-07-16T18:30:00.000Z" itemprop="datePublished">
-          2018-07-16
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2018/07/17/Java异常/">Java异常</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Java异常
-
-对比Exception和Error 
-运行异常与一般异常区别
-ClassNotFoundException和NoClassDefFoundError有什么区别
-throw和throws
-异常处理几点建议
-自定义异常
-
-对比Exception和Error。Exception和Error都继承Throwable,
-
-Exception是程序可以处理的异常，正常JVM运行外的异常。
-Error一般是JVM相关异常错误，不可恢复
-      
-      </p>
-      
-      <p>
-          <a href="/2018/07/17/Java异常/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2018-07-12T11:11:00.000Z" itemprop="datePublished">
-          2018-07-12
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2018/07/12/Java垃圾回收机制/">我所知道的-Java垃圾回收机制</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-本文章你能知道的内容：
-
-Java内存模型
-Java堆
-对象什么时候回收
-垃圾回收算法
-垃圾回收器Java内存模型要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图
-程序计数器
-Java 虚拟机栈
-方法区：方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
-运行时常量池
-
-
-Java 堆:一般new的对象实例和数组都是在堆中的，而GC主要回收的内存也是
-      
-      </p>
-      
-      <p>
-          <a href="/2018/07/12/Java垃圾回收机制/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2018-06-06T14:58:29.000Z" itemprop="datePublished">
-          2018-06-06
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2018/06/06/Android各个版本新特性/">Android各个版本新特性</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        目前主流的Android适配版本最低版本4.0或5.0，这里主要总结一下Android 4.0以后各个版本特性，方便适配和面试。加粗标注为面试中问到的重点特性，其他为重要适配特性。（倒序）
-
-Android 8.0
-
-优化通知
-通知渠道
-通知标志
-休眠
-通知超时
-通知设置
-通知清除
-
-
-自动填充框架
-画中画模式：清单中Activity设置android:supportsPictureInPicture
-可下载字体：FontRequest
-      
-      </p>
-      
-      <p>
-          <a href="/2018/06/06/Android各个版本新特性/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2018-05-18T15:47:29.000Z" itemprop="datePublished">
-          2018-05-18
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2018/05/18/爱的五种能力/">《爱的五种能力》</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-俗话说的好“相爱容易相处难”，“家家有本难念的经”，说的大都是婚后生活夫妻之间的相处问题。本书作者认为为什么夫妻相处有问题是因为缺少“爱的五种能力”：
-
-情绪管理
-述情
-共情
-允许
-影响
-
-爱的能力之一 “情绪管理”：首选是“情绪管理”，每个人要管理好自己的情绪，才有能力去爱别人。不能管理好自己情绪的人，常常让与自己相爱的人痛苦，容易错失爱的机会，甚至会伤害人。 ﻿想要爱情幸福，家庭和睦，两人就要都经常强调“爱”和“情”。一个人在强调
-      
-      </p>
-      
-      <p>
-          <a href="/2018/05/18/爱的五种能力/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2017-07-17T09:47:29.000Z" itemprop="datePublished">
-          2017-07-17
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2017/07/17/Jenkins配置Android深坑/">Jenkins配置Android深坑</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        在Jenkins上配置Android的一些持续集成（自动打包上传，单元测试，集成测试等）应该是很普遍的事情了。Jenkins一般配置在一个通用的测试服务器上，原来都是拿一个mac当测试服务器，在上面想怎么玩怎么就怎么玩，想怎么配置就怎么配置。可是如果测试服务器是在虚拟机上而且测试服务器不是你能控制的，那就要在Jenkins上配置Android就不能想自己控制自己电脑那边方便了，在配置过程中也填了不少的坑。那就讲下填坑之路吧。
-Jenki
-      
-      </p>
-      
-      <p>
-          <a href="/2017/07/17/Jenkins配置Android深坑/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2017-06-19T18:30:29.000Z" itemprop="datePublished">
-          2017-06-19
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2017/06/20/Android与iOS开发相关区别/">Android与iOS开发相关区别</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Android与iOS开发相关区别时间搓
-Java取时间戳为13位
-iOS取时间戳10位
-解决方案：统一用13位，后台Java写的，其他平台调用都是以13位取下拉刷新
-Android下拉刷新View没有偏移
-iOS下拉刷新有偏移
-解决方案:下拉有偏移体验更好，Android重新写view，根据移动偏移计算偏移位置，github有很多成型的项目
-
-
-      
-      </p>
-      
-      <p>
-          <a href="/2017/06/20/Android与iOS开发相关区别/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2017-06-19T18:30:29.000Z" itemprop="datePublished">
-          2017-06-19
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2017/06/20/Android使用枚举正确姿态/">Android使用枚举正确姿态</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-大家应该都知道Android建议不要用Java枚举，它占用内存很大 
-
- 那实际开发中肯定是要用Java枚举的，那有没有什么解决办法了。答案肯定是有的，只是换成另外一种方式
-/**
- * Android枚举
- */
-public class TestEnum &#123;
-  /**
-   * @Retention(RetentionPolicy.SOURCE) 注解可以告知编译器不将枚举的注解数据存储在 .class 文件中
-   
-      
-      </p>
-      
-      <p>
-          <a href="/2017/06/20/Android使用枚举正确姿态/" class="excerpt-link">Read More...</a>
+          <a href="/2018/08/21/Java线程2/" class="excerpt-link">Read More...</a>
       </p>
       
     </section>
@@ -379,7 +353,7 @@ public class TestEnum &#123;
   
   <nav class="pagination" role="pagination">
     
-    <span class="page-number">Page 1 of 5</span>
+    <span class="page-number">Page 1 of 6</span>
     <a class="older-posts" href="/page/2/">Older Posts →</a>
   </nav>
 </main>
