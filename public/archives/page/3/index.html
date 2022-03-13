@@ -40,6 +40,277 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2016-07-31T14:50:29.000Z" itemprop="datePublished">
+          2016-07-31
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/07/31/Excption与Error包结构/">Excption与Error包结构</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+原文来自
+
+Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况
+
+Java异常架构图  
+
+
+Throwable Throwable是 Java 语言中所有错误或异常的超类。 Throwable包含两个子类: Error 和 Exception 。它们通常用于指示发生了异常情况。 Throwable包含了其线程创建时线程执行堆栈的快照，它提供了printStackTrace()等接口用于获取堆栈跟踪数据
+      
+      </p>
+      
+      <p>
+          <a href="/2016/07/31/Excption与Error包结构/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-07-15T15:30:00.000Z" itemprop="datePublished">
+          2016-07-15
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/07/15/单元测试/">单元测试</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+注：基于小创分享的总结
+
+明确概念
+单元测试 or 集成测试：
+单元测试在维基百科是这样定义的
+
+单元测试（英语：Unit Testing）又称为模块测试, 是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+
+集成测试在维基百科的定义
+集成测试,整
+      
+      </p>
+      
+      <p>
+          <a href="/2016/07/15/单元测试/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-06-30T09:29:29.000Z" itemprop="datePublished">
+          2016-06-30
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/06/30/Java类初始化顺序/">Java类初始化顺序</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Print.javapublic class Print &#123;
+ public Print (String print) &#123;
+System.out.println(print);
+ &#125;
+&#125;
+
+
+Person.java&#96;&#96;&#96;&#96;public class Person {
+
+ private static Print printLog &#x3D; new Print(“
+      
+      </p>
+      
+      <p>
+          <a href="/2016/06/30/Java类初始化顺序/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-06-17T10:30:00.000Z" itemprop="datePublished">
+          2016-06-17
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/06/17/App共享文件权限/">App共享文件Uri不能为file://</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+先看异常信息:
+
+E/StrictMode: null
+              java.lang.Throwable: file:// Uri exposed through Intent.getData()
+                  at android.os.StrictMode.onFileUriExposed(StrictMode.java:1757)
+                  at android.
+      
+      </p>
+      
+      <p>
+          <a href="/2016/06/17/App共享文件权限/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java7之强引用_弱引用_软引用_虚引用/">(转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用1、强引用（StrongReference）
+强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。如下：
+Object o=new Object();   //  强引用 
+
+当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。如果不使用时，要通过如下方式来弱
+      
+      </p>
+      
+      <p>
+          <a href="/2016/05/28/Java7之强引用_弱引用_软引用_虚引用/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/05/28/Java单例模式/">Java单例模式，线程安全</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+懒汉式:线程安全，开销大
+
+public class Singleton&#123;
+ private static final Singleton singleton;
+private Singleton()&#123;
+  &#125;
+ public static final synchronized Singleton getInstance()&#123;
+     if(singleton==null)&#123;
+   
+      
+      </p>
+      
+      <p>
+          <a href="/2016/05/28/Java单例模式/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">
+          2016-03-18
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/18/Android单元测试框架/">Android单元测试框架</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+Android单元测试
+
+在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。
+
+
+框架比较
+
+JUnit
+原生单元测试
+不能让Activity执行到resume的状态
+@王进已讲
+
+
+AndroidTest
+运行在Android环境
+
+
+Instrumentation
+运行在模拟器上
+
+
+Rob
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/18/Android单元测试框架/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-03-05T17:42:29.000Z" itemprop="datePublished">
+          2016-03-05
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/03/06/Activity的启动四种模式/">Activity的启动四种模式</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Activity的启动四种模式
+standard(默认)
+
+每次使用startActivity方法启动Activity时 都会创建该Activity的新实例
+Activity的多个实例可以位于同一个task中 也可以分布在不同的task里
+在当前task中使用startActivity方法启动Activity 也在当前task中创建和运行
+
+
+singleTop：栈顶复用模式
+
+当设置为singleTop模式Activity，未处于栈顶
+      
+      </p>
+      
+      <p>
+          <a href="/2016/03/06/Activity的启动四种模式/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2016-03-04T10:30:00.000Z" itemprop="datePublished">
           2016-03-04
       </time>
@@ -146,300 +417,9 @@ SearchView+ListPopupWindow+SQLite
     </section>
   </article>
   
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-01-29T10:30:00.000Z" itemprop="datePublished">
-          2016-01-29
-      </time>
-    
-    
-    | 
-    <a href='/tags/tablayout/'>tablayout</a>,
-    
-    <a href='/tags/Chrome/'>Chrome</a>,
-    
-    <a href='/tags/坑/'>坑</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2016/01/29/tablayout方法setupWithViewPager()坑/">tablayout方法setupWithViewPager()坑</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)先看TabLayout平常怎么使用setupWithViewPager()
-ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);
-TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contai
-      
-      </p>
-      
-      <p>
-          <a href="/2016/01/29/tablayout方法setupWithViewPager()坑/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-01-15T10:30:00.000Z" itemprop="datePublished">
-          2016-01-15
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-主要原理：监听微信APP,如果发送[微信红包]相关通知,则通过Android辅助类服务AccessibilityService实现抢红包点击一系列动作
-
-通过AccessibilityService服务监听微信
-
-主要监听配置如下:
-
-
-监听动作类型
-android:accessibilityEventTypes=&quot;typeNotificationStateChanged|typeWindowStateChanged|typ
-      
-      </p>
-      
-      <p>
-          <a href="/2016/01/15/Android微信抢红包/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2016-01-06T16:00:00.000Z" itemprop="datePublished">
-          2016-01-06
-      </time>
-    
-    
-    | 
-    <a href='/tags/git/'>git</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!-曾铭</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        
-为什么要用 Git？
-Git + SourceTree + Gitlab 的使用演示
-提醒和推荐
-
-为什么要用 Git？
-一个工具、一套方案，解决源码管理的问题
-
-对于版本控制，我们需要什么？
-代码历史追溯
-某一次提交的改动（SVN，Git）
-某一个功能的改动过程（好的提交习惯更重要，在多人协作情况下提交历史更清晰）
-
-
-协同开发
-用分支来隔离上线与开发中的代码
-多人多线并行开发：1 人对 N 线，N 人对 1 线都有可能
-
-
-
-
-秒
-      
-      </p>
-      
-      <p>
-          <a href="/2016/01/07/Why-Git-Learn-It/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-12-11T10:30:00.000Z" itemprop="datePublished">
-          2015-12-11
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/12/11/前端入门（2）/">前端入门（2）</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        博客地址Swift柯里化 Curring 学习什么是Curring
-维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
-
-概念看上去还是有点抽象，直接看代码
-例子注：所有swift代码都可以放到playgroun中运行查看输出
-import UIKit
-
-// 一个普通求sum函
-      
-      </p>
-      
-      <p>
-          <a href="/2015/12/11/前端入门（2）/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-12-02T10:30:00.000Z" itemprop="datePublished">
-          2015-12-02
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/12/02/前端入门（1）/">前端入门（1）</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Ruby on Rails 初体验 - 王胜使用命令行快速创建应用的步骤
-创建应用程序
-$rails new hello -d mysql
-
-备注 这里演示使用mysql作为数据持久层
-
-浏览hello world界面
-$cd hello
-$rake db:create RAILS_ENV=&#39;development&#39; // 创建开发数据库
-$bin/rails server
-
-备注 由于这里的rails版本是4.2.1，
-      
-      </p>
-      
-      <p>
-          <a href="/2015/12/02/前端入门（1）/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-11-18T10:30:00.000Z" itemprop="datePublished">
-          2015-11-18
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/11/18/Android动画/">动画</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Android L动画  - 吴明
-Touch feedback（触摸反馈）
-波纹有边界
-波纹超出边界
-波纹颜色
-
-
-Reveal effect（揭露效果）
-liecap
-Circular Reveal动画
-
-
-Activity transitions（Activity转换效果）
-Enter（进入）
-普通Transition
-explode：从场景的中心移入或移出 
-slide：从场景的边缘移入或移出 
-fade：调整透明度产生渐变效果
-      
-      </p>
-      
-      <p>
-          <a href="/2015/11/18/Android动画/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-11-13T10:30:00.000Z" itemprop="datePublished">
-          2015-11-13
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/11/13/Swift入门专题/">Swift入门专题</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Swift初见 – 张超耀宏// in objective-c, but in swift, #define can&#39;t be used any more  
-// use let keyword to define a macro, look up original document:  
-/*  
-Simple Macros  
-Where you typically used the #define directive t
-      
-      </p>
-      
-      <p>
-          <a href="/2015/11/13/Swift入门专题/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">
-          2015-11-04
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Android 单元测试  吴明
-Android单元测试支持
-Android studio 1.2 beta3版本，原生支持单元测试
-
-
-环境搭建 
-配置环境命令：.&#x2F;gradlew build connectedCheck
-
-
-测试示例    
-
-
-
-
-public class MyFirstTestActivityTest extends ActivityInstrumentationTestCase2&lt;MyFirs
-      
-      </p>
-      
-      <p>
-          <a href="/2015/11/04/装逼指南二期/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
   <nav class="pagination" role="pagination">
     <a class="newer-posts" href="/archives/page/2/">← Newer Posts</a>
-    <span class="page-number">Page 3 of 5</span>
+    <span class="page-number">Page 3 of 6</span>
     <a class="older-posts" href="/archives/page/4/">Older Posts →</a>
   </nav>
 </main>

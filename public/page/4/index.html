@@ -40,6 +40,297 @@
   <article class="post">
     <header class="post-header">
       <span class="post-meta">
+      <time datetime="2016-01-29T10:30:00.000Z" itemprop="datePublished">
+          2016-01-29
+      </time>
+    
+    
+    | 
+    <a href='/tags/tablayout/'>tablayout</a>,
+    
+    <a href='/tags/Chrome/'>Chrome</a>,
+    
+    <a href='/tags/坑/'>坑</a>
+    
+    
+</span>
+      <h2 class="post-title"><a href="/2016/01/29/tablayout方法setupWithViewPager()坑/">tablayout方法setupWithViewPager()坑</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        为什么说慎用了？(最新TalLayout源码有改动，讨论只限之前的源码)先看TabLayout平常怎么使用setupWithViewPager()
+ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);
+TabLayout tabContainView = (TabLayout) findViewById(R.id.pick_school_category_contai
+      
+      </p>
+      
+      <p>
+          <a href="/2016/01/29/tablayout方法setupWithViewPager()坑/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-01-15T10:30:00.000Z" itemprop="datePublished">
+          2016-01-15
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2016/01/15/Android微信抢红包/">Android 微信抢红包</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+主要原理：监听微信APP,如果发送[微信红包]相关通知,则通过Android辅助类服务AccessibilityService实现抢红包点击一系列动作
+
+通过AccessibilityService服务监听微信
+
+主要监听配置如下:
+
+
+监听动作类型
+android:accessibilityEventTypes=&quot;typeNotificationStateChanged|typeWindowStateChanged|typ
+      
+      </p>
+      
+      <p>
+          <a href="/2016/01/15/Android微信抢红包/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2016-01-06T16:00:00.000Z" itemprop="datePublished">
+          2016-01-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/git/'>git</a>
+    
+    
+</span>
+      <h2 class="post-title"><a href="/2016/01/07/Why-Git-Learn-It/">Why Git? Learn It!-曾铭</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        
+为什么要用 Git？
+Git + SourceTree + Gitlab 的使用演示
+提醒和推荐
+
+为什么要用 Git？
+一个工具、一套方案，解决源码管理的问题
+
+对于版本控制，我们需要什么？
+代码历史追溯
+某一次提交的改动（SVN，Git）
+某一个功能的改动过程（好的提交习惯更重要，在多人协作情况下提交历史更清晰）
+
+
+协同开发
+用分支来隔离上线与开发中的代码
+多人多线并行开发：1 人对 N 线，N 人对 1 线都有可能
+
+
+
+
+秒
+      
+      </p>
+      
+      <p>
+          <a href="/2016/01/07/Why-Git-Learn-It/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-12-11T10:30:00.000Z" itemprop="datePublished">
+          2015-12-11
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/12/11/前端入门（2）/">前端入门（2）</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        博客地址Swift柯里化 Curring 学习什么是Curring
+维基百科解释在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
+
+概念看上去还是有点抽象，直接看代码
+例子注：所有swift代码都可以放到playgroun中运行查看输出
+import UIKit
+
+// 一个普通求sum函
+      
+      </p>
+      
+      <p>
+          <a href="/2015/12/11/前端入门（2）/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-12-02T10:30:00.000Z" itemprop="datePublished">
+          2015-12-02
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/12/02/前端入门（1）/">前端入门（1）</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Ruby on Rails 初体验 - 王胜使用命令行快速创建应用的步骤
+创建应用程序
+$rails new hello -d mysql
+
+备注 这里演示使用mysql作为数据持久层
+
+浏览hello world界面
+$cd hello
+$rake db:create RAILS_ENV=&#39;development&#39; // 创建开发数据库
+$bin/rails server
+
+备注 由于这里的rails版本是4.2.1，
+      
+      </p>
+      
+      <p>
+          <a href="/2015/12/02/前端入门（1）/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-11-18T10:30:00.000Z" itemprop="datePublished">
+          2015-11-18
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/11/18/Android动画/">动画</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Android L动画  - 吴明
+Touch feedback（触摸反馈）
+波纹有边界
+波纹超出边界
+波纹颜色
+
+
+Reveal effect（揭露效果）
+liecap
+Circular Reveal动画
+
+
+Activity transitions（Activity转换效果）
+Enter（进入）
+普通Transition
+explode：从场景的中心移入或移出 
+slide：从场景的边缘移入或移出 
+fade：调整透明度产生渐变效果
+      
+      </p>
+      
+      <p>
+          <a href="/2015/11/18/Android动画/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-11-13T10:30:00.000Z" itemprop="datePublished">
+          2015-11-13
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/11/13/Swift入门专题/">Swift入门专题</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Swift初见 – 张超耀宏// in objective-c, but in swift, #define can&#39;t be used any more  
+// use let keyword to define a macro, look up original document:  
+/*  
+Simple Macros  
+Where you typically used the #define directive t
+      
+      </p>
+      
+      <p>
+          <a href="/2015/11/13/Swift入门专题/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">
+          2015-11-04
+      </time>
+    
+</span>
+      <h2 class="post-title"><a href="/2015/11/04/装逼指南二期/">周精益分享 - 程序员装逼指南二期</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
+      
+        Android 单元测试  吴明
+Android单元测试支持
+Android studio 1.2 beta3版本，原生支持单元测试
+
+
+环境搭建 
+配置环境命令：.&#x2F;gradlew build connectedCheck
+
+
+测试示例    
+
+
+
+
+public class MyFirstTestActivityTest extends ActivityInstrumentationTestCase2&lt;MyFirs
+      
+      </p>
+      
+      <p>
+          <a href="/2015/11/04/装逼指南二期/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
       <time datetime="2015-10-30T10:30:00.000Z" itemprop="datePublished">
           2015-10-30
       </time>
@@ -108,320 +399,9 @@ MOOC 上手 - 曾铭Mas
     </section>
   </article>
   
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-10-16T10:30:00.000Z" itemprop="datePublished">
-          2015-10-16
-      </time>
-    
-    
-    | 
-    <a href='/tags/移动组周分享/'>移动组周分享</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2015/10/16/谈谈未来，职业规划，梦想/">谈谈未来、梦想、职业规划</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        实现时间自由 - 王胜
-近期技术打工、为公司技术出一份力
-伺机合伙创业
-自己作为技术的Partner
-需求靠谱的产品经理合伙创业
-如果有靠谱的市场&#x2F;资方人事的合伙人就更完美了
-
-
-财富自由和时间自由后
-周游开拓视野
-做一些自己感兴趣的东西，不求有市场，只求自己感觉有价值，好玩就行
-
-
-
-品质生活 - 吴明
-短期目标
-学习和开发使用Material Design
-
-
-长期目标：以下目标之一
-技术专家
-管理和技术
-换行业
-
-
-第二
-      
-      </p>
-      
-      <p>
-          <a href="/2015/10/16/谈谈未来，职业规划，梦想/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-09-25T10:30:00.000Z" itemprop="datePublished">
-          2015-09-25
-      </time>
-    
-    
-    | 
-    <a href='/tags/Android-dp-单位/'>Android,dp,单位</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2015/09/25/单位和度量/">单位和度量</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        Android基本单位规范单位和度量
-像素密度
-
-每英寸的像素数被称为“像素密度”。
-DPI &#x3D;屏幕宽度（或高度）像素&#x2F;屏幕宽度（或高度）英寸
-mdpi-160dpi,hdpi-480x800-240dpi,xhdpi-720x1280-320dpi,xxhdpi-1080x1920-480dpi
-mipmap-hdpi,  drawable-hdpi区别:用mipmap会缩放图片并优化性能。
-
-
-
-密度独立像素
-
-
-      
-      </p>
-      
-      <p>
-          <a href="/2015/09/25/单位和度量/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-08-21T12:00:00.000Z" itemprop="datePublished">
-          2015-08-21
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/08/21/那些年我们用过的第三方库/">那些年我们用过的第三方库</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        SnapKit（Masonry） 的使用 - 杨志平
-这两个库的用法都是差不多的，只是由两个不同的人来主导开源  **SnapKit**是Swift版 **Masonry**是OC版    
-自动布局及交互式编程是iOS开发的趋势，同时Swift也会在不久将来替换OC语言。所以现在的iOS开发者可以开始学习Swift2.0 以及应用 Autolayout 来编程
-
-代码对比（概况了解）开始前OC原生布局代码
-    UIView *su
-      
-      </p>
-      
-      <p>
-          <a href="/2015/08/21/那些年我们用过的第三方库/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-08-14T13:08:35.000Z" itemprop="datePublished">
-          2015-08-14
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/08/14/聊聊提高代码质量/">聊聊提高代码质量</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        什么样的代码才是好的——李仙鹏我所理解的好代码
-代码规范——可读性
-
-统一命名方式（Google Java代码风格）
-尽量不要出现magic number
-清晰的代码注释文档（改善Java文档的理由、建议和技巧）
-控制方法或者函数的细粒度
-减少代码冗余
-
-
-代码耦合低——可扩展性、可移植性
-
-尽量采用接口实现，减少继承
-通用功能尽量抽取作为一个独立的方法，避免重复造轮子
-设计模式并不能提高代码执行效率，但容易对代码进行模块切分，从而进行
-      
-      </p>
-      
-      <p>
-          <a href="/2015/08/14/聊聊提高代码质量/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-07-31T11:08:35.000Z" itemprop="datePublished">
-          2015-07-31
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/07/31/网络信息安全/">网络信息安全</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        微信支付的网络安全 - 王胜协议规则
-采用HTTPS传输
-POST提交
-MD5签名，请求和接收数据均需要校验签名，详见
-调用申请退款、撤销订单接口需要商户证书
-
-安全规范
-签名算法
-
-设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1&#x3D;value1&amp;key2&#x3D;value2…）拼接成字符串stringA。
-在string
-      
-      </p>
-      
-      <p>
-          <a href="/2015/07/31/网络信息安全/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-07-24T09:46:13.000Z" itemprop="datePublished">
-          2015-07-24
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/07/24/简单谈谈计算机网络/">简单谈谈计算机网络</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        RESTful API 设计介绍 - 曾铭WHAT
-API 概念
-其它方案 SOAP 等
-HTTP 无状态
-RESTful 概念 REpresentational State Transfer 表征性状态传输
-复用 HTTP 本身的协议定义
-带来的好处：通用，动词，code，缓存，安全
-
-例子BAD
-/getProduct
-/addProduct
-/deleteProduct
-/listProducts
-/productShop?pro
-      
-      </p>
-      
-      <p>
-          <a href="/2015/07/24/简单谈谈计算机网络/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-07-16T16:56:00.000Z" itemprop="datePublished">
-          2015-07-16
-      </time>
-    
-    
-    | 
-    <a href='/tags/研发杂谈/'>研发杂谈</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2015/07/17/研发路上的那些事儿/">研发路上的那些事儿</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        心酸研发路 - 杨志平
-大版本发布周期过长（原因：团队专业有限，探索前进，频繁修改），导致没有什么机会思考、设计，人也拖的身心疲惫
-引入架构思想，软件质量提高。后期频繁加入改动，冲淡架构
-老板干涉过多 导致：压力过大 质量无法保证
-老板高度重视UI
-
-研发路上的那些事儿 - 张超耀
-没有专业的移动端团队人员
-产品研发没有系统流程，走一步算一步
-需求人人可以改
-忙的时候忙的要死，闲的时候闲的蛋疼
-
-研发之路上的坑 - 潘君盲目相信自己,不
-      
-      </p>
-      
-      <p>
-          <a href="/2015/07/17/研发路上的那些事儿/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-07-10T15:51:00.000Z" itemprop="datePublished">
-          2015-07-10
-      </time>
-    
-</span>
-      <h2 class="post-title"><a href="/2015/07/10/微信公众号开发/">微信公众号开发</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        对于微信公众号开发的疑问
-微信公众点与自己服务器配对流程
-本地如何调试
-微信整体流程中用到的一些特殊协议?
-openId&#x2F;unionId 哪里查看
-access_token 为什么要有时间限制 为什么是2小时
-网页授权如何做的?能取到哪些信息?
-参加活动不关注 能拿到多少信息
-菜单type类型
-有哪些好的第三方开发工具包
-所有的活动行为全部调一个url 有没有好的分发解决方案
-
-公众号查询通讯录的实现 - 曾铭思路
-通讯录表 
-      
-      </p>
-      
-      <p>
-          <a href="/2015/07/10/微信公众号开发/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
   <nav class="pagination" role="pagination">
     <a class="newer-posts" href="/page/3/">← Newer Posts</a>
-    <span class="page-number">Page 4 of 5</span>
+    <span class="page-number">Page 4 of 6</span>
     <a class="older-posts" href="/page/5/">Older Posts →</a>
   </nav>
 </main>
