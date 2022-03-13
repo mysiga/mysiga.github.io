@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>前端入门（1） | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-12-02T10:30:00.000Z" itemprop="datePublished">
+          2015-12-02
+      </time>
+    
+</span>
+    <h1 class="post-title">前端入门（1）</h1>
+    <section class="post-content">
+      <h2 id="Ruby-on-Rails-初体验-王胜"><a href="#Ruby-on-Rails-初体验-王胜" class="headerlink" title="Ruby on Rails 初体验 - 王胜"></a>Ruby on Rails 初体验 - 王胜</h2><h3 id="使用命令行快速创建应用的步骤"><a href="#使用命令行快速创建应用的步骤" class="headerlink" title="使用命令行快速创建应用的步骤"></a>使用命令行快速创建应用的步骤</h3><ul>
+<li><p>创建应用程序</p>
+<pre><code class="Shell">$rails new hello -d mysql
+</code></pre>
+<p><strong>备注</strong> 这里演示使用mysql作为数据持久层</p>
+</li>
+<li><p>浏览hello world界面</p>
+<pre><code class="Shell">$cd hello
+$rake db:create RAILS_ENV=&#39;development&#39; // 创建开发数据库
+$bin/rails server
+</code></pre>
+<p><strong>备注</strong> 由于这里的rails版本是4.2.1，与msqyl2的最高版本有不兼容行，所以需要手动将Gemfile中mysql2降级。降级之后执行bundle install。</p>
+<pre><code>gem &#39;mysql2&#39; -&gt; gem &#39;mysql2&#39;, &#39;~&gt; 0.3.18&#39;
+</code></pre>
+</li>
+<li><p>使用脚手架，创建模型、数据迁移脚本以及控制器和试图</p>
+<pre><code class="Shell">$bin/rails generate scaffold Person name:string age:integer
+</code></pre>
+</li>
+<li><p>执行数据迁移</p>
+<pre><code class="Shell">$bin/rake db:migrate RAILS_ENV=development
+</code></pre>
+</li>
+<li><p>启动应用</p>
+<pre><code class="Shell">$bin/rails server
+</code></pre>
+</li>
+<li><p>浏览效果</p>
+<pre><code>http://localhost:3000/people
+</code></pre>
+</li>
+</ul>
+<p><strong>备注</strong></p>
+<p>此演示项目，ruby、gems和Rails的版本信息如下:</p>
+<ul>
+<li>ruby: 2.0.0p481</li>
+<li>rubygems: 2.4.5</li>
+<li>rails: 4.2.1</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://guides.rubyonrails.org/command_line.html">rubyonrails.org</a></li>
+</ul>
+<h2 id="矢量图在Android-上应用-王进"><a href="#矢量图在Android-上应用-王进" class="headerlink" title="矢量图在Android 上应用 - 王进"></a>矢量图在Android 上应用 - 王进</h2><h3 id="VectorDrawable"><a href="#VectorDrawable" class="headerlink" title="VectorDrawable"></a>VectorDrawable</h3><p>示例：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+        &lt;!--  intrinsic  size  of  the  drawable  --&gt;
+        android:height=&quot;300dp&quot;
+        android:width=&quot;300dp&quot;
+        &lt;!-- size of the virtual canvas --&gt;
+        android:viewportHeight=&quot;40&quot;
+        android:viewportWidth=&quot;40&quot;
+        &gt;
+        &lt;path android:fillColor=&quot;#ff00ff&quot;
+                android:pathData=&quot;M20.5,9.5
+                        c-1.955,0,-3.83,1.268,-4.5,3
+                        c-0.67,-1.732,-2.547,-3,-4.5,-3
+                        C8.957,9.5,7,11.432,7,14
+                        c0,3.53,3.793,6.257,9,11.5
+                        c5.207,-5.242,9,-7.97,9,-11.5
+                        C25,11.432,23.043,9.5,20.5,9.5z&quot;
+                /&gt;
+&lt;/vector&gt;
+</code></pre>
+<h3 id="SVG→Vector"><a href="#SVG→Vector" class="headerlink" title="SVG→Vector"></a>SVG→Vector</h3><p>Android并不原生支持读取常见的向量文件格式，如ＳＶＧ<br>（主要是缺少ｃｓｓ支持），但是支持相同路径数据语法，<br>所以ＳＶＧ资源需要经过一定的转换；</p>
+<h3 id="使用SVG-Path-Data"><a href="#使用SVG-Path-Data" class="headerlink" title="使用SVG Path Data"></a>使用SVG Path Data</h3><ul>
+<li>M： move to 移动绘制点</li>
+<li>L：line to 直线</li>
+<li>Z：close 闭合</li>
+<li>C：cubic bezier 三次贝塞尔曲线</li>
+<li>Q：quatratic bezier 二次贝塞尔曲线</li>
+<li>A：ellipse 圆弧</li>
+</ul>
+<blockquote>
+<p>每个命令都有大小写形式，大写代表后面的参数是绝对坐标，小写表示相对坐标。参数之间用空格或逗号隔开</p>
+</blockquote>
+<p><strong>命令详解：</strong></p>
+<ul>
+<li>M (x y) 移动到x,y</li>
+<li>L (x y) 直线连到x,y，还有简化命令H(x) 水平连接、V(y)垂直连接</li>
+<li>Z，没有参数，连接起点和终点</li>
+<li>C(x1 y1 x2 y2 x y)，控制点x1,y1 x2,y2，终点x,y</li>
+<li>Q(x1 y1 x y)，控制点x1,y1，终点x,y</li>
+<li>A(rx ry x-axis-rotation large-arc-flag sweep-flag x y) </li>
+<li>rx ry 椭圆半径 </li>
+<li>x-axis-rotation x轴旋转角度 </li>
+<li>large-arc-flag 为0时表示取小弧度，1时取大弧度 </li>
+<li>sweep-flag 0取逆时针方向，1取顺时针方向<br>  <img src="http://static.oschina.net/uploads/img/201510/01095231_IR6O.svg"></li>
+</ul>
+<p>详细参考：<a target="_blank" rel="noopener" href="http://www.w3.org/TR/SVG11/paths.html#PathData">http://www.w3.org/TR/SVG11/paths.html#PathData</a></p>
+<h3 id="Icon-Font"><a href="#Icon-Font" class="headerlink" title="Icon Font"></a>Icon Font</h3><p>解决矢量图低版本不兼容问题</p>
+<p>详细参考：<br>1,<a target="_blank" rel="noopener" href="http://blog.csdn.net/a345017062/article/details/46455745">http://blog.csdn.net/a345017062/article/details/46455745</a><br>2,<a target="_blank" rel="noopener" href="http://blog.csdn.net/goodlixueyong/article/details/41448483">http://blog.csdn.net/goodlixueyong/article/details/41448483</a></p>
+<h2 id="WordPress快速建站-–杨俊构"><a href="#WordPress快速建站-–杨俊构" class="headerlink" title="WordPress快速建站 –杨俊构"></a>WordPress快速建站 –杨俊构</h2><h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
+<li><p>服务器php套件（ Nginx+PHP7.0）： <a target="_blank" rel="noopener" href="http://www.upupw.net/">UPUPW绿色服务器</a></p>
+</li>
+<li><p>WordPress代码包：<a target="_blank" rel="noopener" href="https://cn.wordpress.org/">wordpress-4.3.1-zh_CN</a></p>
+</li>
+</ul>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ul>
+<li>配置服务器和数据库</li>
+</ul>
+<ol>
+<li>解压UPUPW_NP7.0-1511.7z 到本地目录</li>
+<li>打开解压包后的upupw.exe配置平台。<br>  <img src="http://7xohph.com1.z0.glb.clouddn.com/05120101.jpg"></li>
+<li>输入“S1”开启全部服务</li>
+<li>打开地址 <a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1/</a> 会看到UPUPWPHP探针页面<br>  <img src="http://7xohph.com1.z0.glb.clouddn.com/05120103.jpg"></li>
+<li>打开地址 <a target="_blank" rel="noopener" href="http://127.0.0.1/pmd/">http://127.0.0.1/pmd/</a> 配置mysql数据库（默认用户名密码都是root）</li>
+<li>新建数据库，用户名，密码</li>
+<li>打开地址 <a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1/</a> 使用数据库连接测试连接数据库是否正常</li>
+</ol>
+<ul>
+<li>安装配置wordpress</li>
+</ul>
+<ol>
+<li>解压wordpress-4.3.1-zh_CN.zip压缩包</li>
+<li>将wordpress文件夹拷贝到UPUPW发布根目录&#x2F;htdocs文件夹下</li>
+<li>打来地址<a target="_blank" rel="noopener" href="http://127.0.0.1/wordpress%EF%BC%8C%E6%A0%B9%E6%8D%AE%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85">http://127.0.0.1/wordpress，根据开始安装</a></li>
+<li>输入刚才配置的数据库名，用户名，密码，点击提交进行</li>
+<li>设置站点标题，后台登陆用户名，后台密码，邮件地址完成安装</li>
+<li>再次打开地址<a target="_blank" rel="noopener" href="http://127.0.0.1/wordpress%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90">http://127.0.0.1/wordpress测试安装完成</a><br> <img src="http://7xohph.com1.z0.glb.clouddn.com/05120105.jpg"></li>
+</ol>
+<h3 id="WordPress相关资源"><a href="#WordPress相关资源" class="headerlink" title="WordPress相关资源"></a>WordPress相关资源</h3><ul>
+<li><p>推荐主题 ：<a target="_blank" rel="noopener" href="http://www.weisay.com/blog/">威言威语</a>     <a target="_blank" rel="noopener" href="http://www.prower.cn/">prower</a></p>
+</li>
+<li><p>推荐插件 ： <a target="_blank" rel="noopener" href="http://duoshuo.com/">多说</a> （评论快速提交，文章聚合发布）   <a target="_blank" rel="noopener" href="http://developer.qiniu.com/download/index.html">七牛镜像存储wordpress 插件</a>     <a target="_blank" rel="noopener" href="http://www.youpzt.com/267.html">youpzt-optimizer</a>（网站优化工具）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.oschina.net/news/55174/nextapp-opensource">NextApp</a> —— 开源的WordPress手机博客 App 自动生成系统</p>
+</li>
+</ul>
+<h2 id="51offer-Android重构之Architecture-xpleemoon"><a href="#51offer-Android重构之Architecture-xpleemoon" class="headerlink" title="51offer Android重构之Architecture - xpleemoon"></a>51offer Android重构之Architecture - xpleemoon</h2><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><ul>
+<li>我们的app经历了一次重构，在重构过程中将IDE切换到Android Studio，并且编译脚本从Ant切换到了Gradle。</li>
+<li>不介绍IDE和Gradle的优势，主要介绍重构后app的Architecture相关部分。</li>
+</ul>
+<blockquote>
+<p>从0到1是一个开始，再从1到N又是另一个开始。</p>
+</blockquote>
+<h3 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h3><ul>
+<li>当前我们的结构主要为4层：<ol>
+<li>app</li>
+<li>core</li>
+<li>lib</li>
+<li>model</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X3.jpg" alt="project结构"></p>
+<ul>
+<li>app依赖core，而core依赖lib和model。随着以后的业务发展、产品迭代或者有更好的结构划分，会再做调整。</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X1.jpg" alt="module依赖"></p>
+<h3 id="app——展现层（presention）"><a href="#app——展现层（presention）" class="headerlink" title="app——展现层（presention）"></a>app——展现层（presention）</h3><ul>
+<li>用于页面展现，主要包含MVP模式中的VP。我们对V采用接口的方式去定义，然后让Activity或者Fragment去实现V接口，这样我们就达到接口编程的目的，P只需要关注V接口即可。以注册中的地区列表页面为例</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X4.jpg" alt="VP"></p>
+<ul>
+<li>V</li>
+</ul>
+<pre><code class="java">/**
+ * 地区view，MVP－V
+ */
+public interface IRegionView &#123;
+    /**
+     * 搜索更新
+     */
+    void search2Update();
+&#125;
+</code></pre>
+<ul>
+<li>P</li>
+</ul>
+<pre><code class="java">/**
+ * 国家地区，MVP－P
+ */
+public class RegionPresenter &#123;
+    private List&lt;Region&gt; mRegions = OFRRegionHelper.getRegions();
+
+    /**
+     * 获取地区列表
+     *
+     * @return
+     */
+    public List&lt;Region&gt; getRegions() &#123;
+        return mRegions;
+    &#125;
+
+    /**
+     * 搜索
+     *
+     * @param regionView
+     * @param searchRegion
+     */
+    public void search(@NonNull IRegionView regionView, String searchRegion) &#123;
+        mRegions.clear();
+        if (TextUtils.isEmpty(searchRegion)) &#123;
+            mRegions.addAll(OFRRegionHelper.getRegions());
+        &#125; else &#123;
+            mRegions.addAll(OFRRegionHelper.searchRegions(searchRegion));
+        &#125;
+        regionView.search2Update();
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>另外，我们的app有太多的业务逻辑，所以我们也使用了比较多的策略模式，方便以后的扩展和维护。比如不同的国家，它在意向单展现时就有不同的表现：<ul>
+<li>可以同时选择的最多意向单数量</li>
+<li>每个学校可以同时选择的最多专业数量 </li>
+<li>意向单名字</li>
+</ul>
+</li>
+<li>于是，我们就对此采用了策略模式</li>
+</ul>
+<p><img src="http://7xohph.com1.z0.glb.clouddn.com/X2.jpg" alt="国家意向单策略图"></p>
+<ul>
+<li>国家意向单策略接口</li>
+</ul>
+<pre><code class="java">/**
+ * 国家策略
+ * &lt;ul&gt;
+ * &lt;li&gt;不同国家可选的意向单数量不同，具体见&#123;@link #maxCount2Select()&#125;&lt;/li&gt;
+ * &lt;li&gt;不同国家的学校专业可选数量不同，具体见&#123;@link #maxCountOfPerSchool2Select()&#125;&lt;/li&gt;
+ * &lt;/ul&gt;
+ */
+public interface ICountryPurpose &#123;
+    /**
+     * 国家可以同时选择的最多意向单数量
+     *
+     * @return
+     */
+    int maxCount2Select();
+
+    /**
+     * 每个学校可以同时选择的最多专业数量
+     *
+     * @return
+     */
+    int maxCountOfPerSchool2Select();
+
+    /**
+     * 意向单名字，目前可用名字为：
+     * &lt;ol&gt;
+     * &lt;li&gt;专业&lt;/li&gt;
+     * &lt;li&gt;入学时间，当前只限日本&lt;/&gt;
+     * &lt;/ol&gt;
+     *
+     * @param ctx
+     * @return
+     */
+    String getName(@NonNull Context ctx);
+&#125;
+</code></pre>
+<h3 id="core"><a href="#core" class="headerlink" title="core"></a>core</h3><ul>
+<li>核心层，主要用于应用相关的URL拼接、图片加载、网络请求、json解析、第三方平台、配置和工具。</li>
+</ul>
+<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h3><ul>
+<li>通用库层，不依赖于应用的任何业务，方便快速的移植到其它项目.</li>
+</ul>
+<h3 id="model"><a href="#model" class="headerlink" title="model"></a>model</h3><ul>
+<li>数据层，作为MVP的M，用于应用的数据模型.</li>
+</ul>
+<h2 id="简单HTML5-吴明"><a href="#简单HTML5-吴明" class="headerlink" title="简单HTML5 吴明"></a>简单HTML5 吴明</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.17sucai.com/pins/demoshow/4583">烟火效果</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.html5tricks.com/demo/html5-css3-404-animation/index.html">404动画</a></li>
+<li><a target="_blank" rel="noopener" href="http://keleyi.com/keleyi/phtml/html5/31.htm">爱心树</a></li>
+<li>开发ide storm</li>
+<li>目录结构<ul>
+<li>dist:第三库存放地方，以下为存放指定文件类型目录<ul>
+<li>css</li>
+<li>js</li>
+<li>doc</li>
+<li>img</li>
+</ul>
+</li>
+<li><pre><code>src:项目指定文件类型目录
+</code></pre>
+<ul>
+<li>css</li>
+<li>js</li>
+<li>doc</li>
+<li>img</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简单代码</li>
+</ul>
+<pre><code>&lt;!--html5网页声明--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;mobile&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;!-- 此处还可以插入其他meta,样式单等信息--&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!--页面部分--&gt;
+&lt;p&gt;现实是残酷的,别做梦,从hello word开始吧!&lt;/p&gt;
+&lt;canvas id=&quot;canvas&quot;&gt;不支持html5&lt;/canvas&gt;
+
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    &lt;!-- 获取内容中id为canvas的元素--&gt;
+    var canvas = document.getElementById(&#39;canvas&#39;);
+//    获取canvas的环境,
+    var ctx = canvas.getContext(&#39;2d&#39;);
+//      填充的样式为红色
+    ctx.fillStyle = &#39;#ff0000&#39;;
+    ctx.st//    画一个矩形,位置x,y,w,h
+    ctx.fillRect(0, 0, 600, 100);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>参考链接<ul>
+<li><a target="_blank" rel="noopener" href="http://caniuse.com/">链接一</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">链接二</a></li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/12/02/前端入门（1）/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/12/02/前端入门（1）/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/12/02/前端入门（1）/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/12/11/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/">
+        ← 前端入门（2）
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/11/18/Android%E5%8A%A8%E7%94%BB/">
+        动画 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

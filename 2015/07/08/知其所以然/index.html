@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>知其所以然(10分钟解释一个和开发相关的原理) | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-07-07T23:04:29.000Z" itemprop="datePublished">
+          2015-07-07
+      </time>
+    
+</span>
+    <h1 class="post-title">知其所以然(10分钟解释一个和开发相关的原理)</h1>
+    <section class="post-content">
+      <h3 id="WEB-登录『原理』-曾铭"><a href="#WEB-登录『原理』-曾铭" class="headerlink" title="WEB 登录『原理』 - 曾铭"></a>WEB 登录『原理』 - 曾铭</h3><h4 id="Session-amp-cookie"><a href="#Session-amp-cookie" class="headerlink" title="Session &amp; cookie"></a>Session &amp; cookie</h4><ul>
+<li>HTTP 是无状态协议</li>
+<li>Session 服务器端简单存储</li>
+<li>cookie 客户端简单存储（注意：在请求头中）</li>
+</ul>
+<h4 id="密码如何存储"><a href="#密码如何存储" class="headerlink" title="密码如何存储"></a>密码如何存储</h4><ul>
+<li>明文存储</li>
+<li>md5 碰撞库破解  md5(pwd)</li>
+<li>md5+salt   md5(pwd+salt)  salt  pwd</li>
+<li>sha1……都能用，千万不要自己实现散列算法</li>
+</ul>
+<h4 id="一个登录的过程"><a href="#一个登录的过程" class="headerlink" title="一个登录的过程"></a>一个登录的过程</h4><ul>
+<li>明文密码</li>
+<li>session_id, access_token, token</li>
+<li>第三方登录：OAuth2, OpenID</li>
+</ul>
+<hr>
+<h3 id="iBeacon-潘君"><a href="#iBeacon-潘君" class="headerlink" title="iBeacon - 潘君"></a>iBeacon - 潘君</h3><ul>
+<li><p>BLE</p>
+<ul>
+<li>RSSI(Received Signal Strength Indicator)</li>
+<li>唯一标识码</li>
+<li>例:<a target="_blank" rel="noopener" href="http://detail.tmall.com/item.htm?spm=a1z10.1-b.w4004-3501608320.8.8JO7JE&id=22152768901"> 防丢器</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.brtbeacon.com/home/industry_solution.shtml">应用场景</a></p>
+<ul>
+<li>配合微信摇一摇</li>
+<li>商城导购</li>
+<li>地下停车库导航</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ibip/ibip_document/wiki/%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84">室内定位</a></p>
+<ul>
+<li>标签定位</li>
+<li>三角定位</li>
+<li>指纹定位</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="andoid虚拟机-吴明"><a href="#andoid虚拟机-吴明" class="headerlink" title="andoid虚拟机 - 吴明"></a>andoid虚拟机 - 吴明</h3><ul>
+<li><p>系统框架对比android vs ios</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/xyz_lmn/article/details/8907502">ios系统框架</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/royenhome/archive/2010/04/24/1719293.html">android系统框架</a></p>
+</li>
+<li><p>Dalvik虚拟机</p>
+<ul>
+<li>Dalvik虚拟机是Android程序的虚拟机，是Android中Java程序的运行基础。其指令集基于寄存器架构，执行其特有的文件格式——dex字节码来完成对象生命周期管理、堆栈管理、线程管理、安全异常管理、垃圾回收等重要功能。它的核心内容是实现库（libdvm.so），大体由C语言实现。依赖于Linux内核的一部分功能——线程机制、内存管理机制，能高效使用内存，并在低速CPU上表现出的高性能。每一个Android应用在底层都会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。</li>
+</ul>
+</li>
+<li><p>Android系统是以Linux系统为底层构建的，Android系统是开源(源代码公开)的，Android系统势必会适配到不同硬件配置的设备上，因此谷歌为了降低应用的开发难度在Linux底层之上构筑了一个名为“Dalvik”的虚拟机。</p>
+</li>
+<li><p>一个应用，一个虚拟机实例，一个进程！！！</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/andyxm/article/details/6126907/">android虚拟机详细</a></p>
+</li>
+<li><p>其他：</p>
+<ul>
+<li>ART模式:Android4.4中新加入的ART模式，该模式的完整名称是Androidruntime.</li>
+<li>ART：Android 4.4开始推出的新的运行环境，在APP安装的时候使用dex2oat工具直接把DEX文件转换为机器码文件，运行的时候以机器码方式运行，可以充分利用系统性能；此外，改进的内存回收机制使得ART运行模式下的内存回收速度只有Dalvik运行时模式下的50%，也能够提升系统运行速度。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏"><a href="#Android的Message-Pool是个什么鬼-源码角度分析-李仙鹏" class="headerlink" title="Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏"></a>Android的Message Pool是个什么鬼(源码角度分析) - 李仙鹏</h3><p>Android中，我们在线程之间通信传递通常采用Android的消息机制，而这机制传递的正是Message。</p>
+<p>通常，我们使用<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/Message.html#obtain()">Message.obtain()</a>和<a target="_blank" rel="noopener" href="http://developer.android.com/reference/android/os/Handler.html#obtainMessage()">Handler.obtainMessage()</a>从Message Pool中获取Message，避免直接构造Message。</p>
+<h4 id="Message-obtain-源码"><a href="#Message-obtain-源码" class="headerlink" title="Message.obtain()源码"></a>Message.obtain()源码</h4><pre><code>    /**
+     * Return a new Message instance from the global pool. Allows us to
+     * avoid allocating new objects in many cases.
+     */
+    public static Message obtain() &#123;
+        synchronized (sPoolSync) &#123;
+            if (sPool != null) &#123;
+                Message m = sPool;
+                sPool = m.next;
+                m.next = null;
+                m.flags = 0; // clear in-use flag
+                sPoolSize--;
+                return m;
+            &#125;
+        &#125;
+        return new Message();
+    &#125;
+</code></pre>
+<p>从代码片中，可以看到Message是直接由sPool赋值的。</p>
+<h4 id="Handler-obtain-源码"><a href="#Handler-obtain-源码" class="headerlink" title="Handler.obtain()源码"></a>Handler.obtain()源码</h4><pre><code>    /**
+     * Returns a new &#123;@link android.os.Message Message&#125; from the global message pool. More efficient than
+     * creating and allocating new instances. The retrieved message has its handler set to this instance (Message.target == this).
+     *  If you don&#39;t want that facility, just call Message.obtain() instead.
+     */
+    public final Message obtainMessage()
+    &#123;
+        return Message.obtain(this);
+    &#125;
+</code></pre>
+<p>Handler.obtain()最终还是调用Message.obtain()来获取的。</p>
+<h4 id="Message-Pool相关源码分析"><a href="#Message-Pool相关源码分析" class="headerlink" title="Message Pool相关源码分析"></a>Message Pool相关源码分析</h4><h5 id="Message-Pool数据结构"><a href="#Message-Pool数据结构" class="headerlink" title="Message Pool数据结构"></a>Message Pool数据结构</h5><pre><code>    // sometimes we store linked lists of these things
+    /*package*/ Message next;
+
+    private static final Object sPoolSync = new Object();
+    private static Message sPool;
+    private static int sPoolSize = 0;
+
+    private static final int MAX_POOL_SIZE = 50;
+
+    private static boolean gCheckRecycle = true;
+</code></pre>
+<p>从代码中可以很明确的看到，Message Pool的数据结构实际就是一个链表。sPool就是一个全局的消息池，sPoolSize记录链表长度，MAX_POOL_SIZE表示链表的最大长度为50。</p>
+<h5 id="Message-Pool如何存放Message"><a href="#Message-Pool如何存放Message" class="headerlink" title="Message Pool如何存放Message"></a>Message Pool如何存放Message</h5><pre><code>    /** @hide */
+    public static void updateCheckRecycle(int targetSdkVersion) &#123;
+        if (targetSdkVersion &lt; Build.VERSION_CODES.LOLLIPOP) &#123;
+            gCheckRecycle = false;
+        &#125;
+    &#125;
+
+    /**
+     * Return a Message instance to the global pool.
+     * &lt;p&gt;
+     * You MUST NOT touch the Message after calling this function because it has
+     * effectively been freed.  It is an error to recycle a message that is currently
+     * enqueued or that is in the process of being delivered to a Handler.
+     * &lt;/p&gt;
+     */
+    public void recycle() &#123;
+        if (isInUse()) &#123;
+            if (gCheckRecycle) &#123;
+                throw new IllegalStateException(&quot;This message cannot be recycled because it &quot;
+                        + &quot;is still in use.&quot;);
+            &#125;
+            return;
+        &#125;
+        recycleUnchecked();
+    &#125;
+
+    /**
+     * Recycles a Message that may be in-use.
+     * Used internally by the MessageQueue and Looper when disposing of queued Messages.
+     */
+    void recycleUnchecked() &#123;
+        // Mark the message as in use while it remains in the recycled object pool.
+        // Clear out all other details.
+        flags = FLAG_IN_USE;
+        what = 0;
+        arg1 = 0;
+        arg2 = 0;
+        obj = null;
+        replyTo = null;
+        sendingUid = -1;
+        when = 0;
+        target = null;
+        callback = null;
+        data = null;
+
+        synchronized (sPoolSync) &#123;
+            if (sPoolSize &lt; MAX_POOL_SIZE) &#123;
+                next = sPool;
+                sPool = this;
+                sPoolSize++;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<p>从代码分析上看，消息池存放的核心方法就是上面的recycleUnchecked()方法：</p>
+<blockquote>
+<p>1、将待回收的Message对象字段置空（避免因Message过大，使静态的消息池内存泄漏）。</p>
+<p>2、以内置锁对方式（线程安全），判断当前线程池的大小是否小于50。若小于50，直接将mesaage插入到消息池链表尾部；若大于等于50，则直接丢弃掉，交由GC管理。</p>
+</blockquote>
+<hr>
+<h3 id="消费者心理学：三个趣味经济学原理-–-张超耀"><a href="#消费者心理学：三个趣味经济学原理-–-张超耀" class="headerlink" title="消费者心理学：三个趣味经济学原理 – 张超耀"></a><a target="_blank" rel="noopener" href="http://i.wshang.com/Post/Default/Index/pid/32949.html">消费者心理学：三个趣味经济学原理</a> – 张超耀</h3><ul>
+<li>价格越低为什么不但不好卖，反而价格越高越好卖</li>
+<li>为什么大手大脚的浪费反而可以拯救经济？</li>
+<li>为什么免费未必就是最好的</li>
+</ul>
+<p>这些经济学原理背后又有哪些逻辑在支撑，让我去探讨一下这些好玩的经济学吧。</p>
+<h4 id="价格越高越好卖——虚荣效应"><a href="#价格越高越好卖——虚荣效应" class="headerlink" title="价格越高越好卖——虚荣效应"></a>价格越高越好卖——虚荣效应</h4><ul>
+<li><p>富人们一般不喜欢大众模仿他们的消费行为，这种情况就叫做虚荣效应(snob effect)。虚荣效应具体是指购买商品的时候追求与众不同的个性的现象。</p>
+</li>
+<li><p>虚荣效应主要有以下两种表现。</p>
+<ul>
+<li><p>高档商品刚上市的时候迅速购买。这是因为，在这一瞬间并不是每个人都能享受到消费高档商品的荣誉。</p>
+</li>
+<li><p>不论之前如何热情赞美的商品，一旦其市场占有率达到一般大众都可以消费的水平就不再继续购买。这是因为人人都能购买使用的商品既不会让人感到荣誉，也不会有高档的感觉。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="大手大脚的浪费能拯救经济——节约悖论"><a href="#大手大脚的浪费能拯救经济——节约悖论" class="headerlink" title="大手大脚的浪费能拯救经济——节约悖论"></a>大手大脚的浪费能拯救经济——节约悖论</h4><ul>
+<li><p>我们都知道，如果消费超过收入，就没有余钱可以储蓄，也就无法积累资金，最终只能过贫穷的生活。所以，为了成为富人我们会努力工作，有时候也会变成小气鬼，为了能储蓄更多钱而努力。</p>
+</li>
+<li><p>这个原理对于个人是适用的，但是对于国家整体经济是否也适用呢？如果所有国民都变成小气鬼，这个国家真的能够变得更加富强吗？答案是否定的，尤其是在经济不景气的时候。让我们看看其原因何在。</p>
+</li>
+<li><p>一旦经济进入不景气，基于对未来的担忧，人们会选择更多的储蓄进而减少消费。可是如果所有人都减少消费的话，企业的销售额就会降低，库存就会增加。随之而来的是企业只能降低生产减少雇用，而企业员工的收入就会减少。那么，对未来的担忧就会强化，人们会更加坚定地减少消费增加储蓄，于是整体经济就会陷入愈发不景气的恶性循环中。</p>
+</li>
+</ul>
+<h4 id="免费未必就好——免费经济学"><a href="#免费未必就好——免费经济学" class="headerlink" title="免费未必就好——免费经济学"></a>免费未必就好——免费经济学</h4><ul>
+<li><p>“世上没有免费的午餐”是1976年获得诺贝尔经济学奖的着名经济学家米尔顿弗里德曼(Milton Friedman)常说的一句话。</p>
+</li>
+<li><p>有的信息粗看之下似乎是免费的，实际上经过了解后发现并不是免费的意思；或者可以解释为免费后面隐藏着某种诱饵，还可以理解为不要期待不付出代价的免费东西。就像“免费的奶酪只存在于捕鼠器上”的俄罗斯谚语一样，对免费的东西保持警惕是亘古不变的道理。</p>
+</li>
+<li><p>看看我们周围，就能发现很多免费营销，地铁站前的免费报纸就是其中一种。曾经威胁到日报和体育报纸的免费报纸因为有很多读者，所以可以从广告收入上获得高收益。人气差的免费报纸会因为得不到足够的广告收入而被淘汰，这样的话，幸存下来的免费报纸就可以逐步占据更加有利的位置。越是资金实力雄厚的公司，在这种免费竞争中能够生存下来的概率就越大。因此，消费者也可能会面临因为垄断招致的损失。</p>
+</li>
+<li><p>免费经济市场的另一个弊端就是对资源的浪费。以免费报纸为例，因为免费派发给消费者，所以新闻纸会被大量浪费掉。大量生产大量消费的体制会导致能源的过度使用而招致地球变暖势头的加速。”</p>
+</li>
+</ul>
+<hr>
+<h3 id="Icon制作-杨志平"><a href="#Icon制作-杨志平" class="headerlink" title="Icon制作 - 杨志平"></a>Icon制作 - 杨志平</h3><img width="487" alt="qq20150707-6 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542711/2952b918-24ca-11e5-8dda-f42e42f57e72.png">
+<img width="568" alt="qq20150707-11 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542720/2987624e-24ca-11e5-8380-658f9fc08f24.png">
+
+<p>####51offer的Icon的流程<br><img width="491" alt="qq20150707-1 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542715/29552c5c-24ca-11e5-9849-bd352ede57f4.png"><br><img width="497" alt="qq20150707-2 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542712/2952ba3a-24ca-11e5-85b7-0149e855e0cd.png"><br><img width="493" alt="qq20150707-3 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542713/2952e118-24ca-11e5-9128-f30ac093e8f4.png"><br><img width="493" alt="qq20150707-4 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542716/29557bf8-24ca-11e5-8869-afc7972ac5bf.png"><br><img width="492" alt="qq20150707-5 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542714/2952e884-24ca-11e5-8ade-4f3a69c19df4.png"></p>
+<h4 id="另一个Icon的制作的流程"><a href="#另一个Icon的制作的流程" class="headerlink" title="另一个Icon的制作的流程"></a>另一个Icon的制作的流程</h4><img width="589" alt="qq20150707-7 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542721/29879a5c-24ca-11e5-85a0-535bf058fa62.png">
+<img width="573" alt="qq20150707-8 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542718/29855f58-24ca-11e5-83b2-e5d4e679f543.png">
+<img width="586" alt="qq20150707-9 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542717/29851a3e-24ca-11e5-8eab-3d5703d032ea.png">
+<img width="578" alt="qq20150707-10 2x" src="https://cloud.githubusercontent.com/assets/9360037/8542719/2986620e-24ca-11e5-9686-6fad2780ab63.png">
+
+
+<h3 id="Android-动画制作-王胜"><a href="#Android-动画制作-王胜" class="headerlink" title="Android 动画制作 - 王胜"></a>Android 动画制作 - 王胜</h3><h4 id="View-Animation"><a href="#View-Animation" class="headerlink" title="View Animation"></a>View Animation</h4><ul>
+<li>AlphaAnimation 淡入淡出效果</li>
+<li>TranslateAnimation 移动效果</li>
+<li>ScaleAnimation 缩放效果</li>
+<li>RotateAnimation 旋转效果</li>
+</ul>
+<p>原理：提供动画的起始和结束状态信息，中间的状态根据上述类里差值器算法填充<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html">[示例参考]</a></p>
+<h4 id="Property-Animation"><a href="#Property-Animation" class="headerlink" title="Property Animation"></a>Property Animation</h4><p>View Animation动画比较简单，一般都是单个因素的变化，如果牵扯到复杂的动画，就显得力不从心。因此，Android 3.0 引入了属性动画。注：可通过<a target="_blank" rel="noopener" href="http://nineoldandroids.com/">[NineOldAndroids]</a>项目在3.0之前的系统中使用Property Animation</p>
+<p>原理：暴露出差值算法的回调方法，有工程师自己发挥想象，造出奇妙的动画效果。<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html">[示例参考]</a></p>
+<h4 id="Drawable-Animation"><a href="#Drawable-Animation" class="headerlink" title="Drawable Animation"></a>Drawable Animation</h4><h5 id="逐帧动画"><a href="#逐帧动画" class="headerlink" title="逐帧动画"></a>逐帧动画</h5><p>原理：提供动画每个帧上的图片资源，顺序播放<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/angeldevil/archive/2011/12/02/2271096.html">[示例参考]</a></p>
+<h5 id="ClipDrawable-剪切动画"><a href="#ClipDrawable-剪切动画" class="headerlink" title="ClipDrawable 剪切动画"></a>ClipDrawable 剪切动画</h5><p>原理：提供一个背景图片，前景图片是一个ClipDrawable对象。通过线程操作ClipDrawable的剪切进度。</p>
+<p>实例：</p>
+<ul>
+<li>ClipDrawable 定义xml文件</li>
+</ul>
+<pre><code class="XML">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;clip xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:clipOrientation=&quot;vertical&quot;
+    android:drawable=&quot;@drawable/loading_progress&quot;
+    android:gravity=&quot;bottom&quot;&gt;
+&lt;/clip&gt;
+</code></pre>
+<ul>
+<li>组件引用</li>
+</ul>
+<pre><code class="XML">&lt;ImageView
+        android:id=&quot;@+id/iv&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:scaleType=&quot;centerInside&quot;
+        android:paddingTop=&quot;5dp&quot;
+        android:paddingLeft=&quot;5dp&quot;
+        android:background=&quot;@drawable/loading_bg&quot;
+        android:src=&quot;@drawable/clip_loading&quot;/&gt;
+</code></pre>
+<ul>
+<li>线程动态改变剪切进度</li>
+</ul>
+<pre><code class="Java">private Handler handler = new Handler() &#123;
+    @Override
+    public void handleMessage(Message msg) &#123;
+        // 如果消息是本程序发送的
+        if (msg.what == MSG_WHAT) &#123;
+            mClipDrawable.setLevel(mProgress);
+        &#125;
+    &#125;
+&#125;;
+.......
+Runnable mRunnable = new Runnable() &#123;
+    @Override
+    public void run() &#123;
+        isRunning = true;
+        while (isRunning) &#123;
+            handler.sendEmptyMessage(MSG_WHAT);
+            if (mProgress &gt; MAX_PROGRESS) &#123;
+                mProgress = 0;
+            &#125;
+            mProgress += 100;
+            try &#123;
+                Thread.sleep(18);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;;
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/07/08/知其所以然/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/07/08/知其所以然/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/07/08/知其所以然/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/07/10/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/">
+        ← 微信公众号开发
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/06/27/%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%92%8C%E5%90%8C%E6%AD%A5/">
+        扯扯线程并发和同步的那些事 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

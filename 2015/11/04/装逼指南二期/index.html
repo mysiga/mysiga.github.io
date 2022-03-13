@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>周精益分享 - 程序员装逼指南二期 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-11-04T10:30:00.000Z" itemprop="datePublished">
+          2015-11-04
+      </time>
+    
+</span>
+    <h1 class="post-title">周精益分享 - 程序员装逼指南二期</h1>
+    <section class="post-content">
+      <h2 id="Android-单元测试-吴明"><a href="#Android-单元测试-吴明" class="headerlink" title="Android 单元测试  吴明"></a>Android 单元测试  吴明</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/activity-testing/preparing-activity-testing.html">Android单元测试支持</a><ul>
+<li>Android studio 1.2 beta3版本，原生支持单元测试</li>
+</ul>
+</li>
+<li>环境搭建 <ul>
+<li>配置环境命令：.&#x2F;gradlew build connectedCheck</li>
+</ul>
+</li>
+<li>测试示例    <ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/420E036F-4D69-47F4-A639-5A5B294F7BDD.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+</ul>
+<pre><code>public class MyFirstTestActivityTest extends ActivityInstrumentationTestCase2&lt;MyFirstTestActivity&gt; &#123;
+
+    private MyFirstTestActivity mFirstTestActivity;
+    private TextView mFirstTestText;
+
+    public MyFirstTestActivityTest() &#123;
+        super(MyFirstTestActivity.class);
+    &#125;
+
+    @Override
+    protected void setUp() throws Exception &#123;
+        super.setUp();
+        mFirstTestActivity = getActivity();
+        mFirstTestText =
+                (TextView) mFirstTestActivity
+                .findViewById(R.id.my_first_test_text_view);
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>ps:由于配置环境一直报:</li>
+</ul>
+<pre><code>Test running failed: Instrumentation run failed due to &#39;java.lang.RuntimeException&#39;
+</code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/testing/ui-testing/index.html">Automating UI Tests</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html">Building Effective Unit Tests</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/intl/zh-cn/training/testing/performance.html">Testing Display  Performance</a></li>
+<li>问题：<ul>
+<li>运行在模拟器上，通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+<li>测试的编写和维护较为困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux-文件权限入门-曾铭"><a href="#Linux-文件权限入门-曾铭" class="headerlink" title="Linux 文件权限入门 - 曾铭"></a>Linux 文件权限入门 - 曾铭</h2><h3 id="一个线上-bug"><a href="#一个线上-bug" class="headerlink" title="一个线上 bug"></a>一个线上 bug</h3><p>图片上传 API 无法使用，定位到问题是 dev1 帐号移动的 tomcat 无法访问 &#x2F;home&#x2F;img_temp 目录，处理权限问题后搞定</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>user, group, others</p>
+<pre><code>[dev1@apps-51offer ~]$ ll
+total 16
+-rw-r--r-- 1 dev1 dev   742 Nov  5 11:22 ming.pub
+drwxrwx--- 4 root root 4096 Nov  6 09:30 test1
+drwxr-xr-- 2 dev1 dev  4096 Nov  6 10:44 test2
+drwxr-xr-x 2 dev1 dev  4096 Nov  6 09:30 test3
+</code></pre>
+<ul>
+<li>文件 <code>-</code></li>
+<li>文件夹 <code>d</code></li>
+<li>链接 <code>l</code></li>
+</ul>
+<p>rwx 读、写、执行权限 , 754 代表什么</p>
+<ul>
+<li>文件所有者变更：<code>chown ming:mobile file</code></li>
+<li>文件权限变更： <code>chmod g+rx file</code></li>
+</ul>
+<h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><h4 id="问："><a href="#问：" class="headerlink" title="问："></a>问：</h4><blockquote>
+<p><code>drwxr-xr-- 2 dev1 dev  4096 Nov  6 10:44 test2</code> 文件夹下有 <code>-rwxr-xr-- 2 root root  4096 Nov  6 10:44 file</code><br>dev1 用户可以删除 file 这个文件吗？</p>
+</blockquote>
+<h4 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h4><blockquote>
+<p>可以，文件的 rwx 控制文件本身的读写运行权限，文件的增删文件名的修改要看文件夹的权限。</p>
+</blockquote>
+<p>##Android 压力测试工具 Monkey&amp;MonkeyRunner- 杨俊构<br>###Monkey</p>
+<h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a>一、Monkey 是什么？</h4><ul>
+<li>Monkey 就是SDK中附带的一个工具。</li>
+</ul>
+<h4 id="二、Monkey-测试的目的？"><a href="#二、Monkey-测试的目的？" class="headerlink" title="二、Monkey 测试的目的？"></a>二、Monkey 测试的目的？</h4><ul>
+<li>该工具用于进行压力测试。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</li>
+</ul>
+<h4 id="三、Monkey-测试的特点？"><a href="#三、Monkey-测试的特点？" class="headerlink" title="三、Monkey 测试的特点？"></a>三、Monkey 测试的特点？</h4><ul>
+<li>Monkey 测试,所有的事件都是随机产生的，不带任何人的主观性。</li>
+</ul>
+<h4 id="四、Monkey-命令详解"><a href="#四、Monkey-命令详解" class="headerlink" title="四、Monkey 命令详解"></a>四、Monkey 命令详解</h4><ul>
+<li><p>标准的monkey 命令: [adb shell] monkey [options] <eventcount> ,</p>
+<blockquote>
+<p> 例如：adb shell monkey -v 500 ——–产生500次随机事件，</p>
+</blockquote>
+</li>
+<li><p>四大类—— 常用选项 、 事件选项 、 约束选项 、 调试选项</p>
+<blockquote>
+<p>-v：指定打印信息的详细级别，一个 -v增加一个级别 ， 默认级别为 0 。</p>
+<p>-s：指定产生随机事件种子值，相同的种子值产生相同的事件序列。如： -s 200</p>
+<p>-p：指定有效的package（如不指定，则对系统中所有package有效），一个-p 对应一个有效package， 如：-p com.ckt -p com.ckt.asura；</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="五、一个简单的monkey命令："><a href="#五、一个简单的monkey命令：" class="headerlink" title="五、一个简单的monkey命令："></a>五、一个简单的monkey命令：</h4><ul>
+<li><p>adb shell monkey -p com.xy.android.junit -s 500 -v 10000</p>
+</li>
+<li><p>但是，工作中为了保证测试数量的完整进行，我们一般不会在发生错误时立刻退出压力测试。</p>
+</li>
+<li><p>monkey 测试命令如下</p>
+</li>
+</ul>
+<blockquote>
+<p>adb shell monkey -p com.xy.android.junit -s 500 –ignore-crashes –ignore-timeouts –monitor-native-crashes -v -v 10000 &gt; E:\monkey_log\java_monkey_log.txt</p>
+</blockquote>
+<p>###MonkeyRunner<br>####一、什么是monkeyrunner</p>
+<ul>
+<li><p>monkeyrunner工具提供了一个API，使用此API写出的程序可以在Android代码之外控制Android设备和模拟器。通过monkeyrunner，您可以写出一个Python程序去安装一个Android应用程序或测试包，运行它，向它发送模拟击键，截取它的用户界面图片。</p>
+</li>
+<li><p>monkeyrunner工具的主要设计目的是用于测试功能&#x2F;框架水平上的应用程序和设备，或用于运行单元测试套件，但您当然也可以将其用于其它目的。</p>
+</li>
+</ul>
+<h4 id="二、monkeyrunner工具同Monkey工具的差别"><a href="#二、monkeyrunner工具同Monkey工具的差别" class="headerlink" title="二、monkeyrunner工具同Monkey工具的差别"></a>二、monkeyrunner工具同Monkey工具的差别</h4><ul>
+<li><p>Monkey： Monkey工具直接运行在设备或模拟器的adb shell中，生成用户或系统的伪随机事件流，属于黑盒测试。</p>
+</li>
+<li><p>monkeyrunner：monkeyrunner工具则是类似于灰盒测试的样子，可以编写定制一些测试方法和用例针对具体情况测试。</p>
+</li>
+</ul>
+<h4 id="三、实例-：双11抽取优惠券不停点击一个按钮脚本"><a href="#三、实例-：双11抽取优惠券不停点击一个按钮脚本" class="headerlink" title="三、实例 ：双11抽取优惠券不停点击一个按钮脚本"></a>三、实例 ：双11抽取优惠券不停点击一个按钮脚本</h4><pre><code class="python">#coding=utf-8 
+from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice, MonkeyImage
+from com.android.monkeyrunner import MonkeyRunner as mr
+from com.android.monkeyrunner import MonkeyDevice as md
+from com.android.monkeyrunner import MonkeyImage as mi
+device=mr.waitForConnection()
+for i in range(1000): 
+    MonkeyRunner.sleep(1)
+    print i
+    device.touch(500,950,&#39;DOWN_AND_UP&#39;)
+print &quot;end&quot;
+</code></pre>
+<p>##人脸识别技术简单介绍- 王进</p>
+<h4 id="Android自带的API-FaceDetector"><a href="#Android自带的API-FaceDetector" class="headerlink" title="Android自带的API:FaceDetector"></a>Android自带的API:FaceDetector</h4><ul>
+<li><p>Step 1: 读取bitmap图片（API 只接受Bitmap）</p>
+<pre><code>Bitmap sampleBmp=BitmapFactory.decodeResource(getResources(), R.drawable.sample1);
+</code></pre>
+<p>  (拍照或者从相册中也可以)</p>
+</li>
+<li><p>Step 2: 通过FaceDetector API进行人脸识别</p>
+<pre><code>//FaceDetecor只能读取RGB 565格式的Bitmap
+Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, true);
+//新建FaceDetector 实例，
+FaceDetector faceDet = new FaceDetector(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);//MAX_FACES 搜索人脸个数
+// 调用findFaces方法，将数据储存在facelist中
+FaceDetector.Face[] faceList = new FaceDetector.Face[MAX_FACES];
+faceDet.findFaces(tmpBmp, faceList);
+</code></pre>
+<blockquote>
+<p>找人脸的原理是：找眼睛。<br>  它返回的人脸数据face中，<br>  通过调用public float eyesDistance ()，得到眼距<br>  public void getMidPoint (PointF point)，得到两眼中心点位置。<br>  public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高</p>
+</blockquote>
+</li>
+<li><p>Step3:对原图进行缩放，并在图上显示人脸框</p>
+</li>
+<li><p>吐槽：<br> A，只能接受Bitmap 格式的数据；<br> B，只能识别双眼距离大于20 像素的人脸像（当然，这个可在framework层中修改）；<br> C，只能检测出人脸的位置（双眼的中心点及距离），不能对人脸进行匹配（查找指定的脸谱）。</p>
+</li>
+</ul>
+<p>###第三方Face++</p>
+<ul>
+<li>在线API：基础版API供免费调用测试和小规模使用（会尽力维护API服务稳定性，但不保证每次调用均会成功），企业版API相对基础版API在算法和稳定性方面会有更好的表现</li>
+<li>离线SDK包括人脸关键点定位等功能。</li>
+<li>网址：<a target="_blank" rel="noopener" href="http://www.faceplusplus.com.cn/">http://www.faceplusplus.com.cn/</a></li>
+</ul>
+<h2 id="Android启动模式之singelTask扫盲－-李仙鹏"><a href="#Android启动模式之singelTask扫盲－-李仙鹏" class="headerlink" title="Android启动模式之singelTask扫盲－ 李仙鹏"></a>Android启动模式之singelTask扫盲－ 李仙鹏</h2>
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/11/04/装逼指南二期/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/11/04/装逼指南二期/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/11/04/装逼指南二期/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/11/13/Swift%E5%85%A5%E9%97%A8%E4%B8%93%E9%A2%98/">
+        ← Swift入门专题
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/10/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%A3%85%E9%80%BC%E6%8C%87%E5%8D%97/">
+        周精益分享 - 程序员装逼指南 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Swift入门专题 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-11-13T10:30:00.000Z" itemprop="datePublished">
+          2015-11-13
+      </time>
+    
+</span>
+    <h1 class="post-title">Swift入门专题</h1>
+    <section class="post-content">
+      <h2 id="Swift初见-–-张超耀"><a href="#Swift初见-–-张超耀" class="headerlink" title="Swift初见 – 张超耀"></a>Swift初见 – 张超耀</h2><h3 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h3><pre><code>// in objective-c, but in swift, #define can&#39;t be used any more  
+// use let keyword to define a macro, look up original document:  
+/*  
+Simple Macros  
+Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead. For example, the constant definition #define FADE_ANIMATION_DURATION 0.35 can be better expressed in Swift with let FADE_ANIMATION_DURATION = 0.35. Because simple constant-like macros map directly to Swift global variables, the compiler automatically imports simple macros defined in C and Objective-C source files.  
+*/  
+// in objective-c  
+// #define kCommonAPI @&quot;http://xxxxxxx&quot;  
+// but in swift, no #define, just use let to define  
+let kCommonAPI = &quot;http://xxxxxxx&quot;
+</code></pre>
+<h3 id="注释-amp-分号"><a href="#注释-amp-分号" class="headerlink" title="注释 &amp; 分号"></a>注释 &amp; 分号</h3><ul>
+<li>在Swift中，注释跟C&#x2F;OC语言中的注释很像，但最大的不同点就是在Swift中多行注释可以嵌套</li>
+</ul>
+<pre><code>// 这是单行注释  
+  
+/* 这也是注释，但是多行注释   
+  /*多行注释在swift中是可以嵌套的*/  
+  /*原官方指导教程上说嵌套多行注释可以快速、简单地把大的代码块分成多块来注释 */  
+*/ 
+</code></pre>
+<ul>
+<li>与其它开发语言不同的时，swift是不要求写分号的，当然如果想写，也是可以的。当你想把多个语句写到同一行时，这种情况下就一定要使用分号来隔开不同的语句了</li>
+</ul>
+<pre><code>let dog = &quot;a gog&quot; // 可以不添加分号  
+let cat = &quot;a cat&quot;; print(cat)// 除了最后一条语句可以不添加分号外，其它都需要添加分号来隔开  
+let catTwo = &quot;two cats&quot;; let name = &quot;Jobs&quot;; print(&quot;\(name) has \(catTwos)&quot;)  
+</code></pre>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
+<li>Swift不会像C、OC那样自动<strong>隐式转换</strong>类型，所以我们需要手动进行类型转换</li>
+</ul>
+<pre><code>let twoThousand: UInt16 = 2000   
+// one是UInt8类型  
+let one: UInt8 = 1  
+// twoThousand是UInt16类型，one是UInt8类型，如果要执行相加，那么就需要进行类型转换   
+// 否则会报错的。  
+let twoThousandAndOne = twoThousand + UInt16(one) 
+
+** 浮点值转换成整型时，会截尾**
+</code></pre>
+<h3 id="类型别名-Typealias"><a href="#类型别名-Typealias" class="headerlink" title="类型别名(Typealias)"></a>类型别名(Typealias)</h3><ul>
+<li>类型别名也就是给已经存在的类型起一个别名。定义类型别名是使用关键字typealias。 类型别名一般是为了让开发者更容易看出变量或者常量的类型或者是更好地归类某一个模块中需要使用到的类型，让开发者见名知意。</li>
+</ul>
+<pre><code>// 下面是给UInt16起一个别名，叫mySample  
+// 然后就可以在其它地方使用这个mySample声明变量或者常量  
+typealias mySample = UInt16  
+  
+// 由于前面已经定义了类型别名，那么这里使用AudioSample也相当于使用UInt16  
+所以mySample.min = UInt16.min,也就是0 
+var maxAmplitudeFound = mySample.min  
+</code></pre>
+<h3 id="“-”-和-“-”"><a href="#“-”-和-“-”" class="headerlink" title="“?” 和 “!”"></a>“?” 和 “!”</h3><ul>
+<li>Swift语言使用var定义变量，但和别的语言不同，Swift里不会自动给变量赋初始值， 也就是说变量不会有默认值，所以要求使用变量之前必须要对其初始化<br>。如果在使用变量之前不进行初始化就会报错.</li>
+</ul>
+<pre><code>var stringValue : String?
+stringValue = nil
+print(&quot;\(stringValue)&quot;)
+let hashValue = stringValue?.hashValue
+
+// 这就是optional, strValue自动得到默认值：nil
+// 这个nil跟Objective-C中的nil不同，不是指针，而是表示值不存在。
+var strValue: String?
+
+// 判断optional是否有值
+if (strValue != nil) &#123;
+    // do what you need to do here
+&#125;
+</code></pre>
+<p>##下期预告</p>
+<h3 id="深度理解Swift的”-”和”-”"><a href="#深度理解Swift的”-”和”-”" class="headerlink" title="深度理解Swift的”?”和”!”"></a>深度理解Swift的”?”和”!”</h3><h3 id="Swift之断言"><a href="#Swift之断言" class="headerlink" title="Swift之断言"></a>Swift之断言</h3><h3 id="浅谈Swift的closure"><a href="#浅谈Swift的closure" class="headerlink" title="浅谈Swift的closure"></a>浅谈Swift的closure</h3><h2 id="Dubbo-上手-–-陈奎"><a href="#Dubbo-上手-–-陈奎" class="headerlink" title="Dubbo 上手 – 陈奎"></a>Dubbo 上手 – 陈奎</h2><h2 id="『图像和滤镜』-图像选择器"><a href="#『图像和滤镜』-图像选择器" class="headerlink" title="『图像和滤镜』 - 图像选择器"></a>『图像和滤镜』 - 图像选择器</h2><p><code>我们可以使用以下常规的图像获取方式</code></p>
+<p>![Alt text](.&#x2F;Simulator Screen Shot Nov 12, 2015, 8.11.12 PM.png)</p>
+<p><code>图库与相册</code></p>
+<p>![Alt text](.&#x2F;Simulator Screen Shot Nov 12, 2015, 8.16.30 PM.png)</p>
+<h4 id="系统自带"><a href="#系统自带" class="headerlink" title="系统自带"></a>系统自带</h4><pre><code class="swift">override func touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) &#123;
+    
+    let sheet = UIAlertController(title: &quot;图片选择&quot;, message: &quot;简单版的三种选择&quot;, preferredStyle: .ActionSheet)
+    // 判断设备是否支持相机（iPod &amp; Simulator）
+    if (UIImagePickerController.isSourceTypeAvailable(.Camera)) &#123;
+        sheet.addAction(UIAlertAction.init(title: &quot;Camera&quot;, style: .Default, handler: &#123; _ in
+            self.showPhotoes(.Camera)
+        &#125;))
+    &#125;
+    sheet.addAction(UIAlertAction.init(title: &quot;PhotoLibrary&quot;, style: .Default, handler: &#123; _ in
+        self.showPhotoes(.PhotoLibrary)
+    &#125;))
+    sheet.addAction(UIAlertAction.init(title: &quot;SavedPhotosAlbum&quot;, style: .Default, handler: &#123; _ in
+        self.showPhotoes(.SavedPhotosAlbum)
+    &#125;))
+    sheet.addAction(UIAlertAction.init(title: &quot;Cancel&quot;, style: .Cancel, handler: nil))
+    presentViewController(sheet, animated: true, completion: nil)
+&#125;
+</code></pre>
+<pre><code>func showPhotoes(source: UIImagePickerControllerSourceType) &#123;
+    let controller = UIImagePickerController()
+    controller.delegate = self
+    controller.sourceType = source
+    controller.allowsEditing = source == .SavedPhotosAlbum ? true:false
+
+    self.presentViewController(controller, animated: true, completion: nil)
+&#125;
+</code></pre>
+<p><code>UIImagePickerController的代理</code></p>
+<pre><code>func imagePickerControllerDidCancel(picker: UIImagePickerController) &#123;
+    dismissViewControllerAnimated(true, completion: nil)
+&#125;
+// 非常坑，这个方法废弃了但代码提示只有它
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) &#123;
+//    &#125;
+func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) &#123;
+&#125;
+</code></pre>
+<p>#####<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImagePickerControllerDelegate_Protocol/#//apple_ref/doc/constant_group/Editing_Information_Keys">info字典介绍</a></p>
+<pre><code>UIImagePickerControllerMediaType: String
+UIImagePickerControllerOriginalImage: UIImage
+UIImagePickerControllerEditedImage: UIImage
+UIImagePickerControllerCropRect: NSValue -&gt; CGRect
+// MediaURL只为视频提供
+UIImagePickerControllerMediaURL:  NSURL
+// LivePhoto是一张图片，保留那个moment的前后动作和声音
+UIImagePickerControllerLivePhoto: String
+// 摄像摄影时返回media的信息字典
+UIImagePickerControllerMediaMetadata: NSDictionary
+</code></pre>
+<pre><code>// SavedPhotosAlbum 的 info 示例
+
+▿ 5 elements
+  ▿ [0] : 2 elements
+    - .0 : &quot;UIImagePickerControllerCropRect&quot;
+  ▿ [1] : 2 elements
+    - .0 : &quot;UIImagePickerControllerOriginalImage&quot;
+  ▿ [2] : 2 elements
+    - .0 : &quot;UIImagePickerControllerReferenceURL&quot;
+    - .1 : assets-library://asset/asset.JPG?id=99D53A1F-FEEF-40E1-8BB3-7DD55A43C8B7&amp;ext=JPG
+  ▿ [3] : 2 elements
+    - .0 : &quot;UIImagePickerControllerMediaType&quot;
+    - .1 : public.image
+  ▿ [4] : 2 elements
+    - .0 : &quot;UIImagePickerControllerEditedImage&quot;
+</code></pre>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p><img src="/./1447343597718.png" alt="Alt text"></p>
+<p>遍历相册的所有图片</p>
+<pre><code class="swift">// AssetsLibrary.framework
+// ALAssetsLibrary 的使用,但是它慢慢的被放弃了
+    func loadLocalPhotoes()&#123;
+        var countOne = 0
+        //ALAssetsGroupSavedPhotos表示只读取相机胶卷（ALAssetsGroupAll则读取全部相簿）
+        assetsLibrary.enumerateGroupsWithTypes(ALAssetsGroupSavedPhotos, usingBlock: &#123;
+            (group: ALAssetsGroup!, stop) in
+            print(&quot;is goin&quot;)
+            if group != nil &#123;
+                let assetBlock : ALAssetsGroupEnumerationResultsBlock = &#123;
+                    (result: ALAsset!, index: Int, stop) in
+                    if result != nil &#123;
+                        self.assets.append(result)
+                        countOne++
+                    &#125;
+                &#125;
+                group.enumerateAssetsUsingBlock(assetBlock)
+                print(&quot;assets:\(countOne)&quot;)
+                self.startChangeLocalImages(0)
+            &#125;
+            &#125;, failureBlock: &#123; (fail) in
+                print(fail)
+        &#125;)
+    &#125;
+    
+// 展现本地图片
+func startChangeLocalImages(var index: Int)&#123;
+        if index==assets.count &#123;
+            index = 0
+        &#125;
+        let myAsset = assets[index]
+        let image = UIImage(CGImage:myAsset.thumbnail().takeUnretainedValue())
+        self.backImageView.image = image
+        
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue()) &#123;
+            self.startChangeLocalImages(index+1)
+        &#125;
+    &#125;
+</code></pre>
+<p>iOS9 开始使用新库<br><a target="_blank" rel="noopener" href="https://developer.apple.com/library/prerelease/ios/documentation/Photos/Reference/PHPhotoLibrary_Class/index.html">PHPhotoLibrary</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/11/13/Swift入门专题/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/11/13/Swift入门专题/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/11/13/Swift入门专题/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/11/18/Android%E5%8A%A8%E7%94%BB/">
+        ← 动画
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/11/04/%E8%A3%85%E9%80%BC%E6%8C%87%E5%8D%97%E4%BA%8C%E6%9C%9F/">
+        周精益分享 - 程序员装逼指南二期 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

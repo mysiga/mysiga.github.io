@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Android单元测试框架 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-03-18T10:30:00.000Z" itemprop="datePublished">
+          2016-03-18
+      </time>
+    
+</span>
+    <h1 class="post-title">Android单元测试框架</h1>
+    <section class="post-content">
+      <ul>
+<li><p>Android单元测试</p>
+<ul>
+<li>在Android项目中，单元测试的对象是组件状态、控件行为、界面元素和自定义函数。不推荐对每个函数进行一对一的测试，像onStart()、onDestroy()这些周期函数并不需要全部覆盖到。</li>
+</ul>
+</li>
+<li><p>框架比较</p>
+<ul>
+<li>JUnit<ul>
+<li>原生单元测试</li>
+<li>不能让Activity执行到resume的状态</li>
+<li>@王进已讲</li>
+</ul>
+</li>
+<li>AndroidTest<ul>
+<li>运行在Android环境</li>
+</ul>
+</li>
+<li>Instrumentation<ul>
+<li>运行在模拟器上</li>
+</ul>
+</li>
+<li>Robotium<ul>
+<li>类似于Selenium的测试框架</li>
+<li>运行在模拟器上</li>
+<li>通过对模拟器的操作或者mock，来触发函数调用，进而对其结果进行验证</li>
+</ul>
+</li>
+<li>Robolectric+Mock(Mockito)<ul>
+<li>运行在JVM上速度快</li>
+<li>Jenkins周期性执行</li>
+<li>无需准备Android环境</li>
+<li>实现了Android中对XML的解析，模拟了View，Layout，以及资源的加载</li>
+<li>一些测试对象依赖度较高而需要解除依赖的场景(如网络)使用Mock框架</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://robolectric.org/getting-started/">Robolectric</a></p>
+<ul>
+<li><p>Android Studio配置</p>
+<ul>
+<li>build.gradle添加库</li>
+</ul>
+<pre><code>testCompile &quot;org.robolectric:robolectric:3.0&quot;
+</code></pre>
+<ul>
+<li>Build Variants设置<br>  <img src="http://robolectric.org/images/android-studio-enable-unit-tests-f15bd816.png" alt="Unit Tests"></li>
+<li>Linux和Mac平台的需要配置下才能运行:在Android Studio中run边上有一个app选择，这里选择”Edit Configurations” 出现编辑界面<br>  <img src="/" alt="Run/Debug Configurations"><br>  在左边中新建JUnit，Default-&gt;JUnit</li>
+<li>测试代码</li>
+<li>中间出现问题<ul>
+<li>Android SDK目前只支持到22，5.1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>单元测试的目标函数主要有三种：</p>
+<ol>
+<li>有明确的返回值，如上图的dosomething(Boolean param)，做单元测试时，只需调用这个函数，然后验证函数的返回值是否符合预期结果。</li>
+<li>这个函数只改变其对象内部的一些属性或者状态，函数本身没有返回值，就验证它所改变的属性和状态。</li>
+<li><pre><code>一些函数没有返回值，也没有直接改变哪个值的状态，这就需要验证其行为，比如点击事件。
+</code></pre>
+</li>
+</ol>
+<ul>
+<li>既没有返回值，也没有改变状态，又没有触发行为的函数是不可测试的，在项目中不应该存在。当存在同时具备上述多种特性时，本文建议采用多个case来真对每一种特性逐一验证，或者采用一个case，逐一执行目标函数并验证其影响。</li>
+<li>构造用例的原则是测试用例与函数一对一，实现条件覆盖与路径覆盖。Java单元测试中，良好的单元测试是需要保证所有函数执行正确的，即所有边界条件都验证过，一个用例只测一个函数，便于维护。在Android单元测试中，并不要求对所有函数都覆盖到，像Android SDK中的函数回调则不用测试。</li>
+</ul>
+</li>
+<li><p>测试用例</p>
+<ul>
+<li><p>组件</p>
+<ul>
+<li>Activity测试</li>
+</ul>
+<p>  &#96;&#96;&#96;&#96;<br>  @Test</p>
+</li>
+</ul>
+<p>  public void testLifecycle() {<br>      ActivityController<MainActivity> activityController &#x3D; Robolectric.buildActivity(MainActivity.class).create().start();<br>      Activity activity &#x3D; activityController.get();<br>      Button action_next &#x3D; (Button) activity.findViewById(R.id.next);<br>      Assert.assertEquals(“next”, action_next.getText().toString());</p>
+</li>
+</ul>
+<p>&#x2F;&#x2F;        error<br>&#x2F;&#x2F;        Assert.assertEquals(“testLifecycle”, action_next.getText().toString());<br>    }</p>
+<pre><code>    ````  
+    - Service
+    - BroadcastReceiver
+    - Fragment 
+- 控件行为
+    - 跳转
+- 界面元素
+    - Toast
+    
+    ````
+    @Test
+public void testToast() &#123;
+    Button action_toast = (Button) mActivity.findViewById(R.id.action_toast);
+    action_toast.performClick();
+    Assert.assertEquals(&quot;hello&quot;, ShadowToast.getTextOfLatestToast());
+&#125;
+    ````
+    - Dialog
+    - UI控件
+    
+    ````
+     @Test
+public void testStartEndActivity() &#123;
+    Button action_next = (Button) mActivity.findViewById(R.id.next);
+    action_next.performClick();
+
+    Intent intent = new Intent(mActivity, EndActivity.class);
+
+    Intent actionIntent = ShadowApplication.getInstance().getNextStartedActivity();
+    Assert.assertEquals(intent, actionIntent);
+&#125;
+    ````
+- 自定义函数
+- 网络请求
+</code></pre>
+<ul>
+<li>assertJ-android断言库</li>
+<li>资料<ul>
+<li><a target="_blank" rel="noopener" href="https://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/0-introduction.html">参考1</a></li>
+<li><a target="_blank" rel="noopener" href="http://tech.meituan.com/Android_unit_test.html">美团Android单元测试</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/9d988a2f8ff7">测试用例</a></li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2016/03/18/Android单元测试框架/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2016/03/18/Android单元测试框架/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2016/03/18/Android单元测试框架/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2016/05/28/Java7%E4%B9%8B%E5%BC%BA%E5%BC%95%E7%94%A8_%E5%BC%B1%E5%BC%95%E7%94%A8_%E8%BD%AF%E5%BC%95%E7%94%A8_%E8%99%9A%E5%BC%95%E7%94%A8/">
+        ← (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/03/06/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E5%9B%9B%E7%A7%8D%E6%A8%A1%E5%BC%8F/">
+        Activity的启动四种模式 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

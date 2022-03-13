@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Java单例模式，线程安全 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-05-28T14:50:29.000Z" itemprop="datePublished">
+          2016-05-28
+      </time>
+    
+</span>
+    <h1 class="post-title">Java单例模式，线程安全</h1>
+    <section class="post-content">
+      <ul>
+<li>懒汉式:线程安全，开销大</li>
+</ul>
+<pre><code>public class Singleton&#123;
+ private static final Singleton singleton;
+private Singleton()&#123;
+  &#125;
+ public static final synchronized Singleton getInstance()&#123;
+     if(singleton==null)&#123;
+      singleton=new Singleton();
+     &#125;
+     return singleton;
+ &#125;
+&#125;
+</code></pre>
+<ul>
+<li>双重检查锁：线程安全，根据需求使用</li>
+</ul>
+<pre><code>public class Singleton&#123;
+  private volatile static Singleton singleton;
+  private Singleton()&#123;
+  &#125;
+  public static final Singleton getInstance()&#123;
+      if(singleton==null)&#123;
+        synchronized(Singleton.class)&#123;
+          if(singleton==null)&#123;
+          singleton=new Singleton();
+          &#125;
+        &#125;
+      &#125;
+   return singleton;
+  &#125;
+&#125;
+</code></pre>
+<ul>
+<li>静态内部类锁：线程安全，比较推荐</li>
+</ul>
+<pre><code>public class Singleton&#123;
+private Singleton()&#123;
+  &#125;
+private static class Holder&#123;
+public static final Singleton singleton=new Singleton();
+&#125;
+public static final Single getInstance()&#123;
+return Holder.singleton;
+&#125;
+&#125;
+</code></pre>
+<ul>
+<li>饿汗式：线程安全，但没有实现懒加载</li>
+</ul>
+<pre><code>public class Singleton&#123;
+ private static final Singleton singleton=new Singleton();
+private Singleton()&#123;
+  &#125;
+ public static final Singleton getInstance()&#123;
+ return singleton;
+ &#125;
+&#125;
+</code></pre>
+<ul>
+<li>枚举:线程安全，但比较少人用</li>
+</ul>
+<pre><code>public class Singleton&#123;
+public enum EasySingleton&#123;
+    INSTANCE;
+&#125;
+&#125;
+</code></pre>
+<ul>
+<li>参考文章<ul>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization">具体JVM机制</a></li>
+<li><a target="_blank" rel="noopener" href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/">具体代码讲解</a></li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2016/05/28/Java单例模式/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2016/05/28/Java单例模式/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2016/05/28/Java单例模式/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2016/06/17/App%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/">
+        ← App共享文件Uri不能为file://
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/05/28/Java7%E4%B9%8B%E5%BC%BA%E5%BC%95%E7%94%A8_%E5%BC%B1%E5%BC%95%E7%94%A8_%E8%BD%AF%E5%BC%95%E7%94%A8_%E8%99%9A%E5%BC%95%E7%94%A8/">
+        (转载)Java 7之基础 - 强引用、弱引用、软引用、虚引用 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

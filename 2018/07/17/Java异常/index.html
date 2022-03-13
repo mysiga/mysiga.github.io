@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Java异常 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-07-16T18:30:00.000Z" itemprop="datePublished">
+          2018-07-16
+      </time>
+    
+</span>
+    <h1 class="post-title">Java异常</h1>
+    <section class="post-content">
+      <h2 id="Java异常"><a href="#Java异常" class="headerlink" title="Java异常"></a>Java异常</h2><p><img src="https://upload-images.jianshu.io/upload_images/1534431-11903c56d9e318ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java异常"></p>
+<ul>
+<li>对比Exception和Error </li>
+<li>运行异常与一般异常区别</li>
+<li>ClassNotFoundException和NoClassDefFoundError有什么区别</li>
+<li>throw和throws</li>
+<li>异常处理几点建议</li>
+<li>自定义异常</li>
+</ul>
+<h3 id="对比Exception和Error。"><a href="#对比Exception和Error。" class="headerlink" title="对比Exception和Error。"></a>对比Exception和Error。</h3><p><img src="https://upload-images.jianshu.io/upload_images/1534431-ad557fa71b48a3ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Exception和Error"><br>Exception和Error都继承Throwable,</p>
+<ul>
+<li>Exception是程序可以处理的异常，正常JVM运行外的异常。</li>
+<li>Error一般是JVM相关异常错误，不可恢复状态，也不方便捕获。<h3 id="运行异常与一般异常区别"><a href="#运行异常与一般异常区别" class="headerlink" title="运行异常与一般异常区别"></a>运行异常与一般异常区别</h3>Eeception又分为可检测异常（Checked Exception）和运行异常（也可叫不可检查异常，Runtime Exception）。</li>
+<li>可检查异常（Checked Exception）在代码里必须显式地进行捕获处理，可以被处理的异常。如：IOException。</li>
+<li>运行异常,类似NullPointerException,ArrayIndexOutOfBoundsException,通常是可以编码避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译器强制要求。<h3 id="ClassNotFoundException和NoClassDefFoundError有什么区别"><a href="#ClassNotFoundException和NoClassDefFoundError有什么区别" class="headerlink" title="ClassNotFoundException和NoClassDefFoundError有什么区别"></a>ClassNotFoundException和NoClassDefFoundError有什么区别</h3></li>
+<li>ClassNotFoundException:Java动态加载类的时候，如果这个类在类路径中没有被找到或者当一个类已经某个类加载器加载到内存中了，此时另一个类加载器又尝试着动态地从同一个包中加载这个类就会抛出ClassNotFoundException异常。类加载中加载时从外存储器找不到需要的class。</li>
+<li>NoClassDefFoudError，指要查找的类在编译的时候是存在的，运行的时候却找不到的异常错误。类加载中连接时从内存找不到需要的class。</li>
+</ul>
+<h3 id="throw和throws"><a href="#throw和throws" class="headerlink" title="throw和throws"></a>throw和throws</h3><pre><code>public void custormException()throws  CustomException&#123;
+throw new CustomException(&quot;抛出CustormException&quot;);
+&#125;
+</code></pre>
+<ul>
+<li>throw作用域方法体内</li>
+<li>throws方法名后面<h3 id="异常处理几点建议"><a href="#异常处理几点建议" class="headerlink" title="异常处理几点建议"></a>异常处理几点建议</h3></li>
+<li>只针对不正常的情况才使用异常,不需要异常处理的不要专门处理以增加系统额外检查降低性能。<pre><code>try &#123;
+int i=0;
+while (true) &#123;
+arr[i]=0;
+i++;
+&#125;
+&#125; catch (IndexOutOfBoundsException e) &#123;
+&#125;
+</code></pre>
+</li>
+<li>抛出的异常要适合于相应的抽象<pre><code>public E get(int index) &#123;
+try &#123;
+return listIterator(index).next();
+&#125; catch (NoSuchElementException exc) &#123;
+throw new IndexOutOfBoundsException(&quot;Index: &quot;+index);
+&#125;
+&#125;
+</code></pre>
+</li>
+<li>不要忽略异常，避免使用空的catch语句<pre><code>try &#123;
+...
+&#125; catch (SomeException e) &#123;
+&#125;
+</code></pre>
+</li>
+<li>异常保证输出堆栈信息，在异常消息中加入导致异常发生的全部信息<pre><code>try &#123;
+...
+&#125; catch (SomeException e) &#123;
+System.out.println(&quot;12344&quot;);
+&#125;
+</code></pre>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3>一般根据项目需要自定义异常，特别是服务端处理业务的时候。一般自定义异常继承Exception，Throwable（因为Error一般用于JVM的异常错误，不常用自定义），因为异常已实现相关方法，只需重写构造方法就可以。代码如下：</li>
+<li>继承Exception<br>&#96;&#96;&#96;<br>public class CustomException extends Exception {<br>public CustomException() {<br>}</li>
+</ul>
+<p>public CustomException(String message) {<br>super(message);<br>}</p>
+<p>public CustomException(String message, Throwable cause) {<br>super(message, cause);<br>}</p>
+<p>public CustomException(Throwable cause) {<br>super(cause);<br>}</p>
+<p>public CustomException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {<br>super(message, cause, enableSuppression, writableStackTrace);<br>}<br>}</p>
+<pre><code>
+</code></pre>
+<p>public class TestException {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomException e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomException{<br>throw new CustomException(“抛出CustormException”);<br>}<br>public static void main(String[] args) {<br>TestException testException&#x3D;new TestException();<br>testException.testMethod();<br>}<br>}</p>
+<pre><code>输出
+</code></pre>
+<p>com.mysiga.learn.throwable.CustomException: 抛出CustormException<br>at com.mysiga.learn.throwable.TestException.custormException(TestException.java:15)<br>at com.mysiga.learn.throwable.TestException.testMethod(TestException.java:9)<br>at com.mysiga.learn.throwable.TestException.main(TestException.java:19)</p>
+<pre><code>-  继承Throwable
+</code></pre>
+<p>public class CustomThrowable extends Throwable {<br>public CustomThrowable() {<br>}</p>
+<p>public CustomThrowable(String message) {<br>super(message);<br>}</p>
+<p>public CustomThrowable(String message, Throwable cause) {<br>super(message, cause);<br>}</p>
+<p>public CustomThrowable(Throwable cause) {<br>super(cause);<br>}</p>
+<p>public CustomThrowable(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {<br>super(message, cause, enableSuppression, writableStackTrace);<br>}<br>}</p>
+<pre><code>
+</code></pre>
+<p>public class TestThrowable {<br>public void testMethod(){<br>try {<br>custormException();<br>} catch (CustomThrowable e) {<br>e.printStackTrace();<br>}<br>}<br>public void custormException()throws  CustomThrowable{<br>throw new CustomThrowable(“抛出CustomThrowable”);<br>}<br>public static void main(String[] args) {<br>TestThrowable testThrowable&#x3D;new TestThrowable();<br>testThrowable.testMethod();<br>}<br>}</p>
+<pre><code>输出
+</code></pre>
+<p>com.mysiga.learn.throwable.CustomThrowable: 抛出CustomThrowable<br>at com.mysiga.learn.throwable.TestThrowable.custormException(TestThrowable.java:15)<br>at com.mysiga.learn.throwable.TestThrowable.testMethod(TestThrowable.java:9)<br>at com.mysiga.learn.throwable.TestThrowable.main(TestThrowable.java:19)</p>
+<pre><code>
+</code></pre>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2018/07/17/Java异常/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2018/07/17/Java异常/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2018/07/17/Java异常/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/08/03/Java%E7%BA%BF%E7%A8%8B/">
+        ← 深入Java线程
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/07/12/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">
+        我所知道的-Java垃圾回收机制 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

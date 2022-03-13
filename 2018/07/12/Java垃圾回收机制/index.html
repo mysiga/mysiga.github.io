@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>我所知道的-Java垃圾回收机制 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2018-07-12T11:11:00.000Z" itemprop="datePublished">
+          2018-07-12
+      </time>
+    
+</span>
+    <h1 class="post-title">我所知道的-Java垃圾回收机制</h1>
+    <section class="post-content">
+      <p><img src="https://upload-images.jianshu.io/upload_images/1534431-a4831eb7feafd902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java垃圾回收机制"></p>
+<p>本文章你能知道的内容：</p>
+<ul>
+<li>Java内存模型</li>
+<li>Java堆</li>
+<li>对象什么时候回收</li>
+<li>垃圾回收算法</li>
+<li>垃圾回收器<h3 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h3>要了解Java垃圾回收机制，首先知道Java内存模型是怎么样的。如下图<br><img src="https://upload-images.jianshu.io/upload_images/1534431-2c69d083add54ae6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java内存模型"></li>
+<li>程序计数器</li>
+<li>Java 虚拟机栈</li>
+<li>方法区：方法区也是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据<ul>
+<li>运行时常量池</li>
+</ul>
+</li>
+<li>Java 堆:一般new的对象实例和数组都是在堆中的，而GC主要回收的内存也是这块堆内存，后面单独领出来来讲。</li>
+<li>直接内存：不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范定义的内存区域(Fresco图片加载库，就是运行这块内存超越虚拟机内存使用)。</li>
+<li>code cache等其他内存<h3 id="Java-堆"><a href="#Java-堆" class="headerlink" title="Java 堆"></a>Java 堆</h3>Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有线程共享的一块内存区域。几乎所有的对象实例和数组都在这类分配内存。<blockquote>
+<p>Java 堆内存由垃圾回收器的自动内存管理系统管理。<br>堆内存分为两大部分：新生代和老年代，默认比例为1：2，可修改。<br>老年代主要存放应用程序中生命周期长的存活对象。<br>新生代又分为三个部分：一个Eden区和两个Survivor区，默认比例为8：1：1，可修改。<br>Eden区存放新生的对象。<br>Survivor存放每次垃圾回收后存活的对象。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-062a3348d8286a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="堆内存"></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="为什么？"><a href="#为什么？" class="headerlink" title="为什么？"></a>为什么？</h3><ul>
+<li>为什么要分新生代和老年代？</li>
+<li>新生代为什么分一个Eden区和两个Survivor区?</li>
+</ul>
+<p>带着这些疑问，我们就要先了解堆相关的垃圾回收算法和采用的垃圾回收器。在讲算法前先了解怎么判断对象是否回收。</p>
+<h3 id="对象什么时候回收？"><a href="#对象什么时候回收？" class="headerlink" title="对象什么时候回收？"></a>对象什么时候回收？</h3><p>判断对象是否回收主要有以下两种算法</p>
+<ul>
+<li>引用计数算法<br>给对象中添加一个引用计数器，每当有一个地方引用它时，计数器值就加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-982627fe64dfa349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用计数算法"><ul>
+<li>优点：简单，高效，Objective-c用的就是这种算法。</li>
+<li>缺点：很难处理循环引用，比如图中相互引用的两个对象则无法释放。但是也有解决办法，想知道自行搜索。</li>
+</ul>
+</li>
+<li>可达性分析算法（根搜索算法）<br>为了解决上面的循环引用问题，Java采用了一种新的算法：可达性分析算法。<br>从GC Roots（每种具体实现对GC Roots有不同的定义）作为起点，向下搜索它们引用的对象，可以生成一棵引用树，树的节点视为可达对象，反之视为不可达。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-a9dda2d42cd749cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可达性分析算法"><blockquote>
+<p>Java定义的GC Roots对象:<br>虚拟机栈（帧栈中的本地变量表）中引用的对象。<br>方法区中静态属性引用的对象。<br>方法区中常量引用的对象。<br>本地方法栈中JNI引用的对象。</p>
+</blockquote>
+</li>
+</ul>
+<p>如果出现循环引用了，只要没有被GC Roots引用了就会被回收，完美解决！</p>
+<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><p>知道了什么时候回收对象，那我们再看具体怎么垃圾回收。</p>
+<ul>
+<li><p>标记清除法<br>标记-清除法分为两个阶段：标记阶段和清除阶段。标记阶段的任务是标记出所有需要被回收的对象，清除阶段就是回收被标记的对象所占用的空间。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-43bc311c23427d67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记清除法"></p>
+<ul>
+<li>优点：是简单，容易实现。</li>
+<li>缺点：容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</li>
+</ul>
+</li>
+<li><p>复制算法<br>复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-9bf508a2e534d864.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="复制算法"></p>
+<ul>
+<li>优点：实现简单，运行高效且不容易产生内存碎片，适用于存活对象很少。回收对象多</li>
+<li>缺点：内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半，如果存活对象很多，那么Copying算法的效率将会大大降低。</li>
+</ul>
+</li>
+<li><p>标记整理算法<br>该算法标记阶段和标记清除法一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。<br><img src="https://upload-images.jianshu.io/upload_images/1534431-4b6066a7e03fb403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标记整理算法"></p>
+<ul>
+<li>优点：不会出现内存碎片问题，适用于存活对象多，回收对象少的情况使用</li>
+<li>缺点：整理时间长，容易导致卡顿。</li>
+</ul>
+</li>
+<li><p>分代回收算法<br>分代回收算法其实不算一种新的算法，而是根据复制算法和标记整理算法的使用场景综合使用。</p>
+<blockquote>
+<p>复制算法：适用于存活对象很少。回收对象多<br>标记整理算法: 适用用于存活对象多，回收对象少</p>
+</blockquote>
+</li>
+</ul>
+<p>分代算法就是根据对象存活的生命周期将内存划分为若干个不同的区域。一般情况下将堆区划分为老年代（Old Generation）和新生代（Young Generation），老年代的特点是每次垃圾收集时只有少量对象需要被回收所以采用标记整理法。而新生代的特点是每次垃圾回收时都有大量的对象需要被回收所以采用复制算法（改良的复制算法，不是按1：1分配）。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1534431-df6da09763c72d95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分代回收算法"></p>
+<ul>
+<li><p>Eden空间和两块Survivor空间的工作流程</p>
+<blockquote>
+<p>&#x2F;&#x2F; 分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区满了，只能GC(新生代GC：Minor GC)了<br>把Eden区的存活对象copy到Survivor A区，然后清空Eden区（本来Survivor B区也需要清空的，不过本来就是空的）<br>&#x2F;&#x2F; 又分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor A区的存活对象copy到Survivor B区，然后清空Eden区和Survivor A区<br>&#x2F;&#x2F; 又分配了一个又一个对象<br>放到Eden区<br>&#x2F;&#x2F; 不好，Eden区又满了，只能GC(新生代GC：Minor GC)了<br>把Eden区和Survivor B区的存活对象copy到Survivor A区，然后清空Eden区和Survivor B区<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; 有的对象来回在Survivor A区或者B区呆了比如15次，就被分配到老年代Old区<br>&#x2F;&#x2F; 有的对象太大，超过了Eden区，直接被分配在Old区<br>&#x2F;&#x2F; 有的存活对象，放不下Survivor区，也被分配到Old区<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; 在某次Minor GC的过程中突然发现：<br>&#x2F;&#x2F; 不好，老年代Old区也满了，这是一次大GC(老年代GC：Major GC)<br>Old区慢慢的整理一番，空间又够了<br>&#x2F;&#x2F; 继续Minor GC<br>&#x2F;&#x2F; …<br>&#x2F;&#x2F; …<br>在回答上面提出的问题？<br>为什么要分新生代和老年代？<br>综合使用算法，最优采用分代算法所以分为新生代和老年代两块区域。具体为什么1：2？应该是根据实践测试得出的结果，也可以调整。</p>
+</blockquote>
+</li>
+<li><p>回答第二个问题<a target="_blank" rel="noopener" href="https://blog.csdn.net/antony9118/article/details/51425581">为什么新生代内存需要有两个Survivor区</a>，这里讲的比较详细</p>
+</li>
+<li><p>什么时候触发GC？</p>
+<blockquote>
+<p>GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。<br>GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。<br>GC_EXPLICIT: 表示是应用程序调用System.gc、VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。<br>GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。</p>
+</blockquote>
+<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><p>在GC机制中，起重要作用的是垃圾收集器，垃圾收集器是GC的具体实现，Java虚拟机规范中对于垃圾收集器没有任何规定，所以不同厂商实现的垃圾 收集器各不相同，也有可能采用多个垃圾回收器并存方式，HotSpot 1.6版使用的垃圾收集器如下图（图来源于《深入理解Java虚拟机：JVM高级特效与最佳实现》，图中两个收集器之间有连线，说明它们可以配合使用）<br><img src="https://upload-images.jianshu.io/upload_images/1534431-e50e3a7a84da379d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="垃圾回收器"></p>
+</li>
+<li><p>Serial收集器</p>
+</li>
+<li><p>ParNew收集器</p>
+</li>
+<li><p>Parallel Scavenge收集器</p>
+</li>
+<li><p>CMS收集器（应用非常广泛）</p>
+</li>
+<li><p>G1收集器（面向服务端应用）<br>###ART与Dalvik虚拟机<br>ART(Android Runtime)是Android 4.4发布的，用来替换Dalvik虚拟，Android 4.4默认采用的还是DVM，系统会提供一个选项来开启ART。在Android 5.0时，默认采用ART，DVM从此退出历史舞台。</p>
+</li>
+</ul>
+<p>ART与Dalvik的区别</p>
+<ul>
+<li>Dalvik中的应用每次运行时，字节码都需要通过即时编译器（JIT，just in time）转换为机器码，这会使得应用的运行效率降低。而在ART中，系统在安装应用时会进行一次预编译（AOT，ahead of time）,将字节码预先编译成机器码并存储在本地，这样应用每次运行时就不需要执行编译了，运行效率也大大提升。</li>
+<li>ART占用空间比Dalvik大（字节码变为机器码之后，可能会增加10%-20%），这就是“时间换空间大法”。</li>
+<li>改进CMS 垃圾回收，引入移动垃圾回收器。</li>
+<li>ART把Java堆的主要组成包括Image Space、Zygote Space、Allocation Space和Large Object Space四个Space，Image Space用来存在一些预加载的类， Zygote Space和Allocation Space与Dalvik虚拟机垃圾收集机制中的Zygote堆和Active堆的作用是一样的，Large Object Space就是一些离散地址的集合，用来分配一些大对象从而提高了GC的管理效率和整体性能。如图<br><img src="https://upload-images.jianshu.io/upload_images/1534431-56d1ba248844e594.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><h3 id="GC调优思路"><a href="#GC调优思路" class="headerlink" title="GC调优思路"></a>GC调优思路</h3>其中一个或者两个方面的目标，很少有情况可以兼顾三个不同的角度</li>
+<li>内存占用 </li>
+<li>延时</li>
+<li>吞吐量</li>
+</ul>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5909c7ef570c3500583bf433">Android GC 那点事</a></li>
+<li><a target="_blank" rel="noopener" href="http://jayfeng.com/2016/03/11/%E7%90%86%E8%A7%A3Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/?from=singlemessage&isappinstalled=0">理解Java垃圾回收机制</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/zhengzhb/article/details/7517213">Java类生命周期</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/zhengzhb/article/details/7331354">单例模式讨论篇：单例模式与垃圾回收</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.importnew.com/26383.html">JVM 垃圾回收算法及回收器详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/antony9118/article/details/51425581">为什么新生代内存需要有两个Survivor区</a></li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2018/07/12/Java垃圾回收机制/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2018/07/12/Java垃圾回收机制/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2018/07/12/Java垃圾回收机制/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2018/07/17/Java%E5%BC%82%E5%B8%B8/">
+        ← Java异常
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2018/06/06/Android%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7/">
+        Android各个版本新特性 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

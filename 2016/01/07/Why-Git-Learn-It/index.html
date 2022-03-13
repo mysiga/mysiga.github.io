@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Why Git? Learn It!-曾铭 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-01-06T16:00:00.000Z" itemprop="datePublished">
+          2016-01-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/git/'>git</a>
+    
+    
+</span>
+    <h1 class="post-title">Why Git? Learn It!-曾铭</h1>
+    <section class="post-content">
+      <ul>
+<li>为什么要用 Git？</li>
+<li>Git + SourceTree + Gitlab 的使用演示</li>
+<li>提醒和推荐</li>
+</ul>
+<h2 id="为什么要用-Git？"><a href="#为什么要用-Git？" class="headerlink" title="为什么要用 Git？"></a>为什么要用 Git？</h2><ul>
+<li>一个工具、一套方案，解决源码管理的问题</li>
+</ul>
+<h3 id="对于版本控制，我们需要什么？"><a href="#对于版本控制，我们需要什么？" class="headerlink" title="对于版本控制，我们需要什么？"></a>对于版本控制，我们需要什么？</h3><ul>
+<li>代码历史追溯<ul>
+<li>某一次提交的改动（SVN，Git）</li>
+<li>某一个功能的改动过程（好的提交习惯更重要，在多人协作情况下提交历史更清晰）</li>
+</ul>
+</li>
+<li>协同开发<ul>
+<li>用分支来隔离上线与开发中的代码</li>
+<li>多人多线并行开发：1 人对 N 线，N 人对 1 线都有可能</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>秒极定律<br>一件事情如果能控制在 10s 内完成，人们就会极频繁的使用它。<br>举栗子：</p>
+<ul>
+<li>docker 被推崇，从虚拟机到 Vagrant 到 docker，碰到了秒级定律</li>
+<li>持续集成，快速迭代</li>
+</ul>
+</blockquote>
+<h3 id="秒级的代码管理？"><a href="#秒级的代码管理？" class="headerlink" title="秒级的代码管理？"></a>秒级的代码管理？</h3><ul>
+<li>本地代码飞快变化至任意历史提交记录：SVN 30s-2min；Git 秒级<ul>
+<li>工作状态快速切换</li>
+</ul>
+</li>
+<li>代码提交速度飞快：SVN 受限于网络速度；Git commit 秒级，push 受限于网络速度</li>
+<li>代码创建、切换、合并分支飞快：SVN 速度慢，很麻烦；Git 赞！<ul>
+<li>勇于原型探索，历史清晰，易调整方向，易新建，易弃用</li>
+<li>与 code review 结合</li>
+</ul>
+</li>
+</ul>
+<h2 id="SVN-比-Git-好在哪里"><a href="#SVN-比-Git-好在哪里" class="headerlink" title="SVN 比 Git 好在哪里"></a>SVN 比 Git 好在哪里</h2><ul>
+<li>更简单，符合原有自主文件夹管理版本的心理预期<ul>
+<li>Git 暴露概念过多，学习曲线陡峭，这点不如 hg</li>
+</ul>
+</li>
+<li>SVN 有目录级的权限控制<ul>
+<li>适合大中型中间件软件公司：目录划分权限，职能长期固定</li>
+</ul>
+</li>
+<li>也许还有其它，我不清楚</li>
+</ul>
+<h3 id="Git-真实的影响力"><a href="#Git-真实的影响力" class="headerlink" title="Git 真实的影响力"></a>Git 真实的影响力</h3><blockquote>
+<p>I’m an egotistical bastard, and I name all my projects after myself. First Linux, now Git.<br>—— Linus</p>
+</blockquote>
+<ul>
+<li>在 2016 问这个问题对互联网来说已是大势所趋<ul>
+<li>npm + pip 均托管在 Github</li>
+<li>OpenJDK 使用 Hg（Mercurial）</li>
+<li>Github 早已一统开源天下，Java 概莫能外</li>
+</ul>
+</li>
+<li>SVN 与 Git 二分天下，但 Git 占据的是互联网明星创业公司和 BAT 的优秀团队，为何？</li>
+<li>会 Git 找工作是加分项</li>
+<li>学习版本控制的另一种思维方式（学习一门语言就是学习一类思维方式）</li>
+</ul>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ul>
+<li>Git 不能直接解决目前后端的开发环境<ul>
+<li>code 规范的 branch 流程</li>
+<li>依赖，理清 maven 依赖和配合方式</li>
+<li>秒级上线（测试、预发布、正式）</li>
+<li>相应（尽可能少人力介入的）自动化测试、监控</li>
+</ul>
+</li>
+</ul>
+<h2 id="Git-SourceTree-Gitlab-的使用演示"><a href="#Git-SourceTree-Gitlab-的使用演示" class="headerlink" title="Git + SourceTree + Gitlab 的使用演示"></a>Git + SourceTree + Gitlab 的使用演示</h2><p><img src="http://7j1xgb.com5.z0.glb.clouddn.com/FullSizeRender.jpg" alt="Git 使用流程示意图"></p>
+<h3 id="local-repo"><a href="#local-repo" class="headerlink" title="local repo"></a>local repo</h3><ul>
+<li>用 SourceTree 初始化一个本地项目</li>
+<li>小步提交，介绍 staged 的用法<ul>
+<li>stage or unstage or discard</li>
+<li>stage 某一行代码</li>
+</ul>
+</li>
+<li>一次提交</li>
+<li>介绍 master 分支及 branchs 界面<ul>
+<li>留意 commit 编号</li>
+</ul>
+</li>
+<li>创建一个分支 feature&#x2F;login</li>
+<li>新建 login.java 文件，index.html 加一行代码</li>
+<li>commit，观察分支树变化</li>
+<li>切换分支，观察代码变化</li>
+<li>创建一个分支 feature&#x2F;share</li>
+<li>新建 share.py 文件，index.html 改一行代码</li>
+<li>commit，观察分支树变化</li>
+<li>切回 feature&#x2F;login，临时处理事情，再切回 feature&#x2F;share</li>
+<li>feature&#x2F;share 分支删几行代码，再提交一次</li>
+<li>feature&#x2F;share merge to master 分支，观察分支树变化</li>
+<li>feature&#x2F;login merge to master 分支，处理冲突</li>
+<li>初始化 Git-flow</li>
+<li>新建 feature&#x2F;school 分支，commit once</li>
+<li>用 Git-flow-gui 完成 feature&#x2F;school 分支</li>
+<li>留意刚才的所有提交都在本地，思考与 SVN 区别（很像，只是分支极灵活）</li>
+<li>Q&amp;A</li>
+</ul>
+<h3 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h3><ul>
+<li>注册帐号，ssh-key 授权（略）</li>
+<li>介绍 Gitlab 结构：team-project</li>
+<li>新建项目 test-repo</li>
+<li>留意空项目向导，复制代码库 url</li>
+<li>本地配置 remote-url，观察 remotes 变化</li>
+<li>push，注意是 push 多条分支，留意 local-remote 分支对应关系</li>
+<li>再看 remotes 变化，分支树变化<ul>
+<li>remotes branchs 与 local branchs 一致</li>
+<li>分支树中多了 origin&#x2F;*</li>
+</ul>
+</li>
+<li>观察 Gitlab 界面变化</li>
+<li>介绍 Gitlab 单个项目界面</li>
+<li>Q&amp;A</li>
+</ul>
+<h3 id="来一次典型的开发过程（包含-code-review）"><a href="#来一次典型的开发过程（包含-code-review）" class="headerlink" title="来一次典型的开发过程（包含 code review）"></a>来一次典型的开发过程（包含 code review）</h3><ul>
+<li>保证在 develop 分支，pull 最新代码</li>
+<li>网页端提交 readme 文件，造成 origin 变化，介绍 fetch，注意 branchs 变化</li>
+<li>重新 pull</li>
+<li>用 Git-flow-gui 建立 feature&#x2F;news 分支</li>
+<li>产生两次 commit（包含 rename 文件）</li>
+<li>留意分支树变化，注意 Gitlab-web 端不存在刚才的提交，push，再对比</li>
+<li>Gitlab-web 端新建 merge-request, 留意 source-branch, target-branch, title, ass</li>
+<li>被指派者 review 代码，web 端回复建议</li>
+<li>根据建议产生新的 commit，同时 push</li>
+<li>刷新 web 端观察变化：查看一次 commit，查看全部 changes</li>
+<li>被指派者回复 LGTM（look good to me），点击 merge</li>
+<li>回到 SourceTree，观察分支树变化，fetch 再看</li>
+<li>切回 develop 分支</li>
+<li>Q&amp;A<ul>
+<li>有冲突 merge 按钮会不可点击，merge develop to work_branch ，在 develop 分支外解决冲突，commit&amp;push，merge 按钮就可点击了</li>
+<li>可方便的与自动化测试等结合起来</li>
+</ul>
+</li>
+</ul>
+<h2 id="提醒和推荐"><a href="#提醒和推荐" class="headerlink" title="提醒和推荐"></a>提醒和推荐</h2><h2 id="一些提醒（坑）"><a href="#一些提醒（坑）" class="headerlink" title="一些提醒（坑）"></a>一些提醒（坑）</h2><ul>
+<li>初次使用 Git，注意设置 <code>git config --global email&amp;name</code></li>
+<li>Windows 下的 Git 使用的确有些不便（不过我不熟悉，也不清楚具体问题）</li>
+<li>授权方式推荐 ssh-key</li>
+<li>忽略文件的配置</li>
+<li>着手代码前思考终极问题：『我在哪里，要去何处？』（先认清所在分支，pull）</li>
+<li>commit 已经 push 到远端了，这个时候不要想着再去修改了</li>
+<li>学习新东西，坑总是有的，多填了也就会了</li>
+</ul>
+<h3 id="一些推荐"><a href="#一些推荐" class="headerlink" title="一些推荐"></a>一些推荐</h3><ul>
+<li>强调思路，记住秒级定律，效率为王</li>
+<li>小步提交，每小时至少提交一次<ul>
+<li>一次任务的实现过程：整体设计，框架（类），接口，单元测试，实现</li>
+</ul>
+</li>
+<li>完整提交，完整提交，必须完整提交！不该有任一个提交项目不可运行。</li>
+<li>保证非工作期间，工作区间干净</li>
+<li>不想提交但要切换分支处理事物用 stash 处理</li>
+<li>Github 经常被 X<ul>
+<li>coding.net 代码私有库托管可以用。找开源代码，永远是 Github</li>
+<li>Google 也是被 X。珍爱生命，自配 VPN</li>
+</ul>
+</li>
+<li>国内 Git 私有库托管推荐 coding.net，国外推荐 bitbucket（支持hg） 和 Gitlab</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>依赖（迷信）工具不可取，但工具会影响思维方式，而思维方式非常重要</li>
+</ul>
+<blockquote>
+<p>举例：<br>SVN 的思维方式决定了 diff patch 的开源合作方式。交流不顺畅，实现思路难以程现，这种合作方式很长时间里都是高端人士的特权。<br>Git + Github 催生了 fork，成就了最大的程序员社交网站，也极力促进了开源社区的发展。</p>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2016/01/07/Why-Git-Learn-It/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2016/01/07/Why-Git-Learn-It/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2016/01/07/Why-Git-Learn-It/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2016/01/15/Android%E5%BE%AE%E4%BF%A1%E6%8A%A2%E7%BA%A2%E5%8C%85/">
+        ← Android 微信抢红包
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/12/11/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89/">
+        前端入门（2） →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>单位和度量 | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-09-25T10:30:00.000Z" itemprop="datePublished">
+          2015-09-25
+      </time>
+    
+    
+    | 
+    <a href='/tags/Android-dp-单位/'>Android,dp,单位</a>
+    
+    
+</span>
+    <h1 class="post-title">单位和度量</h1>
+    <section class="post-content">
+      <h4 id="Android基本单位规范"><a href="#Android基本单位规范" class="headerlink" title="Android基本单位规范"></a>Android基本单位规范</h4><h5 id="单位和度量"><a href="#单位和度量" class="headerlink" title="单位和度量"></a>单位和度量</h5><ul>
+<li><p>像素密度</p>
+<ul>
+<li>每英寸的像素数被称为“像素密度”。</li>
+<li>DPI &#x3D;屏幕宽度（或高度）像素&#x2F;屏幕宽度（或高度）英寸</li>
+<li>mdpi-160dpi,<br>hdpi-480x800-240dpi,<br>xhdpi-720x1280-320dpi,<br>xxhdpi-1080x1920-480dpi</li>
+<li>mipmap-hdpi,<br>  drawable-hdpi区别:用mipmap会缩放图片并优化性能。</li>
+<li><img src="http://www.2cto.com/uploadfile/Collfiles/20150718/2015071808335256.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+<li><p>密度独立像素</p>
+<ul>
+<li>“密度独立”是指在屏幕上用不同的密度来统一的显示用户界面元素</li>
+<li><img src="http://wiki.jikexueyuan.com/project/material-design/images/4_5.png" alt="MacDown Screenshot"></li>
+<li>1dp 和 160 dpi 屏幕的一个物理像素相等。计算 dp 的方法：</li>
+</ul>
+<pre><code>dp =(宽度像素*160)/ dpi
+</code></pre>
+</li>
+<li><p>可扩展像素（sp）</p>
+<ul>
+<li>在为安卓系统开发程序时，可扩展的像素（SP）提供和DP一样的功能，但只是在字体上。一个 SP 的默认值和 DP 上的默认值一样。</li>
+<li>density&#x3D;&#x3D;scaledDensity,即1sp&#x3D;1dp，</li>
+<li>还是采用dp替代sp,<a target="_blank" rel="noopener" href="http://www.oschina.net/question/272860_70761">为什么</a></li>
+</ul>
+</li>
+</ul>
+<pre><code>    public static float applyDimension(int unit, float value,DisplayMetrics metrics)
+&#123;
+    switch (unit) &#123;
+    case COMPLEX_UNIT_PX:
+        return value;
+    case COMPLEX_UNIT_DIP:
+        return value * metrics.density;
+    case COMPLEX_UNIT_SP:
+        return value * metrics.scaledDensity;
+    case COMPLEX_UNIT_PT:
+        return value * metrics.xdpi * (1.0f/72);
+    case COMPLEX_UNIT_IN:
+        return value * metrics.xdpi;
+    case COMPLEX_UNIT_MM:
+        return value * metrics.xdpi * (1.0f/25.4f);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<ul>
+<li>pt(磅)，标准的长度单位，1pt＝1&#x2F;72英寸，用于印刷业,买蛋糕的时候挺说最多</li>
+<li>em,em指字体高,1em&#x3D;16px,任意浏览器的默认字体高都是16px.</li>
+</ul>
+<h5 id="字体排版"><a href="#字体排版" class="headerlink" title="字体排版"></a>字体排版</h5><ul>
+<li>字体排版的缩放和基本样式<ul>
+<li>同时使用过多的字体尺寸和样式可以很轻易的毁掉布局,最基本的样式集合就是基于 12、14、16、20 和 34 号的字体排版缩放,以下Google建议字体尺寸:<br>  <img src="http://7xn0ue.com1.z0.glb.clouddn.com/style_typography_style1.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+<li>基本色&#x2F;色彩对比度<ul>
+<li>最基本的常识是，相同颜色的背景和文字是很难阅读的。但有些人不知道的是，带有过强对比度的文本会有些炫目，同样难以阅读。</li>
+<li>文本应当满足对比度7:1的是最适合阅读,最低的对比度4.5:1(依据明度计算),</li>
+<li>Google对比度建议:<img src="http://wiki.jikexueyuan.com/project/material-design/images/style-typography-16_large_mdpi.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+<li>行高<ul>
+<li>只有“主体”、“次要标题”、“大纲”等类似的样式中才允许使用自动换行。其它所有样式应当以单行形式出现。</li>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/style_typography_lineheight_tall1.png" alt="MacDown Screenshot"></li>
+<li>For all styles, line height is 0.1em larger than the English-like languages. English and English-like languages mostly use a portion of the em box, often the lower portion below the x-height. Chinese, Japanese, and Korean (CJK) ideographic characters use the entire em box. Characters in tall languages often have long descenders and&#x2F;or ascenders. To achieve the same design intention as English for CJK and to avoid potential text clipping between two lines next to each other for tall languages, the line height needs to be larger than in English for tall and dense languages.</li>
+</ul>
+</li>
+<li>换行规则&#x2F;连字符<ul>
+<li>正确：<br>  <img src="http://wiki.jikexueyuan.com/project/material-design/images/style-typography-32_large_mdpi.png" alt="MacDown Screenshot"></li>
+<li>错误<br>  <img src="http://wiki.jikexueyuan.com/project/material-design/images/style-typography-33_large_mdpi.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+<li>每行字符<ul>
+<li><p><a target="_blank" rel="noopener" href="http://baymard.com/blog/line-length-readability">每行应当保持在50-60个字符左右</a></p>
+</li>
+<li><p>太长,用户的眼睛将难以找到在文本上对焦。这是因为过长的文字导致用户难以判断一行的起始点，甚至在大段文字中出现读错行的现象</p>
+</li>
+<li><p>太短，会导致眼睛来回扫视过于频繁，破坏阅读的节奏。过短的内容还会给人压力，导致用户完成本行阅读前过早跳转到下一行阅读(因此会错过潜在的重要信息)</p>
+</li>
+<li><p><img src="http://7xn0ue.com1.z0.glb.clouddn.com/style_typography_styles_linelengths1.png" alt="MacDown Screenshot"></p>
+</li>
+<li><p><img src="http://7xn0ue.com1.z0.glb.clouddn.com/style_typography_styles_linelengths2.png" alt="MacDown Screenshot"></p>
+</li>
+</ul>
+</li>
+<li>字间距<ul>
+<li><img src="http://7xn0ue.com1.z0.glb.clouddn.com/style_typography_styles_tracking.png" alt="MacDown Screenshot"></li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2015/09/25/单位和度量/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2015/09/25/单位和度量/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2015/09/25/单位和度量/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2015/10/16/%E8%B0%88%E8%B0%88%E6%9C%AA%E6%9D%A5%EF%BC%8C%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92%EF%BC%8C%E6%A2%A6%E6%83%B3/">
+        ← 谈谈未来、梦想、职业规划
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2015/08/21/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E4%BB%AC%E7%94%A8%E8%BF%87%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">
+        那些年我们用过的第三方库 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

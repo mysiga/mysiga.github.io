@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Java7 switch String | Wilson</title>
+  <meta name="description" content="自强不息 厚德载物" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Wilson">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(/images/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/images/header.jpeg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Wilson</h1>
+            <h2 class="blog-description">自强不息 厚德载物</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-01-25T14:16:29.000Z" itemprop="datePublished">
+          2017-01-25
+      </time>
+    
+</span>
+    <h1 class="post-title">Java7 switch String</h1>
+    <section class="post-content">
+      <ul>
+<li>Switch string<ul>
+<li>Java 7新特性，原来switch只能支持int，byte。short，char,枚举</li>
+</ul>
+</li>
+<li>那具体性能如何了？看下code</li>
+</ul>
+<pre><code>package com.wilson.test;
+public class SwitchTest &#123;
+    public static final String NUM_ONE = &quot;1&quot;;
+    public static final String NUM_TWO = &quot;2&quot;;
+    public static final String NUM_THREE = &quot;3&quot;;
+    public static final String NUM_FOUR = &quot;4&quot;;
+    public static final String NUM_FIVE = &quot;5&quot;;
+    public static final String NUM_SIX = &quot;6&quot;;
+    public static final String NUM_SEVEN = &quot;7&quot;;
+    public static final String NUM_EIGHT = &quot;8&quot;;
+
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;1-&gt;switchTime:&quot;+switchOutput(&quot;1&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;1&quot;));
+        System.out.println(&quot;2-&gt;switchTime:&quot;+switchOutput(&quot;2&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;2&quot;));
+        System.out.println(&quot;3-&gt;switchTime:&quot;+switchOutput(&quot;3&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;3&quot;));
+        System.out.println(&quot;4-&gt;switchTime:&quot;+switchOutput(&quot;4&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;4&quot;));
+        System.out.println(&quot;5-&gt;switchTime:&quot;+switchOutput(&quot;5&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;5&quot;));
+        System.out.println(&quot;6-&gt;switchTime:&quot;+switchOutput(&quot;6&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;6&quot;));
+        System.out.println(&quot;7-&gt;switchTime:&quot;+switchOutput(&quot;7&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;7&quot;));
+        System.out.println(&quot;8-&gt;switchTime:&quot;+switchOutput(&quot;8&quot;)+&quot;,ifElse:&quot;+ifElseOutput(&quot;8&quot;));
+    &#125;
+
+    public static long switchOutput(String num) &#123;
+        long start = System.currentTimeMillis();
+        if (num == null || num.equals(&quot;&quot;)) &#123;
+            return 0;
+        &#125;
+        for (int i = 0; i &lt; 1000000000; i++) &#123;
+            switch (num) &#123;
+                case NUM_ONE:
+                    break;
+                case NUM_TWO:
+                    break;
+                case NUM_THREE:
+                    break;
+                case NUM_FOUR:
+                    break;
+                case NUM_FIVE:
+                    break;
+                case NUM_SIX:
+                    break;
+                case NUM_SEVEN:
+                    break;
+                case NUM_EIGHT:
+                    break;
+            &#125;
+        &#125;
+
+        long end = System.currentTimeMillis();
+        return end - start;
+    &#125;
+
+    public static long ifElseOutput(String num) &#123;
+        long start = System.currentTimeMillis();
+        for (int i = 0; i &lt; 1000000000; i++) &#123;
+            if (num.equals(NUM_ONE)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_TWO)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_THREE)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_FOUR)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_FIVE)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_SIX)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_SEVEN)) &#123;
+                break;
+            &#125; else if (num.equals(NUM_EIGHT)) &#123;
+                break;
+            &#125;
+        &#125;
+
+        long end = System.currentTimeMillis();
+        return end - start;
+    &#125;
+&#125;
+</code></pre>
+<p>开始想当然switch速度更快，那实际输出了?</p>
+<pre><code>1-&gt;switchTime:1868,ifElse:0
+2-&gt;switchTime:2381,ifElse:0
+3-&gt;switchTime:985,ifElse:0
+4-&gt;switchTime:1002,ifElse:0
+5-&gt;switchTime:486,ifElse:0
+6-&gt;switchTime:662,ifElse:0
+7-&gt;switchTime:652,ifElse:0
+8-&gt;switchTime:661,ifElse:0
+</code></pre>
+<p>结果大出我所希望的。用”if-if-else”几乎完胜switch String，那为什么了？<br><a target="_blank" rel="noopener" href="http://it.deepinmind.com/java/2014/05/08/how-string-in-switch-works-in-java-7.html">可以看下这篇文章</a>,主要switch string，是通过equal和hashcode实现的。String先通过hashcode转换为int，在通过switch int，然后子case里面在if equal String。</p>
+<ul>
+<li>看来还是回来老路，只是添加一个新的支持特性而效率没有提高。对应String还是用if-if-else吧</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Wilson</h4>
+    <p>A developer ，Love life</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" target="_blank" rel="noopener" href="http://twitter.com/share?url=https://mysiga.cn/2017/01/25/Java7_Switch_String/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://mysiga.cn/2017/01/25/Java7_Switch_String/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" target="_blank" rel="noopener" href="https://plus.google.com/share?url=https://mysiga.cn/2017/01/25/Java7_Switch_String/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2017/06/20/Android%E4%BD%BF%E7%94%A8%E6%9E%9A%E4%B8%BE%E6%AD%A3%E7%A1%AE%E5%A7%BF%E6%80%81/">
+        ← Android使用枚举正确姿态
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/08/24/Android%E9%9D%A2%E8%AF%95/">
+        Android面试 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Wilson</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" target="_blank" rel="noopener" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
